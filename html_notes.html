@@ -1,0 +1,223 @@
+$$$$$$$$$$$$$$$$$$$$$$$$$ W1D4 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+[[[[[[[[[[[[[[[[[[[[[[[[[ Intro to HTML ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/intro-to-html-reading
+
+HTML defines the structure of a website semantically 
+CSS deals with the presentation of content (layout, formatting, colors, etc.) 
+Javascript brings movement and user interaction to websites
+
+========================= HTML =========================
+
+HTML elements use opening and closing tags
+<p>This is an example of a paragraph element in HTML</p>
+
+<img/> tag is self closing. it does not wrap anything, but instead inputs the image
+<img src="appacademy.io/images/app-academy-logo.img" />
+
+the image tag received extra info by declaring an attribute. the attribute 
+receives values in double quotes
+
+There are 3 attributes that ANY HTML element can have
+id - a unique identifier for an HTML element 
+class - a shared identifier for HTML element(s) 
+title - the text you see when you hover over an element 
+
+id and class are commonly used to specify HTML elements using JavaScript or CSS 
+
+------------------------- Tags -------------------------
+
+paragraphs and headings
+<p>A paragraph tag is used to wrap a multi-line body of text</p>
+<h1>A heading1 tag is used to denote the largest title on the page</h1>
+<h2>Used for titles with a smaller font size than h1</h2>
+<h6>Heading six tag is the smallest size</h6>
+
+------------------------- Lists -------------------------
+
+Unordered list
+
+<ul>
+  <li>Unordered List</li>
+  <li>Ordered List</li>
+  <li>Definition List</li>
+</ul>
+
+Ordered list
+
+<ol>
+    <li>First</li>
+    <li>Second</li>
+    <li>Third</li>
+</ol>
+
+Definition list
+
+<dl>
+    <dt>Unordered List</dt>
+    <dd>An HTML element made up of list elements in no particular order</dd>
+    <dt>Ordered List</dt>
+    <dd>An HTML element made up of list elements in order</dd>
+    <dt>Definiton List</dt>
+    <dd>An HTML element with definition term and definition data elements</dd>
+</dl>
+
+------------------------- Links -------------------------
+
+Anchor tags are used to create a link
+
+<a href="http://appacademy.io">App Academy</a>
+
+this is how you create in page links. i.e to go back to the top of page
+the # in the beginning of the URL tells the browser to find an element on the
+page with the given name attribute instead of making a request to a URL
+
+<a name="top-of-page">
+    <!-- Imagine all of your other content in between. By the way, this is how we denote comments in HTML. -->
+<a href="#top-of-page">Back to top</a> 
+
+------------------------- Images -------------------------
+
+image tags are self-closing
+alt attribute is used to provide alternate text for the image when hovering over, 
+for speech accessibility, or for image search rankings
+
+`<img src="http://appacademy.io/images/app-academy-logo.img" alt="app-academy-logo" />`
+
+[[[[[[[[[[[[[[[[[[[[[[[[[ Semantic HTML Containers ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/semantic-html-containers
+
+we should try to see HTML elements as boxes  
+
+HTML elements that are purely used to hold other HTML elements are called containers
+
+========================= Container Elements =========================
+
+<header>
+    Container for elements in the top header section of a page
+</header>
+
+<footer>
+    Container for elements in the bottom footer section of a page
+</footer>
+
+<nav>
+    Usually used to hold navigation elements like lists of links
+</nav>
+
+<article>
+    Used to hold content that makes sense on its own like Posts or Comments
+</article>
+
+<aside>
+    Used to hold sidebar sections that are tangentially related to the content
+</aside>
+
+<figure>
+    Holds images, graphic content, code samples etc.
+</figure>
+
+<figcaption>
+    Holds caption content for a corresponding figure element
+</figcaption>
+
+<section>
+    A section of the page or chapter of an <article> with a heading
+</section>
+
+<div>
+    A common BLOCK container element used when other semantic elements do not seem appropriate
+</div>
+
+other than <div> all of these tags were introduced in HTML5
+
+<span> An IN-LINE container element when other semantic elements do not fit </span>
+
+use this flowchart to decide which container to use
+http://html5doctor.com/downloads/h5d-sectioning-flowchart.png
+or this HTML elements documentation
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
+========================= Form Elements =========================
+
+https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/html-forms
+
+form elements allow users to interact with the website by inputting data
+<form> </form> 
+form tags takes two attributes (action & method) that specify where to send the form data
+action - specifies the URL of the HTTP request 
+method - specifies the HTTP Verb of the request (almost always POST) 
+
+<form action="http://example.com/signup" method="POST">
+
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username">
+    <br />
+
+    <label>Password
+      <input type="password" name="password">
+    </label>
+    <br />
+  
+    <input type="submit" value="Sign Up!">
+  </form>
+
+========================= HTML Head =========================
+
+https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/html--head-
+
+<head></head> section of an HTML document contains important information about the page such
+as title, description, external style sheets, scripts, etc.
+
+------------------------- Title -------------------------
+
+<title></title> displays the title of the webpage which shows up in the tab
+
+------------------------- Metadata -------------------------
+
+<meta> describes our webpage to search engines
+
+<head>
+  <title>Shakshuka Recipe</title>
+  <meta name="description" content="The best, simple recipe for delicious Middle Eastern Shakshuka, a cumin spiced tomato sauce with sautéd onions and chili peppers topped with poached eggs. ">
+</head>
+
+another metatag is the characterset information
+<meta charset="utf-8">
+
+https://www.w3schools.com/tags/ref_charactersets.asp
+
+------------------------- Scripts -------------------------
+
+the language for scripts defaults to JavaScript but can be changed with a type attribute
+we can type JavaScript inside the script element or use src attribute to refer to a JS file
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12345678-9', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+below is an example of using src to reference a JS file
+
+<script type="text/javascript" src="review-submit-example.js"></script>
+
+------------------------- Link Tag -------------------------
+
+most commonly used to refer to a style sheet
+
+<link rel="stylesheet" href="style.css" type="text/css">
+
+rel attribute defines the relationship 
+href attribute specifies the URL of the defined source
+type declares the content language for the file being loaded
+
+link tag documentation
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
