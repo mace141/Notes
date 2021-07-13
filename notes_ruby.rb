@@ -23,8 +23,8 @@ end
 
 # ------------------------- Use built-in methods ------------------------- 
 
-# p 2.even? 
-# p ["daniel", "dylan", "mom", "dad"].last # or [-1]
+2.even? 
+["daniel", "dylan", "mom", "dad"].last # or [-1]
 
 # ------------------------- Use enumerables to iterate ------------------------- 
 
@@ -48,13 +48,13 @@ end
 # symbols are denoted with a colon. they behave similarly to strings except they are immutable
 
 sym = :hello
-# p sym
+sym
 
 # symbols are commonly used as hash keys and can replace the rocket when initializing a hash
 
 my_bootcamp = { name:"App Academy", color:"red", locations:["NY", "SF", "ONLINE"] }
-# p my_bootcamp
-# p my_bootcamp[:color]
+my_bootcamp
+my_bootcamp[:color]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Default Arguments ]]]]]]]]]]]]]]]]]]]]]]]]] 
 
@@ -113,14 +113,14 @@ names = ["Lily", "Zhu"]
 
 old_hash = { a:1, b:2 }
 new_hash = { **old_hash, c:3 }
-# p new_hash 
+new_hash 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Inject ]]]]]]]]]]]]]]]]]]]]]]]]] 
 
 # inject may use a default accumulator
 
-# p [4, 3, 7, 8, 5, 2].inject { |accum, ele| accum + ele }        # ==> 29
-# p [4, 3, 7, 8, 5, 2].inject(100) { |accum, ele| accum + ele }   # ==> 129
+[4, 3, 7, 8, 5, 2].inject { |accum, ele| accum + ele }        # ==> 29
+[4, 3, 7, 8, 5, 2].inject(100) { |accum, ele| accum + ele }   # ==> 129
 injection = [4, 3, 7, 8, 5, 2].inject(0) do |accum, ele| 
     if ele.even?
         accum + ele
@@ -128,7 +128,7 @@ injection = [4, 3, 7, 8, 5, 2].inject(0) do |accum, ele|
         accum
     end
 end
-# p injection                                                     # ==> 14
+injection                                                     # ==> 14
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Scope ]]]]]]]]]]]]]]]]]]]]]]]]]
 
@@ -172,7 +172,7 @@ def format_name(first, last)
   first.capitalize + " " + last.capitalize
 end
 
-# p format_name("daniel", "wu")
+format_name("daniel", "wu")
 
 first_name = 42
 last_name = true
@@ -218,7 +218,7 @@ end
 # use a block to create a subarray with new references
 # Array.new(3) { Array.new(3) }         ==> 3x3 grid
 
-# $$$$$$$$$$$$$$$$$$$$$$$$$ W2D2 $$$$$$$$$$$$$$$$$$$$$$$$$
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W1D2 $$$$$$$$$$$$$$$$$$$$$$$$$
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ TDD ]]]]]]]]]]]]]]]]]]]]]]]]]
 
@@ -298,20 +298,67 @@ doubler = Proc.new { |num| num * 2 }
 
 # & ampersand may be used to convert a block into a proc in a method parameter
 def add_and_proc(num1, num2, &prc)
-    prc.call(num1 + num2)
+  prc.call(num1 + num2)
 end
 
-p add_and_proc(1, 3) { |num| num * 10 }
+add_and_proc(1, 3) { |num| num * 10 }
 
 # because map needs a block, you can add & in front of a proc like below
-p [1, 2, 3].map(&doubler)
+[1, 2, 3].map(&doubler)
 
 # you can use do blocks to initialize a proc but not when passing into a method as an argument
 
 doubler = Proc.new do |n|
-    n * 2
+  n * 2
 end
 
 # cannot use a do block here
-p add_and_proc(2, 3) { |n| n / 2.0 }
+add_and_proc(2, 3) { |n| n / 2.0 }
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Why Do We Pair ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# teamwork building
+# talk code
+# learn from others
+# practice communication
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Good Pairing Habits ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# communication
+# open-mindedness
+# understanding strengths & weaknesses
+# respect, positivity, accountibility
+# patience
+# studying in order to be prepared
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Bad Pairing Habits ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# backseat driving
+# giving up too soon
+# self-deprecation
+# thinking in silence
+# being impatient
+# giving out the answer
+# being dismissive
+# ignoring timer
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ My Partner Is So Ahead ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# don't ever feel bad for asking a question
+#       you're depriving your partner of a teaching opportunity
+# don't get discouraged
+# own what you know and don't know
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ My Partner Is So Behind ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# be proactive - check in with your partner
+# don't make assumptions
+# push them up - guide them
+# make sure you're thinking aloud
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Pairing Exercise Questions ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# what are you doing well? 
+# what can i improve on as a pair? 
+# what can you improve on as a pair? 
 
