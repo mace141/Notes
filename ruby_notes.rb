@@ -587,7 +587,7 @@ class Queue
   end
   
   def []=(position, ele)
-      @line[position] = ele
+    @line[position] = ele
   end
   
   def add(ele)
@@ -611,3 +611,113 @@ grocery_checkout.add("Alonzo")
 # ------------------------- #[]= -------------------------
 
 ## grocery_checkout[0] = "Grace" is the same as grocery_checkout.[]=(0, "Grace")
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W2D4 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Recursion ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/recursion-notes
+
+# Recursion is when a method calls itself. It's used when a problem can be solved with smaller versions of the same problem
+
+# All recursive methods need a BASE CASE and a RECURSIVE STEP
+# Base case: the condition when we stop the recursion
+# Recursive step: where we continue the recursion by calling the method
+
+# Once you figure out the base case, try to figure out the recursive step based on the base case
+
+def countdown(n)
+  if n == 0
+    puts "Liftoff!"
+    return
+  end 
+  puts n
+  countdown(n-1)
+end
+
+countdown(10)
+
+def factorial(n)
+  return 1 if n == 1
+  n * factorial(n-1)
+end
+
+p factorial(5)          # => 120
+
+def fibonacci(n)
+  return 1 if n == 1 || n == 2
+  fibonacci(n - 1) + fibonacci(n - 2)
+end
+
+p fibonacci(6)          # => 8
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Spaceship Operator ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+## <=> is used to relatively compare two values
+# given a <=> b, it will return 
+# -1 if a is less than b
+# 0 if a is equal to b
+# 1 if a is greater than b
+
+# watch the last few mins of alvin's spaceship operator lecture again to review when to use parentheses around method call
+# or assign a method call to a variable
+# use parentheses around the (method call and do ... end block) when passing a block into a method call
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Nil as Falsey ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# In Ruby, every value can be treated as truthy or falsey. 
+# Falsey: nil and false
+# Truthy: everything else
+
+val = "a"       # try reassigning val to anything. i.e [], 1, etc.
+if val
+  p true
+else
+  p false
+end
+
+# ========================= || =========================
+
+## How || OR really works is like so
+# given a || b, it will return
+# a if a is truthy
+# b is a is falsey
+
+# That means || can be used on any values. It is especially useful for default procs/arguments
+
+def greet(person = nil)
+  person ||= "you"    # is the same as person = person || "you"
+  p "Hey #{person}"
+end
+
+greet 
+greet("Lily")
+
+def call_that_proc(val, &prc)
+  prc ||= Proc.new { |data| data.upcase + "!!" }
+  prc.call(val)
+end
+
+p call_that_proc("hey")                                             # => "HEY!!"
+p call_that_proc("programmers") { |data| data * 3 }                 # => "programmersprogrammersprogrammers"
+p call_that_proc("code") { |data| "--" + data.capitalize + "--"}    # => "--Code--"
+
+# ------------------------- Lazy Initialization -------------------------
+
+# This refers to using ||= to delay initializing slow or costly objects until absolutely necessary
+
+class Restaurant
+  def initialize(name, chefs)
+    @name = name 
+    @chefs = chefs 
+  end
+
+  def menu
+    @menu ||= ["sammies", "big ol' cookies", "bean blankies", "chicky catch", "super water"]
+  end
+end
+
+jli = Restaurant.new("Jli", "Umarbin")
+p jli           # jli will lack a menu here until called upon
+jli.menu 
+p jli           # jli will now have a menu
