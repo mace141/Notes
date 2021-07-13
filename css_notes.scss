@@ -1,63 +1,63 @@
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Intro to CSS                        ]]]]]]]]]]]]]]]]]]]]]]]]]
-# ========================= Adding Style to HTML                =========================
-# ------------------------- Inline Style Attribute              -------------------------
-# ------------------------- Internal: Embedded Style Tag        -------------------------
-# ------------------------- External File: Linked Stylesheet    -------------------------
-# ========================= CSS Terms                           =========================
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Selectors & Precedence              ]]]]]]]]]]]]]]]]]]]]]]]]]
-# ========================= CSS Syntax                          =========================
-# ========================= Cascading Styles                    =========================
-# ========================= Basic Selectors                     =========================
-# ------------------------- Element Selector                    -------------------------
-# ------------------------- Descendant Selector                 -------------------------
-# ------------------------- Child Selector                      -------------------------
-# ------------------------- Class Selector                      -------------------------
-# ------------------------- ID Selector                         -------------------------
-# ------------------------- Universal Selector                  -------------------------
-# ========================= Overspecificity                     =========================
-# ========================= Precedence                          =========================
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Advanced Selectors                  ]]]]]]]]]]]]]]]]]]]]]]]]]
-# ========================= Attribute Selectors                 =========================
-# ========================= Pseudo Selectors                    =========================
-# ------------------------- State Selector                      -------------------------
-# ========================= Structural Selectors                =========================
-# ========================= Combinators                         =========================
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Intro to CSS                        ]]]]]]]]]]]]]]]]]]]]]]]]]
+// ========================= Adding Style to HTML                =========================
+// ------------------------- Inline Style Attribute              -------------------------
+// ------------------------- Internal: Embedded Style Tag        -------------------------
+// ------------------------- External File: Linked Stylesheet    -------------------------
+// ========================= CSS Terms                           =========================
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Selectors & Precedence              ]]]]]]]]]]]]]]]]]]]]]]]]]
+// ========================= CSS Syntax                          =========================
+// ========================= Cascading Styles                    =========================
+// ========================= Basic Selectors                     =========================
+// ------------------------- Element Selector                    -------------------------
+// ------------------------- Descendant Selector                 -------------------------
+// ------------------------- Child Selector                      -------------------------
+// ------------------------- Class Selector                      -------------------------
+// ------------------------- ID Selector                         -------------------------
+// ------------------------- Universal Selector                  -------------------------
+// ========================= Overspecificity                     =========================
+// ========================= Precedence                          =========================
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Advanced Selectors                  ]]]]]]]]]]]]]]]]]]]]]]]]]
+// ========================= Attribute Selectors                 =========================
+// ========================= Pseudo Selectors                    =========================
+// ------------------------- State Selector                      -------------------------
+// ========================= Structural Selectors                =========================
+// ========================= Combinators                         =========================
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Intro to CSS ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Intro to CSS ]]]]]]]]]]]]]]]]]]]]]]]]]
 
-# https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/css-nontechnical-overview
+// https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/css-nontechnical-overview
 
-# CSS is short for Cascading Stylesheets. It is a stylesheet language for markup (XML, HTML, XHTML)
-# CSS combines multiple files to style one page
+// CSS is short for Cascading Stylesheets. It is a stylesheet language for markup (XML, HTML, XHTML)
+// CSS combines multiple files to style one page
 
-# ========================= Adding Style to HTML =========================
+// ========================= Adding Style to HTML =========================
 
-# There are three ways a devleoper may add style to an HTML document. They are listed below in order of increasing specificity
+// There are three ways a devleoper may add style to an HTML document. They are listed below in order of increasing specificity
 
 #1 External
 #2 Internal
 #3 Inline 
 
-# ------------------------- Inline Style Attribute -------------------------
+// ------------------------- Inline Style Attribute -------------------------
 
 <h2 style="color: #000000; font-size: 2em;"> Hi </h2>
 
-# Pros: 
-    # Highest specificity: ensures the style will be applied to the element
+// Pros: 
+    // Highest specificity: ensures the style will be applied to the element
 
-# Cons: 
-    # Highest specificity: will overwrite most other styles in an internal or external sheet 
-    # Redundant; not DRY
-    # Cluttered, unreadable HTML markup 
-    # Difficult to manage
-    # Impossible to style pseudo-elements and classes like visited, hover, and active
+// Cons: 
+    // Highest specificity: will overwrite most other styles in an internal or external sheet 
+    // Redundant; not DRY
+    // Cluttered, unreadable HTML markup 
+    // Difficult to manage
+    // Impossible to style pseudo-elements and classes like visited, hover, and active
 
-# When you change an element's style using Javascript, it affects the element's inline style and can overwrite existing
-# inline styles permanently
+// When you change an element's style using Javascript, it affects the element's inline style and can overwrite existing
+// inline styles permanently
 
-# ------------------------- Internal: Embedded Style Tag -------------------------
+// ------------------------- Internal: Embedded Style Tag -------------------------
 
-# Style for many elements are collected between <style> tags in the <head> section of an HTML document 
+// Style for many elements are collected between <style> tags in the <head> section of an HTML document 
 
 <head>
   <style type="text/css">
@@ -75,59 +75,59 @@
   </style>
 </head>
 
-# Pros: 
-    # Cleaner HTML markup than inline styles: all styles are in one section of the document
-    # Selector apply styles to multiple elements on a page
-        # Smaller page size than using all inline styles
-        # More DRY than inline styles 
-    # Apply styles to the document they are embedded within; not globally
+// Pros: 
+    // Cleaner HTML markup than inline styles: all styles are in one section of the document
+    // Selector apply styles to multiple elements on a page
+        // Smaller page size than using all inline styles
+        // More DRY than inline styles 
+    // Apply styles to the document they are embedded within; not globally
 
-# Cons: 
-    # Loaded with the HTML page and not cached by the browser
+// Cons: 
+    // Loaded with the HTML page and not cached by the browser
 
-# ------------------------- External File: Linked Stylesheet -------------------------
+// ------------------------- External File: Linked Stylesheet -------------------------
 
-# An external stylesheet is simply a file dedicated to CSS, that must be linked in the <head> section of an HTML document 
+// An external stylesheet is simply a file dedicated to CSS, that must be linked in the <head> section of an HTML document 
 
 <link rel="stylesheet" type="text/css" href="styles.css" />
 
-# Pros: 
-    # Can be cached by browsers for improved performance
-    # Global: can be used across pages in your site 
+// Pros: 
+    // Can be cached by browsers for improved performance
+    // Global: can be used across pages in your site 
 
-# Cons: 
-    # Global: the developer must structure the CSS so that styles are not applied to elements they are not intended for 
+// Cons: 
+    // Global: the developer must structure the CSS so that styles are not applied to elements they are not intended for 
 
-# ========================= CSS Terms =========================
+// ========================= CSS Terms =========================
 
-# UI: User Interface
-# Responsive: a web design that adjusts to different device screen sizes
-    # Breakpoint: the markers at which a change will occur to improve the UI
+// UI: User Interface
+// Responsive: a web design that adjusts to different device screen sizes
+    // Breakpoint: the markers at which a change will occur to improve the UI
                 Ex: "Please add a breakpoint so the picture grid on this page has four columns on wide screens
                 and three columns on screens less than 1024px wide."
-    # Media queries: Used for device-specific breakpoints. The include an optional media type and expressions that
+    // Media queries: Used for device-specific breakpoints. The include an optional media type and expressions that
                      limit the scope of their contained styles 
                     Ex: smartphone, tablet, PC screens 
-# Pixel Perfect: replicating a mockup perfectly
-    # Flat design: minimalist UI design language characterized by simple elements, subtle typography, and flat colors 
-    # Skeumorphism: a design language characterized by elements that look like their counterparts in the real world 
-    # Grid system: a simple type of CSS framework that provides column systems for grid layouts, usually helpful for 
+// Pixel Perfect: replicating a mockup perfectly
+    // Flat design: minimalist UI design language characterized by simple elements, subtle typography, and flat colors 
+    // Skeumorphism: a design language characterized by elements that look like their counterparts in the real world 
+    // Grid system: a simple type of CSS framework that provides column systems for grid layouts, usually helpful for 
                    responsive designs
-# W3C: the group responsible for HTML and CSS standards - it is the largest standards body for Internet design and best practices
+// W3C: the group responsible for HTML and CSS standards - it is the largest standards body for Internet design and best practices
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Selectors & Precedence ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Selectors & Precedence ]]]]]]]]]]]]]]]]]]]]]]]]]
 
-# https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/css-selectors---precedence
+// https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/css-selectors---precedence
 
-# ========================= CSS Syntax =========================
+// ========================= CSS Syntax =========================
 
-# This is the syntax of a single style declaration in your stylesheet 
+// This is the syntax of a single style declaration in your stylesheet 
 
 selector {
     property: value;
 }
 
-# This is how to style all <p> elements with blue, bold, sans-serif font 
+// This is how to style all <p> elements with blue, bold, sans-serif font 
 
 p {
     font-family: sans-serif;
@@ -135,7 +135,7 @@ p {
     color: blue;
 }
 
-# ========================= Cascading Styles =========================
+// ========================= Cascading Styles =========================
 
 p {
     color: black;
@@ -164,21 +164,21 @@ p span.highlight {
     </span>
 </p>
 
-# ========================= Basic Selectors =========================
+// ========================= Basic Selectors =========================
 
-# ------------------------- Element Selector -------------------------
+// ------------------------- Element Selector -------------------------
 
-# You can select HTML elements by stating their name 
+// You can select HTML elements by stating their name 
 
 h1 {
     font-size: 24px;
 }
 
-# ------------------------- Descendant Selector -------------------------
+// ------------------------- Descendant Selector -------------------------
 
-# You can select descendants by adding a space between the parent and the child 
+// You can select descendants by adding a space between the parent and the child 
 
-# This selects all <a> elements that are descendants of <ul> elements and removes all text-decoration 
+// This selects all <a> elements that are descendants of <ul> elements and removes all text-decoration 
 
 <ul>
     <li><a href="example.com">Style Me!</a></li>
@@ -188,10 +188,10 @@ ul a {
     text-decoration: none; /* This assures the a elements are not underlined */
 }
 
-# ------------------------- Child Selector -------------------------
+// ------------------------- Child Selector -------------------------
 
-# This is similar to the descendant selector except you have to add a > between the parent and child 
-# and it only selects the direct children of an element 
+// This is similar to the descendant selector except you have to add a > between the parent and child 
+// and it only selects the direct children of an element 
 
 ul > a {
     text-decoration: none; /* this does not work on the ordered list on lines 183-185*/
@@ -201,14 +201,14 @@ ul > li > a {
     text-decoration: none; /* this does work on the ordered list on lines 183-185*/
 }
 
-# ------------------------- Class Selector -------------------------
+// ------------------------- Class Selector -------------------------
 
-# Classes are used to group elements together that you want to have the same styling properties
-# They also help make our stylesheets more readable
-# Use a . to reference a class selector
+// Classes are used to group elements together that you want to have the same styling properties
+// They also help make our stylesheets more readable
+// Use a . to reference a class selector
 
-# An element may have more than one class name separated by a space. 
-# class="first-class-name second-class-name"
+// An element may have more than one class name separated by a space. 
+// class="first-class-name second-class-name"
 
 <section>This is a normal section</section>
 
@@ -220,12 +220,12 @@ ul > li > a {
     background-color: whitesmoke;
 }
 
-# There are AND class selectors and OR class selectors
+// There are AND class selectors and OR class selectors
 
-# ------------------------- ID Selector -------------------------
+// ------------------------- ID Selector -------------------------
 
-# ID attributes should be unique to their element and selecting elements by their ID can be helpful for unique styling
-# Use a # to reference an ID selector 
+// ID attributes should be unique to their element and selecting elements by their ID can be helpful for unique styling
+// Use a # to reference an ID selector 
 
 <span id="banana">This span has a banana color</span>
 
@@ -233,48 +233,48 @@ ul > li > a {
     color: yellow;
 }
 
-# ------------------------- Universal Selector -------------------------
+// ------------------------- Universal Selector -------------------------
 
-# These are rarely necessary because it is usually too broad
-# Use a * to make an universal selector 
+// These are rarely necessary because it is usually too broad
+// Use a * to make an universal selector 
 
 * {
     border: 1px solid red; /* puts a red border around EVERY element */
 }
 
-# ========================= Overspecificity =========================
+// ========================= Overspecificity =========================
 
-# In order to override properties of a high-specificity selector, you must use an even more specific selector
-# You can add !important to a CSS property to make it override any other styling
-# You should question anyone using it in a non-testing scenario
+// In order to override properties of a high-specificity selector, you must use an even more specific selector
+// You can add !important to a CSS property to make it override any other styling
+// You should question anyone using it in a non-testing scenario
 
 header {
     min-width: 500px !important; /* sets the min-width of the header to 500px regardless of any other styling rules */
 }
 
-# ========================= Precedence =========================
+// ========================= Precedence =========================
 
-# The more specific a selector, the greater the precedence
-# Here is a list of selectors in decreasing precedence
-# Selectors can be combined to increase precedence. for example using an element and class selector together
-# You can add a comma between selectors to act as an OR statement
-    # i.e .class1,
+// The more specific a selector, the greater the precedence
+// Here is a list of selectors in decreasing precedence
+// Selectors can be combined to increase precedence. for example using an element and class selector together
+// You can add a comma between selectors to act as an OR statement
+    // i.e .class1,
           .class2 { property: value; }
 
-# !important
-# inline styles
-# ID selectors
-# class/attributes/pseudo-classes selectors
-# element/pseudo-elements selectors
-# universal selectors
+// !important
+// inline styles
+// ID selectors
+// class/attributes/pseudo-classes selectors
+// element/pseudo-elements selectors
+// universal selectors
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Advanced Selectors ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Advanced Selectors ]]]]]]]]]]]]]]]]]]]]]]]]]
 
-# https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/css-advanced-selectors
+// https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/css-advanced-selectors
 
-# ========================= Attribute Selectors =========================
+// ========================= Attribute Selectors =========================
 
-# We can target elements with certain attributes by using []
+// We can target elements with certain attributes by using []
 
 input[type="radio"] {
     -webkit-appearance: none;
@@ -286,19 +286,19 @@ input[type="radio"] {
     outline: none;
 }
 
-# The -webkit-appearance property is native to the Webkit rendering engine used by Safari and Chrome
-# The -webkit- part of the property is called a vendor prefix, which declares that this CSS property 
-# is not yet declared by CSS W3 standards
-# Other vendor prefixes include -moz- for Firefox, -o- for opera, -ms- for IE 
+// The -webkit-appearance property is native to the Webkit rendering engine used by Safari and Chrome
+// The -webkit- part of the property is called a vendor prefix, which declares that this CSS property 
+// is not yet declared by CSS W3 standards
+// Other vendor prefixes include -moz- for Firefox, -o- for opera, -ms- for IE 
 
-# The outline property is set to none to reset the default browser action of outlining the radio button in blue 
-# It may be better for that selector to be in a css_reset.css file if we wanted to do that for all radio buttons
+// The outline property is set to none to reset the default browser action of outlining the radio button in blue 
+// It may be better for that selector to be in a css_reset.css file if we wanted to do that for all radio buttons
 
-# ========================= Pseudo Selectors =========================
+// ========================= Pseudo Selectors =========================
 
-# https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
+// https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
 
-# ------------------------- State Selector -------------------------
+// ------------------------- State Selector -------------------------
 
 input[type="radio"]:checked {
     background-position: 30px 30px;
@@ -308,55 +308,55 @@ input[type="submit"]:hover {
     -webkit-filter: brightness(90%);
 }
 
-# ========================= Structural Selectors =========================
+// ========================= Structural Selectors =========================
 
-# this will select every other table row element that is a descendant of a table element
-# and apply a grayish background color
+// this will select every other table row element that is a descendant of a table element
+// and apply a grayish background color
 
 table tr:nth-of-type(2n) {
     background-color: whitesmoke;
 }
 
-# this could replace a header > img selector to permit more image elements in the header while 
-# still applying a width to the first one 
+// this could replace a header > img selector to permit more image elements in the header while 
+// still applying a width to the first one 
 
 header img:first-child {
     width: 100px
 }
 
-# ========================= Combinators =========================
+// ========================= Combinators =========================
 
-# We've already seen some combinators like the selectors with a space to select descendants 
-# or the > to select children
+// We've already seen some combinators like the selectors with a space to select descendants 
+// or the > to select children
 
-# We can also use SelectorA + SelectorB to select all SelectorB elements that immediately follow SelectorA elements 
+// We can also use SelectorA + SelectorB to select all SelectorB elements that immediately follow SelectorA elements 
 
-# This example uses ~ combinator to select all <p> elements that follow and are within the same parent as any <div> elements
+// This example uses ~ combinator to select all <p> elements that follow and are within the same parent as any <div> elements
 
 div ~ p {
     background-color: gold;
 }
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Box Model ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Box Model ]]]]]]]]]]]]]]]]]]]]]]]]]
 
-# https://codinglead.github.io/images/box-model.png
+// https://codinglead.github.io/images/box-model.png
 
-# Every element has these properties which are essentially spacings for the element 
-# Margin
-    # Border 
-        # Padding 
-            # Text/Content
+// Every element has these properties which are essentially spacings for the element 
+// Margin
+    // Border 
+        // Padding 
+            // Text/Content
 
-# Margin is the space between other elements. It will overlap with other element's Margins
-# Border is the border around the element 
-# Padding is the space between the border and the Text/Content
+// Margin is the space between other elements. It will overlap with other element's Margins
+// Border is the border around the element 
+// Padding is the space between the border and the Text/Content
 
-# width and height properties only apply to the Text/Content 
+// width and height properties only apply to the Text/Content 
 
-## box-sizing: border-box;
-# this property sizes the selected element to the border-box 
+// box-sizing: border-box;
+// this property sizes the selected element to the border-box 
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Reset Stylesheet ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Reset Stylesheet ]]]]]]]]]]]]]]]]]]]]]]]]]
 
-# They are used to reset the default browser styling so there are no mysteries as to why an element looks the way it does
-# Use the link tag to reference the reset CSS file as the first file linked
+// They are used to reset the default browser styling so there are no mysteries as to why an element looks the way it does
+// Use the link tag to reference the reset CSS file as the first file linked
