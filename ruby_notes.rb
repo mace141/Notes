@@ -45,7 +45,8 @@ end
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Symbols ]]]]]]]]]]]]]]]]]]]]]]]]] 
 
-# symbols are denoted with a colon. they behave similarly to strings except they are immutable
+# symbols are denoted with a colon 
+# they behave similarly to strings except they are immutable
 
 sym = :hello
 sym
@@ -109,7 +110,8 @@ end
 names = ["Lily", "Zhu"]
 # sayNames(*names) 
 
-# double splats are used to decompose a hash, BUT THIS ONLY WORKS IF THE KEYS ARE SYMBOLS
+# double splats are used to decompose a hash, 
+# BUT THIS ONLY WORKS IF THE KEYS ARE SYMBOLS
 
 old_hash = { a:1, b:2 }
 new_hash = { **old_hash, c:3 }
@@ -132,14 +134,15 @@ injection                                                     # ==> 14
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Scope ]]]]]]]]]]]]]]]]]]]]]]]]]
 
-# each method will have its own LOCAL SCOPE. variables defined outside of the method cannot
-# be referenced inside the method and vice versa
+# each method will have its own LOCAL SCOPE. variables defined outside of the 
+# method cannot be referenced inside the method and vice versa
 
-# variables starting with $ have a GLOBAL SCOPE. Uppercase variables also have GLOBAL SCOPE
+# Variables starting with $ have a GLOBAL SCOPE
+# Uppercase variables also have GLOBAL SCOPE
 
 $bonsai = "tree"        # Global variable
 $bonsai = "small tree"
-TREE = "plant"          # Constant variable. It cannot be reassigned but, you can mutate it
+TREE = "plant"          # Constant variable. Cannot be reassigned; is mutable
 # TREE = "wood"         # will result in error/warning if you reassign a constant
 
 # if statements DO NOT have their own scope. 
@@ -189,7 +192,7 @@ end
 # because more is now expected of us. we have to understand the entirety of the app
 
 # what is pair programming?
-# it is an agile software development technique, which involves a driver and a navigator
+# an agile software development technique, which involves a driver and a navigator
 
 # park-instructors@appacademy.io
 # use this email if you need to contact instructors about something urgent
@@ -222,8 +225,8 @@ end
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ TDD ]]]]]]]]]]]]]]]]]]]]]]]]]
 
-# Test Driven Development is essentially writing out test cases to test one aspect of the method
-# before moving onto the next aspect and writing more code
+# Test Driven Development is essentially writing out test cases to test one 
+# aspect of the method before moving onto the next aspect and writing more code
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ RSpec ]]]]]]]]]]]]]]]]]]]]]]]]]
 
@@ -306,7 +309,8 @@ add_and_proc(1, 3) { |num| num * 10 }
 # because map needs a block, you can add & in front of a proc like below
 [1, 2, 3].map(&doubler)
 
-# you can use do blocks to initialize a proc but not when passing into a method as an argument
+# you can use do blocks to initialize a proc but not when passing into a method
+# as an argument
 
 doubler = Proc.new do |n|
   n * 2
@@ -618,13 +622,15 @@ grocery_checkout.add("Alonzo")
 
 # https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/recursion-notes
 
-# Recursion is when a method calls itself. It's used when a problem can be solved with smaller versions of the same problem
+# Recursion is when a method calls itself. It's used when a problem can be solved
+# with smaller versions of the same problem
 
 # All recursive methods need a BASE CASE and a RECURSIVE STEP
 # Base case: the condition when we stop the recursion
 # Recursive step: where we continue the recursion by calling the method
 
-# Once you figure out the base case, try to figure out the recursive step based on the base case
+# Once you figure out the base case, try to figure out the recursive step based 
+# on the base case
 
 def countdown(n)
   if n == 0
@@ -659,9 +665,11 @@ p fibonacci(6)          # => 8
 # 0 if a is equal to b
 # 1 if a is greater than b
 
-# watch the last few mins of alvin's spaceship operator lecture again to review when to use parentheses around method call
-# or assign a method call to a variable
-# use parentheses around the (method call and do ... end block) when passing a block into a method call
+# watch the last few mins of alvin's spaceship operator lecture again to review
+# when to use parentheses around method call or assign a method call to a variable
+
+# use parentheses around the (method call and do ... end block) when passing a
+  # block into a method call
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Nil as Falsey ]]]]]]]]]]]]]]]]]]]]]]]]]
 
@@ -683,7 +691,8 @@ end
 # a if a is truthy
 # b is a is falsey
 
-# That means || can be used on any values. It is especially useful for default procs/arguments
+# That means || can be used on any values. It is especially useful for default 
+  # procs/arguments
 
 def greet(person = nil)
   person ||= "you"    # is the same as person = person || "you"
@@ -704,7 +713,8 @@ p call_that_proc("code") { |data| "--" + data.capitalize + "--"}    # => "--Code
 
 # ------------------------- Lazy Initialization -------------------------
 
-# This refers to using ||= to delay initializing slow or costly objects until absolutely necessary
+# This refers to using ||= to delay initializing slow or costly objects until
+  # absolutely necessary
 
 class Restaurant
   def initialize(name, chefs)
@@ -721,3 +731,209 @@ jli = Restaurant.new("Jli", "Umarbin")
 p jli           # jli will lack a menu here until called upon
 jli.menu 
 p jli           # jli will now have a menu
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W3D1 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Non-Technical Overview of Ruby ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/ruby/nontechnical-overview-of-ruby
+
+# Ruby is dynamic, reflective, object-oriented, and multi-paradigm
+
+# ========================= Dynamic =========================
+
+# Ruby can execute many common programming behaviors at runtime that static programming
+# languages perform during compilation (when a program/compiler translates high-level
+# source code to a lower-level langauge, i.e assembly language or machine code). 
+
+# Dynamic programming languages can compile code at runtime and execute code during 
+# compile-time; the compilation and execution times are muddled. 
+
+# Ruby, like most dynamic languages, enforce type constraints at runtime; however, 
+# in statically typed langauges, they enforce type constraints at compile-time
+
+# ========================= Reflection =========================
+
+# Type introspection: the ability of a program to examine the type and state of 
+  # an object at runtime
+
+# Reflection: the ability of a program to manipulate its own structure and 
+  # behavior as data
+
+# In reflective languages, reflection permits not only the examination of classes,
+  # modules, and methods, but also instantiation and method invocation
+
+# Reflection allows for much of metaprogramming
+
+# ========================= Object-Oriented =========================
+
+# OOP is a paradigm that privileges objects rather than actions and data rather 
+# than functions or logic. Adherents to OOP see programs as a society of objects
+# that receive messages that they then use to perform their own discrete operations
+
+# Classes often inherit from other classes in an "is-a-type-of" relationship. 
+# The Dog class (child class) may inherit data definitions or methods from the 
+# Pet class (parent class). This allows for recycling or the child class may 
+# overwrite the definitions/methods and create extensions. 
+
+# ------------------------- Encapsulation ------------------------- 
+
+# Encapsulation dictates the programmer must: 
+#1 Place all code concerned with particular set of data in one class
+#2 Hide methods and data essential to a class's inner workings
+#3 Expose via methods, only what's necessary to a class's relationships with other classes
+
+# ========================= Multi-Paradigm =========================
+
+# OOP and supports procedural and functional programming
+
+# Procedural programming privileges invocations, i.e method calls
+# OOP joins data structures and methods into "objects" that operate on themselves
+
+# Functional programming privileges pure functions, those whose return value is 
+# only determined by the input, without side effects such as changes in state
+
+# Ruby features anonymous functions, lexical closures (functions that capture 
+# variables in the context where they're defined), and higher-order functions 
+# (functions that accept other functions as arguments and/or return functions) 
+
+# ========================= Ruby vs. Python =========================
+
+# https://assets.aaonline.io/fullstack/ruby/assets/python_vs_ruby.jpg
+
+#1 Python doesn't support blocks
+#2 Python has a richer set of data structures
+#3 Python is inflexible: there's one best way of doing things
+#4 Whitespace is syntactically significant in Python
+#5 Python is less object-oriented than Ruby
+#6 Ruby values elegance and "magic" over clarity
+
+# ========================= Vocabulary =========================
+
+# Test-Driven Development (TDD)
+
+# Behavior-Driven Development (BDD)
+# An extension of TDD. It structures the testing process through descriptions of
+# the user's use of the feature being developed
+
+# Unit Test
+# Testing the smallest constituent parts in isolation
+
+# Integration Test
+# Testing the units of code and the results of their interactions together
+
+# Test Coverage
+# Refers to how much of a software program has been tested. 
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Debugging ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Always read the error
+    # Error type
+    # Error message
+    # Line on which the error occured
+    # Stack trace: chain of methods leading up to the error
+
+# Perform a mental stack trace
+    # Keep track of the values of variables and return values
+
+# Write code that's testable
+    # Break code into smaller testable methods
+    # Keep all your code inside methods when writing a script
+    ## if __FILE__ == $PROGRAM_NAME
+        # p method_name
+    # This lets us invoke a script
+
+# Pay technical debt: compromising well designed code for time/deadlines
+    # you will eventually need to pay back time
+
+# Use a REPL (like pry) to isolate the problem
+    # once you find a regression (input which produces the wrong output) analyze 
+    # the code to fix the bug
+
+# You can type "wtf" in pry to look at the stack trace
+    # The first line tells us what what method and line of code was executed when
+    # the error occured. The next line tells us what called the method from the 
+    # first line
+
+## debugger if (conditional)
+# triggers the debugger if the conditional results in true
+
+## where 
+# run this command in the debugger to show us the call stack
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Common Errors ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/ruby/common-exceptions
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$ Lecture $$$$$$$$$$$$$$$$$$$$$$$$$
+
+## block_given?
+# used in byebug, this will return a boolean for whether a block was given or not
+
+## yield ele
+# will call the given block on ele whether the method definition has a block 
+# parameter or not using yield is NOT best practice
+
+# Conventional Order of Class Methods
+#1 Class methods/constants
+#2 attrs
+#3 initialize 
+#4 Instance methods
+
+class Fish
+  @@all_fish = [] # class variable. you cannot use attr on class variables
+
+  def self.random_state_of_being
+    [true,false].sample
+  end
+
+# Factory methods are special class methods used to create a specific type of 
+# instance of that class
+  def self.make_nemo
+    Fish.new("Nemo")
+  end
+
+  def self.make_random_fish
+    name = ""
+    5.times { name << ("a".."z").to_a.sample }
+    self.new(name)
+  end
+
+  def self.all_fish 
+    @@all_fish 
+  end
+
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name 
+    @lost = Fish.random_state_of_being
+    @@all_fish << self # self is an instance of Fish inside #initialize 
+  end
+
+end
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Common Errors ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Good ruby code should read like English!
+
+# ------------------------- Naming Variables -------------------------
+
+# variables_names = "snake_case"
+# ClassNames = "CamelCase"
+# CONSTANTS = "SCREAMING_SNAKE_CASE"
+
+# Blocks
+
+# use the do ... end block for multi-line code
+# use the {} for one line code
+
+# Interpolation > Concatenation
+
+# Use ! for mutating methods and ? for boolean methods
+
+# Prefer block parameters over yield
+
+# No overly long single-line code
+
+# No one-letter variable names except for loops
