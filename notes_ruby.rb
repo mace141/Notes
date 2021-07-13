@@ -1,8 +1,3 @@
-# [[[[[[[[[[[[[[[[[[[[[[[[[  ]]]]]]]]]]]]]]]]]]]]]]]]]
-# =========================  =========================
-# -------------------------  -------------------------
-# $$$$$$$$$$$$$$$$$$$$$$$$$  $$$$$$$$$$$$$$$$$$$$$$$$$
-
 # $$$$$$$$$$$$$$$$$$$$$$$$$ W1D1 $$$$$$$$$$$$$$$$$$$$$$$$$
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Becoming a Rubyist ]]]]]]]]]]]]]]]]]]]]]]]]] 
@@ -177,7 +172,7 @@ def format_name(first, last)
   first.capitalize + " " + last.capitalize
 end
 
-p format_name("daniel", "wu")
+# p format_name("daniel", "wu")
 
 first_name = 42
 last_name = true
@@ -222,3 +217,101 @@ end
 
 # use a block to create a subarray with new references
 # Array.new(3) { Array.new(3) }         ==> 3x3 grid
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W2D2 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ TDD ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Test Driven Development is essentially writing out test cases to test one aspect of the method
+# before moving onto the next aspect and writing more code
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ RSpec ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/rspec-notes
+
+# have your terminal open in the parent folder of the rspec
+# run command below to install gems
+## bundle install
+# run command below to run rspec
+## bundle exec rspec
+
+# gems are open source libraries which allow you to access other programmers codes
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Pry ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/pry-notes
+
+## ls String 
+# lists string methods
+
+## show-doc String#end_with?
+# shows how to use .end_with?
+
+## load file.rb
+# loads the entire file into pry
+
+## show-source method_name
+# shows the code for the method
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Byebug ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/bye-bug-notes
+
+## require "byebug"
+# place this at the top of your file
+
+## debugger
+# place this before the code you want to debug
+
+## l 2-15
+# lists lines 2 to 15 in the debugger
+
+## s
+# steps into the method call on the current line
+# use s to step into blocks of code
+
+## n
+# moves onto the next line of executable code
+
+## break 19
+# pauses the code's execution at line 19 to resume debugging
+
+## c 
+# resumes execution of code until another breakpoint
+
+## display var
+# displays the current value of the variable
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Blocks ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# { } and do...end behave the same
+
+## arr.map { |ele| ele.upcase }  is the same as  arr.map(&:upcase)
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Procs ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# procs are used to store blocks to variables for easy use
+# blocks cannot be passed into a method but procs can
+
+doubler = Proc.new { |num| num * 2 }
+# initializes and assigns the proc to a variable
+
+# & ampersand may be used to convert a block into a proc in a method parameter
+def add_and_proc(num1, num2, &prc)
+    prc.call(num1 + num2)
+end
+
+p add_and_proc(1, 3) { |num| num * 10 }
+
+# because map needs a block, you can add & in front of a proc like below
+p [1, 2, 3].map(&doubler)
+
+# you can use do blocks to initialize a proc but not when passing into a method as an argument
+
+doubler = Proc.new do |n|
+    n * 2
+end
+
+# cannot use a do block here
+p add_and_proc(2, 3) { |n| n / 2.0 }
+
