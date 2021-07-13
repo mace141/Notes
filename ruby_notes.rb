@@ -467,6 +467,8 @@ end
 11.prime?
 15.prime?
 
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W2D2 $$$$$$$$$$$$$$$$$$$$$$$$$
+
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Requiring Files ]]]]]]]]]]]]]]]]]]]]]]]]]
 
 # ========================= Require Relative =========================
@@ -503,19 +505,19 @@ end
 # meaning gets will always return a string. so if you're asking for a number, you will
 # have to convert it to an integer using .to_i
 
-p "Enter your name:"
-name = gets 
-puts "Using puts -----"
-puts "Hello #{name}"
-puts "Using p -----"
-p "Hello #{name}"
+# p "Enter your name:"
+# name = gets 
+# puts "Using puts -----"
+# puts "Hello #{name}"
+# puts "Using p -----"
+# p "Hello #{name}"
 
 ## .chomp
 # is a built-in method that removes record separators, i.e "\n", "\r" 
 
-p "Who is your wife?"
-wife = gets.chomp
-p "#{wife} is beautiful."
+# p "Who is your wife?"
+# wife = gets.chomp
+# p "#{wife} is beautiful."
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ OOP ]]]]]]]]]]]]]]]]]]]]]]]]]
 
@@ -555,17 +557,17 @@ p "#{wife} is beautiful."
 # ==, >, +, etc.
 
 class Person
-    attr_reader :first_name, :last_name
+  attr_reader :first_name, :last_name
   
-    def initialize(first_name, last_name, age)
-      @first_name = first_name
-      @last_name = last_name
-      @age = age
-    end
+  def initialize(first_name, last_name, age)
+    @first_name = first_name
+    @last_name = last_name
+    @age = age
+  end
   
-    def ==(other_person)
-      self.last_name == other_person.last_name
-    end
+  def ==(other_person)
+    self.last_name == other_person.last_name
+  end
 end
 
 person_1 = Person.new("Jane", "Doe", 20)
@@ -576,26 +578,26 @@ person_2 = Person.new("John", "Doe", 18)
 # ========================= Bracket Methods =========================
 
 class Queue
-    def initialize
-      @line = []
-    end
+  def initialize
+    @line = []
+  end
   
-    def [](position)
-      @line[position]
-    end
-
-    def []=(position, ele)
-        @line[position] = ele
-    end
+  def [](position)
+    @line[position]
+  end
   
-    def add(ele)
-      @line << ele # add ele to back of line
-      nil
-    end
+  def []=(position, ele)
+      @line[position] = ele
+  end
   
-    def remove
-      @line.shift  # remove front ele of line
-    end
+  def add(ele)
+    @line << ele # add ele to back of line
+    nil
+  end
+  
+  def remove
+    @line.shift  # remove front ele of line
+  end
 end
   
 grocery_checkout = Queue.new
