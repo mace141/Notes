@@ -467,3 +467,145 @@ end
 11.prime?
 15.prime?
 
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Requiring Files ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# ========================= Require Relative =========================
+
+# When our code become more complex, we'll need to separate it into different files
+# following the principle of "Separation of Concerns"
+
+# If this is our project directory and we're trying to acccess code in the cat.rb file 
+# from the pet_hotel.rb file, then we'd add this to the top of our pet_hotel.rb file 
+
+# project_root
+#       pet_hotel.rb
+#       cat.rb
+
+# require_relative "./cat.rb"
+
+# When using "require_relative" we need to specify a path that is relative to the current file
+# A single dot, ./ , denotes the current location of our file
+# Two dots, ../ , denotes moving up a directory
+
+# You cannot access variables from other files unless they are constant variables
+
+
+# ------------------------- Require vs Require Relative -------------------------
+
+# require is used for gems and files ruby knows the locations of
+# require_relative is used for files that we write
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ User Input ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+## gets
+# is a built-in method that allows the user to give input
+# there will be an added "\n" at the end of the input because the user presses Enter 
+# meaning gets will always return a string. so if you're asking for a number, you will
+# have to convert it to an integer using .to_i
+
+p "Enter your name:"
+name = gets 
+puts "Using puts -----"
+puts "Hello #{name}"
+puts "Using p -----"
+p "Hello #{name}"
+
+## .chomp
+# is a built-in method that removes record separators, i.e "\n", "\r" 
+
+p "Who is your wife?"
+wife = gets.chomp
+p "#{wife} is beautiful."
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ OOP ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/abstraction-and-encapsulation-notes
+
+# Four Pillars of OOP: Abstraction, Encapsulation, Polymorphism, Inheritance
+
+# ========================= Abstraction =========================
+
+# Abstraction is the process of exposing essential features of a program while hiding 
+# the inner workings that aren't necessary to using the program. 
+
+# ========================= Encapsulation =========================
+
+# Encapsulation is the process of giving users access to things that are safe to use
+
+# For example, if we were to initialize a Queue class with an add to end of queue and 
+# remove from front of queue features, we wouldn't initialize a getter method to the class
+# This is because we don't want users to add people into the line where they don't belong. 
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Attr Methods ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+## attr_reader
+# creates getter methods, which allow you to read and mutate the object
+# attr_reader :name, :age
+
+## attr_writer
+# creates setter methods, which allow you to reassign the object
+
+## attr_accessor
+# creates getter and setter methods
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Syntactic Sugar ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# ========================= Operator Methods =========================
+
+# ==, >, +, etc.
+
+class Person
+    attr_reader :first_name, :last_name
+  
+    def initialize(first_name, last_name, age)
+      @first_name = first_name
+      @last_name = last_name
+      @age = age
+    end
+  
+    def ==(other_person)
+      self.last_name == other_person.last_name
+    end
+end
+
+person_1 = Person.new("Jane", "Doe", 20)
+person_2 = Person.new("John", "Doe", 18)
+
+## person1.==(person2) is the same as person1 == person2
+
+# ========================= Bracket Methods =========================
+
+class Queue
+    def initialize
+      @line = []
+    end
+  
+    def [](position)
+      @line[position]
+    end
+
+    def []=(position, ele)
+        @line[position] = ele
+    end
+  
+    def add(ele)
+      @line << ele # add ele to back of line
+      nil
+    end
+  
+    def remove
+      @line.shift  # remove front ele of line
+    end
+end
+  
+grocery_checkout = Queue.new
+grocery_checkout.add("Alan")
+grocery_checkout.add("Alonzo")
+
+# ------------------------- #[] -------------------------
+
+## grocery_checkout[0] is the same as grocery_checkout.[](0)
+
+# ------------------------- #[]= -------------------------
+
+## grocery_checkout[0] = "Grace" is the same as grocery_checkout.[]=(0, "Grace")
