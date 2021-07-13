@@ -362,3 +362,108 @@ add_and_proc(2, 3) { |n| n / 2.0 }
 # what can i improve on as a pair? 
 # what can you improve on as a pair? 
 
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W2D1 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Classes ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# how to create cats poorly
+
+cat_1 = {name: "Sennacy", color: "brown", age: 3}
+cat_2 = {name: "Whiskers", color: "white", age: 5}
+cat_3 = {name: "Garfield", color: "orange", age: 7}
+
+# how to create cats using a CLASS
+
+class Cat 
+  def initialize(name, color, age)
+    @name = name 
+    @color = color
+    @age = age 
+  end
+  # getter methods: can be called on to return desired output
+  def name
+    @name 
+  end
+
+  def color 
+    @color 
+  end
+
+  def age 
+    @age
+  end
+  # setter methods: allow user to change an instance variable/attribute
+  def age=(new_age)
+    @age = new_age
+  end
+
+  def meow_at(person)
+    puts "#{@name} meows at #{person}"
+  end
+end
+
+cat_4 = Cat.new("Dundun", "orange", 11)
+# p cat_4
+# puts cat_4.name
+cat_4.age = 12          # parentheses around the argument can be omitted
+# p cat_4
+# cat_4.meow_at "Lily"
+
+# ========================= Instance vs Class Variables =========================
+
+class Car 
+  # a class variable initializes attributes that apply to all class instances
+  # in this case, # of wheels for all cars
+  @@num_wheels = 4
+  # a class constant is a class variable that cannot be changed
+  NUM_DOORS = 4
+  
+  def initialize(color)
+    @color = color 
+  end
+  
+  def num_wheels 
+    @@num_wheels 
+  end
+  def num_doors 
+    NUM_DOORS
+  end
+  # class methods can change attributes for all current and future classinstances
+  def self.upgrade
+    @@num_wheels = 0
+  end
+end
+
+car_1 = Car.new("black")
+car_2 = Car.new("red")
+
+# p car_1
+# p car_2
+# puts "#{car_1.num_wheels} wheels"
+# puts "#{car_2.num_wheels} wheels"
+
+Car.upgrade
+# puts "called Car.upgrade. cars are now flying"
+# puts "#{car_1.num_wheels} wheels"
+# puts "#{car_2.num_wheels} wheels"
+
+car_3 = Car.new("silver")
+
+# puts "#{car_3.num_wheels} wheels"
+# puts "#{car_3.num_doors} doors"
+
+# ========================= Monkey Patching =========================
+
+# Monkey Patching is adding functionality to an existing class
+# Classes: Integer, String, Array, Hash, etc. 
+
+class Integer 
+  def prime?
+    return false if self < 2
+    (2...self).none? { |n| self % n == 0 }
+  end
+end
+
+11.prime?
+15.prime?
+
