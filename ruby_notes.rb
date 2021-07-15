@@ -1520,7 +1520,7 @@ a = Node.new("a", [b, c])
 # Algorithms: general approach and process to solving operations
 # Methods: concrete implementation of an algorithm in a specific language
 
-# ========================= Tree Traversal Algorithms (Search) =========================
+# ========================= Tree Traversal Algorithms (Search) ========================= !I
 
 # BFS: Breadth First Search
 
@@ -1582,3 +1582,133 @@ def fibs_sum(n)
 end
 
 fibs_sum(10)
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W4D1 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+require "set"
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Graph Intro ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/ruby/graph-intro
+
+# A graph is any collection of nodes and edges. 
+
+# Unlike trees, a graph may: 
+    # lack a root node (a node that has access to all other nodes)
+    # have cycles (a non-empty trail where the first node is also the last node)
+    # have any number of edges (directed/undirected links between nodes) leaving a node
+
+# ========================= Graph Class Implementation =========================
+
+# This is an example of how to implement a graph
+
+class GraphNode
+    attr_accessor :val, :neighbors
+
+    def initialize(val)
+        @val = val 
+        @neighbors = [] 
+    end
+end
+
+a = GraphNode.new('a')
+b = GraphNode.new('b')
+c = GraphNode.new('c')
+d = GraphNode.new('d')
+e = GraphNode.new('e')
+f = GraphNode.new('f')
+a.neighbors = [b, c, e]
+c.neighbors = [b, d]
+e.neighbors = [a]
+f.neighbors = [e]
+
+# The above example implements Graph 3 from the AAO reading
+# NB how having a neighbor means having access to that node, but that node doesn't 
+# necessarily have access to the other node
+
+# ========================= Adjacency Matrix =========================
+
+# Below is an example of an adjacency matrix where the row denotes the origin node and the
+# column denotes the destination node. The booleans denote access from origin to destination
+
+matrix = [
+#   A       B       C       D       E       F
+  [true,  true,   true,   false,  true,   false], # A
+  [false, true,   false,  false,  false,  false], # B
+  [false, true,   true,   true,   false,  false], # C
+  [false, false,  false,  true,   false,  false], # D
+  [true,  false,  false,  false,  true,   false], # E
+  [false, false,  false,  false,  true,   true]   # F
+]
+
+# Advantages: 
+    # Allows us to refer to the entire graph with a 2D array
+# Disadvantages:
+    # The space required to represent the graph (n^2 for a graph of n nodes), 
+    # especially if there are only a few edges (few true elements)
+
+# ========================= Adjacency List =========================
+
+# Seeks to solve the problems with an adjacency matrix.
+# Keys represent node labels and values represent the neighbors
+
+graph_list = {
+  'a': ['b', 'c', 'e'],
+  'b': [],
+  'c': ['b', 'd'],
+  'd': [],
+  'e': ['a'],
+  'f': ['e']
+}
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Graph Traversal ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/ruby/graph-traversal
+
+# ========================= DFS Traversal =========================
+
+# ------------------------- Using GraphNode Class -------------------------
+
+def dfs_class(node, visited = Set.new()) # must require "set" at the top of file
+    return nil if visited.include?(node.val)
+
+    puts node.val 
+    visited.add(node.val)
+
+    node.neighbors.each do |neighbor|
+        dfs_class(neighbor, visited)
+    end
+end
+
+# puts "dfs_class starting from f"
+# p dfs_class(f)
+
+# ------------------------- Using Adjacency List -------------------------
+
+def dfs_list(node, graph_list, visited = Set.new())
+    return nil if visited.include?(node.to_sym)
+  
+    puts node
+    visited.add(node.to_sym)
+
+    graph_list[node.to_sym].each do |neighbor|
+      dfs_list(neighbor, graph_list, visited)
+    end
+end
+
+# puts "dfs_list starting from f"
+# dfs_list('f', graph_list) 
+
+# starting at 'f' will print out all the nodes, but starting at 'a' would not.
+# this can be fixed by using a surrounding loop to iterate through the list to jump between
+# disconnected regions of the graph
+
+def dfs_connector(graph_list)
+    visited = Set.new()
+    graph_list.keys.each do |node|
+        dfs_list(node, graph_list, visited)
+    end
+end
+
+# puts "dfs_connector using adjacency list"
+# dfs_connector(graph_list)
