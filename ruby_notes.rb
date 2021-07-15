@@ -1583,7 +1583,7 @@ end
 
 fibs_sum(10)
 
-# $$$$$$$$$$$$$$$$$$$$$$$$$ W4D1 $$$$$$$$$$$$$$$$$$$$$$$$$
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W4D1 $$$$$$$$$$$$$$$$$$$$$$$$$ !I
 
 require "set"
 
@@ -1712,3 +1712,268 @@ end
 
 # puts "dfs_connector using adjacency list"
 # dfs_connector(graph_list)
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W4D2 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Inheritance ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/ruby/inheritance
+
+# Inheritance is a way to establish a subtype from an existing class to reuse the code
+
+# ========================= Code Reuse =========================
+
+class User
+  attr_reader :first_name, :last_name
+
+  def initialize(first_name, last_name)
+      @first_name, @last_name = first_name, last_name
+  end
+
+  def full_name
+      "#{first_name} #{last_name}"
+  end
+
+  def upvote_article(article)
+      article.upvotes += 1
+  end
+end
+
+class SuperUser < User
+  attr_reader :super_powers
+
+  def initialize(first_name, last_name, super_powers)
+      super(first_name, last_name)    # SuperUser will call the original initialize
+      @super_powers = super_powers
+  end
+
+  def upvote_article(article)
+      # extra votes
+       article.upvotes += 3
+  end
+
+  def delete_user(user)
+       return unless super_powers.include?(:user_deletion)
+
+      # super user is authorized to delete user
+      puts "Goodbye, #{user.full_name}!"
+  end
+end
+
+## < 
+# denotes that SuperUser inherits methods from the User class including attrs
+
+# SuperUser does overwrite some methods from User (initialize, upvote_article)
+
+# ========================= Calling the Super Method =========================
+
+## super
+# used to call methods from the parent class. can be called with/out arguments
+
+class Animal
+  def make_n_noises(n = 2)
+      n.times { print "Growl " }
+  end
+end
+
+class Liger < Animal
+  def make_n_noises(num = 4)
+      num.times { print "Roar " }
+      # here we'll call super without any arguments. This will pass on `num`
+      # implicitly to super. You can think of this call to super as:
+      # `super(num)`
+      super
+  end
+end
+
+Liger.new.make_n_noises(3) # => Roar Roar Roar Growl Growl Grow
+puts 
+
+class Animal
+  attr_reader :species
+
+  def initialize(species)
+      @species = species
+  end
+end
+
+class Human < Animal
+  attr_reader :name
+
+  def initialize(name)
+      super("Homo Sapiens")   # calling Human.new without this super method won't set the species
+      @name = name
+  end
+end
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Exceptions, Error Handling ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+
+## raise
+# raises an error. you may call .new on an error class output a more specific message 
+
+def prime?(num)
+  unless num >= 2
+      raise ArgumentError.new "Cannot check if numbers less than 2 are prime"
+  end
+  (2...num).none? { |n| num % n == 0 }
+end
+
+def main 
+  while true 
+      puts "Please enter a number"
+      num = gets.to_i
+
+      begin 
+          puts prime?(num)
+      rescue ArgumentError => e   # assigns the error message to a variable
+          puts "Cannot check if numbers less than 2 are prime"
+          puts "Error was: #{e.message}"
+      end
+  end
+end
+
+## ensure
+# ensures some code is executed despite of the error
+
+begin 
+  a_dangerous_operation
+rescue StandardError => e 
+  puts "Something went wrong: #{e}"
+ensure
+  puts "Get to the choppa!"
+end
+
+## retry
+# use this to repeat the begin block again
+
+def prompt_name
+  puts "Please input a name: "
+  name_parts = gets.chomp.split
+
+  raise "Uh-oh, finnicky string" if name_parts.count != 2
+  
+  name_parts 
+end
+
+def echo_name
+  fName, lName = prompt_name
+  puts "Hello #{fName} of #{lName}"
+rescue                                  # use the implicit begin by simple adding rescue if the 
+  puts "Please only use two names"    # error handling pertains to the whole method
+  retry
+end 
+
+# echo_name 
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Decompositions Into Objects ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/ruby/decomposition-into-objects
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Unified Modeling Language ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# UML is a visual way of describing relationships between different objects in a system
+# UML can describe classes or behavior
+#     Classes can be related in many ways, including parent-child and association ("has a") relationships
+#         Piece is the parent of Pawn
+#         Game has a Board
+#     Classes usually have three componenents: name, set of attributes, and set of methods
+#         attributes are marked as public (+), private (-), or protected (#)
+#         methods are underlined
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Lecture ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# ========================= Pillars of OOP ========================= !I
+
+# Abstraction, Encapsulation, Inheritance, & Polymorphism
+
+# ------------------------- Abstraction -------------------------
+
+# The act of taking a larger system and breaking it down into smaller components
+# and hiding unnecessary information from the user while showing only the essentials
+
+# ------------------------- Encapsulation -------------------------
+
+# Bundling data with methods that operate on data
+  # Outside of an instance, can only interact with via public methods
+  # Expose limited interface to user
+# Allows developer to make atomic methods & change code without changing the interface
+
+# + public
+  
+# - private
+  # private methods can only be implicitly used in classes. Except setters! (otherwise they'll be seen as a local var)
+      # i.e, if a Dog class had an attribute @name, it has to be called implicitly within the class
+          # puts "#{name} goes bork!" will work, but "#{self.name} goes bork!" will not work
+  # default to this over protected
+  
+# # protected
+  # protected methods can only be called:
+      # within the class
+      # explicitly or implicitly - allows us to use it on other instances of the class
+
+# ------------------------- Inheritance -------------------------
+
+# Subclasses inherit methods from other classes
+
+# Modules behave just like classes except they cannot be initialized
+  # they are used to add functionality and DRY up our code
+
+# Subclasses have an "is a" relationship with the class, while modules have a 
+# "has a" relationship with the class. 
+
+module Walkable     # function is just like a class except you cannot initialize modules
+  def walk 
+      puts "#{name} is walking"
+  end
+end
+
+class Mammal 
+  include Walkable    # must include the module in order to use its methods
+  def initialize(name)
+      @name = name 
+      @warm_blooded = true 
+  end
+
+  def eat(food)
+      puts "#{name} eats #{food}"
+  end
+
+  private 
+
+  attr_accessor :name 
+end
+
+class Dog < Mammal      # Dog class will inhert methods from Mammal
+  def initialize(name, size)
+      super(name)     # calls Mammal#initialize while passing in name. without this, dog will not have a name, nor warm_blood
+      @size = size    
+  end
+
+  def noise 
+      "bark"
+  end
+
+  def fetch(item)
+      puts "#{name} excitedly fetches #{item}"
+  end
+end
+
+class Cat < Mammal 
+  def noise 
+      "meow"
+  end
+end
+
+d1 = Dog.new("Spot", "woofer")
+p d1.inspect
+# d1.name   # => will result in error because #name is a private method
+d1.walk 
+
+# ------------------------- Polymorphism -------------------------
+
+# Inheritance
+  # Different classes can be used with the same methods
+      # i.e, all Mammals eat, therefore dog eats too
+# Duck-typing
+  # "If it walks like a duck and quacks like a duck then it is a duck" 
+
