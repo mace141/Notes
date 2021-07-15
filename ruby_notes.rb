@@ -1045,3 +1045,296 @@ end
         # YAGNI: You Aint Gonna Need It
     # Dead code: don't leave commented out or unused code in your code base
 
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W3D3 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Recursion ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Every recursive problem may be solved iteratively 
+# Iteration may be more time efficient but some algorithms are just better solved recursively
+
+def upcase(str)
+  return str.upcase if str.length <= 1
+  str[0].upcase + upcase(str[1..-1])
+end
+
+p upcase("daniel")
+
+def reverse(str)
+  return str if str.length <= 1
+  str[-1] + reverse(str[0..-2])
+end
+
+p reverse("leinad")
+
+def quick_sort(arr)
+  return arr if arr.length <= 1
+  # random pivot
+  pivot = arr.delete_at(rand(arr.length))
+  lesser = arr.select { |num| num < pivot }
+  greater = arr.select { |num| num >= pivot }
+
+  # first num as pivot
+  # pivot = arr.first
+  # lesser = arr.drop(1).select { |num| num < pivot }
+  # greater = arr.drop(1).select { |num| num >= pivot }
+
+  quick_sort(lesser) + [pivot] + quick_sort(greater)
+end
+
+p quick_sort((1..20).to_a.shuffle)
+
+def fibonacci(n)
+  case n 
+  when 1
+      [1]
+  when 2
+      [1, 1]
+  else
+      # Always try to assign a recursive call to a variable when you're using the
+      # same recursive call
+      prev_fib = fibonacci(n-1)
+      next_num = prev_fib[-1] + prev_fib[-2]
+      prev_fib + [next_num]
+  end
+end
+
+p fibonacci(20)
+
+# In order to get a stack trace, you can paste this to the top of your file
+# It will let you intentionally crash your program before the stack overflows
+
+# MAX_STACK_SIZE = 200
+# tracer = proc do |event|
+#   if event == 'call' && caller_locations.length > MAX_STACK_SIZE
+#     fail "Probable Stack Overflow"
+#   end
+# end
+# set_trace_func(tracer)
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Lecture ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# if $PROGRAM_NAME = __FILE__
+  # do this code
+# end
+
+# $PROGRAM_NAME is where file is run. if the file is run in terminal, the 
+  # condition will return true if you load the file in pry, $PROGRAM_NAME will 
+  # return "pry" rather than the file name
+# __FILE__ is the file name
+
+class Array 
+  def my_each(&prc)
+      self.length.times { |i| prc.call(self[i]) }
+      self # each should always returns the original array
+  end
+
+  def my_each_rec(&prc)
+      # base case
+      return self if self.empty?
+      # method dependent logic
+      prc.call(self.first)
+      # recursive step
+      self[1..-1].my_each_rec(&prc)
+      self # each should always return the original array
+  end
+end
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W3D4 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Git ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Git is a Version Control System
+# Git keeps track of all changes made to your file and lets you review those 
+    # changes before uploading them to an online repository
+# It also lets you go back to any checkpoints you may have made. By using git, 
+    # several people can work on a project at a time and not affect one another 
+    # until their branches are merged with the master branch. 
+# Each commit only saves the changes made to the remote repo 
+
+# ========================= Remote Repository =========================
+
+# Github is a webservice that integrates git software behind the scenes
+# Allows for hosting of projects
+
+# ========================= Vocab =========================
+
+# untracked: newly created files that are not tracked by out git repo
+
+# unstaged: files in our working directory that are not on the staging area
+
+# staged: files added to our staging area
+
+# commit: files that have been commited to .git
+
+# ========================= Git Commands =========================
+
+# ------------------------- Local Commands -------------------------
+
+## git init
+# use this command to set up a repository. this should be done before you write any code
+
+## git status
+# this command will let you see the files that have been changed
+
+## git diff
+# this command will show you what changes have been made
+
+## git add /folder/file_name.rb
+# this command will add the file to the STAGING AREA for you to review and decide
+    # whether or not to commit
+
+## gid add -A 
+# adds all the files to the STAGING AREA
+
+## git diff --staged 
+# lets you see what changes have been made to files in the staging area
+
+## git commit -m "message"
+# creates a commit for the currently staged files and then removes them from the
+    # staging area always use informative messages
+
+## git log
+# shows a log of commits
+
+## git log --graph --decorate --oneline
+# shows a shortened log of commits in a graph 
+
+## git branch
+# shows all the branches that are currently being worked on
+
+## git branch -d branch_name
+# deletes branch
+
+## git co branch_name
+# switches to the specified branch
+
+## git co -b branch_name
+# creates a new branch AND switches to the branch
+
+## git co commit_hash
+# lets you see the files from that commit
+
+## git merge branch_name
+# merges the specified branch with the branch you're currently in
+
+## git reset file_name
+# will UNSTAGE the specified file from the staging area
+# DOES NOT affect the working directory
+
+## git reset
+# will UNSTAGE ALL the files on the staging area
+# DOES NOT affect the working directory
+
+## git reset --hard
+# RESETS ALL files to the last commit
+# DOES affect the working directory
+
+# ------------------------- Remote Commands -------------------------
+
+## origin
+# keyword referring to default remote repo
+
+## git remote
+# command to list remotes
+
+## git remote add remote_name remote_url
+# name the remote location (where you are uploading your files) as origin
+
+## git push remote_name branch_name
+# moves updates from .git to remote repository
+
+## git push -u remote_name branch_name
+# upload the branch_name branch to github at what's named origin
+# -u lets you do the same thing everytime you run "git push origin master"
+
+## git push --all
+# pushes all files onto the remote repository
+
+## git push -f
+# -f is short for force which allows us to push our local repo up to remote 
+    # while overriding any conflicts
+
+## git clone remote_url
+# copies the remote repo to your local machine
+
+## git fetch
+# gets updated info from the remote repo
+
+## git pull remote_name branch_name 
+# gets updates AND merges from remote repository
+
+# ========================= Git Workflow =========================
+
+# https://open.appacademy.io/learn/swe-in-person/ruby/git-workflow
+
+## git init
+## git remote add origin https://github.com/your_username/your_repo_name 
+# use these two commands when starting your project
+# git remote accesses git commands that interact with remote repos
+# add is a git remote command that adds a remote repo to the current repo
+# always use origin for the name unless you have a reason not to
+# now you have a local repo (.git directory)
+
+## git add file_name
+# adds the file to the staging area
+
+## git add -A
+# adds all files to the staging area
+
+## git add .
+# adds all files in the current directory (and child directories)
+
+## git diff 
+# shows the changes made to the currently staged files from the last commit
+
+## git commit -m "message"
+# creates a commit for the currently staged files and then removes them from the
+    # staging area always use informative messages
+
+## git push
+# pushes our local commits to the remote repo that was set with 
+    # "git push -u origin branch_name"
+
+## git branch -M main
+# will change the default branch name to main
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Non-technical Overview of Agile Development ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/ruby/nontechnical-overview-of-agile-development
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Lecture ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+class Array
+  def merge_sort(&prc)
+      return self if self.count <= 1
+
+      midpoint = self.length / 2
+      left = self.take(midpoint)
+      right = self.drop(midpoint)
+
+      sorted_left, sorted_right = left.merge_sort(&prc), right.merge_sort(&prc)
+      Array.merge(sorted_left, sorted_right, prc)
+  end
+
+  private
+  def self.merge(left, right, prc)
+      prc ||= Proc.new { |a, b| a <=> b }
+
+      return right if left.empty?
+      return left if right.empty?
+
+      if prc.call(left.first, right.first) == 1
+          [right.first] + Array.merge(left, right.drop(1), prc)
+      else
+          [left.first] + Array.merge(left.drop(1), right, prc)
+      end
+  end
+end
+
+p (1..20).to_a.shuffle.merge_sort
+
+def digital_root(num)
+  return num if num < 10
+  q, r = num.divmod(10)
+  digital_root(digital_root(q) + r)
+end
