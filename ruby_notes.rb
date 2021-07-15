@@ -89,7 +89,7 @@ end
 # repeat("hello")
 # repeat("bye", :upper=>true, :repeats=>5)
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Splat Operator ]]]]]]]]]]]]]]]]]]]]]]]]] 
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Splat Operator ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 
 # used to accept multiple arguments
 
@@ -110,6 +110,7 @@ end
 names = ["Lily", "Zhu"]
 # sayNames(*names) 
 
+#!I
 # double splats are used to decompose a hash, 
 # BUT THIS ONLY WORKS IF THE KEYS ARE SYMBOLS
 
@@ -164,7 +165,7 @@ def bubble_sort(array)
   array 
 end
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Exceptions ]]]]]]]]]]]]]]]]]]]]]]]]]
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Exceptions ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 
 # https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/exceptions-notes
 
@@ -202,21 +203,24 @@ end
 # nightly reports
 # weekly reports - THURSDAYS
 
-# $$$$$$$$$$$$$$$$$$$$$$$$$ LECTURE $$$$$$$$$$$$$$$$$$$$$$$$$
+# [[[[[[[[[[[[[[[[[[[[[[[[[ LECTURE ]]]]]]]]]]]]]]]]]]]]]]]]]
 
 # ------------------------- Inject -------------------------
 
 # does not work on strings
-# can be used on arrays, and ranges
+# can be used on arrays, and ranges !I
 
 # ------------------------- Scope -------------------------
 
 # blocks can reference variables initialized outside the block
 # but you cannot referrence a variable initialized inside the block from the outside
 
-# ------------------------- Variable References -------------------------
+# ------------------------- Variable References ------------------------- !I
 
-# reassigning a variable will change it's object ID
+# creating a variable will create a pointer to a location in memory
+
+# reassigning a variable will change it's object ID and the location it's
+  # pointing to
 
 # use a block to create a subarray with new references
 # Array.new(3) { Array.new(3) }         ==> 3x3 grid
@@ -523,7 +527,7 @@ end
 # wife = gets.chomp
 # p "#{wife} is beautiful."
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ OOP ]]]]]]]]]]]]]]]]]]]]]]]]]
+# [[[[[[[[[[[[[[[[[[[[[[[[[ OOP ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 
 # https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/abstraction-and-encapsulation-notes
 
@@ -671,7 +675,7 @@ p fibonacci(6)          # => 8
 # use parentheses around the (method call and do ... end block) when passing a
   # block into a method call
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Nil as Falsey ]]]]]]]]]]]]]]]]]]]]]]]]]
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Nil as Falsey ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 
 # In Ruby, every value can be treated as truthy or falsey. 
 # Falsey: nil and false
@@ -699,19 +703,19 @@ def greet(person = nil)
   p "Hey #{person}"
 end
 
-greet 
-greet("Lily")
+# greet 
+# greet("Lily")
 
 def call_that_proc(val, &prc)
   prc ||= Proc.new { |data| data.upcase + "!!" }
   prc.call(val)
 end
 
-p call_that_proc("hey")                                             # => "HEY!!"
-p call_that_proc("programmers") { |data| data * 3 }                 # => "programmersprogrammersprogrammers"
-p call_that_proc("code") { |data| "--" + data.capitalize + "--"}    # => "--Code--"
+call_that_proc("hey")                                             # => "HEY!!"
+call_that_proc("programmers") { |data| data * 3 }                 # => "programmersprogrammersprogrammers"
+call_that_proc("code") { |data| "--" + data.capitalize + "--"}    # => "--Code--"
 
-# ------------------------- Lazy Initialization -------------------------
+# ------------------------- Lazy Initialization ------------------------- !I
 
 # This refers to using ||= to delay initializing slow or costly objects until
   # absolutely necessary
@@ -728,13 +732,13 @@ class Restaurant
 end
 
 jli = Restaurant.new("Jli", "Umarbin")
-p jli           # jli will lack a menu here until called upon
+# p jli           # jli will lack a menu here until called upon
 jli.menu 
-p jli           # jli will now have a menu
+# p jli           # jli will now have a menu
 
 # $$$$$$$$$$$$$$$$$$$$$$$$$ W3D1 $$$$$$$$$$$$$$$$$$$$$$$$$
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Non-Technical Overview of Ruby ]]]]]]]]]]]]]]]]]]]]]]]]]
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Non-Technical Overview of Ruby ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 
 # https://open.appacademy.io/learn/swe-in-person/ruby/nontechnical-overview-of-ruby
 
@@ -865,7 +869,7 @@ p jli           # jli will now have a menu
 
 # https://open.appacademy.io/learn/swe-in-person/ruby/common-exceptions
 
-# $$$$$$$$$$$$$$$$$$$$$$$$$ Lecture $$$$$$$$$$$$$$$$$$$$$$$$$
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Lecture ]]]]]]]]]]]]]]]]]]]]]]]]]
 
 ## block_given?
 # used in byebug, this will return a boolean for whether a block was given or not
@@ -874,7 +878,7 @@ p jli           # jli will now have a menu
 # will call the given block on ele whether the method definition has a block 
 # parameter or not using yield is NOT best practice
 
-# Conventional Order of Class Methods
+# Conventional Order of Class Methods !I
 #1 Class methods/constants
 #2 attrs
 #3 initialize 
@@ -913,7 +917,7 @@ class Fish
 
 end
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Common Errors ]]]]]]]]]]]]]]]]]]]]]]]]]
+# ========================= Common Errors =========================
 
 # Good ruby code should read like English!
 
