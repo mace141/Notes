@@ -1057,14 +1057,14 @@ def upcase(str)
   str[0].upcase + upcase(str[1..-1])
 end
 
-p upcase("daniel")
+upcase("daniel")
 
 def reverse(str)
   return str if str.length <= 1
   str[-1] + reverse(str[0..-2])
 end
 
-p reverse("leinad")
+reverse("leinad")
 
 def quick_sort(arr)
   return arr if arr.length <= 1
@@ -1081,7 +1081,7 @@ def quick_sort(arr)
   quick_sort(lesser) + [pivot] + quick_sort(greater)
 end
 
-p quick_sort((1..20).to_a.shuffle)
+quick_sort((1..20).to_a.shuffle)
 
 def fibonacci(n)
   case n 
@@ -1098,7 +1098,7 @@ def fibonacci(n)
   end
 end
 
-p fibonacci(20)
+fibonacci(20)
 
 # In order to get a stack trace, you can paste this to the top of your file
 # It will let you intentionally crash your program before the stack overflows
@@ -1141,7 +1141,7 @@ end
 
 # $$$$$$$$$$$$$$$$$$$$$$$$$ W3D4 $$$$$$$$$$$$$$$$$$$$$$$$$
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Git ]]]]]]]]]]]]]]]]]]]]]]]]]
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Git ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 
 # Git is a Version Control System
 # Git keeps track of all changes made to your file and lets you review those 
@@ -1166,7 +1166,7 @@ end
 
 # commit: files that have been commited to .git
 
-# ========================= Git Commands =========================
+# ========================= Git Commands ========================= !I
 
 # ------------------------- Local Commands -------------------------
 
@@ -1331,10 +1331,252 @@ class Array
   end
 end
 
-p (1..20).to_a.shuffle.merge_sort
+(1..20).to_a.shuffle.merge_sort
 
 def digital_root(num)
   return num if num < 10
   q, r = num.divmod(10)
   digital_root(digital_root(q) + r)
 end
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W3D5 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Data Structures ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+
+# Arrays, Strings, Hashes, Classes, & Abstract Data Types (ADTs) are all data structures. 
+
+# ADTs are types of data structures with specific rules
+
+# ========================= Types of ADTs ========================= 
+
+# ------------------------- Set -------------------------
+# a type of ADT where all elements are unique 
+# allows you to look for inclusion, add, & remove items. 
+
+# ------------------------- Map/Dictionary -------------------------
+# a set of keys and values (i.e words and definitions) where all keys are unique
+# can set (k,v), get (k), and delete (k)
+
+# ------------------------- Stack -------------------------
+# Essential Properties: 
+    # LIFO: imagine plates at a buffet that are stacked on one another where the
+        #   last one in is the first one out
+    # push: add to end of stack and return self to avoid implicitly returning 
+        # the entire stack
+    # pop: remove off end of stack
+# Optional Properties
+    # peek: look at the element at the end of the stack without removing it
+    # size: returns the current stack size
+    # empty?: returns a boolean depending on the stack's emptiness
+    # inspect
+
+# ------------------------- Queue -------------------------
+# Essential Properties: 
+    # FIFO: exactly like a queue for a shop where the first in is first out
+    # enqueue: add element to the end of the queue
+    # dequeue: remove element from the front of the queue
+# Optional Properties
+    # show: show a copy of the queue
+    # size: 
+    # empty?: 
+
+# ------------------------- Trees -------------------------
+# Properties:
+    # Node: basic unit of a tree. Each node holds a value and references to its
+        #   children. (Nodes can optionally have references to their parents)
+            # The root note is THE TREE - it is the topmost node/vertex
+            # Every other node is a sub-tree. Internal nodes have children & 
+                # leaf nodes don't have children
+    # Depth: the length of the deepest path of a tree
+    # Tree traversal: tree paths
+
+# Binary Tree: imagine a prime factorization tree where each number has AT MOST
+    #          one parent and every parent has AT MOST two children
+# Ternary Tree: similar to the binary tree except each parent can have 3 children
+# Poly/n-ary Tree: tree with any number of children
+
+# Breadth First Search (BFS): Searches each generation of nodes before moving onto
+    #                         the next. This requires implementation of a Queue ADT
+    # Pseudo code for BFS:
+        # initialize the queue with just the root
+        # until queue.empty?
+            # first = queue.shift (dequeue)
+            # check if first satisfies the problem
+            # enqueue first's children (maybe each node is a class with a children
+                # attribute of an array containing children)
+
+# Depth First Search (DFS): Searches down to the leaf node before going back up
+    #                       and down again to a different leaf node
+    # Pseudo code for DFS:
+        # must be recursive
+        # base case
+            # return root if root == target
+        # inductive step
+            # call method on the children to search them using .each to go down one side first
+            # store the result of the method call in a variable and return it unless it is nil
+        # return nil when whole tree is searched
+
+# ========================= Inspecting Complex Elements =========================
+
+# you may want to extend a class and define an inspect method to show what you want
+# to see rather than the entire instance's information
+## p essentially accomplishes what inspect does
+
+=begin 
+class PolyTreeNode
+    def inspect_1
+        @value.inspect
+    end
+
+    def inspect_2
+        { value: @value, parent_value: @parent.value }.inspect
+    end
+end
+=end 
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$ Lecture $$$$$$$$$$$$$$$$$$$$$$$$$
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ ADT ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+class Stack
+  def initialize
+      @store = []
+  end
+
+  def push(value)
+      store << value 
+      self 
+  end
+
+  def pop 
+      store.pop 
+  end
+
+  def peek 
+      store.last 
+  end
+
+  def size 
+      store.length 
+  end 
+
+  def empty? 
+      store.empty?
+  end
+
+  def inspect 
+      "#<Stack:#{self.object_id}"
+  end
+  
+  private 
+  attr_reader :store # reader is preferred to direct access to iVar
+end
+
+class MyQueue
+  def initialize 
+      @line = []
+  end
+
+  def enqueue(el)
+      line.push(el)
+      self 
+  end
+
+  def dequeue 
+      line.shift 
+  end
+
+  def show 
+      line.dup # returns a copy so it cant be mutated
+  end
+
+  def empty? 
+      line.empty? 
+  end
+
+  private 
+  attr_reader :line 
+end
+
+class Node 
+  attr_reader :value, :children 
+
+  def initialize(value, children = [])
+      @value = value 
+      @children = children 
+  end
+end
+
+d = Node.new("d")
+e = Node.new("e")
+f = Node.new("f")
+g = Node.new("g")
+c = Node.new("c", [f, g])
+b = Node.new("b", [d, e])
+a = Node.new("a", [b, c])
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Algorithms & Methods ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Algorithms: general approach and process to solving operations
+# Methods: concrete implementation of an algorithm in a specific language
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Tree Traversal Algorithms (Search) ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# BFS: Breadth First Search
+
+def bfs(root, target)
+  queue = [root]
+  until queue.empty?
+      first = queue.shift
+      return first if first == target 
+      first.children.each { |child| queue << child }
+  end
+  nil # returns nil once all nodes have been searched
+end
+
+bfs(a, d)
+
+# DFS: Depth First Search
+
+def dfs(root, target)
+  return root if root == target 
+  root.children.each do |child| # important to use .each so that you go down one child (call the method on the child) before the next
+      node = dfs(child, target) 
+      return node unless node.nil? # explicitly return the node if it is the target
+  end
+  nil # returns nil once all nodes have been searched
+end
+
+dfs(a, e)
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Practice Assessment Problems ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+class String
+  # Write a `String#symmetric_substrings` method that returns an array of 
+  # substrings that are palindromes, e.g. "cool".symmetric_substrings => ["oo"]
+  # Only include substrings of length > 1.
+
+  def symmetric_substrings
+      substrings = []
+
+      (0...length).each do |start_pos|
+          (2..(length - start_pos)).each do |span|
+              sub = self[start_pos...(start_pos + span)]
+              substrings << sub if sub == sub.reverse
+          end
+      end
+
+      substrings
+  end
+end
+
+"banana".symmetric_substrings
+
+def fibs_sum(n)
+  return 0 if n == 0
+  return 1 if n == 1
+
+  fibs_sum(n - 1) + fibs_sum(n - 2) + 1
+end
+
+fibs_sum(10)
