@@ -1434,9 +1434,9 @@ class PolyTreeNode
 end
 =end 
 
-# $$$$$$$$$$$$$$$$$$$$$$$$$ Lecture $$$$$$$$$$$$$$$$$$$$$$$$$
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Lecture ]]]]]]]]]]]]]]]]]]]]]]]]]
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ ADT ]]]]]]]]]]]]]]]]]]]]]]]]]
+# ========================= ADT =========================
 
 class Stack
   def initialize
@@ -1515,12 +1515,12 @@ c = Node.new("c", [f, g])
 b = Node.new("b", [d, e])
 a = Node.new("a", [b, c])
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Algorithms & Methods ]]]]]]]]]]]]]]]]]]]]]]]]]
+# ========================= Algorithms & Methods =========================
 
 # Algorithms: general approach and process to solving operations
 # Methods: concrete implementation of an algorithm in a specific language
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Tree Traversal Algorithms (Search) ]]]]]]]]]]]]]]]]]]]]]]]]]
+# ========================= Tree Traversal Algorithms (Search) =========================
 
 # BFS: Breadth First Search
 
@@ -1540,7 +1540,9 @@ bfs(a, d)
 
 def dfs(root, target)
   return root if root == target 
-  root.children.each do |child| # important to use .each so that you go down one child (call the method on the child) before the next
+  # important to use .each so that you go down one child (call the method on the
+      # child) before the next
+  root.children.each do |child| 
       node = dfs(child, target) 
       return node unless node.nil? # explicitly return the node if it is the target
   end
@@ -1549,7 +1551,7 @@ end
 
 dfs(a, e)
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Practice Assessment Problems ]]]]]]]]]]]]]]]]]]]]]]]]]
+# ========================= Practice Assessment Problems =========================
 
 class String
   # Write a `String#symmetric_substrings` method that returns an array of 
