@@ -993,14 +993,15 @@ end
 ## << and concat
 # These two mutate the object and does not change the object's ID
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Scope ]]]]]]]]]]]]]]]]]]]]]]]]]
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Scope ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 
 # Blocks have their own scope
 # If/While do not have their own scope
 
-# You can reference a variable from outer scope from inside a local scope but not the other way around
-# However, when using methods, classes or modules, we do not have access to any previously defined variables
-# This is because methods, classes and modules create SCOPE GATES
+# You can reference a variable from outer scope from inside a local scope but not
+# the other way around. However, when using methods, classes or modules, we do 
+# not have access to any previously defined variables. This is because methods, 
+# classes and modules create SCOPE GATES
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ DRY ]]]]]]]]]]]]]]]]]]]]]]]]]
 
@@ -1032,11 +1033,14 @@ end
     # Duplicated/similar code
     # Long methods
     # Too many parameters
-    # Data clump: if you see groups of data always being passed around together, you should refactor (start_date & end_date => date_range)
+    # Data clump: if you see groups of data always being passed around together,
+        # you should refactor (start_date & end_date => date_range)
     # Long method chains
-        # Law of Demeter: only talk to your neighbors - use only one dot. bicycle.front_tire.rotate => bicycle.rotate_tires
+        # Law of Demeter: only talk to your neighbors - use only one dot. 
+           # bicycle.front_tire.rotate => bicycle.rotate_tires
     # Incident exposure: minimize exposure of your code to the public
-    # Speculative generality: dont try to generalize your code for future use when you aren't even sure you're going to need it.
+    # Speculative generality: dont try to generalize your code for future use 
+        # when you aren't even sure you're going to need it.
         # don't solve abstract problems, solve concrete problems
         # YAGNI: You Aint Gonna Need It
     # Dead code: don't leave commented out or unused code in your code base
