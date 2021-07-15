@@ -1901,9 +1901,12 @@ end
 # + public
   
 # - private
-  # private methods can only be implicitly used in classes. Except setters! (otherwise they'll be seen as a local var)
-      # i.e, if a Dog class had an attribute @name, it has to be called implicitly within the class
-          # puts "#{name} goes bork!" will work, but "#{self.name} goes bork!" will not work
+  # private methods can only be implicitly used in classes. Except setters! 
+      # (otherwise they'll be seen as a local var)
+      # i.e, if a Dog class had an attribute @name, it has to be called implicitly
+          # within the class
+          # puts "#{name} goes bork!" will work, 
+              # but "#{self.name} goes bork!" will not work
   # default to this over protected
   
 # # protected
@@ -1923,19 +1926,19 @@ end
 
 module Walkable     # function is just like a class except you cannot initialize modules
   def walk 
-      puts "#{name} is walking"
+    puts "#{name} is walking"
   end
 end
 
 class Mammal 
   include Walkable    # must include the module in order to use its methods
   def initialize(name)
-      @name = name 
-      @warm_blooded = true 
+    @name = name 
+    @warm_blooded = true 
   end
 
   def eat(food)
-      puts "#{name} eats #{food}"
+    puts "#{name} eats #{food}"
   end
 
   private 
@@ -1945,29 +1948,31 @@ end
 
 class Dog < Mammal      # Dog class will inhert methods from Mammal
   def initialize(name, size)
-      super(name)     # calls Mammal#initialize while passing in name. without this, dog will not have a name, nor warm_blood
-      @size = size    
+    # calls Mammal#initialize while passing in name. without this, dog will not 
+        # have a name, nor warm_blood
+    super(name)     
+    @size = size    
   end
 
   def noise 
-      "bark"
+    "bark"
   end
 
   def fetch(item)
-      puts "#{name} excitedly fetches #{item}"
+    puts "#{name} excitedly fetches #{item}"
   end
 end
 
 class Cat < Mammal 
   def noise 
-      "meow"
+    "meow"
   end
 end
 
 d1 = Dog.new("Spot", "woofer")
-p d1.inspect
+# p d1.inspect
 # d1.name   # => will result in error because #name is a private method
-d1.walk 
+# d1.walk 
 
 # ------------------------- Polymorphism -------------------------
 
