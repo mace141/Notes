@@ -941,3 +941,103 @@ end
 # No overly long single-line code
 
 # No one-letter variable names except for loops
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W3D2 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ References ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+
+## x = 4
+## x = 5
+# creates a reference/pointer to 4 and gives x that reference
+# removes the pointer to 4 and creates a pointer to 5
+
+## x = 4
+## y = x
+## x = 10
+# x points to 4, y also points to 4, then x points to 10, but y still points to 4
+# y's memory reference does not change
+
+## x = 4
+## y = x
+## x += 2
+# y's memory reference still does not change - y remains 4
+
+# There's nothing you can do to change y by changing x because numbers are 
+# immutable objects (integers, floats, & symbols)
+
+# !I
+## x = "hello"
+## y = x
+## x << "daniel"
+# x and y both become "hellodaniel" 
+
+# !I
+## x = "hello"
+## y = x
+## x += "daniel"
+# x becomes "hellodaniel" because of the assignment operator (=)
+# y stays the same, "daniel"
+
+## x = []
+## y = x
+## x << "hello"
+# both x and y become ["hello"]
+
+# In Ruby, variables hold references to objects. 
+
+# !I
+## = (assignment operator)
+# The = sign does not mutate an object, it simply assigns the variable to a new object
+
+# !I
+## << and concat
+# These two mutate the object and does not change the object's ID
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Scope ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Blocks have their own scope
+# If/While do not have their own scope
+
+# You can reference a variable from outer scope from inside a local scope but not the other way around
+# However, when using methods, classes or modules, we do not have access to any previously defined variables
+# This is because methods, classes and modules create SCOPE GATES
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ DRY ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Don't repeat yourself
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Method Decomposition & Design ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/ruby/method-decomposition---design
+
+# Single Responsibility Principle: each method should do one thing
+    # 1-10 lines of code (rarely more than 10)
+    # Methods should be SHORT
+
+# Your methods should be easily readable like English!
+
+# Methods should not rely on global state - only on what's passed in
+
+# Don't modify arguments unless told to do so
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Refactoring and Code Smells ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/ruby/refactoring-and-code-smells
+
+# Code smell: any symptom in the source code of a program that possibly indicates a deeper problem. 
+            # They are usually not bugs and are technically not incorrect/disfunctional, but they indicate 
+            # weakness in design. They are drivers for refactoring. 
+
+# Examples below
+    # Duplicated/similar code
+    # Long methods
+    # Too many parameters
+    # Data clump: if you see groups of data always being passed around together, you should refactor (start_date & end_date => date_range)
+    # Long method chains
+        # Law of Demeter: only talk to your neighbors - use only one dot. bicycle.front_tire.rotate => bicycle.rotate_tires
+    # Incident exposure: minimize exposure of your code to the public
+    # Speculative generality: dont try to generalize your code for future use when you aren't even sure you're going to need it.
+        # don't solve abstract problems, solve concrete problems
+        # YAGNI: You Aint Gonna Need It
+    # Dead code: don't leave commented out or unused code in your code base
+
