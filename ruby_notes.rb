@@ -1982,3 +1982,171 @@ d1 = Dog.new("Spot", "woofer")
 # Duck-typing
   # "If it walks like a duck and quacks like a duck then it is a duck" 
 
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W4D3 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Inheritance and DRY ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Inheritance applies the DRY principle
+# Don't create unnecessary subclasses unless they have substantially different behavior
+
+class Fish
+  def eat 
+      puts "eat eat eat"
+  end
+end
+
+class Shark < Fish 
+end
+
+class Minnow < Fish 
+end
+
+# The Sharks and Minnows will inherit Fish methods
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Encapsulation/Abstraction ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Encapsulation is the principle of preventing data/methods from being accessed outside this code
+
+## - private
+# private methods can only be accessed from within the class itself
+
+# Abstraction is the principle of hiding information that isn't necessary for the user
+
+# We always want to minimize the amount of information exposed to the user and only expose 
+# certain information with good reason
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Modules ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# A Ruby module is similar to a class except you cant instantiate it. Modules contain methods
+# that can be mixed into and shared by many classes to keep our code DRY.
+
+## include
+# allows the class to access the module's methods as INSTANCE methods
+
+## extend
+# allows the class to access the module's methods as CLASS methods
+
+module Greetable
+  def greet 
+      "Hello, my name is #{self.name}" 
+  end
+end
+
+class Human 
+  include Greetable       # makes the modules methods available to the class
+
+  def initialize(name)
+      @name = name 
+  end
+  
+  def name 
+      @name 
+  end
+end
+
+class Robot 
+  include Greetable       
+  
+  def name
+      "Model 3000"
+  end
+end
+
+daniel = Human.new('Daniel')
+p daniel.greet 
+jarvis = Robot.new 
+p jarvis.greet 
+
+# Modules also serve as namespaces - they prevent name collisions. If two files were to have
+# the same method but different functions, you can wrap the two files into two different modules
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Load/Require/Require_Relative ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/ruby/load-require-require_relative
+
+## require
+# Tells Ruby to look for the file in the $LOAD_PATH (directories that contain the source files
+# for Ruby's default library) and then the Gem.path (gem directories) if not found in the $LOAD_PATH
+
+# When using require "./file_name" and ruby lib/file_name.rb, you will run into an error because
+# the current directory is where you're running the file from. That's why we use require_relative. 
+
+## -I
+# this flag can be used to add a folder to the $LOAD_PATH so we can use require when files are not 
+# closely packed together
+
+## load 
+# loads the file each time when using pry/irb
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Public/Private/Protected ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Methods are public be default and do not need to be defined as public
+
+# Private methods cannot be called explicitly on an instance - therefore, can only be called from
+# inside the method
+
+# Protected methods are only accessible by the class and subclasses. Access is kept within family
+
+# Access controls are not used for security! Private methods can still be accessed using #send
+# Instead, they are used to tell other programmer's what they can ignore and what the interface is
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Lecture ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+## to_s
+# returns string form of piece for rendering board
+
+## valid_moves
+# does not do most of the move logic. #moves does the logic
+
+## symbol
+# return unicode symbol of the piece (knight for knight)
+
+## move_dirs
+# which direction they can slide in
+
+# Slideable module
+  # check each direction a piece can move by iterating outwards by each space and stop iteration
+  # in that direction once you reach another one of your pieces, an enemy piece, or the edge
+
+  # #moves returns all possible moves
+  # Rook#move_dirs returns directions a piece can move
+  # Slideable#move_dirs returns all moves in a direction
+
+# ========================= Error Handling =========================
+
+## raise
+# raises an error upon a condition - ends the program
+
+## begin rescue block
+# allows error message to be sent while keeping the program running
+
+class WrongPasswordError < StandardError 
+end
+
+def enter_password
+  puts "Please enter your password."
+  wrong_pw_attempts = 0 
+  begin
+      get_input
+  rescue WrongPasswordError => e      # can also add other errors separated by a comma "Error, Error1, Error2"
+      wrong_pw_attempts += 1
+      puts e.message 
+      # puts "Incorrect attempts: #{wrong_pw_attempts}" 
+      if wrong_pw_attempts > 2
+          puts "Too many attempts. Your account is locked :)"    # will stop the program before reaching retry
+          # runtime error
+      else
+          retry 
+      end
+  ensure 
+      puts "Incorrect attempts: #{wrong_pw_attempts}" 
+  end
+  puts "Thank you!"
+end
+
+def get_input 
+  input = gets.chomp 
+  raise WrongPasswordError.new("Wrong password!") unless input == "starwars"
+end
+
+# enter_password
