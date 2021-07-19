@@ -1700,8 +1700,8 @@ end
 # dfs_list('f', graph_list) 
 
 # starting at 'f' will print out all the nodes, but starting at 'a' would not.
-# this can be fixed by using a surrounding loop to iterate through the list to jump between
-# disconnected regions of the graph
+#   this can be fixed by using a surrounding loop to iterate through the list to
+#   jump between disconnected regions of the graph
 
 def dfs_connector(graph_list)
     visited = Set.new()
@@ -1801,7 +1801,8 @@ class Human < Animal
   attr_reader :name
 
   def initialize(name)
-      super("Homo Sapiens")   # calling Human.new without this super method won't set the species
+      # calling Human.new without this super method won't set the species
+      super("Homo Sapiens")   
       @name = name
   end
 end
@@ -1858,7 +1859,7 @@ end
 def echo_name
   fName, lName = prompt_name
   puts "Hello #{fName} of #{lName}"
-rescue                                  # use the implicit begin by simple adding rescue if the 
+rescue                                # use the implicit begin by simple adding rescue if the 
   puts "Please only use two names"    # error handling pertains to the whole method
   retry
 end 
@@ -1873,12 +1874,13 @@ end
 
 # UML is a visual way of describing relationships between different objects in a system
 # UML can describe classes or behavior
-#     Classes can be related in many ways, including parent-child and association ("has a") relationships
+#     Classes can be related in many ways, including parent-child and association 
+#       ("has a") relationships
 #         Piece is the parent of Pawn
 #         Game has a Board
-#     Classes usually have three componenents: name, set of attributes, and set of methods
-#         attributes are marked as public (+), private (-), or protected (#)
-#         methods are underlined
+#     Classes usually have three componenents: name, set of attributes, and set 
+#       of methods attributes are marked as public (+), private (-), or 
+#       protected (#) methods are underlined
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Lecture ]]]]]]]]]]]]]]]]]]]]]]]]]
 
@@ -1891,38 +1893,38 @@ end
 # The act of taking a larger system and breaking it down into smaller components
 # and hiding unnecessary information from the user while showing only the essentials
 
-# ------------------------- Encapsulation -------------------------
+# ------------------------- Encapsulation ------------------------- 
 
 # Bundling data with methods that operate on data
-  # Outside of an instance, can only interact with via public methods
-  # Expose limited interface to user
+#     Outside of an instance, can only interact with via public methods
+#     Expose limited interface to user
 # Allows developer to make atomic methods & change code without changing the interface
 
 # + public
   
 # - private
-  # private methods can only be implicitly used in classes. Except setters! 
-      # (otherwise they'll be seen as a local var)
-      # i.e, if a Dog class had an attribute @name, it has to be called implicitly
-          # within the class
-          # puts "#{name} goes bork!" will work, 
-              # but "#{self.name} goes bork!" will not work
-  # default to this over protected
+#   private methods can only be implicitly used in classes. Except setters! 
+#     (otherwise they'll be seen as a local var)
+#       i.e, if a Dog class had an attribute @name, it has to be called implicitly
+#           within the class
+#           puts "#{name} goes bork!" will work, 
+#             but "#{self.name} goes bork!" will not work
+#   default to this over protected
   
 # # protected
-  # protected methods can only be called:
-      # within the class
-      # explicitly or implicitly - allows us to use it on other instances of the class
+#   protected methods can only be called:
+#     within the class
+#     explicitly or implicitly - allows us to use it on other instances of the class
 
 # ------------------------- Inheritance -------------------------
 
 # Subclasses inherit methods from other classes
 
 # Modules behave just like classes except they cannot be initialized
-  # they are used to add functionality and DRY up our code
+#   they are used to add functionality and DRY up our code
 
 # Subclasses have an "is a" relationship with the class, while modules have a 
-# "has a" relationship with the class. 
+#   "has a" relationship with the class. 
 
 module Walkable     # function is just like a class except you cannot initialize modules
   def walk 
@@ -1977,10 +1979,11 @@ d1 = Dog.new("Spot", "woofer")
 # ------------------------- Polymorphism -------------------------
 
 # Inheritance
-  # Different classes can be used with the same methods
-      # i.e, all Mammals eat, therefore dog eats too
+#     Different classes can be used with the same methods
+#         i.e, all Mammals eat, therefore dog eats too
+
 # Duck-typing
-  # "If it walks like a duck and quacks like a duck then it is a duck" 
+#     "If it walks like a duck and quacks like a duck then it is a duck" 
 
 # $$$$$$$$$$$$$$$$$$$$$$$$$ W4D3 $$$$$$$$$$$$$$$$$$$$$$$$$
 
@@ -2005,20 +2008,22 @@ end
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Encapsulation/Abstraction ]]]]]]]]]]]]]]]]]]]]]]]]]
 
-# Encapsulation is the principle of preventing data/methods from being accessed outside this code
+# Encapsulation is the principle of preventing data/methods from being accessed 
+#   outside this code
 
 ## - private
 # private methods can only be accessed from within the class itself
 
 # Abstraction is the principle of hiding information that isn't necessary for the user
 
-# We always want to minimize the amount of information exposed to the user and only expose 
-# certain information with good reason
+# We always want to minimize the amount of information exposed to the user and 
+#   only expose certain information with good reason
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Modules ]]]]]]]]]]]]]]]]]]]]]]]]]
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Modules ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 
-# A Ruby module is similar to a class except you cant instantiate it. Modules contain methods
-# that can be mixed into and shared by many classes to keep our code DRY.
+# A Ruby module is similar to a class except you cant instantiate it. Modules 
+#   contain methods that can be mixed into and shared by many classes to keep 
+#   our code DRY.
 
 ## include
 # allows the class to access the module's methods as INSTANCE methods
@@ -2053,42 +2058,47 @@ class Robot
 end
 
 daniel = Human.new('Daniel')
-p daniel.greet 
+daniel.greet 
 jarvis = Robot.new 
-p jarvis.greet 
+jarvis.greet 
 
-# Modules also serve as namespaces - they prevent name collisions. If two files were to have
-# the same method but different functions, you can wrap the two files into two different modules
+# Modules also serve as namespaces - they prevent name collisions. If two files 
+#   were to have the same method but different functions, you can wrap the two 
+#   files into two different modules
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Load/Require/Require_Relative ]]]]]]]]]]]]]]]]]]]]]]]]]
 
 # https://open.appacademy.io/learn/swe-in-person/ruby/load-require-require_relative
 
 ## require
-# Tells Ruby to look for the file in the $LOAD_PATH (directories that contain the source files
-# for Ruby's default library) and then the Gem.path (gem directories) if not found in the $LOAD_PATH
+# Tells Ruby to look for the file in the $LOAD_PATH (directories that contain 
+#   the source files for Ruby's default library) and then the Gem.path (gem 
+#   directories) if not found in the $LOAD_PATH
 
-# When using require "./file_name" and ruby lib/file_name.rb, you will run into an error because
-# the current directory is where you're running the file from. That's why we use require_relative. 
+# When using require "./file_name" and ruby lib/file_name.rb, you will run into 
+#   an error because the current directory is where you're running the file from. 
+#   That's why we use require_relative. 
 
 ## -I
-# this flag can be used to add a folder to the $LOAD_PATH so we can use require when files are not 
-# closely packed together
+# this flag can be used to add a folder to the $LOAD_PATH so we can use require 
+#   when files are not closely packed together
 
 ## load 
 # loads the file each time when using pry/irb
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Public/Private/Protected ]]]]]]]]]]]]]]]]]]]]]]]]]
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Public/Private/Protected ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 
 # Methods are public be default and do not need to be defined as public
 
-# Private methods cannot be called explicitly on an instance - therefore, can only be called from
-# inside the method
+# Private methods cannot be called explicitly on an instance - therefore, can 
+#   only be called from inside the method
 
-# Protected methods are only accessible by the class and subclasses. Access is kept within family
+# Protected methods are only accessible by the class and subclasses. Access is 
+#   kept within family
 
-# Access controls are not used for security! Private methods can still be accessed using #send
-# Instead, they are used to tell other programmer's what they can ignore and what the interface is
+# Access controls are not used for security! Private methods can still be 
+#   accessed using #send. Instead, they are used to tell other programmer's
+#   what they can ignore and what the interface is
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Lecture ]]]]]]]]]]]]]]]]]]]]]]]]]
 
@@ -2105,14 +2115,14 @@ p jarvis.greet
 # which direction they can slide in
 
 # Slideable module
-  # check each direction a piece can move by iterating outwards by each space and stop iteration
-  # in that direction once you reach another one of your pieces, an enemy piece, or the edge
+#   check each direction a piece can move by iterating outwards by each space and stop iteration
+#   in that direction once you reach another one of your pieces, an enemy piece, or the edge
 
-  # #moves returns all possible moves
-  # Rook#move_dirs returns directions a piece can move
-  # Slideable#move_dirs returns all moves in a direction
+# #moves returns all possible moves
+# Rook#move_dirs returns directions a piece can move
+# Slideable#move_dirs returns all moves in a direction
 
-# ========================= Error Handling =========================
+# ========================= Error Handling ========================= !I
 
 ## raise
 # raises an error upon a condition - ends the program
@@ -2161,19 +2171,19 @@ end
 # https://github.com/rspec/rspec-expectations
 
 # RSpec is distributed in a gem called 'rspec' which is a meta-gem that packs 
-# three other gems: rspec-core, rspec-expectations, and rspec-mocks
+#   three other gems: rspec-core, rspec-expectations, and rspec-mocks
 
 # files are organized in lib and spec directories
-    # my_cool_project
-        # lib/
-            # hello.rb
-        # spec/
-            # hello_spec.rb
+#     my_cool_project
+#         lib/
+#             hello.rb
+#         spec/
+#             hello_spec.rb
 
 # each spec file is limited to testing a single file and will need to require
-# that file and the rspec file. By default, lib/ folder is included in the path
-    # require 'rspec'
-    # require 'hello'
+#   that file and the rspec file. By default, lib/ folder is included in the path
+#     require 'rspec'
+#     require 'hello'
 
 # here is an example of a spec
 
@@ -2384,8 +2394,8 @@ end
 
 # ========================= RAM Model of Computation =========================
 
-# RAM model of computation measures the runtime of an algorithm by summing up the number of
-# steps needed to execute the algorithm
+# RAM model of computation measures the runtime of an algorithm by summing up 
+#   the number of steps needed to execute the algorithm
 
 ## +, *, =, if, call, memory access
 # these basic operations all take one time step
@@ -2395,9 +2405,10 @@ end
 
 # ========================= Asymptotic Analysis =========================
 
-# Asymptotic analysis graphs the runtime of an algorithm using the input size and the RAM MoC
-# and determines the behavior of a line by looking for the most dominant term. 
-  # Exponential, logarithmic, & constant slopes are some behaviors of a line
+# Asymptotic analysis graphs the runtime of an algorithm using the input size 
+#   and the RAM MoC and determines the behavior of a line by looking for the most
+#   dominant term. 
+#   Exponential, logarithmic, & constant slopes are some behaviors of a line
 
   def chop_add(num1, num2)
     num1 = num1 / 5.0           # 3 steps
@@ -2420,9 +2431,10 @@ def iter_add(num1, num2)
     num2 
 end
 
-# Using asymptotic analysis, we can determine that iter_add will be faster than chop_add up 
-# until a certain input size. If we were to find the dominant terms for each method, we would
-# remove any constants and end up with 1 for chop_add and n for iter_add. 
+# Using asymptotic analysis, we can determine that iter_add will be faster than
+#   chop_add up until a certain input size. If we were to find the dominant terms
+#   for each method, we would remove any constants and end up with 1 for chop_add
+#   and n for iter_add. 
 
 # chop_add => 2712 steps            dominant term => 1
 # iter_add => 3n + 1 steps          dominant term => n
@@ -2437,10 +2449,11 @@ def linear_search(array, target)
     -1
 end
 
-# This algorithm has a worst case runtime of n, the array's length & a best case runtime of 1. 
-# By knowing the worst case runtime, we can say that the algorithm has an O(n) big-o runtime
+# This algorithm has a worst case runtime of n, the array's length & a best case
+#   runtime of 1. By knowing the worst case runtime, we can say that the algorithm
+#   has an O(n) big-o runtime
 
-# ========================= Big-O Classifications =========================
+# ========================= Big-O Classifications ========================= !I
 
 # Common classifications ordered from fastest to slowest
     # Constant O(1)
@@ -2489,69 +2502,106 @@ end
 # merge_sort can be O(n^2) in the worst case when using .shift
     # a better way to implement the helper method is to use indices to iterate through the array
 
-class Array 
-    def merge_sort
-        return self if length <= 1
+class Array
+  def merge_sort
+    # self is array we're sorting
+    return self if self.length < 2 # O(1) 
+    middle = self.length / 2 # O(1)
 
-        midpoint = length / 2
+    left, right = self.take(middle), self.drop(middle) # O(1)
 
-        left = take(midpoint).merge_sort 
-        right = drop(midpoint).merge_sort 
+    sorted_left, sorted_right = left.merge_sort, right.merge_sort 
+    # O(n * log(n))
+    #   log(n) -- num of recursive "layers" (times we have to split array in 2)
+    #   n -- merging at each layer / step
 
-        Array.merge(left, right)
+    # self.class.merge(sorted_left, sorted_right) # O(n^2) 
+    self.class.better_merge(sorted_left, sorted_right) # O(n)
+  end
+  # O(n * log(n)) + O(n)
+  # O(n * log(n))
+
+  # because Array#shift is an O(n) operation, this is actually an n^2 algorithm
+  def self.merge(left, right) 
+    # self here is the class (in class method)
+    merged_array = []
+    until left.empty? || right.empty? # O(n) (analyzing num of loop iterations)
+      merged_array << ((left.first < right.first) ? left.shift : right.shift) # O(n) (worst case for .shift)
     end
 
-    def self.merge(left, right)
-        merged_array = []
-        
-        until left.empty? || right.empty?
-            merged_array << ((left.first < right.first) ? left.shift : right.shift )
-        end
+    merged_array + left + right # O(1)
+  end
 
-        merged_array + left + right 
+  # by eliminating the use of `Array#shift`, we can make our algorithm more efficient O(n)
+  def self.better_merge(left, right) # !I
+    merged_array = []  # O(1)
+    left_idx = 0  # O(1)
+    right_idx = 0  # O(1)
+
+    # accomplishes the same thing as our until loop in `merge`,
+    #   except without the use of `Array#shift` (our bottleneck in `#merge`)
+    while left_idx < left.length && right_idx < right.length # O(n)
+      a = left[left_idx] # O(1)
+      b = right[right_idx] # O(1)
+      
+      if a < b # O(1)
+        merged_array << a # O(1)
+        left_idx += 1 # O(1)
+      else
+        merged_array << b # O(1)
+        right_idx += 1 # O(1)
+      end
+    end
+    
+    # Because our left and right arrays are still intact, we cannot just
+    #   do `merged_array + left + right`.
+    # Instead, we have to finish iterating through both sides.
+    while left_idx < left.length # O(n)
+      merged_array << left[left_idx] # O(1)
+      left_idx += 1 # O(1)
     end
 
-    def self.better_merge(left, right)
-        merged_array = []
-        left_idx = 0
-        right_idx = 0
-
-        while left_idx < left.length && right_idx < right.length 
-            
-        end
+    while right_idx < right.length # O(n)
+      merged_array << right[right_idx] # O(1)
+      right_idx += 1 # O(1)
     end
+    
+    merged_array # O(1)
+  end
+  # O(n)
 end
 
 class Vehicle
-    def initialize
+  def initialize
 
-    end
+  end
 
-    def vroom
-        puts "vroom"
-    end
+  def vroom
+    puts "vroom"
+  end
 end
 
 class Sedan < Vehicle
-    def zoom
-        puts "zoom"
-    end
+  def zoom
+    puts "zoom"
+  end
 end
 
 accent = Sedan.new
-accent.vroom 
-accent.zoom 
+# accent.vroom 
+# accent.zoom 
 
 =begin
 
-# Object Oriented Programming
-    - Given a set of classes, some inheriting from others, correctly identify what methods an instance
-      of each class has access to
-            A subclass has access to all methods from its superclass. The child's method will 
-            overwrite the parent's method. 
+# Object Oriented Programming !I
+    - Given a set of classes, some inheriting from others, correctly identify 
+      what methods an instance of each class has access to
+            A subclass has access to all methods from its superclass. The child's
+            method will overwrite the parent's method. 
 
-    - Given a parent and child class, correctly use the super method, passing only the necessary
-      arguments, in the child class initialize method to handle shared initialization logic
+    - Given a parent and child class, correctly use the super method, passing 
+      only the necessary arguments, in the child class initialize method to handle
+      shared initialization logic
             super: passes all arguments to the parent method
             super(): passes no arguments to the parent method
             super(arg1): passes specified arguments to the parent method
@@ -2565,22 +2615,22 @@ accent.zoom
             protected: can be only be accessed from the inside, explicitly or implicitly
 
     - Explain the difference between inheriting from a class and including a module
-            Subclasses have an "is a" relationship with the superclass while those same classes 
-            can have a "has a" relationship with a module. Modules can add interfaces for many
-            classes of different families at a time. 
+            Subclasses have an "is a" relationship with the superclass while those
+            same classes can have a "has a" relationship with a module. Modules 
+            can add interfaces for many classes of different families at a time. 
 
-# Big O Analysis
+# Big O Analysis !I
     - Explain what "Big O" is and why we utilize it
-            Big O is a mathematical notation that describes the limiting behavior of a function
-            in terms of time/space as the input size grows. It is used to determine the efficiency
-            of an algorithm. 
+            Big O is a mathematical notation that describes the limiting behavior
+            of a function in terms of time/space as the input size grows. It is
+            used to determine the efficiency of an algorithm. 
     
     - Given an implementation of an algorithm, determine its Big O time complexity
 
-    - Given a description of a problem (such as anagrams or two_sum), implement a solution that runs
-      in linear time.
+    - Given a description of a problem (such as anagrams or two_sum), implement
+      a solution that runs in linear time.
 
-# Data Structures
+# Data Structures !I
     - Describe what LIFO and FIFO are and how they relate to the Stack and Queue ADTs, respectively
 
     - Describe the difference between an Abstract Data Type (ADT) and Data Structure
@@ -2611,7 +2661,7 @@ accent.zoom
 
 # $$$$$$$$$$$$$$$$$$$$$$$$$ W5D1 $$$$$$$$$$$$$$$$$$$$$$$$$
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Set ]]]]]]]]]]]]]]]]]]]]]]]]]
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Set ]]]]]]]]]]]]]]]]]]]]]]]]] 
 
 # There cannot be duplicates in a set, there's no order, and there's no indexing
 # API: include?
@@ -2622,6 +2672,7 @@ accent.zoom
 
 # use % to put items into buckets when there are more items than buckets
 
+# !I
 # increase # of buckets when input size increases to keep time complexity faster
     # Amortization: one expensive operation to lower the cost of the next operations
 
@@ -2639,17 +2690,17 @@ accent.zoom
     # cryptographic hashing functions: MD3, SHA-2, blowfish
         # cryptographic functions have very low chance of collision
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Hash Set ]]]]]]]]]]]]]]]]]]]]]]]]]
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Hash Set ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 
 # assign objects to buckets by modding the hash of the object. 
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Linked Lists ]]]]]]]]]]]]]]]]]]]]]]]]]
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Linked Lists ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 
 # Linked list is basically a unary tree. 
 # linked lists can be singly-linked (one-way) or doubly-linked (two-way)
 # doubly-linked nodes need access to the previous link
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ Caches ]]]]]]]]]]]]]]]]]]]]]]]]]
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Caches ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 
 # LRU Caches combine the best parts of a linked list and a hashmap
 # ejection: O(1) time
