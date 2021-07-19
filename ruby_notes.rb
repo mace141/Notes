@@ -2150,3 +2150,231 @@ def get_input
 end
 
 # enter_password
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W4D4 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ RSpec & TDD ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/swe-in-person/ruby/rspec-syntax
+
+# https://github.com/rspec/rspec-core
+# https://github.com/rspec/rspec-expectations
+
+# RSpec is distributed in a gem called 'rspec' which is a meta-gem that packs 
+# three other gems: rspec-core, rspec-expectations, and rspec-mocks
+
+# files are organized in lib and spec directories
+    # my_cool_project
+        # lib/
+            # hello.rb
+        # spec/
+            # hello_spec.rb
+
+# each spec file is limited to testing a single file and will need to require
+# that file and the rspec file. By default, lib/ folder is included in the path
+    # require 'rspec'
+    # require 'hello'
+
+# here is an example of a spec
+
+describe "#hello_world" do 
+    it "returns 'Hello, World!'" do
+        expect(hello_world).to eq("Hello, World!")
+    end
+end
+
+# here is the method
+
+def hello_world 
+   "Hello, World!" 
+end
+
+# ========================= Describe & It =========================
+
+## it
+# RSpec's most basic test unit. all tests go inside an it block
+
+## describe
+# RSpec's unit of organization. It gathers several it blocks into a single unit
+
+# Both describe and it take strings as arguments. Describe can also take constants
+
+## context
+# an alias for describe, used for nesting inside describe blocks
+
+## expect
+# what does the actual testing. its task is to match between a value and expected value
+    # there are positive and negative constructions
+        # expect(test).to ...
+        # expect(test).to_not ...
+# block construction is needed when you expect the output to be an error
+    # expect { sqrt(-3) }.to raise_error(ArgumentError)
+# expect(test).to eq(expected)
+    # test == expected
+# expect(test).to be(expected)
+    # is test the same object as expected
+
+# ========================= Before & After =========================
+
+describe Chess do
+    let(:board) { Board.new }
+  
+    describe '#checkmate?' do
+      context 'when in checkmate' do
+        before(:each) do
+          board.make_move([3, 4], [2, 3])
+          board.make_move([1, 2], [4, 5])
+          board.make_move([5, 3], [5, 1])
+          board.make_move([6, 3], [2, 4])
+        end
+  
+        it 'should return true' do
+          expect(board.checkmate?(:black)).to be true
+        end
+      end
+    end
+end
+
+## before(:each)
+# refreshes the code and runs the before block before each it block
+
+## before(:all)
+# does not refresh the code before each it block and is less preferred 
+
+# there are also after(:each) and after(:all)
+
+# somtimes you may want to write out the each of the specs before testing them.
+# to do so, you can leave our the do...end
+
+describe '#valid_move?' do
+  it 'should return false for wrong colored pieces'
+  it 'should return false for moves that are off the board'
+  it 'should return false for moves that put you in check'
+end
+
+# ========================= Subject & Let =========================
+
+# https://open.appacademy.io/learn/swe-in-person/ruby/subject-and-let
+# https://benscheirman.com/2011/05/dry-up-your-rspec-files-with-subject-let-blocks/
+
+## subject { object_instance }
+# used to create an object to pass tests. must be declared outside of the it blocks
+
+describe Robot do
+    subject { Robot.new }
+  
+    it "satisfies some expectation" do
+      expect(subject).to # ...
+    end
+end
+
+# can also be declared with a name 
+
+describe Robot do
+    subject(:robot) { Robot.new }
+  
+    it "position should start at [0, 0]" do
+      expect(robot.position).to eq([0, 0])
+    end
+  
+    describe "move methods" do
+      it "moves left" do
+        robot.move_left
+        expect(robot.position).to eq([-1, 0])
+      end
+    end
+end
+
+## let(:name) { assigned_object }
+# used to create helper objects to interact with subject
+
+describe Robot do
+    subject(:robot) { Robot.new }
+    let(:light_item) { double("light_item", :weight => 1) }
+    let(:max_weight_item) { double("max_weight_item", :weight => 250) }
+
+    describe "#pick_up" do
+    it "does not add item past maximum weight of 250" do
+      robot.pick_up(max_weight_item)
+
+      expect do
+        robot.pick_up(light_item)
+      end.to raise_error(ArgumentError)
+    end
+  end
+end
+
+# let objects do not persist states - meaning it resets between scopes
+
+class Cat
+    attr_accessor :name
+  
+    def initialize(name)
+      @name = name
+    end
+  end
+  
+  describe "Cat" do
+    let(:cat) { Cat.new("Sennacy") }
+  
+    describe "name property" do
+      it "returns something we can manipulate" do
+        cat.name = "Rocky"
+        expect(cat.name).to eq("Rocky")     # cat is now rocky and spec passes
+      end
+  
+      it "does not persist state" do
+        expect(cat.name).to eq("Sennacy")   # cat is back to sennacy and also passes
+      end
+    end
+end
+
+# ========================= Test Doubles (Mock) =========================
+
+# https://open.appacademy.io/learn/swe-in-person/ruby/test-doubles
+
+# Test doubles are used when we want to test a class that has interaction with 
+# another class because both classes must be functional in order to pass 
+
+RSpec.describe Order do
+    let(:customer) { double("customer") }       # customer is another class in this example
+    subject(:order) { Order.new(customer) }     # double creates a blank slate (instance of mock)
+                                                # waiting for us to add behavior to it
+    it "sends email successfully" do
+      (customer).to receive(:email_address).and_return("ned@appacademy.io")
+  
+      expect do
+        order.send_confirmation_email
+      end.to_not raise_exception
+    end
+end
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Lecture ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# ========================= RSpec Workflow =========================
+
+## bundle init
+# use this command to make the Gemfile.rb
+  # add gem 'rspec' & gem 'byebug' into the Gemfile
+
+## rspec --init
+# create the .rspec file
+  # add these lines into the .rspec file:
+    # --require spec_helper
+    # --format documentation
+    # --color
+
+## mkdir lib
+# any files in this folder must have matching file_spec.rb in the spec folder
+
+## require "file_name"
+# require the corresponding file to the top of the spec file
+
+# Write the tests in the spec files before writing the code. The code must first fail before pass - TDD. 
+
+# ========================= RSpec Docs =========================
+
+# https://relishapp.com/rspec/rspec-expectations/docs
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$  $$$$$$$$$$$$$$$$$$$$$$$$$
+
