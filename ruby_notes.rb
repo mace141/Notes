@@ -2376,5 +2376,235 @@ end
 
 # https://relishapp.com/rspec/rspec-expectations/docs
 
-# $$$$$$$$$$$$$$$$$$$$$$$$$  $$$$$$$$$$$$$$$$$$$$$$$$$
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W4D5 $$$$$$$$$$$$$$$$$$$$$$$$$
 
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Big-O ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Big-O helps determine the efficiency/speed of an algorithm
+
+# ========================= RAM Model of Computation =========================
+
+# RAM model of computation measures the runtime of an algorithm by summing up the number of
+# steps needed to execute the algorithm
+
+## +, *, =, if, call, memory access
+# these basic operations all take one time step
+
+## loops
+# n * # of steps with each iteration
+
+# ========================= Asymptotic Analysis =========================
+
+# Asymptotic analysis graphs the runtime of an algorithm using the input size and the RAM MoC
+# and determines the behavior of a line by looking for the most dominant term. 
+  # Exponential, logarithmic, & constant slopes are some behaviors of a line
+
+  def chop_add(num1, num2)
+    num1 = num1 / 5.0           # 3 steps
+    num2 = num2 / 5.0           # 3 steps
+
+    300.times do               # 300(3 + 3) steps
+        num1 = num1 / 2
+        num2 = num2 / 2
+    end
+
+    sum = num1 + num2           # 4 steps
+
+    300.times { sum = sum * 2 } # 300(3) steps
+
+    sum * 5                     # 2 steps
+end
+
+def iter_add(num1, num2)
+    num1.times { num2 += 1}     # 3n + 1 steps
+    num2 
+end
+
+# Using asymptotic analysis, we can determine that iter_add will be faster than chop_add up 
+# until a certain input size. If we were to find the dominant terms for each method, we would
+# remove any constants and end up with 1 for chop_add and n for iter_add. 
+
+# chop_add => 2712 steps            dominant term => 1
+# iter_add => 3n + 1 steps          dominant term => n
+    # dependent on input (n)
+
+# ========================= The Worst Case =========================
+
+def linear_search(array, target)
+    array.each do |ele|
+        return ele if ele == target 
+    end
+    -1
+end
+
+# This algorithm has a worst case runtime of n, the array's length & a best case runtime of 1. 
+# By knowing the worst case runtime, we can say that the algorithm has an O(n) big-o runtime
+
+# ========================= Big-O Classifications =========================
+
+# Common classifications ordered from fastest to slowest
+    # Constant O(1)
+        # algorithm operates at the same speed no matter the input size
+
+    # Logarithmic O(log(n))
+        # every time the input size increases by n, the number of steps only increases by 1
+        # i.e, binary search
+            # In math, the default log base is 10
+            # In CS, the default log base is 2 
+                # log_b(n) = x  => b^x = n 
+
+    # Linear O(n) 
+        # enumerables
+
+    # Linearithmic O(n*log(n))
+        # i.e merge_sort
+
+    # Quadratic O(n^2) 
+        # nested iterations
+        # i.e, bubble sort 
+
+    # Polynomial O(n^k)
+
+    # Exponential O(k^n) 
+        # i.e, subsets
+
+    # Factorial O(n!)
+        # i.e, permutations
+
+# ========================= Set Definition =========================
+
+# O(_) = {f| notation just denotes the set of all functions that do not dominate itself
+
+# O(n^2) = {f| O(n), O(2n^2), O(1), etc
+
+# ========================= Space Complexity =========================
+
+# Similar to time complexity except applies to additional space/memory created by the algorithm. 
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Lecture ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+## require 'faker'
+# faker is a gem that allows you to generate random objects from a selected theme
+
+# merge_sort can be O(n^2) in the worst case when using .shift
+    # a better way to implement the helper method is to use indices to iterate through the array
+
+class Array 
+    def merge_sort
+        return self if length <= 1
+
+        midpoint = length / 2
+
+        left = take(midpoint).merge_sort 
+        right = drop(midpoint).merge_sort 
+
+        Array.merge(left, right)
+    end
+
+    def self.merge(left, right)
+        merged_array = []
+        
+        until left.empty? || right.empty?
+            merged_array << ((left.first < right.first) ? left.shift : right.shift )
+        end
+
+        merged_array + left + right 
+    end
+
+    def self.better_merge(left, right)
+        merged_array = []
+        left_idx = 0
+        right_idx = 0
+
+        while left_idx < left.length && right_idx < right.length 
+            
+        end
+    end
+end
+
+class Vehicle
+    def initialize
+
+    end
+
+    def vroom
+        puts "vroom"
+    end
+end
+
+class Sedan < Vehicle
+    def zoom
+        puts "zoom"
+    end
+end
+
+accent = Sedan.new
+accent.vroom 
+accent.zoom 
+
+=begin
+
+# Object Oriented Programming
+    - Given a set of classes, some inheriting from others, correctly identify what methods an instance
+      of each class has access to
+            A subclass has access to all methods from its superclass. The child's method will 
+            overwrite the parent's method. 
+
+    - Given a parent and child class, correctly use the super method, passing only the necessary
+      arguments, in the child class initialize method to handle shared initialization logic
+            super: passes all arguments to the parent method
+            super(): passes no arguments to the parent method
+            super(arg1): passes specified arguments to the parent method
+
+    - Implement a class inheritance chain using proper Ruby syntax
+            class Child < Parent
+
+    - Explain the difference between public, private, and protected methods
+            public: can be accessed from inside and out, explicitly and implicitly
+            private: can only be implicitly accessed from the inside 
+            protected: can be only be accessed from the inside, explicitly or implicitly
+
+    - Explain the difference between inheriting from a class and including a module
+            Subclasses have an "is a" relationship with the superclass while those same classes 
+            can have a "has a" relationship with a module. Modules can add interfaces for many
+            classes of different families at a time. 
+
+# Big O Analysis
+    - Explain what "Big O" is and why we utilize it
+            Big O is a mathematical notation that describes the limiting behavior of a function
+            in terms of time/space as the input size grows. It is used to determine the efficiency
+            of an algorithm. 
+    
+    - Given an implementation of an algorithm, determine its Big O time complexity
+
+    - Given a description of a problem (such as anagrams or two_sum), implement a solution that runs
+      in linear time.
+
+# Data Structures
+    - Describe what LIFO and FIFO are and how they relate to the Stack and Queue ADTs, respectively
+
+    - Describe the difference between an Abstract Data Type (ADT) and Data Structure
+            An ADT defines the logic/rules of the data type and the data structure implements
+            the physical form of the data type
+
+    - Given an ADT, identify what underlying data structures native to Ruby could be used to implement the ADT
+
+    - Given a description of an algorithm, identify what ADTs would be useful in implementing a solution
+
+    - Implement a Stack data structure
+
+    - Implement a Queue data structure
+
+# CSS
+    - Given a pre-filled HTML skeleton, write CSS selectors to add specific styles to specific html
+      tags, classes, and ids
+
+    - Given an HTML skeleton, utilize the > selector in CSS to select all p elements that are children
+      of the element with id index and give them all a font-size of 18px and background color of red
+      (or any other basic CSS properties)
+
+    - Use the :last-child selector to give the last item in an ordered list a color of green
+
+    - Use the + selector to select the first sibling element of the h1 tag and give it a 1px solid black border
+
+=end
