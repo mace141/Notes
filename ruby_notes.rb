@@ -2608,3 +2608,53 @@ accent.zoom
     - Use the + selector to select the first sibling element of the h1 tag and give it a 1px solid black border
 
 =end
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W5D1 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Set ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# There cannot be duplicates in a set, there's no order, and there's no indexing
+# API: include?
+    # insert
+    # delete 
+
+# indexing in an array is O(1) because indexing uses pointer arithmetic
+
+# use % to put items into buckets when there are more items than buckets
+
+# increase # of buckets when input size increases to keep time complexity faster
+    # Amortization: one expensive operation to lower the cost of the next operations
+
+# pathological input: worst case input
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Hashing ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Properties of a Hash function: 
+    # One-way: input cannot be predicted from the output
+    # Deterministic: output will always be the same for the same object
+    # Uniformly distributed: 
+    # Sensitivity: similar objects cannot have similar hashes
+
+# common hashing functions: cityhash, CRC32, murmurhash (used by Ruby)
+    # cryptographic hashing functions: MD3, SHA-2, blowfish
+        # cryptographic functions have very low chance of collision
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Hash Set ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# assign objects to buckets by modding the hash of the object. 
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Linked Lists ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Linked list is basically a unary tree. 
+# linked lists can be singly-linked (one-way) or doubly-linked (two-way)
+# doubly-linked nodes need access to the previous link
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Caches ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# LRU Caches combine the best parts of a linked list and a hashmap
+# ejection: O(1) time
+    # remove the link and the key
+# insertion: O(1) 
+    # add the link and key
+# read: O(1) 
+    # key on the hash to access the link
