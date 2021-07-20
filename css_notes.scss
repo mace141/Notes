@@ -22,17 +22,23 @@
 // ------------------------- State Selector                      -------------------------
 // ========================= Structural Selectors                =========================
 // ========================= Combinators                         =========================
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Box Model                           ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Reset Stylesheet                    ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+// $$$$$$$$$$$$$$$$$$$$$$$$$ W2D5 $$$$$$$$$$$$$$$$$$$$$$$$$
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[ Intro to CSS ]]]]]]]]]]]]]]]]]]]]]]]]]
 
 // https://open.appacademy.io/learn/swe-in-person/software-engineering-foundations/css-nontechnical-overview
 
-// CSS is short for Cascading Stylesheets. It is a stylesheet language for markup (XML, HTML, XHTML)
+// CSS is short for Cascading Stylesheets. It is a stylesheet language for markup
+//   (XML, HTML, XHTML)
 // CSS combines multiple files to style one page
 
 // ========================= Adding Style to HTML =========================
 
-// There are three ways a devleoper may add style to an HTML document. They are listed below in order of increasing specificity
+// There are three ways a devleoper may add style to an HTML document. They are 
+//   listed below in order of increasing specificity
 
 #1 External
 #2 Internal
@@ -52,12 +58,13 @@
     // Difficult to manage
     // Impossible to style pseudo-elements and classes like visited, hover, and active
 
-// When you change an element's style using Javascript, it affects the element's inline style and can overwrite existing
-// inline styles permanently
+// When you change an element's style using Javascript, it affects the element's 
+//   inline style and can overwrite existing inline styles permanently
 
 // ------------------------- Internal: Embedded Style Tag -------------------------
 
-// Style for many elements are collected between <style> tags in the <head> section of an HTML document 
+// Style for many elements are collected between <style> tags in the <head> 
+//   section of an HTML document 
 
 <head>
   <style type="text/css">
@@ -87,7 +94,8 @@
 
 // ------------------------- External File: Linked Stylesheet -------------------------
 
-// An external stylesheet is simply a file dedicated to CSS, that must be linked in the <head> section of an HTML document 
+// An external stylesheet is simply a file dedicated to CSS, that must be linked
+//   in the <head> section of an HTML document 
 
 <link rel="stylesheet" type="text/css" href="styles.css" />
 
@@ -96,17 +104,18 @@
     // Global: can be used across pages in your site 
 
 // Cons: 
-    // Global: the developer must structure the CSS so that styles are not applied to elements they are not intended for 
+    // Global: the developer must structure the CSS so that styles are not 
+    //         applied to elements they are not intended for 
 
 // ========================= CSS Terms =========================
 
 // UI: User Interface
 // Responsive: a web design that adjusts to different device screen sizes
     // Breakpoint: the markers at which a change will occur to improve the UI
-                Ex: "Please add a breakpoint so the picture grid on this page has four columns on wide screens
-                and three columns on screens less than 1024px wide."
-    // Media queries: Used for device-specific breakpoints. The include an optional media type and expressions that
-                     limit the scope of their contained styles 
+           Ex: "Please add a breakpoint so the picture grid on this page has four
+                columns on wide screens and three columns on screens less than 1024px wide."
+    // Media queries: Used for device-specific breakpoints. The include an optional
+    //                media type and expressions that limit the scope of their contained styles 
                     Ex: smartphone, tablet, PC screens 
 // Pixel Perfect: replicating a mockup perfectly
     // Flat design: minimalist UI design language characterized by simple elements, subtle typography, and flat colors 
@@ -360,3 +369,131 @@ div ~ p {
 
 // They are used to reset the default browser styling so there are no mysteries as to why an element looks the way it does
 // Use the link tag to reference the reset CSS file as the first file linked
+
+// $$$$$$$$$$$$$$$$$$$$$$$$$ W5D3 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Box Model ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+// Box Model: everything rendered is a box - it has a margin, border, & padding
+    // changing margin, will not affect the size of the box, but the space between other boxes
+    // changing border/padding will affect the size of the box 
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Display Property ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+// https://open.appacademy.io/learn/swe-in-person/sql/css-display-property-reading
+
+//// display
+// values: inline, block, inline-block, flex, and none 
+// a CSS property that can be given to any selector
+
+// Inline display types always keep their "line height" but may push away other elements horizontally
+// allows elements to sit to its left and right. CANNOT have a set width and height
+    // <span></span> has default inline styling
+
+// Block elements do NOT respect "line height" and by default, take up all horizontal space 
+    // <div></div> has default block styling
+
+// Inline-block elements are a combination of block and inline elements. 
+    // you can set width and height properties 
+
+// None removes the content from visibility
+
+// Flexbox Layout styles "Flex containers" that automatically calculate the sizes of their children
+    // Flex Containers: properties of the parent
+    // Flex Items: properties of the children
+
+// display: flex
+    // when this property is applied to the parent will make all children into Flex Items
+    // by default, the direction of the elements are horizontal but they can be changed with 
+        // flex-direction: column
+    // other common flex properties are:
+        // justify-content: flex-start, flex-end, center, space-between, space-around
+        // align-items: flex-start, flex-end, center, stretch, baseline
+        // flex-wrap: wrap 
+        // flex: 1 100%
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Inherit ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+<article> 
+    <p>yoyoyo</p>
+<article>
+
+article {
+    color: red;
+}
+
+p {
+    color: blue;
+}
+
+p {
+    color: inherit;
+}
+
+// the p content will be red because inherit will look for the nearest parent with the same property
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Resets ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+// Browsers may have default styling properties and most of the time, we don't want that.
+// We want to reset those properties so that we have full control over our styling. 
+
+// This is a good default reset styling to follow
+
+html, body, etc {
+    margin: 0;
+    border: 0;
+    padding: 0;
+
+    font: inherit;
+    text-align: inherit;
+    text-decoration: inherit;
+    color: inherit;
+
+    background: transparent;
+}
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Float and Clearfix ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+// https://open.appacademy.io/learn/swe-in-person/sql/css-float-and-clearfix-reading
+
+<article class="clearfix"> 
+    <img src="cat.jpg" alt="Cat">
+</article>
+
+img {
+    float: left;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+//// float 
+// values: left, right, none, inherit
+// this property lets the element float over other objects, while remaining in place despite other
+// elements moving around. floated elements will stack next to eachother as long as they fit before 
+// moving to the next row
+
+//// clear 
+// values: left, right, none, inherit
+// this property will prevent a floating element from floating over the element
+// apply this to a pseudo-class selector to inject empty content :after an element to clear the float
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Flexbox and Grid System ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+// https://open.appacademy.io/learn/swe-in-person/sql/css-flexbox
+
+// https://open.appacademy.io/learn/swe-in-person/sql/css-grid-system
+
+// $$$$$$$$$$$$$$$$$$$$$$$$$ Lecture $$$$$$$$$$$$$$$$$$$$$$$$$
+
+// head contains the metadata about the html document that isnt visible to the user 
+
+//// margin: 0 auto;
+// automatically centers the element in the page - 0 top and bottom auto sizing left and right
+
+//// border-radius: 100%
+// turns element into circle. percentage refers to the corners of the box - lower % will look like
+// a rectangle with round corners
