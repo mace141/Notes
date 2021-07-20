@@ -497,3 +497,184 @@ img {
 //// border-radius: 100%
 // turns element into circle. percentage refers to the corners of the box - lower % will look like
 // a rectangle with round corners
+
+// $$$$$$$$$$$$$$$$$$$$$$$$$ W7D4 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Responsive Design ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+// ========================= Media Query =========================
+
+// A media query is a wrapper for CSS code that tests if the device running it 
+    // meets one or more criteria (commonly, screen width). We can also query screen
+    // orientation and pixel density. 
+
+// CSS supports many media types. Screen and print being two of them
+// screen = computer screen. print = printer
+
+@media screen and (min-width: 480px) {
+    
+}
+
+// if type isnt specified, the default is all
+@media (min-width: 480px) {
+
+}
+
+// You can also use AND or OR logic 
+@media (min-width: 480px) and (max-width: 980px) {
+    // Selectors and their styles to apply when 480px <= screen_width <= 980px,
+    // perhaps a good range for tablets
+}
+
+@media (max-width: 600px), (min-width: 800px) {
+    // Selectors and their styles to apply when screen width is <= 600px or >= 800px
+}
+
+// It is better to start with a mobile-first approach because this way you can have
+    // defaults outside of the media query and then add more styles for larger screens
+
+// MOBILE-FIRST
+.column {
+    width: 100% ;
+}
+
+@media (min-width: 760px) {
+    .column {
+        float: left;
+        width: 50% ;
+    }
+}
+// DESKTOP-FIRST
+
+@media (max-width: 760px) {
+    .column {
+        float: none;
+        width: 100% ;
+    }
+}
+
+// ========================= Viewport Meta Tag =========================
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+// Mobile browsers will pretend they are much wider than they really are in order
+    // to let the user zoom in to browse the website. The viewport meta tag will
+    // prevent this and use the device's real width. 
+
+// ========================= Reset =========================
+
+/* PHASE 0: Reset */
+
+html, head, body, header,
+nav, h1, a, ul, li, main,
+section, p, footer, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+header, nav, main, section,
+footer, small {
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Clearfix */
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ Lecture ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+// ========================= Position Property =========================
+
+// Static 
+    // Default positioning and flow of elements
+    // not affected by the top, bottom, left, and right properties
+    // elements flow around each other
+    // elements take up space 
+
+// Relative 
+    // relative to where it would otherwise be 
+    // moving it visually but not physically on the page
+    // flow remains the same 
+    // uses top/bottom/left/right properties 
+
+// Absolute 
+    // positions relative to the nearest non-static ancestor 
+        // uses the document if all ancestors are static
+    // no longer takes up space in the page 
+    // moving it visually and physically removing it from the page 
+    // uses top/bottom/left/right properties 
+
+// Fixed
+    // same as absolute but relative to the viewport 
+    // remains in the same place regardless of scroll
+    // commonly used for navbars 
+
+// Sticky 
+    // hybrid of relative and fixed 
+    // changes behavior based on scroll position 
+    // always takes original space in document flow (like relative)
+    // uses top/bottom/left/right properties to determine when to "stick"
+    // MUST use at least one of the above properties
+    // acts like fixed (placed relative to viewport) while "stuck"
+
+// ========================= Dropdowns =========================
+
+// Hover effect on an element displays a "dropdown" list of elements 
+// In reality, elements are merely hidden until the hover effect changes 
+    // display: none ==> display: block 
+// The list of elements appears on top of the rest of the page due to position: absolute
+
+// Give dropdown container (class="dropdown")
+    // position: relative
+
+// Give dropdown content (class="dropdown-content")
+    // display: none;
+    // position: absolute;
+
+// Change dropdown content to display when hovered
+.dropdown:hover .dropdown-content {
+    display: block; 
+}
+
+// For extra styling 
+.dropdown-content > li:hover {
+    background-color: gray;
+}
+.dropdown:hover {
+    cursor: pointer;
+}
+
+// ========================= Transform =========================
+
+// Tranform can take in many different values with different effects
+
+// scale(): Affects the size of the element. This also applies to the font-size,
+    // padding, height, and width of an element, too. It’s also a a shorthand
+    // function for the scaleX and scaleY functions.
+// skewX() and skewY(): Tilts an element to the left or right, like turning a
+    // rectangle into a parallelogram. skew() is a shorthand that combines skewX()
+    // and skewY by accepting both values.
+// translate(): Moves an element sideways or up and down.
+// rotate(): Rotates the element clockwise from its current position.
+// matrix(): A function that is probably not intended to be written by hand, but
+    // combines all transforms into one.
+// perspective(): Doesn’t affect the element itself, but affects the transforms
+    // of descendent elements’ 3D transforms, allowing them all to have a consistent
+    // depth perspective.
