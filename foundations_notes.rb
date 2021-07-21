@@ -180,12 +180,12 @@ format_name("daniel", "wu")
 
 first_name = 42
 last_name = true
-begin
-  puts format_name(first_name, last_name)
-rescue
-  # do stuff to rescue the "arguments must be strings" exception...
-  puts "there was an exception :("
-end
+# begin
+#   puts format_name(first_name, last_name)
+# rescue
+#   # do stuff to rescue the "arguments must be strings" exception...
+#   puts "there was an exception :("
+# end
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Introduction ]]]]]]]]]]]]]]]]]]]]]]]]]
 
@@ -645,21 +645,21 @@ def countdown(n)
   countdown(n-1)
 end
 
-countdown(10)
+# countdown(10)
 
 def factorial(n)
   return 1 if n == 1
   n * factorial(n-1)
 end
 
-p factorial(5)          # => 120
+factorial(5)          # => 120
 
 def fibonacci(n)
   return 1 if n == 1 || n == 2
   fibonacci(n - 1) + fibonacci(n - 2)
 end
 
-p fibonacci(6)          # => 8
+fibonacci(6)          # => 8
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Spaceship Operator ]]]]]]]]]]]]]]]]]]]]]]]]]
 
@@ -681,12 +681,12 @@ p fibonacci(6)          # => 8
 # Falsey: nil and false
 # Truthy: everything else
 
-val = "a"       # try reassigning val to anything. i.e [], 1, etc.
-if val
-  p true
-else
-  p false
-end
+# val = "a"       # try reassigning val to anything. i.e [], 1, etc.
+# if val
+#   p true
+# else
+#   p false
+# end
 
 # ========================= || =========================
 
@@ -1786,8 +1786,7 @@ class Liger < Animal
   end
 end
 
-Liger.new.make_n_noises(3) # => Roar Roar Roar Growl Growl Grow
-puts 
+# Liger.new.make_n_noises(3) # => Roar Roar Roar Growl Growl Grow
 
 class Animal
   attr_reader :species
@@ -1836,13 +1835,13 @@ end
 ## ensure
 # ensures some code is executed despite of the error
 
-begin 
-  a_dangerous_operation
-rescue StandardError => e 
-  puts "Something went wrong: #{e}"
-ensure
-  puts "Get to the choppa!"
-end
+# begin 
+#   a_dangerous_operation
+# rescue StandardError => e 
+#   puts "Something went wrong: #{e}"
+# ensure
+#   puts "Get to the choppa!"
+# end
 
 ## retry
 # use this to repeat the begin block again
@@ -1965,9 +1964,9 @@ class Dog < Mammal      # Dog class will inhert methods from Mammal
   end
 end
 
-class Cat < Mammal 
+class Sheep < Mammal 
   def noise 
-    "meow"
+    "bahhh"
   end
 end
 
@@ -2187,11 +2186,11 @@ end
 
 # here is an example of a spec
 
-describe "#hello_world" do 
-    it "returns 'Hello, World!'" do
-        expect(hello_world).to eq("Hello, World!")
-    end
-end
+# describe "#hello_world" do 
+#     it "returns 'Hello, World!'" do
+#         expect(hello_world).to eq("Hello, World!")
+#     end
+# end
 
 # here is the method
 
@@ -2226,24 +2225,24 @@ end
 
 # ========================= Before & After =========================
 
-describe Chess do
-    let(:board) { Board.new }
+# describe Chess do
+#     let(:board) { Board.new }
   
-    describe '#checkmate?' do
-      context 'when in checkmate' do
-        before(:each) do
-          board.make_move([3, 4], [2, 3])
-          board.make_move([1, 2], [4, 5])
-          board.make_move([5, 3], [5, 1])
-          board.make_move([6, 3], [2, 4])
-        end
+#     describe '#checkmate?' do
+#       context 'when in checkmate' do
+#         before(:each) do
+#           board.make_move([3, 4], [2, 3])
+#           board.make_move([1, 2], [4, 5])
+#           board.make_move([5, 3], [5, 1])
+#           board.make_move([6, 3], [2, 4])
+#         end
   
-        it 'should return true' do
-          expect(board.checkmate?(:black)).to be true
-        end
-      end
-    end
-end
+#         it 'should return true' do
+#           expect(board.checkmate?(:black)).to be true
+#         end
+#       end
+#     end
+# end
 
 ## before(:each)
 # refreshes the code and runs the before block before each it block
@@ -2256,11 +2255,11 @@ end
 # somtimes you may want to write out the each of the specs before testing them.
 # to do so, you can leave our the do...end
 
-describe '#valid_move?' do
-  it 'should return false for wrong colored pieces'
-  it 'should return false for moves that are off the board'
-  it 'should return false for moves that put you in check'
-end
+# describe '#valid_move?' do
+#   it 'should return false for wrong colored pieces'
+#   it 'should return false for moves that are off the board'
+#   it 'should return false for moves that put you in check'
+# end
 
 # ========================= Subject & Let =========================
 
@@ -2270,74 +2269,74 @@ end
 ## subject { object_instance }
 # used to create an object to pass tests. must be declared outside of the it blocks
 
-describe Robot do
-    subject { Robot.new }
+# describe Robot do
+#     subject { Robot.new }
   
-    it "satisfies some expectation" do
-      expect(subject).to # ...
-    end
-end
+#     it "satisfies some expectation" do
+#       expect(subject).to # ...
+#     end
+# end
 
 # can also be declared with a name 
 
-describe Robot do
-    subject(:robot) { Robot.new }
+# describe Robot do
+#     subject(:robot) { Robot.new }
   
-    it "position should start at [0, 0]" do
-      expect(robot.position).to eq([0, 0])
-    end
+#     it "position should start at [0, 0]" do
+#       expect(robot.position).to eq([0, 0])
+#     end
   
-    describe "move methods" do
-      it "moves left" do
-        robot.move_left
-        expect(robot.position).to eq([-1, 0])
-      end
-    end
-end
+#     describe "move methods" do
+#       it "moves left" do
+#         robot.move_left
+#         expect(robot.position).to eq([-1, 0])
+#       end
+#     end
+# end
 
 ## let(:name) { assigned_object }
 # used to create helper objects to interact with subject
 
-describe Robot do
-    subject(:robot) { Robot.new }
-    let(:light_item) { double("light_item", :weight => 1) }
-    let(:max_weight_item) { double("max_weight_item", :weight => 250) }
+# describe Robot do
+#     subject(:robot) { Robot.new }
+#     let(:light_item) { double("light_item", :weight => 1) }
+#     let(:max_weight_item) { double("max_weight_item", :weight => 250) }
 
-    describe "#pick_up" do
-    it "does not add item past maximum weight of 250" do
-      robot.pick_up(max_weight_item)
+#     describe "#pick_up" do
+#     it "does not add item past maximum weight of 250" do
+#       robot.pick_up(max_weight_item)
 
-      expect do
-        robot.pick_up(light_item)
-      end.to raise_error(ArgumentError)
-    end
-  end
-end
+#       expect do
+#         robot.pick_up(light_item)
+#       end.to raise_error(ArgumentError)
+#     end
+#   end
+# end
 
 # let objects do not persist states - meaning it resets between scopes
 
 class Cat
-    attr_accessor :name
-  
-    def initialize(name)
-      @name = name
-    end
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
   end
-  
-  describe "Cat" do
-    let(:cat) { Cat.new("Sennacy") }
-  
-    describe "name property" do
-      it "returns something we can manipulate" do
-        cat.name = "Rocky"
-        expect(cat.name).to eq("Rocky")     # cat is now rocky and spec passes
-      end
-  
-      it "does not persist state" do
-        expect(cat.name).to eq("Sennacy")   # cat is back to sennacy and also passes
-      end
-    end
 end
+  
+# describe "Cat" do
+#   let(:cat) { Cat.new("Sennacy") }
+
+#   describe "name property" do
+#     it "returns something we can manipulate" do
+#       cat.name = "Rocky"
+#       expect(cat.name).to eq("Rocky")     # cat is now rocky and spec passes
+#     end
+
+#     it "does not persist state" do
+#       expect(cat.name).to eq("Sennacy")   # cat is back to sennacy and also passes
+#     end
+#   end
+# end
 
 # ========================= Test Doubles (Mock) =========================
 
@@ -2346,18 +2345,18 @@ end
 # Test doubles are used when we want to test a class that has interaction with 
 # another class because both classes must be functional in order to pass 
 
-RSpec.describe Order do
-    let(:customer) { double("customer") }       # customer is another class in this example
-    subject(:order) { Order.new(customer) }     # double creates a blank slate (instance of mock)
-                                                # waiting for us to add behavior to it
-    it "sends email successfully" do
-      (customer).to receive(:email_address).and_return("ned@appacademy.io")
+# RSpec.describe Order do
+#     let(:customer) { double("customer") }       # customer is another class in this example
+#     subject(:order) { Order.new(customer) }     # double creates a blank slate (instance of mock)
+#                                                 # waiting for us to add behavior to it
+#     it "sends email successfully" do
+#       (customer).to receive(:email_address).and_return("ned@appacademy.io")
   
-      expect do
-        order.send_confirmation_email
-      end.to_not raise_exception
-    end
-end
+#       expect do
+#         order.send_confirmation_email
+#       end.to_not raise_exception
+#     end
+# end
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Lecture ]]]]]]]]]]]]]]]]]]]]]]]]]
 
@@ -2410,20 +2409,20 @@ end
 #   dominant term. 
 #   Exponential, logarithmic, & constant slopes are some behaviors of a line
 
-  def chop_add(num1, num2)
-    num1 = num1 / 5.0           # 3 steps
-    num2 = num2 / 5.0           # 3 steps
+def chop_add(num1, num2)
+  num1 = num1 / 5.0           # 3 steps
+  num2 = num2 / 5.0           # 3 steps
 
-    300.times do               # 300(3 + 3) steps
-        num1 = num1 / 2
-        num2 = num2 / 2
-    end
+  300.times do               # 300(3 + 3) steps
+      num1 = num1 / 2
+      num2 = num2 / 2
+  end
 
-    sum = num1 + num2           # 4 steps
+  sum = num1 + num2           # 4 steps
 
-    300.times { sum = sum * 2 } # 300(3) steps
+  300.times { sum = sum * 2 } # 300(3) steps
 
-    sum * 5                     # 2 steps
+  sum * 5                     # 2 steps
 end
 
 def iter_add(num1, num2)
@@ -2443,10 +2442,10 @@ end
 # ========================= The Worst Case =========================
 
 def linear_search(array, target)
-    array.each do |ele|
-        return ele if ele == target 
-    end
-    -1
+  array.each do |ele|
+    return ele if ele == target 
+  end
+  -1
 end
 
 # This algorithm has a worst case runtime of n, the array's length & a best case
@@ -2709,3 +2708,44 @@ accent = Sedan.new
     # add the link and key
 # read: O(1) 
     # key on the hash to access the link
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W15D1 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Dynamic Programming ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+
+# Dynamic Programming: a design pattern to solve a large problem by breaking it 
+#                      down into smaller subproblems. Subsolutions are stored in
+#                      an additional data structure. 
+
+# ========================= Memoization =========================
+
+# Memoization uses an object (hash) to store subsolutions to avoid repetitive
+#   calls and access solutions through the object
+
+def fib_memo(n, memo = {}) 
+  return memo[n] if memo[n]
+  return 1 if n == 1 || n == 2
+
+  memo[n] = fib_memo(n - 1, memo) + fib_memo(n - 2, memo)
+
+  memo[n]
+end
+
+# ========================= Tabulation =========================
+
+# Tabulation uses an array to store subsolutions. Unlike memoization, tabulation
+#   uses an iterative approach.
+
+def fib_tab(n) 
+  return 1 if n == 1 || n == 2
+
+  table = Array.new(n + 1)
+  table[0] = 0
+  table[1] = 1
+
+  (2..n).each do |i|
+    table[i] = table[i - 1] + table[i - 2]
+  end
+
+  table[n]
+end
