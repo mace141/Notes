@@ -116,7 +116,7 @@ const isPrime = (n) => {
 const uncompress = (s) => {
   // todo
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
-  let string = "";
+  let result = "";
   let numStr = "";
 
   for (let i = 0; i < s.length; i++) {
@@ -124,13 +124,13 @@ const uncompress = (s) => {
       numStr += s[i];
     } else {
       for (let j = 0; j < parseInt(numStr); j++) {
-        string += s[i];
+        result += s[i];
       }
       numStr = "";
     }
   }
 
-  return string;
+  return result;
 };
 
 // ========================= Solution =========================
@@ -175,3 +175,23 @@ const uncompress = (s) => {
 // compress('ppoppppp'); // -> '2po5p'
 // test_03:
 // compress('nnneeeeeeeeeeeezz'); // -> '3n12e2z'
+
+const compress = (s) => {
+  let i = 0;
+  let j = 1;
+  let result = "";
+
+  while (j <= s.length) {
+    if (s[j] != s[i]) {
+      if (j - i == 1) {
+        result += s[i];
+      } else {
+        result += (j - i) + s[i];
+      }
+      i = j;
+    }
+    j++;
+  }
+
+  return result;
+};
