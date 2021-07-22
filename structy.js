@@ -320,11 +320,11 @@ const pairSum = (numbers, targetSum) => {
 // Write a function, pairProduct, that takes in an array and a target product as
 // arguments. The function should return an array containing a pair of indices 
 // whose elements multiply to the given target. The indices returned must be unique.
-
+//
 // Be sure to return the indices, not the elements themselves.
-
+//
 // There is guaranteed to be one such pair whose product is the target.
-
+//
 // test_00:
 // pairProduct([3, 2, 5, 4, 1], 8); // -> [1, 3]
 // test_01:
@@ -337,6 +337,7 @@ const pairSum = (numbers, targetSum) => {
 // pairProduct([3, 2, 5, 4, 1], 10); // -> [1, 2]
 // test_05:
 // pairProduct([4, 6, 8, 2], 16); // -> [2, 3]
+
 const pairProduct = (numbers, targetProduct) => {
   const quotients = {};
   
@@ -348,4 +349,41 @@ const pairProduct = (numbers, targetProduct) => {
     }
     quotients[num] = i;
   }
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #9 intersection ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function, intersection, that takes in two arrays, a,b, as arguments. 
+// The function should return a new array containing elements that are in both of 
+// the two arrays.
+//
+// You may assume that each input array does not contain duplicate elements.
+//
+// test_00:
+// intersection([4,2,1,6], [3,6,9,2,10]) // -> [2,6]
+// test_01:
+// intersection([2,4,6], [4,2]) // -> [2,4]
+// test_02:
+// intersection([4,2,1], [1,2,4,6]) // -> [1,2,4]
+// test_03:
+// intersection([0,1,2], [10,11]) // -> []
+// test_04:
+// const a = [];
+// const b = [];
+// for (let i = 0; i < 50000; i += 1) {
+//   a.push(i);
+//   b.push(i);
+// }
+// intersection(a, b) // -> [0,1,2,3,..., 49999]
+
+const intersection = (a, b) => {
+  const result = [];
+  const setA = new Set(a);
+
+  for (let num of b) {
+    if (setA.has(num)) {
+      result.push(num);
+    }
+  }
+
+  return result;
 };
