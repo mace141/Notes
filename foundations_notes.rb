@@ -2755,6 +2755,7 @@ end
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Naive Sorts ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 
 # Bubble Sort
+#   n * n = O(n^2)
 
 def bubble_sort(array)
   sorted = false
@@ -2774,6 +2775,9 @@ def bubble_sort(array)
 end
 
 # Selection Sort
+#   n * n/2 = O(n^2)
+#   Better than bubble sort when writing speed is slow compared to reading speed
+#     because there are less swaps being made
 
 def selection_sort(array) 
   (0...array.length).each do |i|
@@ -2790,6 +2794,7 @@ def selection_sort(array)
 end
 
 # Insertion Sort
+#   n * n/2 = O(n^2)
 
 def insertion_sort(array)
   (1...array.length).each do |i|
