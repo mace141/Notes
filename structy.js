@@ -33,7 +33,7 @@ const maxValue = (nums) => {
   return max;
 };
 
-// Solution 
+// ========================= Solution =========================
 //
 // const maxValue = (nums) => {
 //   let maximum = -Infinity;
@@ -45,7 +45,7 @@ const maxValue = (nums) => {
 //   return maximum;
 // };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #1 is prime ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #2 is prime ]]]]]]]]]]]]]]]]]]]]]]]]]
 // Write a function, isPrime, that takes in a number as an argument. The function should return a boolean indicating whether or not the given number is prime.
 //
 // A prime number is a number that is only divisible two distinct numbers: 1 and itself.
@@ -90,3 +90,61 @@ const isPrime = (n) => {
   return true;
 };
 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #3 uncompress ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function, uncompress, that takes in a string as an argument. The input string will be formatted into multiple groups according to the following pattern:
+//
+// <number><char>
+//
+// for example, '2c' or '3a'.
+// The function should return an uncompressed version of the string where each 'char' of a group is repeated 'number' times concecutively. You may assume that the input string is well-formed according to the previously mentioned pattern.
+//
+// test_00:
+// uncompress("2c3a1t"); // -> 'ccaaat'
+// test_01:
+// uncompress("4s2b"); // -> 'ssssbb'
+// test_02:
+// uncompress("2p1o5p"); // -> 'ppoppppp'
+// test_03:
+// uncompress("3n12e2z"); // -> 'nnneeeeeeeeeeeezz'
+
+const uncompress = (s) => {
+  // todo
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let string = "";
+  let numStr = "";
+
+  for (let i = 0; i < s.length; i++) {
+    if (!alphabet.includes(s[i])) {
+      numStr += s[i];
+    } else {
+      for (let j = 0; j < parseInt(numStr); j++) {
+        string += s[i];
+      }
+      numStr = "";
+    }
+  }
+
+  return string;
+};
+
+// ========================= Solution =========================
+// using two pointers
+// const uncompress = (s) => {
+//   let result = [];
+//   const numbers = '0123456789';
+//   let i = 0;
+//   let j = 0;
+//   while (j < s.length) {
+//     if (numbers.includes(s[j])) {
+//       j += 1;
+//     } else {
+//       const num = Number(s.slice(i, j));
+//       for (let count = 0; count < num; count += 1) {
+//         result.push(s[j]);
+//       }
+//       j += 1;
+//       i = j;
+//     }
+//   }
+//   return result.join('');
+// };
