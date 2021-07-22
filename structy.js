@@ -239,3 +239,46 @@ const anagrams = (s1, s2) => {
 
   return true;
 };
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #6 most frequent char ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function, mostFrequentChar, that takes in a string as an argument. The
+// function should return the most frequent character of the string. If there are 
+// ties, return the character that appears earlier in the string.
+//
+// You can assume that the input string is non-empty.
+//
+// test_00:
+// mostFrequentChar('bookeeper'); // -> 'e'
+// test_01:
+// mostFrequentChar('david'); // -> 'd'
+// test_02:
+// mostFrequentChar('abby'); // -> 'b'
+// test_03:
+// mostFrequentChar('mississippi'); // -> 'i'
+// test_04:
+// mostFrequentChar('potato'); // -> 'o'
+// test_05:
+// mostFrequentChar('eleventennine'); // -> 'e'
+
+const mostFrequentChar = (s) => {
+  const count = {};
+  let result = "";
+  let num = 0;
+
+  for (let char of s) {
+    if (count[char]) {
+      count[char] += 1;
+    } else {
+      count[char] = 1;
+    }
+  }
+
+  for (let char in count) {
+    if (count[char] > num) {
+      result = char;
+      num = count[char];
+    }
+  }
+
+  return result;
+};
