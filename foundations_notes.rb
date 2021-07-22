@@ -151,19 +151,19 @@ TREE = "plant"          # Constant variable. Cannot be reassigned; is mutable
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Bubble Sort ]]]]]]]]]]]]]]]]]]]]]]]]]
 
-def bubble_sort(array)
-  sorted = false 
-  while !sorted 
-      sorted = true 
-      (0...array.length - 1).each do |i|
-          if array[i] > array[i + 1]
-              array[i], array[i + 1] = array[i + 1], array[i] 
-              sorted = false 
-          end
-      end
-  end
-  array 
-end
+# def bubble_sort(array)
+#   sorted = false 
+#   while !sorted 
+#       sorted = true 
+#       (0...array.length - 1).each do |i|
+#           if array[i] > array[i + 1]
+#               array[i], array[i + 1] = array[i + 1], array[i] 
+#               sorted = false 
+#           end
+#       end
+#   end
+#   array 
+# end
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Exceptions ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 
@@ -2748,4 +2748,61 @@ def fib_tab(n)
   end
 
   table[n]
+end
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$ W15D2 $$$$$$$$$$$$$$$$$$$$$$$$$
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Naive Sorts ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+
+# Bubble Sort
+
+def bubble_sort(array)
+  sorted = false
+  
+  while !sorted 
+    sorted = true
+
+    (0...array.length - 1).each do |i|
+      if array[i] > array[i + 1]
+        array[i], array[i + 1] = array[i + 1], array[i]
+        sorted = false
+      end
+    end
+  end
+
+  array 
+end
+
+# Selection Sort
+
+def selection_sort(array) 
+  (0...array.length).each do |i|
+    min_idx = i 
+
+    (i + 1...array.length).each do |j|
+      min_idx = j if array[min_idx] > array[j]
+    end
+
+    array[min_idx], array[i] = array[i], array[min_idx]
+  end
+
+  array
+end
+
+# Insertion Sort
+
+def insertion_sort(array)
+  (1...array.length).each do |i|
+    curr_num = array[i]
+    j = i - 1
+
+    while j >= 0 && curr_num < array[j]
+      array[j + 1] = array[j]
+      j -= 1
+    end
+    
+    array[j + 1] = curr_num
+  end
+
+  array
 end
