@@ -1,5 +1,6 @@
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #1 max value ]]]]]]]]]]]]]]]]]]]]]]]]]
-// Write a function, maxValue, that takes in array of numbers as an argument. The function should return the largest number in the array.
+// Write a function, maxValue, that takes in array of numbers as an argument. 
+// The function should return the largest number in the array.
 //
 // Solve this without using any built-in array methods.
 //
@@ -46,11 +47,13 @@ const maxValue = (nums) => {
 // };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #2 is prime ]]]]]]]]]]]]]]]]]]]]]]]]]
-// Write a function, isPrime, that takes in a number as an argument. The function should return a boolean indicating whether or not the given number is prime.
+// Write a function, isPrime, that takes in a number as an argument. The function 
+// should return a boolean indicating whether or not the given number is prime.
 //
 // A prime number is a number that is only divisible two distinct numbers: 1 and itself.
 //
-// For example, 7 is a prime because it is only divisible by 1 and 7. For example, 6 is not a prime because it is divisible by 1, 2, 3, and 6.
+// For example, 7 is a prime because it is only divisible by 1 and 7. For example, 
+// 6 is not a prime because it is divisible by 1, 2, 3, and 6.
 //
 // You can assume that the input number is a positive integer.
 //
@@ -91,12 +94,15 @@ const isPrime = (n) => {
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #3 uncompress ]]]]]]]]]]]]]]]]]]]]]]]]]
-// Write a function, uncompress, that takes in a string as an argument. The input string will be formatted into multiple groups according to the following pattern:
+// Write a function, uncompress, that takes in a string as an argument. The input 
+// string will be formatted into multiple groups according to the following pattern:
 //
 // <number><char>
 //
 // for example, '2c' or '3a'.
-// The function should return an uncompressed version of the string where each 'char' of a group is repeated 'number' times concecutively. You may assume that the input string is well-formed according to the previously mentioned pattern.
+// The function should return an uncompressed version of the string where each 
+// 'char' of a group is repeated 'number' times concecutively. You may assume that 
+// the input string is well-formed according to the previously mentioned pattern.
 //
 // test_00:
 // uncompress("2c3a1t"); // -> 'ccaaat'
@@ -148,3 +154,24 @@ const uncompress = (s) => {
 //   }
 //   return result.join('');
 // };
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #4 compress ]]]]]]]]]]]]]]]]]]]]]]]]]
+//
+// Write a function, compress, that takes in a string as an argument. The function 
+// should return a compressed version of the string where consecutive occurences
+// of the same characters are compressed into the number of occurences followed 
+// by the character. Single character occurences should not be changed.
+//
+// 'aaa' compresses to '3a'
+// 'cc' compresses to '2c'
+// 't' should remain as 't'
+// You can assume that the input only contains alphabetic characters.
+//
+// test_00:
+// compress('ccaaatsss'); // -> '2c3at3s'
+// test_01:
+// compress('ssssbbz'); // -> '4s2bz'
+// test_02:
+// compress('ppoppppp'); // -> '2po5p'
+// test_03:
+// compress('nnneeeeeeeeeeeezz'); // -> '3n12e2z'
