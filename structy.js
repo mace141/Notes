@@ -1078,7 +1078,7 @@ const isUnivalueList = (head) => { // Time: O(n), Space: O(1)
 };
 
 // ========================= Recursive =========================
-const isUnivalueList = (head, prev = head) => { // Time: O(n), Space: O(1)
+const isUnivalueList = (head, prev = head) => { // Time: O(n), Space: O(n)
   if (head == null) return true;
 
   if (head.val == prev.val) {
@@ -1279,3 +1279,10 @@ const removeNode = (head, targetVal) => { // Time: O(n), Space: O(1)
 };
 
 // ========================= Recursive =========================
+// const removeNode = (head, targetVal) => { // Time: O(n), Space: O(n)
+//   if (head == null) return null;
+//   if (head.val == targetVal) return head.next;
+
+//   head.next = removeNode(head.next, targetVal);
+//   return head;
+// };
