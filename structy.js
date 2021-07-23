@@ -8,14 +8,19 @@
 //
 // test_00:
 // maxValue([4, 7, 2, 8, 10, 9]); // -> 10
+//
 // test_01:
 // maxValue([10, 5, 40, 40.3]); // -> 40.3
+//
 // test_02:
 // maxValue([-5, -2, -1, -11]); // -> -1
+//
 // test_03:
 // maxValue([42]); // -> 42
+//
 // test_04:
 // maxValue([1000, 8]); // -> 1000
+//
 // test_05:
 // maxValue([1000, 8, 9000]); // -> 9000
 
@@ -59,26 +64,37 @@ const maxValue = (nums) => {
 //
 // test_00:
 // isPrime(2); // -> true
+//
 // test_01:
 // isPrime(3); // -> true
+//
 // test_02:
 // isPrime(4); // -> false
+//
 // test_03:
 // isPrime(5); // -> true
+//
 // test_04:
 // isPrime(6); // -> false
+//
 // test_05:
 // isPrime(7); // -> true
+//
 // test_06:
 // isPrime(8); // -> false
+//
 // test_07:
 // isPrime(25); // -> false
+//
 // test_08:
 // isPrime(31); // -> true
+//
 // test_09:
 // isPrime(2017); // -> true
+//
 // test_10:
 // isPrime(2048); // -> false
+//
 // test_11:
 // isPrime(1); // -> false
 
@@ -106,10 +122,13 @@ const isPrime = (n) => {
 //
 // test_00:
 // uncompress("2c3a1t"); // -> 'ccaaat'
+//
 // test_01:
 // uncompress("4s2b"); // -> 'ssssbb'
+//
 // test_02:
 // uncompress("2p1o5p"); // -> 'ppoppppp'
+//
 // test_03:
 // uncompress("3n12e2z"); // -> 'nnneeeeeeeeeeeezz'
 
@@ -169,10 +188,13 @@ const uncompress = (s) => {
 //
 // test_00:
 // compress('ccaaatsss'); // -> '2c3at3s'
+//
 // test_01:
 // compress('ssssbbz'); // -> '4s2bz'
+//
 // test_02:
 // compress('ppoppppp'); // -> '2po5p'
+//
 // test_03:
 // compress('nnneeeeeeeeeeeezz'); // -> '3n12e2z'
 
@@ -203,14 +225,19 @@ const compress = (s) => {
 //
 // test_00:
 // anagrams('restful', 'fluster'); // -> true
+//
 // test_01:
 // anagrams('cats', 'tocs'); // -> false
+//
 // test_02:
 // anagrams('monkeyswrite', 'newyorktimes'); // -> true
+//
 // test_03:
 // anagrams('paper', 'reapa'); // -> false
+//
 // test_04:
 // anagrams('elbow', 'below'); // -> true
+//
 // test_05:
 // anagrams('tax', 'taxi'); // -> false
 
@@ -249,14 +276,19 @@ const anagrams = (s1, s2) => {
 //
 // test_00:
 // mostFrequentChar('bookeeper'); // -> 'e'
+//
 // test_01:
 // mostFrequentChar('david'); // -> 'd'
+//
 // test_02:
 // mostFrequentChar('abby'); // -> 'b'
+//
 // test_03:
 // mostFrequentChar('mississippi'); // -> 'i'
+//
 // test_04:
 // mostFrequentChar('potato'); // -> 'o'
+//
 // test_05:
 // mostFrequentChar('eleventennine'); // -> 'e'
 
@@ -292,14 +324,19 @@ const mostFrequentChar = (s) => {
 //
 // test_00:
 // pairSum([3, 2, 5, 4, 1], 8); // -> [0, 2]
+//
 // test_01:
 // pairSum([4, 7, 9, 2, 5, 1], 5); // -> [0, 5]
+//
 // test_02:
 // pairSum([4, 7, 9, 2, 5, 1], 3); // -> [3, 5]
+//
 // test_03:
 // pairSum([1, 6, 7, 2], 13); // -> [1, 2]
+//
 // test_04:
 // pairSum([9, 9], 18); // -> [0, 1]
+//
 // test_05:
 // pairSum([6, 4, 2, 8 ], 12); // -> [1, 3]
 
@@ -327,14 +364,19 @@ const pairSum = (numbers, targetSum) => {
 //
 // test_00:
 // pairProduct([3, 2, 5, 4, 1], 8); // -> [1, 3]
+//
 // test_01:
 // pairProduct([3, 2, 5, 4, 1], 10); // -> [1, 2]
+//
 // test_02:
 // pairProduct([4, 7, 9, 2, 5, 1], 5); // -> [4, 5]
+//
 // test_03:
 // pairProduct([4, 7, 9, 2, 5, 1], 35); // -> [1, 4]
+//
 // test_04:
 // pairProduct([3, 2, 5, 4, 1], 10); // -> [1, 2]
+//
 // test_05:
 // pairProduct([4, 6, 8, 2], 16); // -> [2, 3]
 
@@ -360,12 +402,16 @@ const pairProduct = (numbers, targetProduct) => {
 //
 // test_00:
 // intersection([4,2,1,6], [3,6,9,2,10]) // -> [2,6]
+//
 // test_01:
 // intersection([2,4,6], [4,2]) // -> [2,4]
+//
 // test_02:
 // intersection([4,2,1], [1,2,4,6]) // -> [1,2,4]
+//
 // test_03:
 // intersection([0,1,2], [10,11]) // -> []
+//
 // test_04:
 // const a = [];
 // const b = [];
@@ -396,21 +442,26 @@ const intersection = (a, b) => {
 //
 // Elements that are not 5 can appear in any order in the output, as long as all 5s are at the end of the array.
 //
+//
 // test_00
 // fiveSort([12, 5, 1, 5, 12, 7]);
-// // -> [12, 7, 1, 12, 5, 5] 
+// -> [12, 7, 1, 12, 5, 5] 
+//
 // test_01
 // fiveSort([5, 2, 5, 6, 5, 1, 10, 2, 5, 5]);
-// // -> [2, 2, 10, 6, 1, 5, 5, 5, 5, 5] 
+// -> [2, 2, 10, 6, 1, 5, 5, 5, 5, 5] 
+//
 // test_02
 // fiveSort([5, 5, 5, 1, 1, 1, 4]);
-// // -> [4, 1, 1, 1, 5, 5, 5] 
+// -> [4, 1, 1, 1, 5, 5, 5] 
+//
 // test_03
 // fiveSort([5, 5, 6, 5, 5, 5, 5]);
-// // -> [6, 5, 5, 5, 5, 5, 5] 
+// -> [6, 5, 5, 5, 5, 5, 5] 
+//
 // test_04
 // fiveSort([5, 1, 2, 5, 5, 3, 2, 5, 1, 5, 5, 5, 4, 5]);
-// // -> [4, 1, 2, 1, 2, 3, 5, 5, 5, 5, 5, 5, 5, 5] 
+// -> [4, 1, 2, 1, 2, 3, 5, 5, 5, 5, 5, 5, 5, 5] 
 
 const fiveSort = (nums) => {
   let i = 0;
@@ -446,24 +497,27 @@ const fiveSort = (nums) => {
 // b.next = c;
 // c.next = d;
 //
-// // a -> b -> c -> d
+// a -> b -> c -> d
 //
 // linkedListValues(a); // -> [ 'a', 'b', 'c', 'd' ]
+//
 // test_01:
 // const x = new Node("x");
 // const y = new Node("y");
 //
 // x.next = y;
 //
-// // x -> y
+// x -> y
 //
 // linkedListValues(x); // -> [ 'x', 'y' ]
+//
 // test_02:
 // const q = new Node("q");
 //
-// // q
+// q
 //
 // linkedListValues(q); // -> [ 'q' ]
+//
 // test_03:
 // linkedListValues(null); // -> [ ]
 
@@ -499,6 +553,7 @@ const linkedListValues = (head) => {
 // 2 -> 8 -> 3 -> -1 -> 7
 //
 // sumList(a); // 19
+//
 // test_01:
 // const x = new Node(38);
 // const y = new Node(4);
@@ -508,12 +563,14 @@ const linkedListValues = (head) => {
 // 38 -> 4
 //
 // sumList(x); // 42
+//
 // test_02:
 // const z = new Node(100);
 //
 // 100
 //
 // sumList(z); // 100
+//
 // test_03:
 // sumList(null); // 0
 
@@ -547,6 +604,7 @@ const sumList = (head) => {
 // a -> b -> c -> d
 //
 // linkedListFind(a, "c"); // true
+//
 // test_01:
 // const a = new Node("a");
 // const b = new Node("b");
@@ -560,6 +618,7 @@ const sumList = (head) => {
 // a -> b -> c -> d
 //
 // linkedListFind(a, "d"); // true
+//
 // test_02:
 // const a = new Node("a");
 // const b = new Node("b");
@@ -573,6 +632,7 @@ const sumList = (head) => {
 // a -> b -> c -> d
 //
 // linkedListFind(a, "q"); // false
+//
 // test_03:
 // const node1 = new Node("jason");
 // const node2 = new Node("leneli");
@@ -582,12 +642,14 @@ const sumList = (head) => {
 // jason -> leneli
 //
 // linkedListFind(node1, "jason"); // true
+//
 // test_04:
 // const node1 = new Node(42);
 //
 // 42
 //
 // linkedListFind(node1, 42); // true
+//
 // test_05:
 // const node1 = new Node(42);
 //
@@ -622,6 +684,7 @@ const linkedListFind = (head, target) => {
 // a -> b -> c -> d
 //
 // getNodeValue(a, 2); // 'c'
+//
 // test_01:
 // const a = new Node("a");
 // const b = new Node("b");
@@ -635,6 +698,7 @@ const linkedListFind = (head, target) => {
 // a -> b -> c -> d
 //
 // getNodeValue(a, 3); // 'd'
+//
 // test_02:
 // const a = new Node("a");
 // const b = new Node("b");
@@ -648,6 +712,7 @@ const linkedListFind = (head, target) => {
 // a -> b -> c -> d
 //
 // getNodeValue(a, 7); // null
+//
 // test_03:
 // const node1 = new Node("banana");
 // const node2 = new Node("mango");
@@ -657,6 +722,7 @@ const linkedListFind = (head, target) => {
 // banana -> mango
 //
 // getNodeValue(node1, 0); // 'banana'
+//
 // test_04:
 // const node1 = new Node("banana");
 // const node2 = new Node("mango");
@@ -711,6 +777,7 @@ const getNodeValue = (head, index) => { // Time: O(n), Space: O(1)
 // a -> b -> c -> d -> e -> f
 //
 // reverseList(a); // f -> e -> d -> c -> b -> a
+//
 // test_01:
 // const x = new Node("x");
 // const y = new Node("y");
@@ -720,6 +787,7 @@ const getNodeValue = (head, index) => { // Time: O(n), Space: O(1)
 // x -> y
 //
 // reverseList(x); // y -> x
+//
 // test_02:
 // const p = new Node("p");
 //
@@ -779,6 +847,7 @@ const reverseList = (head) => { // Time: O(n), Space: O(1)
 //
 // zipperLists(a, x);
 // a -> x -> b -> y -> c -> z
+//
 // test_01:
 // const a = new Node("a");
 // const b = new Node("b");
@@ -802,6 +871,7 @@ const reverseList = (head) => { // Time: O(n), Space: O(1)
 //
 // zipperLists(a, x);
 // a -> x -> b -> y -> c -> z -> d -> e -> f
+//
 // test_02:
 // const s = new Node("s");
 // const t = new Node("t");
@@ -819,6 +889,7 @@ const reverseList = (head) => { // Time: O(n), Space: O(1)
 //
 // zipperLists(s, one);
 // s -> 1 -> t -> 2 -> 3 -> 4
+//
 // test_03:
 // const w = new Node("w");
 //
@@ -833,6 +904,7 @@ const reverseList = (head) => { // Time: O(n), Space: O(1)
 // 
 // zipperLists(w, one);
 // w -> 1 -> 2 -> 3
+//
 // test_04:
 // const one = new Node(1);
 // const two = new Node(2);
@@ -919,6 +991,7 @@ const zipperLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
 //
 // mergeLists(a, q);
 // 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 12 -> 20 -> 25 -> 28 
+//
 // test_01:
 // const a = new Node(5);
 // const b = new Node(7);
@@ -944,6 +1017,7 @@ const zipperLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
 //
 // mergeLists(a, q);
 // 1 -> 5 -> 7 -> 8 -> 9 -> 10 -> 10 -> 12 -> 20 -> 28 
+//
 // test_02:
 // const h = new Node(30);
 // 30
@@ -1016,6 +1090,7 @@ const mergeLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
 // 7 -> 7 -> 7
 //
 // isUnivalueList(a); // true
+//
 // test_01:
 // const a = new Node(7);
 // const b = new Node(7);
@@ -1027,6 +1102,7 @@ const mergeLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
 // 7 -> 7 -> 4
 //
 // isUnivalueList(a); // false
+//
 // test_02:
 // const u = new Node(2);
 // const v = new Node(2);
@@ -1042,6 +1118,7 @@ const mergeLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
 // 2 -> 2 -> 2 -> 2 -> 2
 //
 // isUnivalueList(u); // true
+//
 // test_03:
 // const u = new Node(2);
 // const v = new Node(2);
@@ -1057,6 +1134,7 @@ const mergeLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
 // 2 -> 2 -> 3 -> 3 -> 2
 //
 // isUnivalueList(u); // false
+//
 // test_04:
 // const z = new Node('z');
 //
@@ -1110,6 +1188,7 @@ const isUnivalueList = (head, prev = head) => { // Time: O(n), Space: O(n)
 // 5 -> 5 -> 7 -> 7 -> 7 -> 6
 // 
 // longestStreak(a); // 3
+//
 // test_01:
 // const a = new Node(3);
 // const b = new Node(3);
@@ -1127,6 +1206,7 @@ const isUnivalueList = (head, prev = head) => { // Time: O(n), Space: O(n)
 // 3 -> 3 -> 3 -> 3 -> 9 -> 9
 //
 // longestStreak(a); // 4
+//
 // test_02:
 // const a = new Node(9);
 // const b = new Node(9);
@@ -1144,6 +1224,7 @@ const isUnivalueList = (head, prev = head) => { // Time: O(n), Space: O(n)
 // 9 -> 9 -> 1 -> 9 -> 9 -> 9
 //
 // longestStreak(a); // 3
+//
 // test_03:
 // const a = new Node(5);
 // const b = new Node(5);
@@ -1153,12 +1234,14 @@ const isUnivalueList = (head, prev = head) => { // Time: O(n), Space: O(n)
 // 5 -> 5
 //
 // longestStreak(a); // 2
+//
 // test_04:
 // const a = new Node(4);
 //
 // 4
 //
 // longestStreak(a); // 1
+//
 // test_05:
 // longestStreak(null); // 0
 
@@ -1184,7 +1267,7 @@ const longestStreak = (head) => { // Time: O(n), Space: O(1)
   return greatestStreak;
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #20 remove node ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #20 remove node ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, removeNode, that takes in the head of a linked list and a 
 // target value as arguments. The function should delete the node containing the 
 // target value from the linked list and return the head of the resulting linked 
@@ -1213,6 +1296,7 @@ const longestStreak = (head) => { // Time: O(n), Space: O(1)
 //
 // removeNode(a, "c");
 // a -> b -> d -> e -> f
+//
 // test_01:
 // const x = new Node("x");
 // const y = new Node("y");
@@ -1225,6 +1309,7 @@ const longestStreak = (head) => { // Time: O(n), Space: O(1)
 //
 // removeNode(x, "z");
 // x -> y
+//
 // test_02:
 // const q = new Node("q");
 // const r = new Node("r");
@@ -1237,6 +1322,7 @@ const longestStreak = (head) => { // Time: O(n), Space: O(1)
 //
 // removeNode(q, "q");
 // r -> s
+//
 // test_03:
 // const node1 = new Node("h");
 // const node2 = new Node("i");
@@ -1251,6 +1337,7 @@ const longestStreak = (head) => { // Time: O(n), Space: O(1)
 //
 // removeNode(node1, "i");
 // h -> j -> i
+//
 // test_04:
 // const t = new Node("t");
 //
@@ -1286,3 +1373,92 @@ const removeNode = (head, targetVal) => { // Time: O(n), Space: O(1)
 //   head.next = removeNode(head.next, targetVal);
 //   return head;
 // };
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #21 insert node ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+// Write a function, insertNode, that takes in the head of a linked list, a 
+// value, and an index. The function should insert a new node with the value into 
+// the list at the specified index. Consider the head of the linked list as index 
+// 0. The function should return the head of the resulting linked list.
+//
+// Do this in-place.
+//
+// You may assume that the input list is non-empty and the index is not greater 
+// than the length of the input list.
+//
+// test_00:
+// const a = new Node("a");
+// const b = new Node("b");
+// const c = new Node("c");
+// const d = new Node("d");
+//
+// a.next = b;
+// b.next = c;
+// c.next = d;
+//
+// a -> b -> c -> d
+//
+// insertNode(a, 'x', 2);
+// a -> b -> x -> c -> d
+//
+// test_01:
+// const a = new Node("a");
+// const b = new Node("b");
+// const c = new Node("c");
+// const d = new Node("d");
+//
+// a.next = b;
+// b.next = c;
+// c.next = d;
+//
+// a -> b -> c -> d
+//
+// insertNode(a, 'v', 3);
+// a -> b -> c -> v -> d
+//
+// test_02:
+// const a = new Node("a");
+// const b = new Node("b");
+// const c = new Node("c");
+// const d = new Node("d");
+//
+// a.next = b;
+// b.next = c;
+// c.next = d;
+//
+// a -> b -> c -> d
+//
+// insertNode(a, 'm', 4);
+// a -> b -> c -> d -> m
+//
+// test_03:
+// const a = new Node("a");
+// const b = new Node("b");
+//
+// a.next = b;
+//
+// a -> b
+//
+// insertNode(a, 'z', 0);
+// z -> a -> b 
+
+// ========================= Iterative =========================
+const insertNode = (head, value, index) => {
+  let count = 0;
+  let currNode = new Node(null);
+  let dummyHead = currNode;
+  dummyHead.next = head;
+
+  while (count <= index) {
+    if (count == index) {
+      const nextNode = currNode.next;
+      currNode.next = new Node(value);
+      currNode.next.next = nextNode;
+    }
+    currNode = currNode.next;
+    count++;
+  }
+
+  return dummyHead.next;
+};
+
+// ========================= Recursive =========================
