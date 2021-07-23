@@ -727,13 +727,29 @@ const getNodeValue = (head, index) => { // Time: O(n), Space: O(1)
 //
 // reverseList(p); // p
 
-const reverseList = (head, prev = null) => { // Time: O(n), Space: O(n)
-  if (head == null) return prev;
-  
-  const nextNode = head.next;
-  head.next = prev;
-  return reverseList(nextNode, head);
+// ========================= Iterative =========================
+const reverseList = (head) => { // Time: O(n), Space: O(1)
+  let currNode = head;
+  let prevNode = null;
+
+  while (currNode != null) {
+    const nextNode = currNode.next;
+    currNode.next = prevNode;
+    prevNode = currNode;
+    currNode = nextNode;
+  }
+
+  return prevNode;
 };
+
+// ========================= Recursive =========================
+// const reverseList = (head, prev = null) => { // Time: O(n), Space: O(n)
+//   if (head == null) return prev;
+  
+//   const nextNode = head.next;
+//   head.next = prev;
+//   return reverseList(nextNode, head);
+// };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #16 zipper list ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, zipperLists, that takes in the head of two linked lists as 
@@ -831,6 +847,7 @@ const reverseList = (head, prev = null) => { // Time: O(n), Space: O(n)
 // zipperLists(one, w);
 // 1 -> w -> 2 -> 3
 
+// ========================= Recursive =========================
 const zipperLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(min(n, m))
   if (head1 == null && head2 == null) return null;
   if (head1 == null) return head2;
@@ -914,6 +931,7 @@ const zipperLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(min(n, m
 // mergeLists(h, p);
 // 15 -> 30 -> 67
 
+// ========================= Recursive =========================
 const mergeLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(min(n, m))
   if (head1 == null && head2 == null) return null;
   if (head1 == null) return head2;
