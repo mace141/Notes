@@ -1669,3 +1669,21 @@ const addLists = (head1, head2) => {
 
   return sumHead.next;
 };
+
+// ========================= Recursive =========================
+const addLists = (head1, head2, carry = 0) => {
+  if (head1 == null && head2 == null && carry == 0) return null;
+
+  let val1 = head1 == null ? 0 : head1.val;
+  let val2 = head2 == null ? 0 : head2.val;
+  let sum = val1 + val2 + carry;
+  carry = sum > 9 ? 1 : 0;
+  
+  let num = sum % 10;
+  const head = new Node(num);
+  const curr1 = head1 == null ? null : head1.next;
+  const curr2 = head2 == null ? null : head2.next;
+  head.next = addLists(curr1, curr2, carry);
+
+  return head;
+};
