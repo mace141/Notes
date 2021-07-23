@@ -25,7 +25,6 @@
 // maxValue([1000, 8, 9000]); // -> 9000
 
 const maxValue = (nums) => {
-  // todo
   let i = 0;
   let max = nums[i];
 
@@ -99,7 +98,6 @@ const maxValue = (nums) => {
 // isPrime(1); // -> false
 
 const isPrime = (n) => {
-  // todo
   if (n < 2) return false;
   
   for (let i = 2; i <= Math.sqrt(n); i++) {
@@ -133,7 +131,6 @@ const isPrime = (n) => {
 // uncompress("3n12e2z"); // -> 'nnneeeeeeeeeeeezz'
 
 const uncompress = (s) => {
-  // todo
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   let result = "";
   let numStr = "";
@@ -748,12 +745,12 @@ const getNodeValue = (head, index) => { // Time: O(n), Space: O(1)
 };
 
 // ========================= Recursive =========================
-// const getNodeValue = (head, index) => { // Time: O(n), Space: O(n)
-//   if (index == 0) return head.val;
-//   if (head == null) return null;
+const getNodeValue = (head, index) => { // Time: O(n), Space: O(n)
+  if (index == 0) return head.val;
+  if (head == null) return null;
 
-//   return getNodeValue(head.next, index - 1);
-// };
+  return getNodeValue(head.next, index - 1);
+};
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #15 reverse list ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, reverseList, that takes in the head of a linked list as an 
@@ -811,13 +808,13 @@ const reverseList = (head) => { // Time: O(n), Space: O(1)
 };
 
 // ========================= Recursive =========================
-// const reverseList = (head, prev = null) => { // Time: O(n), Space: O(n)
-//   if (head == null) return prev;
+const reverseList = (head, prev = null) => { // Time: O(n), Space: O(n)
+  if (head == null) return prev;
   
-//   const nextNode = head.next;
-//   head.next = prev;
-//   return reverseList(nextNode, head);
-// };
+  const nextNode = head.next;
+  head.next = prev;
+  return reverseList(nextNode, head);
+};
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #16 zipper list ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, zipperLists, that takes in the head of two linked lists as 
@@ -945,17 +942,17 @@ const zipperLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
 };
 
 // ========================= Recursive =========================
-// const zipperLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(min(n, m))
-//   if (head1 == null && head2 == null) return null;
-//   if (head1 == null) return head2;
-//   if (head2 == null) return head1;
+const zipperLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(min(n, m))
+  if (head1 == null && head2 == null) return null;
+  if (head1 == null) return head2;
+  if (head2 == null) return head1;
 
-//   const next1 = head1.next;
-//   const next2 = head2.next;
-//   head1.next = head2;
-//   head2.next = zipperLists(next1, next2);
-//   return head1;
-// };
+  const next1 = head1.next;
+  const next2 = head2.next;
+  head1.next = head2;
+  head2.next = zipperLists(next1, next2);
+  return head1;
+};
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #17 merge lists ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, mergeLists, that takes in the head of two sorted linked 
@@ -1056,21 +1053,21 @@ const mergeLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
 };
 
 // ========================= Recursive =========================
-// const mergeLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(min(n, m))
-//   if (head1 == null && head2 == null) return null;
-//   if (head1 == null) return head2;
-//   if (head2 == null) return head1;
+const mergeLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(min(n, m))
+  if (head1 == null && head2 == null) return null;
+  if (head1 == null) return head2;
+  if (head2 == null) return head1;
 
-//   if (head1.val < head2.val) {
-//     const next1 = head1.next;
-//     head1.next = mergeLists(next1, head2);
-//     return head1;
-//   } else {
-//     const next2 = head2.next;
-//     head2.next = mergeLists(next2, head1);
-//     return head2;
-//   } 
-// };
+  if (head1.val < head2.val) {
+    const next1 = head1.next;
+    head1.next = mergeLists(next1, head2);
+    return head1;
+  } else {
+    const next2 = head2.next;
+    head2.next = mergeLists(next2, head1);
+    return head2;
+  } 
+};
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #18 is univalue list ]]]]]]]]]]]]]]]]]]]]]]]]] 
 // Write a function, isUnivalueList, that takes in the head of a linked list as 
@@ -1366,13 +1363,13 @@ const removeNode = (head, targetVal) => { // Time: O(n), Space: O(1)
 };
 
 // ========================= Recursive =========================
-// const removeNode = (head, targetVal) => { // Time: O(n), Space: O(n)
-//   if (head == null) return null;
-//   if (head.val == targetVal) return head.next;
+const removeNode = (head, targetVal) => { // Time: O(n), Space: O(n)
+  if (head == null) return null;
+  if (head.val == targetVal) return head.next;
 
-//   head.next = removeNode(head.next, targetVal);
-//   return head;
-// };
+  head.next = removeNode(head.next, targetVal);
+  return head;
+};
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #21 insert node ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, insertNode, that takes in the head of a linked list, a 
@@ -1442,7 +1439,7 @@ const removeNode = (head, targetVal) => { // Time: O(n), Space: O(1)
 // z -> a -> b 
 
 // ========================= Iterative =========================
-const insertNode = (head, value, index) => {
+const insertNode = (head, value, index) => { // Time: O(n), Space: O(1)
   let count = 0;
   let currNode = new Node(null);
   let dummyHead = currNode;
@@ -1462,3 +1459,183 @@ const insertNode = (head, value, index) => {
 };
 
 // ========================= Recursive =========================
+const insertNode = (head, value, index, count = 0) => { // Time: O(n), Space: O(n)
+  if (index == 0) {
+    const newNode = new Node(value);
+    newNode.next = head;
+    return newNode;
+  }
+
+  if (count == index - 1) {
+    const nextNode = head.next;
+    head.next = new Node(value);
+    head.next.next = nextNode;
+    return head;
+  }
+
+  insertNode(head.next, value, index, count + 1);
+  return head;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #22 create linked list ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function, createLinkedList, that takes in an array of values as an 
+// argument. The function should create a linked list containing each element of 
+// the array as the values of the nodes. The function should return the head of 
+// the linked list.
+//
+// test_00:
+// createLinkedList(["h", "e", "y"]);
+// h -> e -> y
+//
+// test_01:
+// createLinkedList([1, 7, 1, 8]);
+// 1 -> 7 -> 1 -> 8
+//
+// test_02:
+// createLinkedList(["a"]);
+// a
+//
+// test_03:
+// createLinkedList([]);
+// null
+
+// ========================= Iterative =========================
+const createLinkedList = (values) => {
+  const dummyHead = new Node(null);
+  let tail = dummyHead;
+  
+  for (let val of values) {
+    tail.next = new Node(val);
+    tail = tail.next;
+  }
+  
+  return dummyHead.next;
+};
+
+// ========================= Recursive =========================
+const createLinkedList = (values, i = 0) => {
+  if (i == values.length) return null;
+  const newNode = new Node(values[i]);
+  newNode.next = createLinkedList(values, i + 1);
+  return newNode;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #23 add lists ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+// Write a function, addLists, that takes in the head of two linked lists, each 
+// representing a number. The nodes of the linked lists contain digits as values. 
+// The nodes in the input lists are reversed; this means that the least significant 
+// digit of the number is the head. The function should return the head of a new 
+// linked listed representing the sum of the input lists. The output list should 
+// have it's digits reversed as well.
+
+// Say we wanted to compute 621 + 354 normally. The sum is 975:
+
+//    621
+//  + 354
+//  -----
+//    975
+
+// Then, the reversed linked list format of this problem would appear as:
+
+//     1 -> 2 -> 6
+//  +  4 -> 5 -> 3
+//  --------------
+//     5 -> 7 -> 9
+// test_00:
+//   621
+// + 354
+// -----
+//   975
+
+// const a1 = new Node(1);
+// const a2 = new Node(2);
+// const a3 = new Node(6);
+// a1.next = a2;
+// a2.next = a3;
+// 1 -> 2 -> 6
+
+// const b1 = new Node(4);
+// const b2 = new Node(5);
+// const b3 = new Node(3);
+// b1.next = b2;
+// b2.next = b3;
+// 4 -> 5 -> 3
+
+// addLists(a1, b1);
+// 5 -> 7 -> 9
+// test_01:
+//  7541
+// +  32
+// -----
+//  7573
+
+// const a1 = new Node(1);
+// const a2 = new Node(4);
+// const a3 = new Node(5);
+// const a4 = new Node(7);
+// a1.next = a2;
+// a2.next = a3;
+// a3.next = a4;
+// 1 -> 4 -> 5 -> 7
+
+// const b1 = new Node(2);
+// const b2 = new Node(3);
+// b1.next = b2;
+// 2 -> 3 
+
+// addLists(a1, b1);
+// 3 -> 7 -> 5 -> 7
+// test_02:
+//   39
+// + 47
+// ----
+//   86
+
+// const a1 = new Node(9);
+// const a2 = new Node(3);
+// a1.next = a2;
+// 9 -> 3
+
+// const b1 = new Node(7);
+// const b2 = new Node(4);
+// b1.next = b2;
+// 7 -> 4
+
+// addLists(a1, b1);
+// 6 -> 8
+// test_03:
+//   89
+// + 47
+// ----
+//  136
+
+// const a1 = new Node(9);
+// const a2 = new Node(8);
+// a1.next = a2;
+// 9 -> 8
+
+// const b1 = new Node(7);
+// const b2 = new Node(4);
+// b1.next = b2;
+// 7 -> 4
+
+// addLists(a1, b1);
+// 6 -> 3 -> 1
+// test_04:
+//   999
+//  +  6
+//  ----
+//  1005
+
+// const a1 = new Node(9);
+// const a2 = new Node(9);
+// const a3 = new Node(9);
+// a1.next = a2;
+// a2.next = a3;
+// 9 -> 9 -> 9
+
+// const b1 = new Node(6);
+// 6
+
+// addLists(a1, b1);
+// 5 -> 0 -> 0 -> 1
