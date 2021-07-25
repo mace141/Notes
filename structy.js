@@ -1646,7 +1646,7 @@ const createLinkedList = (values, i = 0) => {
 // 5 -> 0 -> 0 -> 1
 
 // ========================= Iterative =========================
-const addLists = (head1, head2) => {
+const addLists = (head1, head2) => { // Time: O(max(n, m)), Space: O(max(n, m))
   const sumHead = new Node(null);
   let currNode = sumHead;
   let curr1 = head1;
@@ -1671,7 +1671,7 @@ const addLists = (head1, head2) => {
 };
 
 // ========================= Recursive =========================
-const addLists = (head1, head2, carry = 0) => {
+const addLists = (head1, head2, carry = 0) => { // Time: O(max(n, m)), Space: O(max(n, m))
   if (head1 == null && head2 == null && carry == 0) return null;
 
   let val1 = head1 == null ? 0 : head1.val;
@@ -1686,4 +1686,117 @@ const addLists = (head1, head2, carry = 0) => {
   head.next = addLists(curr1, curr2, carry);
 
   return head;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #24 depth first values ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// Write a function, depthFirstValues, that takes in the root of a binary tree. 
+// The function should return an array containing all values of the tree in 
+// depth-first order.
+
+// test_00:
+// const a = new Node('a');
+// const b = new Node('b');
+// const c = new Node('c');
+// const d = new Node('d');
+// const e = new Node('e');
+// const f = new Node('f');
+
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+
+//      a
+//    /   \
+//   b     c
+//  / \     \
+// d   e     f
+
+// depthFirstValues(a); 
+//    -> ['a', 'b', 'd', 'e', 'c', 'f']
+// test_01:
+// const a = new Node('a');
+// const b = new Node('b');
+// const c = new Node('c');
+// const d = new Node('d');
+// const e = new Node('e');
+// const f = new Node('f');
+// const g = new Node('g');
+
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+// e.left = g;
+
+//      a
+//    /   \
+//   b     c
+//  / \     \
+// d   e     f
+//    /
+//   g
+
+// depthFirstValues(a); 
+//    -> ['a', 'b', 'd', 'e', 'g', 'c', 'f']
+// test_02:
+// const a = new Node('a');
+//      a
+// depthFirstValues(a); 
+//    -> ['a']
+// test_03:
+// const a = new Node('a');
+// const b = new Node('b');
+// const c = new Node('c');
+// const d = new Node('d');
+// const e = new Node('e');
+
+// a.right = b;
+// b.left = c;
+// c.right = d;
+// d.right = e;
+
+//      a
+//       \
+//        b
+//       /
+//      c
+//       \
+//        d
+//         \
+//          e
+
+// depthFirstValues(a); 
+//    -> ['a', 'b', 'c', 'd', 'e']
+// test_04:
+// howHigh(null); 
+//    -> []
+
+
+// ========================= Iterative =========================
+const depthFirstValues = (root) => { // Time: O(n), Space: O(n)
+  if (root == null) return [];
+
+  const values = [];
+  const stack = [root];
+
+  while (stack.length > 0) {
+    const node = stack.pop();
+    values.push(node.val);
+
+    if (node.right != null) stack.push(node.right);
+    if (node.left != null) stack.push(node.left);
+  }
+
+  return values;
+};
+
+// ========================= Recursive =========================
+const depthFirstValues = (root) => { // Time: O(n), Space: O(n)
+  if (root == null) return [];
+
+  return [root.val].concat(depthFirstValues(root.left))
+                   .concat(depthFirstValues(root.right));
 };
