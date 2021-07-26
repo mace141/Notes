@@ -2133,7 +2133,7 @@ const treeSum = (root) => { // Time: O(n), Space: O(n)
   return root.val + treeSum(root.left) + treeSum(root.right);
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #28 tree min value ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #28 tree min value ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, treeMinValue, that takes in the root of a binary tree that 
 // contains number values. The function should return the minimum value within 
 // the tree.
@@ -2261,7 +2261,7 @@ const treeMinValue = (root) => { // Time: O(n^2), Space: O(n)
   return minValue;
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #29 max path sum ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #29 max path sum ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, maxPathSum, that takes in the root of a binary tree that 
 // contains number values. The function should return the maximum sum of any root
 // to leaf path within the tree.
@@ -2357,4 +2357,180 @@ const maxPathSum = (root) => { // Time: O(n), Space: O(n)
   if (root.left == null && root.right == null) return root.val;
 
   return root.val + Math.max(maxPathSum(root.left), maxPathSum(root.right));
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #30 path finder ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// Write a function, pathFinder, that takes in the root of a binary tree and a 
+// target value. The function should return an array representing a path to the 
+// target value. If the target value is not found in the tree, then return null.
+//
+// You may assume that the tree contains unique values.
+//
+// test_00:
+// const a = new Node("a");
+// const b = new Node("b");
+// const c = new Node("c");
+// const d = new Node("d");
+// const e = new Node("e");
+// const f = new Node("f");
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+//
+//      a
+//    /   \
+//   b     c
+//  / \     \
+// d   e     f
+//
+// pathFinder(a, 'e'); // -> [ 'a', 'b', 'e' ]
+//
+// test_01:
+// const a = new Node("a");
+// const b = new Node("b");
+// const c = new Node("c");
+// const d = new Node("d");
+// const e = new Node("e");
+// const f = new Node("f");
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+//
+//      a
+//    /   \
+//   b     c
+//  / \     \
+// d   e     f
+//
+// pathFinder(a, 'p'); // -> null
+//
+// test_02:
+// const a = new Node("a");
+// const b = new Node("b");
+// const c = new Node("c");
+// const d = new Node("d");
+// const e = new Node("e");
+// const f = new Node("f");
+// const g = new Node("g");
+// const h = new Node("h");
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+// e.left = g;
+// f.right = h;
+//
+//      a
+//    /   \
+//   b     c
+//  / \     \
+// d   e     f
+//    /       \
+//   g         h
+//
+// pathFinder(a, "c"); // -> ['a', 'c']
+//
+// test_03:
+// const a = new Node("a");
+// const b = new Node("b");
+// const c = new Node("c");
+// const d = new Node("d");
+// const e = new Node("e");
+// const f = new Node("f");
+// const g = new Node("g");
+// const h = new Node("h");
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+// e.left = g;
+// f.right = h;
+//
+//      a
+//    /   \
+//   b     c
+//  / \     \
+// d   e     f
+//    /       \
+//   g         h
+//
+// pathFinder(a, "h"); // -> ['a', 'c', 'f', 'h']
+//
+// test_04:
+// const x = new Node("x");
+//
+//      x
+//
+// pathFinder(x, "x"); // -> ['x']
+//
+// test_05:
+// pathFinder(null, "x"); // -> null
+//
+// test_06:
+// const root = new Node(0);
+// let curr = root;
+// for (let i = 1; i <= 6000; i += 1) {
+//   curr.right = new Node(i);
+//   curr = curr.right;
+// }
+//
+//      0
+//       \
+//        1
+//         \
+//          2
+//           \
+//            3
+//             .
+//              .
+//               .
+//              5999
+//                \
+//                6000
+//
+// pathFinder(root, 3451); // -> [0, 1, 2, 3, ..., 3450, 3451]
+
+// ========================= My Solution =========================
+const pathFinder = (root, target, cameFrom = {}) => { // Time: O(n), Space: O(n)
+  if (root == null) return null;
+  if (root.val == target) return [root.val];
+  cameFrom[root] = null;
+  const path = [];
+
+  const queue = [root];
+  while (queue.length) {
+    const node = queue.shift();
+    if (node.val == target) break;
+
+    if (node.left != null) {
+      cameFrom[node.left.val] = node.val;
+      if (node.left.val == target) break;
+      queue.push(node.left);
+    }
+    if (node.right != null) {
+      cameFrom[node.right.val] = node.val;
+      if (node.right.val == target) break;
+      queue.push(node.right);
+    }
+  }
+  
+  if (cameFrom[target] == undefined) return null;
+
+  let currNode = cameFrom[target];
+  while (currNode != null) {
+    path.unshift(currNode);
+    currNode = cameFrom[currNode];
+  }
+
+  return [...path, target];
 };
