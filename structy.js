@@ -2534,3 +2534,147 @@ const pathFinder = (root, target, cameFrom = {}) => { // Time: O(n), Space: O(n)
 
   return [...path, target];
 };
+
+// ========================= Alvin's Depth First Solution =========================
+const pathFinder = (root, target) => { // Time: O(n), Space: O(n)
+  const result = pathFinderHelper(root, target);
+  if (result === null) {
+    return null;
+  } else {
+    return result.reverse();
+  }
+};
+
+const pathFinderHelper = (root, target) => {
+  if (root === null) return null;
+  if (root.val === target) return [ root.val ];
+  
+  const leftPath = pathFinderHelper(root.left, target);
+  if (leftPath !== null) {
+    leftPath.push(root.val);
+    return leftPath;
+  }
+  
+  const rightPath = pathFinderHelper(root.right, target);
+  if (rightPath !== null) {
+    rightPath.push(root.val);
+    return rightPath;
+  }
+  
+  return null;
+};
+
+// Write a function, treeValueCount, that takes in the root of a binary tree and
+// a target value. The function should return the number of times that the target
+// occurs in the tree.
+//
+// test_00:
+// const a = new Node(12);
+// const b = new Node(6);
+// const c = new Node(6);
+// const d = new Node(4);
+// const e = new Node(6);
+// const f = new Node(12);
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+//
+//     12
+//    /  \
+//   6    6
+//  / \    \
+// 4   6    12
+//
+// treeValueCount(a,  6); // -> 3
+//
+// test_01:
+// const a = new Node(12);
+// const b = new Node(6);
+// const c = new Node(6);
+// const d = new Node(4);
+// const e = new Node(6);
+// const f = new Node(12);
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+//
+//     12
+//    /  \
+//   6    6
+//  / \    \
+// 4   6    12
+//
+// treeValueCount(a,  12); // -> 2
+//
+// test_02:
+// const a = new Node(7);
+// const b = new Node(5);
+// const c = new Node(1);
+// const d = new Node(1);
+// const e = new Node(8);
+// const f = new Node(7);
+// const g = new Node(1);
+// const h = new Node(1);
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+// e.left = g;
+// f.right = h;
+//
+//      7
+//    /   \
+//   5     1
+//  / \     \
+// 1   8     7
+//    /       \
+//   1         1
+// treeValueCount(a, 1); // -> 4
+//
+// test_03:
+// const a = new Node(7);
+// const b = new Node(5);
+// const c = new Node(1);
+// const d = new Node(1);
+// const e = new Node(8);
+// const f = new Node(7);
+// const g = new Node(1);
+// const h = new Node(1);
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+// e.left = g;
+// f.right = h;
+//
+//      7
+//    /   \
+//   5     1
+//  / \     \
+// 1   8     7
+//    /       \
+//   1         1
+//
+// treeValueCount(a, 9); // -> 0
+//
+// test_04:
+// treeValueCount(null, 42); // -> 0
+
+const treeValueCount = (root, target) => {
+  if (root == null) return 0;
+
+  const leftCount = treeValueCount(root.left, target);
+  const rightCount = treeValueCount(root.right, target);
+
+  return (root.val == target ? 1 : 0) + leftCount + rightCount;
+};
