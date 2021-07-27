@@ -3624,20 +3624,8 @@ const hasPath = (graph, src, dst) => { // Time: O(e), Space: O(n)
 //
 // undirectedPath(edges, 'r', 'b'); // -> false
 
-const validPath = (graph, nodeA, nodeB, visited = new Set()) => {
-  if (nodeA === nodeB) return true;
-  visited.add(nodeA);
-
-  for (let neighbor of graph[nodeA]) {
-    if (!visited.has(neighbor)) {
-      if (validPath(graph, neighbor, nodeB, visited) === true) return true;
-    }
-  }
-
-  return false;
-};
-
-const undirectedPath = (edges, nodeA, nodeB) => {
+// ========================= Depth First =========================
+const undirectedPath = (edges, nodeA, nodeB) => { // Time: O(e), Space: O(n)
   const graph = {};
   edges.forEach(edge => {
     const [ node1, node2 ] = edge;
@@ -3655,4 +3643,93 @@ const undirectedPath = (edges, nodeA, nodeB) => {
   });
 
   return validPath(graph, nodeA, nodeB);
+};
+
+const validPath = (graph, nodeA, nodeB, visited = new Set()) => { // Time: O(e), Space: O(n)
+  if (nodeA === nodeB) return true;
+  visited.add(nodeA);
+
+  for (let neighbor of graph[nodeA]) {
+    if (!visited.has(neighbor)) {
+      if (validPath(graph, neighbor, nodeB, visited) === true) return true;
+    }  
+  }  
+
+  return false;
+};  
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #40 connected components count ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// Write a function, connectedComponentsCount, that takes in the adjacency list 
+// of an undirected graph. The function should return the number of connected 
+// components within the graph.
+//
+// test_00:
+// connectedComponentsCount({
+//   0: [8, 1, 5],
+//   1: [0],
+//   5: [0, 8],
+//   8: [0, 5],
+//   2: [3, 4],
+//   3: [2, 4],
+//   4: [3, 2]
+// }); // -> 2
+//
+// test_01:
+// connectedComponentsCount({
+//   1: [2],
+//   2: [1,8],
+//   6: [7],
+//   9: [8],
+//   7: [6, 8],
+//   8: [9, 7, 2]
+// }); // -> 1
+//
+// test_02:
+// connectedComponentsCount({
+//   3: [],
+//   4: [6],
+//   6: [4, 5, 7, 8],
+//   8: [6],
+//   7: [6],
+//   5: [6],
+//   1: [2],
+//   2: [1]
+// }); // -> 3
+//
+// test_03:
+// connectedComponentsCount({}); // -> 0
+//
+// test_04:
+// connectedComponentsCount({
+//   0: [4,7],
+//   1: [],
+//   2: [],
+//   3: [6],
+//   4: [0],
+//   6: [3],
+//   7: [0],
+//   8: []
+// }); // -> 5
+
+// ========================= Depth First =========================
+const connectedComponentsCount = (graph) => { // Time: O(e), Space: O(n)
+  let count = 0;
+  
+  const visited = new Set();
+  for (let node in graph) {
+    if (exploreComponent(graph, node, visited) === true) count++;
+  }
+  
+  return count;
+};
+
+const exploreComponent = (graph, node, visited) => { // Time: O(e), Space: O(n)
+  if (visited.has(parseInt(node))) return false;
+  visited.add(parseInt(node));
+
+  for (let neighbor of graph[node]) {
+    exploreComponent(graph, neighbor, visited);
+  }
+
+  return true;
 };
