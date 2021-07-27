@@ -3322,3 +3322,168 @@ const levelAverages = (root, levelsArr = [], level = 0) => { // Time: O(n), Spac
 
   return levelsArr.map(level => level.reduce((a, b) => a + b) / level.length);
 };
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #37 leaf list ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// Write a function, leafList, that takes in the root of a binary tree and 
+// returns an array containing the values of all leaf nodes in left-to-right order.
+//
+// test_00:
+// const a = new Node("a");
+// const b = new Node("b");
+// const c = new Node("c");
+// const d = new Node("d");
+// const e = new Node("e");
+// const f = new Node("f");
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+//
+//      a
+//    /   \
+//   b     c
+//  / \     \
+// d   e     f
+//
+// leafList(a); // -> [ 'd', 'e', 'f' ] 
+//
+// test_01:
+// const a = new Node("a");
+// const b = new Node("b");
+// const c = new Node("c");
+// const d = new Node("d");
+// const e = new Node("e");
+// const f = new Node("f");
+// const g = new Node("g");
+// const h = new Node("h");
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+// e.left = g;
+// f.right = h;
+//
+//      a
+//    /   \
+//   b     c
+//  / \     \
+// d   e     f
+//    /       \
+//   g         h
+//
+// leafList(a); // -> [ 'd', 'g', 'h' ]
+//
+// test_02:
+// const a = new Node(5);
+// const b = new Node(11);
+// const c = new Node(54);
+// const d = new Node(20);
+// const e = new Node(15);
+// const f = new Node(1);
+// const g = new Node(3);
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// e.left = f;
+// e.right = g;
+//
+//        5
+//     /    \
+//    11    54
+//  /   \
+// 20   15
+//      / \
+//     1  3
+//
+// leafList(a); // -> [ 20, 1, 3, 54 ]
+//
+// test_03:
+// const x = new Node('x');
+//
+//      x
+//
+// leafList(x); // -> [ 'x' ]
+//
+// test_04:
+// leafList(null); // -> [ ]
+
+// ========================= Depth First =========================
+const leafList = (root, leaves = []) => { // Time: O(n), Space: O(n)
+  if (root == null) return [];
+
+  if (root.left == null && root.right == null) leaves.push(root.val);
+  if (root.left) leafList(root.left, leaves);
+  if (root.right) leafList(root.right, leaves);
+
+  return leaves;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #38 has path ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// Write a function, hasPath, that takes in an object representing the adjacency
+// list of a directed acyclic graph and two nodes (src, dst). The function should
+// return a boolean indicating whether or not there exists a directed path between
+// the source and destination nodes.
+//
+// test_00:
+// const graph = {
+//   f: ['g', 'i'],
+//   g: ['h'],
+//   h: [],
+//   i: ['g', 'k'],
+//   j: ['i'],
+//   k: []
+// };
+//
+// hasPath(graph, 'f', 'k'); // true
+//
+// test_01:
+// const graph = {
+//   f: ['g', 'i'],
+//   g: ['h'],
+//   h: [],
+//   i: ['g', 'k'],
+//   j: ['i'],
+//   k: []
+// };
+//
+// hasPath(graph, 'f', 'j'); // false
+//
+// test_02:
+// const graph = {
+//   f: ['g', 'i'],
+//   g: ['h'],
+//   h: [],
+//   i: ['g', 'k'],
+//   j: ['i'],
+//   k: []
+// };
+//
+// hasPath(graph, 'i', 'h'); // true
+//
+// test_03:
+// const graph = {
+//   v: ['x', 'w'],
+//   w: [],
+//   x: [],
+//   y: ['z'],
+//   z: [],  
+// };
+//
+// hasPath(graph, 'v', 'w'); // true
+//
+// test_04:
+// const graph = {
+//   v: ['x', 'w'],
+//   w: [],
+//   x: [],
+//   y: ['z'],
+//   z: [],  
+// };
+//
+// hasPath(graph, 'v', 'z'); // false
