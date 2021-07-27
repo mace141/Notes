@@ -3512,3 +3512,147 @@ const hasPath = (graph, src, dst) => { // Time: O(e), Space: O(n)
 
   return false;
 };
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #39 undirected path ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// Write a function, undirectedPath, that takes in an array of edges for an 
+// undirected graph and two nodes (nodeA, nodeB). The function should return a 
+// boolean indicating whether or not there exists a path between nodeA and nodeB.
+//
+// test_00:
+// const edges = [
+//   ['i', 'j'],
+//   ['k', 'i'],
+//   ['m', 'k'],
+//   ['k', 'l'],
+//   ['o', 'n']
+// ];
+//
+// undirectedPath(edges, 'j', 'm'); // -> true
+//
+// test_01:
+// const edges = [
+//   ['i', 'j'],
+//   ['k', 'i'],
+//   ['m', 'k'],
+//   ['k', 'l'],
+//   ['o', 'n']
+// ];
+//
+// undirectedPath(edges, 'm', 'j'); // -> true
+//
+// test_02:
+// const edges = [
+//   ['i', 'j'],
+//   ['k', 'i'],
+//   ['m', 'k'],
+//   ['k', 'l'],
+//   ['o', 'n']
+// ];
+//
+// undirectedPath(edges, 'l', 'j'); // -> true
+//
+// test_03:
+// const edges = [
+//   ['i', 'j'],
+//   ['k', 'i'],
+//   ['m', 'k'],
+//   ['k', 'l'],
+//   ['o', 'n']
+// ];
+//
+// undirectedPath(edges, 'k', 'o'); // -> false
+// test_04:
+// const edges = [
+//   ['i', 'j'],
+//   ['k', 'i'],
+//   ['m', 'k'],
+//   ['k', 'l'],
+//   ['o', 'n']
+// ];
+//
+// undirectedPath(edges, 'i', 'o'); // -> false
+//
+// test_05:
+// const edges = [
+//   ['b', 'a'],
+//   ['c', 'a'],
+//   ['b', 'c'],
+//   ['q', 'r'],
+//   ['q', 's'],
+//   ['q', 'u'],
+//   ['q', 't'],
+// ];
+//
+// undirectedPath(edges, 'a', 'b'); // -> true
+//
+// test_06:
+// const edges = [
+//   ['b', 'a'],
+//   ['c', 'a'],
+//   ['b', 'c'],
+//   ['q', 'r'],
+//   ['q', 's'],
+//   ['q', 'u'],
+//   ['q', 't'],
+// ];
+//
+// undirectedPath(edges, 'a', 'c'); // -> true
+//
+// test_07:
+// const edges = [
+//   ['b', 'a'],
+//   ['c', 'a'],
+//   ['b', 'c'],
+//   ['q', 'r'],
+//   ['q', 's'],
+//   ['q', 'u'],
+//   ['q', 't'],
+// ];
+//
+// undirectedPath(edges, 'r', 't'); // -> true
+//
+// test_08:
+// const edges = [
+//   ['b', 'a'],
+//   ['c', 'a'],
+//   ['b', 'c'],
+//   ['q', 'r'],
+//   ['q', 's'],
+//   ['q', 'u'],
+//   ['q', 't'],
+// ];
+//
+// undirectedPath(edges, 'r', 'b'); // -> false
+
+const validPath = (graph, nodeA, nodeB, visited = new Set()) => {
+  if (nodeA === nodeB) return true;
+  visited.add(nodeA);
+
+  for (let neighbor of graph[nodeA]) {
+    if (!visited.has(neighbor)) {
+      if (validPath(graph, neighbor, nodeB, visited) === true) return true;
+    }
+  }
+
+  return false;
+};
+
+const undirectedPath = (edges, nodeA, nodeB) => {
+  const graph = {};
+  edges.forEach(edge => {
+    const [ node1, node2 ] = edge;
+
+    if (!node1 in graph) {
+      graph[node1].push(node2);
+    } else {
+      graph[node1] = [node2];
+    }
+    if (!node2 in graph) {
+      graph[node2].push(node1);
+    } else {
+      graph[node2] = [node1];
+    }
+  });
+
+  return validPath(graph, nodeA, nodeB);
+};
