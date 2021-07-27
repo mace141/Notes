@@ -2564,6 +2564,7 @@ const pathFinderHelper = (root, target) => {
   return null;
 };
 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #31 tree value count ]]]]]]]]]]]]]]]]]]]]]]]]] 
 // Write a function, treeValueCount, that takes in the root of a binary tree and
 // a target value. The function should return the number of times that the target
 // occurs in the tree.
@@ -2680,7 +2681,7 @@ const treeValueCount = (root, target) => { // Time: O(n), Space: O(n)
   return (root.val == target ? 1 : 0) + leftCount + rightCount;
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #31 how high ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #32 how high ]]]]]]]]]]]]]]]]]]]]]]]]] 
 // Write a function, howHigh, that takes in the root of a binary tree. The 
 // function should return a number representing the height of the tree.
 //
@@ -2766,7 +2767,7 @@ const howHigh = (root) => { // Time: O(n), Space: O(n)
   return 1 + Math.max(leftHeight, rightHeight);
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #32 bottom right value ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #33 bottom right value ]]]]]]]]]]]]]]]]]]]]]]]]] 
 // Write a function, bottomRightValue, that takes in the root of a binary tree. 
 // The function should return the right-most value in the bottom-most level of 
 // the tree.
@@ -2901,6 +2902,7 @@ const bottomRightValue = (root) => { // Time: O(n), Space: O(n)
   return node.val;
 };
 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #34 all tree paths ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, allTreePaths, that takes in the root of a binary tree. The
 // function should return a 2-Dimensional array where each subarray represents a
 // root-to-leaf path in the tree.
@@ -3014,7 +3016,7 @@ const bottomRightValue = (root) => { // Time: O(n), Space: O(n)
 // ]
 
 // ========================= Depth First =========================
-const allTreePaths = (root) => {
+const allTreePaths = (root) => { 
   if (root == null) return [];
   if (root.left == null && root.right == null) return [[root.val]];
   
@@ -3027,4 +3029,148 @@ const allTreePaths = (root) => {
   });
 
   return paths;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #35 tree levels ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// Write a function, treeLevels, that takes in the root of a binary tree. The 
+// function should return a 2-Dimensional array where each subarray represents a
+// level of the tree.
+//
+// test_00:
+// const a = new Node("a");
+// const b = new Node("b");
+// const c = new Node("c");
+// const d = new Node("d");
+// const e = new Node("e");
+// const f = new Node("f");
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+//
+//      a
+//    /   \
+//   b     c
+//  / \     \
+// d   e     f
+//
+// treeLevels(a); // ->
+// [
+//   ['a'],
+//   ['b', 'c'],
+//   ['d', 'e', 'f']
+// ]
+//
+// test_01:
+// const a = new Node("a");
+// const b = new Node("b");
+// const c = new Node("c");
+// const d = new Node("d");
+// const e = new Node("e");
+// const f = new Node("f");
+// const g = new Node("g");
+// const h = new Node("h");
+// const i = new Node("i");
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+// e.left = g;
+// e.right = h;
+// f.left = i;
+//
+//         a
+//      /    \
+//     b      c
+//   /  \      \
+//  d    e      f
+//      / \    /
+//     g  h   i
+//
+// treeLevels(a); // ->
+// [
+//   ['a'],
+//   ['b', 'c'],
+//   ['d', 'e', 'f'],
+//   ['g', 'h', 'i']
+// ]
+//
+// test_02:
+// const q = new Node("q");
+// const r = new Node("r");
+// const s = new Node("s");
+// const t = new Node("t");
+// const u = new Node("u");
+// const v = new Node("v");
+//
+// q.left = r;
+// q.right = s;
+// r.right = t;
+// t.left = u;
+// u.right = v;
+//
+//      q
+//    /   \
+//   r     s
+//    \
+//     t
+//    /
+//   u
+//  /
+// v
+//
+// treeLevels(q); //->
+// [
+//   ['q'],
+//   ['r', 's'],
+//   ['t'],
+//   ['u'],
+//   ['v']
+// ]
+//
+//
+// test_03:
+// treeLevels(null); // -> []
+
+// ========================= Breadth First =========================
+const treeLevels = (root) => {
+  if (root == null) return [];
+
+  const levelsArr = [];
+  const queue = [{ node: root, level: 0 }];
+  
+  while (queue.length) {
+    const { node, level } = queue.shift();
+
+    if (levelsArr[level]) {
+      levelsArr[level].push(node.val)
+    } else {
+      levelsArr[level] = [ node.val ];
+    }
+
+    if (node.left) queue.push({ node: node.left, level: level + 1 });
+    if (node.right) queue.push({ node: node.right, level: level + 1 });
+  }
+
+  return levelsArr;
+};
+
+// ========================= Depth First =========================
+const treeLevels = (root, levelsArr = [], level = 0) => {
+  if (root === null) return [];
+
+  if (levelsArr[level]) {
+    levelsArr[level].push(root.val);
+  } else {
+    levelsArr[level] = [root.val];
+  }
+
+  treeLevels(root.left, levelsArr, level + 1);
+  treeLevels(root.right, levelsArr, level + 1);
+  
+  return levelsArr;
 };
