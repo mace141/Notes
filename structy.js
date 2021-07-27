@@ -2359,7 +2359,7 @@ const maxPathSum = (root) => { // Time: O(n), Space: O(n)
   return root.val + Math.max(maxPathSum(root.left), maxPathSum(root.right));
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #30 path finder ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #30 path finder ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, pathFinder, that takes in the root of a binary tree and a 
 // target value. The function should return an array representing a path to the 
 // target value. If the target value is not found in the tree, then return null.
@@ -2764,4 +2764,255 @@ const howHigh = (root) => { // Time: O(n), Space: O(n)
   const rightHeight = howHigh(root.right);
 
   return 1 + Math.max(leftHeight, rightHeight);
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #32 bottom right value ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// Write a function, bottomRightValue, that takes in the root of a binary tree. 
+// The function should return the right-most value in the bottom-most level of 
+// the tree.
+//
+// You may assume that the input tree is non-empty.
+//
+// test_00:
+// const a = new Node(3);
+// const b = new Node(11);
+// const c = new Node(10);
+// const d = new Node(4);
+// const e = new Node(-2);
+// const f = new Node(1);
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+//
+//       3
+//    /    \
+//   11     10
+//  / \      \
+// 4   -2     1
+//
+// bottomRightValue(a); // -> 1
+//
+// test_01:
+// const a = new Node(-1);
+// const b = new Node(-6);
+// const c = new Node(-5);
+// const d = new Node(-3);
+// const e = new Node(-4);
+// const f = new Node(-13);
+// const g = new Node(-2);
+// const h = new Node(6);
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+// e.left = g;
+// e.right = h;
+//
+//        -1
+//      /   \
+//    -6    -5
+//   /  \     \
+// -3   -4   -13
+//     / \       
+//    -2  6
+//
+// bottomRightValue(a); // -> 6
+//
+// test_02:
+// const a = new Node(-1);
+// const b = new Node(-6);
+// const c = new Node(-5);
+// const d = new Node(-3);
+// const e = new Node(-4);
+// const f = new Node(-13);
+// const g = new Node(-2);
+// const h = new Node(6);
+// const i = new Node(7);
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+// e.left = g;
+// e.right = h;
+// f.left = i;
+//
+//        -1
+//      /   \
+//    -6    -5
+//   /  \     \
+// -3   -4   -13
+//     / \    /   
+//    -2  6  7 
+//
+// bottomRightValue(a); // -> 7
+//
+// test_03
+// const a = new Node('a');
+// const b = new Node('b');
+// const c = new Node('c');
+// const d = new Node('d');
+// const e = new Node('e');
+// const f = new Node('f');
+//
+// a.left = b;
+// a.right = c;
+// b.right = d;
+// d.left = e;
+// e.right = f;
+//
+//      a
+//    /   \ 
+//   b     c
+//    \
+//     d
+//    /
+//   e
+//  /
+// f
+//       
+// bottomRightValue(a); // -> 'f'
+//
+// test_04
+// const a = new Node(42);
+//
+//      42
+//
+// bottomRightValue(a); // -> 42
+
+// ========================= Breadth First =========================
+const bottomRightValue = (root) => { // Time: O(n), Space: O(n)
+  let node;
+  const queue = [root];
+
+  while (queue.length) {
+    node = queue.shift();
+
+    if (node.left) queue.push(node.left);
+    if (node.right) queue.push(node.right);
+  }
+
+  return node.val;
+};
+
+// Write a function, allTreePaths, that takes in the root of a binary tree. The
+// function should return a 2-Dimensional array where each subarray represents a
+// root-to-leaf path in the tree.
+//
+// The order within an individual path must start at the root and end at the leaf,
+// but the relative order of among paths in the outer array does not matter.
+//
+// You may assume that the input tree is non-empty.
+//
+// test_00:
+// const a = new Node('a');
+// const b = new Node('b');
+// const c = new Node('c');
+// const d = new Node('d');
+// const e = new Node('e');
+// const f = new Node('f');
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+//
+//      a
+//    /   \
+//   b     c
+//  / \     \
+// d   e     f
+//
+// allTreePaths(a); // ->
+// [ 
+//   [ 'a', 'b', 'd' ], 
+//   [ 'a', 'b', 'e' ], 
+//   [ 'a', 'c', 'f' ] 
+// ] 
+//
+// test_01:
+// const a = new Node('a');
+// const b = new Node('b');
+// const c = new Node('c');
+// const d = new Node('d');
+// const e = new Node('e');
+// const f = new Node('f');
+// const g = new Node('g');
+// const h = new Node('h');
+// const i = new Node('i');
+//
+// a.l//eft = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+// e.left = g;
+// e.right = h;
+// f.left = i;
+//
+//         a
+//      /    \
+//     b      c
+//   /  \      \
+//  d    e      f
+//      / \    /   
+//     g  h   i 
+//
+// allTreePaths(a); // ->
+// [ 
+//   [ 'a', 'b', 'd' ], 
+//   [ 'a', 'b', 'e', 'g' ], 
+//   [ 'a', 'b', 'e', 'h' ], 
+//   [ 'a', 'c', 'f', 'i' ] 
+// ] 
+//
+// test_02:
+// const q = new Node('q');
+// const r = new Node('r');
+// const s = new Node('s');
+// const t = new Node('t');
+// const u = new Node('u');
+// const v = new Node('v');
+//
+// q.left = r;
+// q.right = s;
+// r.right = t;
+// t.left = u;
+// u.right = v;
+//
+//      q
+//    /   \ 
+//   r     s
+//    \
+//     t
+//    /
+//   u
+//  /
+// v
+//
+// allTreePaths(q); // ->
+// [ 
+//   [ 'q', 'r', 't', 'u', 'v' ], 
+//   [ 'q', 's' ] 
+// ] 
+//
+// test_03:
+// const z = new Node('z');
+//
+//      z
+//
+// console.log(allTreePaths(z)); // -> 
+// [
+//   ['z']
+// ]
+
+const allTreePaths = (root) => {
+  
 };
