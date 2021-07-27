@@ -3013,6 +3013,18 @@ const bottomRightValue = (root) => { // Time: O(n), Space: O(n)
 //   ['z']
 // ]
 
+// ========================= Depth First =========================
 const allTreePaths = (root) => {
+  if (root == null) return [];
+  if (root.left == null && root.right == null) return [[root.val]];
   
+  const paths = [];
+  allTreePaths(root.left).forEach(path => {
+    paths.push([ root.val, ...path]);
+  });
+  allTreePaths(root.right).forEach(path => {
+    paths.push([ root.val, ...path]);
+  });
+
+  return paths;
 };
