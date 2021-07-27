@@ -101,7 +101,7 @@ const isPrime = (n) => {
   if (n < 2) return false;
   
   for (let i = 2; i <= Math.sqrt(n); i++) {
-    if (n % i == 0) return false;
+    if (n % i === 0) return false;
   }
   
   return true;
@@ -201,8 +201,8 @@ const compress = (s) => {
   let result = "";
 
   while (j <= s.length) {
-    if (s[j] != s[i]) {
-      if (j - i == 1) {
+    if (s[j] !== s[i]) {
+      if (j - i === 1) {
         result += s[i];
       } else {
         result += (j - i) + s[i];
@@ -465,11 +465,11 @@ const fiveSort = (nums) => {
   let j = nums.length - 1;
 
   while (i <= j) {
-    if (nums[i] == 5 && nums[j] != 5) {
+    if (nums[i] === 5 && nums[j] !== 5) {
       [nums[i], nums[j]] = [nums[j], nums[i]];
       i++;
       j--;
-    } else if (nums[j] == 5) {
+    } else if (nums[j] === 5) {
       j--;
     } else {
       i++;
@@ -655,8 +655,8 @@ const sumList = (head) => {
 // linkedListFind(node1, 100); // false
 
 const linkedListFind = (head, target) => {
-  if (head == null) return false;
-  if (head.val == target) return true;
+  if (head === null) return false;
+  if (head.val === target) return true;
 
   return linkedListFind(head.next, target);
 };
@@ -735,8 +735,8 @@ const getNodeValue = (head, index) => { // Time: O(n), Space: O(1)
   let nodeIdx = 0;
   let currNode = head;
 
-  while (currNode != null) {
-    if (nodeIdx == index) return currNode.val;
+  while (currNode !== null) {
+    if (nodeIdx === index) return currNode.val;
     currNode = currNode.next;
     nodeIdx++;
   }
@@ -746,8 +746,8 @@ const getNodeValue = (head, index) => { // Time: O(n), Space: O(1)
 
 // ========================= Recursive =========================
 const getNodeValue = (head, index) => { // Time: O(n), Space: O(n)
-  if (index == 0) return head.val;
-  if (head == null) return null;
+  if (index === 0) return head.val;
+  if (head === null) return null;
 
   return getNodeValue(head.next, index - 1);
 };
@@ -797,7 +797,7 @@ const reverseList = (head) => { // Time: O(n), Space: O(1)
   let currNode = head;
   let prevNode = null;
 
-  while (currNode != null) {
+  while (currNode !== null) {
     const nextNode = currNode.next;
     currNode.next = prevNode;
     prevNode = currNode;
@@ -809,7 +809,7 @@ const reverseList = (head) => { // Time: O(n), Space: O(1)
 
 // ========================= Recursive =========================
 const reverseList = (head, prev = null) => { // Time: O(n), Space: O(n)
-  if (head == null) return prev;
+  if (head === null) return prev;
   
   const nextNode = head.next;
   head.next = prev;
@@ -923,8 +923,8 @@ const zipperLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
   let current2 = head2;
   let count = 0;
 
-  while (current1 != null && current2 != null) {
-    if (count % 2 == 0) {
+  while (current1 !== null && current2 !== null) {
+    if (count % 2 === 0) {
       tail.next = current2;
       current2 = current2.next;
     } else {
@@ -935,17 +935,17 @@ const zipperLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
     count++;
   }
 
-  if (current1 == null) tail.next = current2;
-  if (current2 == null) tail.next = current1;
+  if (current1 === null) tail.next = current2;
+  if (current2 === null) tail.next = current1;
 
   return head1;
 };
 
 // ========================= Recursive =========================
 const zipperLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(min(n, m))
-  if (head1 == null && head2 == null) return null;
-  if (head1 == null) return head2;
-  if (head2 == null) return head1;
+  if (head1 === null && head2 === null) return null;
+  if (head1 === null) return head2;
+  if (head2 === null) return head1;
 
   const next1 = head1.next;
   const next2 = head2.next;
@@ -1034,7 +1034,7 @@ const mergeLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
   let current1 = head1;
   let current2 = head2;
 
-  while (current1 != null && current2 != null) {
+  while (current1 !== null && current2 !== null) {
     if (current1.val < current2.val) {
       tail.next = current1;
       current1 = current1.next;
@@ -1046,17 +1046,17 @@ const mergeLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
     tail = tail.next;
   }
 
-  if (current1 == null) tail.next = current2;
-  if (current2 == null) tail.next = current1;
+  if (current1 === null) tail.next = current2;
+  if (current2 === null) tail.next = current1;
 
   return dummyHead.next;
 };
 
 // ========================= Recursive =========================
 const mergeLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(min(n, m))
-  if (head1 == null && head2 == null) return null;
-  if (head1 == null) return head2;
-  if (head2 == null) return head1;
+  if (head1 === null && head2 === null) return null;
+  if (head1 === null) return head2;
+  if (head2 === null) return head1;
 
   if (head1.val < head2.val) {
     const next1 = head1.next;
@@ -1144,8 +1144,8 @@ const isUnivalueList = (head) => { // Time: O(n), Space: O(1)
   const value = head.val;
   let currNode = head;
 
-  while (currNode != null) {
-    if (currNode.val != value) return false;
+  while (currNode !== null) {
+    if (currNode.val !== value) return false;
     currNode = currNode.next;
   }
 
@@ -1154,9 +1154,9 @@ const isUnivalueList = (head) => { // Time: O(n), Space: O(1)
 
 // ========================= Recursive =========================
 const isUnivalueList = (head, prev = head) => { // Time: O(n), Space: O(n)
-  if (head == null) return true;
+  if (head === null) return true;
 
-  if (head.val == prev.val) {
+  if (head.val === prev.val) {
     return isUnivalueList(head.next, head);
   } else {
     return false;
@@ -1248,8 +1248,8 @@ const longestStreak = (head) => { // Time: O(n), Space: O(1)
   let currNode = head;
   let prevNode = head;
   
-  while (currNode != null) {
-    if (currNode.val == prevNode.val) {
+  while (currNode !== null) {
+    if (currNode.val === prevNode.val) {
       currentStreak++;
     } else {
       currentStreak = 1;
@@ -1350,8 +1350,8 @@ const removeNode = (head, targetVal) => { // Time: O(n), Space: O(1)
   let dummyHead = prevNode;
   prevNode.next = head;
 
-  while (currNode != null) {
-    if (currNode.val == targetVal) {
+  while (currNode !== null) {
+    if (currNode.val === targetVal) {
       prevNode.next = currNode.next;
       break;
     }
@@ -1364,8 +1364,8 @@ const removeNode = (head, targetVal) => { // Time: O(n), Space: O(1)
 
 // ========================= Recursive =========================
 const removeNode = (head, targetVal) => { // Time: O(n), Space: O(n)
-  if (head == null) return null;
-  if (head.val == targetVal) return head.next;
+  if (head === null) return null;
+  if (head.val === targetVal) return head.next;
 
   head.next = removeNode(head.next, targetVal);
   return head;
@@ -1446,7 +1446,7 @@ const insertNode = (head, value, index) => { // Time: O(n), Space: O(1)
   dummyHead.next = head;
 
   while (count <= index) {
-    if (count == index) {
+    if (count === index) {
       const nextNode = currNode.next;
       currNode.next = new Node(value);
       currNode.next.next = nextNode;
@@ -1460,13 +1460,13 @@ const insertNode = (head, value, index) => { // Time: O(n), Space: O(1)
 
 // ========================= Recursive =========================
 const insertNode = (head, value, index, count = 0) => { // Time: O(n), Space: O(n)
-  if (index == 0) {
+  if (index === 0) {
     const newNode = new Node(value);
     newNode.next = head;
     return newNode;
   }
 
-  if (count == index - 1) {
+  if (count === index - 1) {
     const nextNode = head.next;
     head.next = new Node(value);
     head.next.next = nextNode;
@@ -1514,7 +1514,7 @@ const createLinkedList = (values) => {
 
 // ========================= Recursive =========================
 const createLinkedList = (values, i = 0) => {
-  if (i == values.length) return null;
+  if (i === values.length) return null;
   const newNode = new Node(values[i]);
   newNode.next = createLinkedList(values, i + 1);
   return newNode;
@@ -1653,9 +1653,9 @@ const addLists = (head1, head2) => { // Time: O(max(n, m)), Space: O(max(n, m))
   let curr2 = head2;
   let carry = 0;
 
-  while (curr1 != null || curr2 != null || carry != 0) {
-    let val1 = curr1 == null ? 0 : curr1.val;
-    let val2 = curr2 == null ? 0 : curr2.val;
+  while (curr1 !== null || curr2 !== null || carry !== 0) {
+    let val1 = curr1 === null ? 0 : curr1.val;
+    let val2 = curr2 === null ? 0 : curr2.val;
     let sum = val1 + val2 + carry;
     let num = sum % 10;
   
@@ -1663,8 +1663,8 @@ const addLists = (head1, head2) => { // Time: O(max(n, m)), Space: O(max(n, m))
 
     currNode.next = new Node(num);
     currNode = currNode.next;
-    if (curr1 != null) curr1 = curr1.next;
-    if (curr2 != null) curr2 = curr2.next;
+    if (curr1 !== null) curr1 = curr1.next;
+    if (curr2 !== null) curr2 = curr2.next;
   }
 
   return sumHead.next;
@@ -1672,17 +1672,17 @@ const addLists = (head1, head2) => { // Time: O(max(n, m)), Space: O(max(n, m))
 
 // ========================= Recursive =========================
 const addLists = (head1, head2, carry = 0) => { // Time: O(max(n, m)), Space: O(max(n, m))
-  if (head1 == null && head2 == null && carry == 0) return null;
+  if (head1 === null && head2 === null && carry === 0) return null;
 
-  let val1 = head1 == null ? 0 : head1.val;
-  let val2 = head2 == null ? 0 : head2.val;
+  let val1 = head1 === null ? 0 : head1.val;
+  let val2 = head2 === null ? 0 : head2.val;
   let sum = val1 + val2 + carry;
   carry = sum > 9 ? 1 : 0;
   
   let num = sum % 10;
   const head = new Node(num);
-  const curr1 = head1 == null ? null : head1.next;
-  const curr2 = head2 == null ? null : head2.next;
+  const curr1 = head1 === null ? null : head1.next;
+  const curr2 = head2 === null ? null : head2.next;
   head.next = addLists(curr1, curr2, carry);
 
   return head;
@@ -1777,7 +1777,7 @@ const addLists = (head1, head2, carry = 0) => { // Time: O(max(n, m)), Space: O(
 
 // ========================= Iterative =========================
 const depthFirstValues = (root) => { // Time: O(n), Space: O(n)
-  if (root == null) return [];
+  if (root === null) return [];
 
   const values = [];
   const stack = [root];
@@ -1786,8 +1786,8 @@ const depthFirstValues = (root) => { // Time: O(n), Space: O(n)
     const node = stack.pop();
     values.push(node.val);
 
-    if (node.right != null) stack.push(node.right);
-    if (node.left != null) stack.push(node.left);
+    if (node.right !== null) stack.push(node.right);
+    if (node.left !== null) stack.push(node.left);
   }
 
   return values;
@@ -1795,7 +1795,7 @@ const depthFirstValues = (root) => { // Time: O(n), Space: O(n)
 
 // ========================= Recursive =========================
 const depthFirstValues = (root) => { // Time: O(n), Space: O(n)
-  if (root == null) return [];
+  if (root === null) return [];
 
   return [root.val].concat(depthFirstValues(root.left))
                    .concat(depthFirstValues(root.right));
@@ -1899,7 +1899,7 @@ const depthFirstValues = (root) => { // Time: O(n), Space: O(n)
 
 // ========================= Iterative =========================
 const breadthFirstValues = (root) => { // Time: O(n^2), Space: O(n)
-  if (root == null) return [];
+  if (root === null) return [];
   
   const queue = [root];
   const values = [];
@@ -1908,8 +1908,8 @@ const breadthFirstValues = (root) => { // Time: O(n^2), Space: O(n)
     const node = queue.shift();
     values.push(node.val);
     
-    if (node.left != null) queue.push(node.left);
-    if (node.right != null) queue.push(node.right);
+    if (node.left !== null) queue.push(node.left);
+    if (node.right !== null) queue.push(node.right);
   }
   
   return values;
@@ -2047,15 +2047,15 @@ const breadthFirstValues = (root) => { // Time: O(n^2), Space: O(n)
 
 // ========================= Breadth First =========================
 const treeIncludes = (root, target) => { // Time: O(n^2), Space: O(n)
-  if (root == null) return false;
+  if (root === null) return false;
 
   const queue = [root];
   while (queue.length > 0) {
     const node = queue.shift();
 
-    if (node.val == target) return true;
-    if (node.left != null) queue.push(node.left);
-    if (node.right != null) queue.push(node.right);
+    if (node.val === target) return true;
+    if (node.left !== null) queue.push(node.left);
+    if (node.right !== null) queue.push(node.right);
   }
 
   return false;
@@ -2063,8 +2063,8 @@ const treeIncludes = (root, target) => { // Time: O(n^2), Space: O(n)
 
 // ========================= Depth First =========================
 const treeIncludes = (root, target) => { // Time: O(n), Space: O(n)
-  if (root == null) return false;
-  if (root.val == target) return true;
+  if (root === null) return false;
+  if (root.val === target) return true;
   return treeIncludes(root.left. target) || treeIncludes(root.right. target);
 };
 
@@ -2128,7 +2128,7 @@ const treeIncludes = (root, target) => { // Time: O(n), Space: O(n)
 
 // ========================= Depth First =========================
 const treeSum = (root) => { // Time: O(n), Space: O(n)
-  if (root == null) return 0;
+  if (root === null) return 0;
 
   return root.val + treeSum(root.left) + treeSum(root.right);
 };
@@ -2221,7 +2221,7 @@ const treeSum = (root) => { // Time: O(n), Space: O(n)
 
 // ========================= Depth First Recursive =========================
 const treeMinValue = (root) => { // Time: O(n), Space: O(n)
-  if (root == null) return Infinity;
+  if (root === null) return Infinity;
 
   const minLeft = treeMinValue(root.left);
   const minRight = treeMinValue(root.right);
@@ -2238,8 +2238,8 @@ const treeMinValue = (root) => { // Time: O(n), Space: O(n)
     const node = stack.pop();
 
     if (node.val < minValue) minValue = node.val;
-    if (node.left != null) stack.push(node.left);
-    if (node.right != null) stack.push(node.right);
+    if (node.left !== null) stack.push(node.left);
+    if (node.right !== null) stack.push(node.right);
   }
 
   return minValue;
@@ -2254,8 +2254,8 @@ const treeMinValue = (root) => { // Time: O(n^2), Space: O(n)
     const node = queue.shift();
 
     if (node.val < minValue) minValue = node.val;
-    if (node.left != null) queue.push(node.left);
-    if (node.right != null) queue.push(node.right);
+    if (node.left !== null) queue.push(node.left);
+    if (node.right !== null) queue.push(node.right);
   }
 
   return minValue;
@@ -2353,8 +2353,8 @@ const treeMinValue = (root) => { // Time: O(n^2), Space: O(n)
 
 // ========================= Depth First =========================
 const maxPathSum = (root) => { // Time: O(n), Space: O(n)
-  if (root == null) return -Infinity;
-  if (root.left == null && root.right == null) return root.val;
+  if (root === null) return -Infinity;
+  if (root.left === null && root.right === null) return root.val;
 
   return root.val + Math.max(maxPathSum(root.left), maxPathSum(root.right));
 };
@@ -2502,32 +2502,32 @@ const maxPathSum = (root) => { // Time: O(n), Space: O(n)
 
 // ========================= My Solution =========================
 const pathFinder = (root, target, cameFrom = {}) => { // Time: O(n), Space: O(n)
-  if (root == null) return null;
-  if (root.val == target) return [root.val];
+  if (root === null) return null;
+  if (root.val === target) return [root.val];
   cameFrom[root] = null;
   const path = [];
 
   const queue = [root];
   while (queue.length) {
     const node = queue.shift();
-    if (node.val == target) break;
+    if (node.val === target) break;
 
-    if (node.left != null) {
+    if (node.left !== null) {
       cameFrom[node.left.val] = node.val;
-      if (node.left.val == target) break;
+      if (node.left.val === target) break;
       queue.push(node.left);
     }
-    if (node.right != null) {
+    if (node.right !== null) {
       cameFrom[node.right.val] = node.val;
-      if (node.right.val == target) break;
+      if (node.right.val === target) break;
       queue.push(node.right);
     }
   }
   
-  if (cameFrom[target] == undefined) return null;
+  if (cameFrom[target] === undefined) return null;
 
   let currNode = cameFrom[target];
-  while (currNode != null) {
+  while (currNode !== null) {
     path.unshift(currNode);
     currNode = cameFrom[currNode];
   }
@@ -2673,12 +2673,12 @@ const pathFinderHelper = (root, target) => {
 
 // ========================= Depth First =========================
 const treeValueCount = (root, target) => { // Time: O(n), Space: O(n)
-  if (root == null) return 0;
+  if (root === null) return 0;
 
   const leftCount = treeValueCount(root.left, target);
   const rightCount = treeValueCount(root.right, target);
 
-  return (root.val == target ? 1 : 0) + leftCount + rightCount;
+  return (root.val === target ? 1 : 0) + leftCount + rightCount;
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #32 how high ]]]]]]]]]]]]]]]]]]]]]]]]] 
@@ -2759,7 +2759,7 @@ const treeValueCount = (root, target) => { // Time: O(n), Space: O(n)
 
 // ========================= Recursive =========================
 const howHigh = (root) => { // Time: O(n), Space: O(n)
-  if (root == null) return -1;
+  if (root === null) return -1;
 
   const leftHeight = howHigh(root.left);
   const rightHeight = howHigh(root.right);
@@ -3017,8 +3017,8 @@ const bottomRightValue = (root) => { // Time: O(n), Space: O(n)
 
 // ========================= Depth First =========================
 const allTreePaths = (root) => { 
-  if (root == null) return [];
-  if (root.left == null && root.right == null) return [[root.val]];
+  if (root === null) return [];
+  if (root.left === null && root.right === null) return [[root.val]];
   
   const paths = [];
   allTreePaths(root.left).forEach(path => {
@@ -3137,8 +3137,8 @@ const allTreePaths = (root) => {
 // treeLevels(null); // -> []
 
 // ========================= Breadth First =========================
-const treeLevels = (root) => {
-  if (root == null) return [];
+const treeLevels = (root) => { // Time: O(n), Space: O(n)
+  if (root === null) return [];
 
   const levelsArr = [];
   const queue = [{ node: root, level: 0 }];
@@ -3160,7 +3160,7 @@ const treeLevels = (root) => {
 };
 
 // ========================= Depth First =========================
-const treeLevels = (root, levelsArr = [], level = 0) => {
+const treeLevels = (root, levelsArr = [], level = 0) => { // Time: O(n), Space: O(n)
   if (root === null) return [];
 
   if (levelsArr[level]) {
@@ -3173,4 +3173,152 @@ const treeLevels = (root, levelsArr = [], level = 0) => {
   treeLevels(root.right, levelsArr, level + 1);
   
   return levelsArr;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #36 level averages ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// Write a function, levelAverages, that takes in the root of a binary tree that
+// contains number values. The function should return an array containing the 
+// average value of each level.
+//
+// test_00:
+// const a = new Node(3);
+// const b = new Node(11);
+// const c = new Node(4);
+// const d = new Node(4);
+// const e = new Node(-2);
+// const f = new Node(1);
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+//
+//       3
+//    /    \
+//   11     4
+//  / \      \
+// 4   -2     1
+//
+// levelAverages(a); // -> [ 3, 7.5, 1 ] 
+//
+// test_01:
+// const a = new Node(5);
+// const b = new Node(11);
+// const c = new Node(54);
+// const d = new Node(20);
+// const e = new Node(15);
+// const f = new Node(1);
+// const g = new Node(3);
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// e.left = f;
+// e.right = g;
+//
+//        5
+//     /    \
+//    11    54
+//  /   \
+// 20   15
+//      / \
+//     1  3
+//
+// levelAverages(a); // -> [ 5, 32.5, 17.5, 2 ] 
+//
+// test_02:
+// const a = new Node(-1);
+// const b = new Node(-6);
+// const c = new Node(-5);
+// const d = new Node(-3);
+// const e = new Node(0);
+// const f = new Node(45);
+// const g = new Node(-1);
+// const h = new Node(-2);
+//
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+// e.left = g;
+// f.right = h;
+//
+//        -1
+//      /   \
+//    -6    -5
+//   /  \     \
+// -3   0     45
+//     /       \
+//    -1       -2
+//
+// levelAverages(a); // -> [ -1, -5.5, 14, -1.5 ]
+//
+// test_03:
+// const q = new Node(13);
+// const r = new Node(4);
+// const s = new Node(2);
+// const t = new Node(9);
+// const u = new Node(2);
+// const v = new Node(42);
+//
+// q.left = r;
+// q.right = s;
+// r.right = t;
+// t.left = u;
+// u.right = v;
+//
+//        13
+//      /   \
+//     4     2
+//      \
+//       9
+//      /
+//     2
+//    /
+//   42
+//
+// levelAverages(q); // -> [ 13, 3, 9, 2, 42 ]
+//
+// test_04:
+// levelAverages(null); // -> [ ]
+
+// ========================= Breadth First =========================
+const levelAverages = (root) => { // Time: O(n), Space: O(n)
+  if (root === null) return [];
+
+  const levelsArr = [];
+  const queue = [{ node: root, level: 0 }];
+
+  while (queue.length) {
+    const { node, level } = queue.shift();
+    if (levelsArr[level]) {
+      levelsArr[level].push(node.val);
+    } else {
+      levelsArr[level] = [node.val];
+    }
+
+    if (node.left) queue.push({ node: node.left, level: level + 1 });
+    if (node.right) queue.push({ node: node.right, level: level + 1 });
+  }
+
+  return levelsArr.map(level => level.reduce((a, b) => a + b) / level.length);
+};
+
+// ========================= Depth First =========================
+const levelAverages = (root, levelsArr = [], level = 0) => { // Time: O(n), Space: O(n)
+  if (root === null) return [];
+
+  if (levelsArr[level]) {
+    levelsArr[level].push(root.val);
+  } else {
+    levelsArr[level] = [root.val];
+  }
+
+  levelAverages(root.left, levelsArr, level + 1);
+  levelAverages(root.right, levelsArr, level + 1);
+
+  return levelsArr.map(level => level.reduce((a, b) => a + b) / level.length);
 };
