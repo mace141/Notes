@@ -2501,7 +2501,7 @@ const maxPathSum = (root) => { // Time: O(n), Space: O(n)
 // pathFinder(root, 3451); // -> [0, 1, 2, 3, ..., 3450, 3451]
 
 // ========================= My Solution =========================
-const pathFinder = (root, target, cameFrom = {}) => { // Time: O(n), Space: O(n)
+const pathFinder = (root, target, cameFrom = {}) => { // Time: O(n^2), Space: O(n)
   if (root === null) return null;
   if (root.val === target) return [root.val];
   cameFrom[root] = null;
@@ -2888,7 +2888,7 @@ const howHigh = (root) => { // Time: O(n), Space: O(n)
 // bottomRightValue(a); // -> 42
 
 // ========================= Breadth First =========================
-const bottomRightValue = (root) => { // Time: O(n), Space: O(n)
+const bottomRightValue = (root) => { // Time: O(n^2), Space: O(n)
   let node;
   const queue = [root];
 
@@ -3137,7 +3137,7 @@ const allTreePaths = (root) => {
 // treeLevels(null); // -> []
 
 // ========================= Breadth First =========================
-const treeLevels = (root) => { // Time: O(n), Space: O(n)
+const treeLevels = (root) => { // Time: O(n^2), Space: O(n)
   if (root === null) return [];
 
   const levelsArr = [];
@@ -3286,7 +3286,7 @@ const treeLevels = (root, levelsArr = [], level = 0) => { // Time: O(n), Space: 
 // levelAverages(null); // -> [ ]
 
 // ========================= Breadth First =========================
-const levelAverages = (root) => { // Time: O(n), Space: O(n)
+const levelAverages = (root) => { // Time: O(n^2), Space: O(n)
   if (root === null) return [];
 
   const levelsArr = [];
@@ -3487,3 +3487,28 @@ const leafList = (root, leaves = []) => { // Time: O(n), Space: O(n)
 // };
 //
 // hasPath(graph, 'v', 'z'); // false
+
+// ========================= Breadth First =========================
+const hasPath = (graph, src, dst) => { // Time: O(e^2), Space: O(n)
+  const queue = [src];
+
+  while (queue.length) {
+    const node = queue.shift();
+    if (node === dst) return true;
+
+    graph[node].forEach(neighbor => queue.push(neighbor));
+  }
+
+  return false;
+};
+
+// ========================= Depth First =========================
+const hasPath = (graph, src, dst) => { // Time: O(e), Space: O(n)
+  if (src === dst) return true;
+
+  for (let neighbor of graph[src]) {
+    if (hasPath(graph, neighbor, dst) === true) return true;
+  }
+
+  return false;
+};
