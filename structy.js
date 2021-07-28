@@ -4239,6 +4239,7 @@ const landSize = (grid, r, c, visited) => {
 const closestCarrot = (grid, startRow, startCol) => { // Time: O(rc), Space: O(rc)
   const visited = new Set();
   const queue = [{ row: startRow, col: startCol, distance: 0 }];
+  const deltas = [[-1, 0], [0, 1], [1, 0], [0, -1]];
 
   while (queue.length) {
     const { row, col, distance } = queue.shift();
@@ -4246,17 +4247,16 @@ const closestCarrot = (grid, startRow, startCol) => { // Time: O(rc), Space: O(r
 
     if (grid[row][col] === 'C') return distance;
 
-    if (grid[row - 1] && grid[row - 1][col] !== 'X' && !visited.has(`${row - 1}-${col}`)) {
-      queue.push({ row: row - 1, col: col, distance: distance + 1 });
-    }
-    if (grid[row][col + 1] !== 'X' && grid[row][col + 1] !== undefined && !visited.has(`${row}-${col + 1}`)) {
-      queue.push({ row: row, col: col + 1, distance: distance + 1 });
-    }
-    if (grid[row + 1] && grid[row + 1][col] !== 'X' && !visited.has(`${row + 1}-${col}`)) {
-      queue.push({ row: row + 1, col: col, distance: distance + 1 });
-    }
-    if (grid[row][col - 1] !== 'X' && grid[row][col - 1] !== undefined && !visited.has(`${row}-${col - 1}`)) {
-      queue.push({ row: row, col: col - 1, distance: distance + 1 });
+    for (let delta of deltas) {
+      const [ r, c ] = delta;
+      const newRow = row + r;
+      const newCol = col + c;
+      const validRow = newRow >= 0 && newRow < grid.length;
+      const validCol = newCol >= 0 && newCol < grid[0].length;
+
+      if (validRow && validCol && grid[newRow][newCol] !== 'X' && !visited.has(`${newRow}-${newCol}`)) {
+        queue.push({ row: newRow, col: newCol, distance: distance + 1 });
+      }
     }
   }
 
