@@ -4131,6 +4131,7 @@ const exploreLand = (grid, r, c, visited) => {
 //
 // minimumIsland(grid); // -> 1
 
+// ========================= Depth First =========================
 const minimumIsland = (grid) => { // Time: O(rc), Space: O(rc)
   const visited = new Set();
   let smallestSize = Infinity;
@@ -4168,4 +4169,96 @@ const landSize = (grid, r, c, visited) => {
   }
 
   return count;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #45 closest carrot ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// Write a function, closestCarrot, that takes in a grid, a starting row, and a 
+// starting column. In the grid, 'X's are walls, 'O's are open spaces, and 'C's 
+// are carrots. The function should return a number representing the length of 
+// the shortest path from the starting position to a carrot. You may move up, 
+// down, left, or right, but cannot pass through walls (X). If there is no 
+// possible path to a carrot, then return -1.
+// 
+// test_00:
+// const grid = [
+//   ['O', 'O', 'O', 'O', 'O'],
+//   ['O', 'X', 'O', 'O', 'O'],
+//   ['O', 'X', 'X', 'O', 'O'],
+//   ['O', 'X', 'C', 'O', 'O'],
+//   ['O', 'X', 'X', 'O', 'O'],
+//   ['C', 'O', 'O', 'O', 'O'],
+// ];
+// 
+// closestCarrot(grid, 1, 2); // -> 4
+//
+// test_01:
+// const grid = [
+//   ['O', 'O', 'O', 'O', 'O'],
+//   ['O', 'X', 'O', 'O', 'O'],
+//   ['O', 'X', 'X', 'O', 'O'],
+//   ['O', 'X', 'C', 'O', 'O'],
+//   ['O', 'X', 'X', 'O', 'O'],
+//   ['C', 'O', 'O', 'O', 'O'],
+// ];
+// 
+// closestCarrot(grid, 0, 0); // -> 5
+//
+// test_02:
+// const grid = [
+//   ['O', 'O', 'X', 'X', 'X'],
+//   ['O', 'X', 'X', 'X', 'C'],
+//   ['O', 'X', 'O', 'X', 'X'],
+//   ['O', 'O', 'O', 'O', 'O'],
+//   ['O', 'X', 'X', 'X', 'X'],
+//   ['O', 'O', 'O', 'O', 'O'],
+//   ['O', 'O', 'C', 'O', 'O'],
+//   ['O', 'O', 'O', 'O', 'O'],
+// ];
+// 
+// closestCarrot(grid, 3, 4); // -> 9
+//
+// test_03:
+// const grid = [
+//   ['O', 'O', 'X', 'O', 'O'],
+//   ['O', 'X', 'X', 'X', 'O'],
+//   ['O', 'X', 'C', 'C', 'O'],
+// ];
+// 
+// closestCarrot(grid, 1, 4); // -> 2
+//
+// test_04:
+// const grid = [
+//   ['O', 'O', 'X', 'O', 'O'],
+//   ['O', 'X', 'X', 'X', 'O'],
+//   ['O', 'X', 'C', 'C', 'O'],
+// ];
+// 
+// closestCarrot(grid, 2, 0); // -> -1
+
+// ========================= Breadth First =========================
+const closestCarrot = (grid, startRow, startCol) => { // Time: O(rc), Space: O(rc)
+  const visited = new Set();
+  const queue = [{ row: startRow, col: startCol, distance: 0 }];
+
+  while (queue.length) {
+    const { row, col, distance } = queue.shift();
+    visited.add(`${row}-${col}`);
+
+    if (grid[row][col] === 'C') return distance;
+
+    if (grid[row - 1] && grid[row - 1][col] !== 'X' && !visited.has(`${row - 1}-${col}`)) {
+      queue.push({ row: row - 1, col: col, distance: distance + 1 });
+    }
+    if (grid[row][col + 1] !== 'X' && grid[row][col + 1] !== undefined && !visited.has(`${row}-${col + 1}`)) {
+      queue.push({ row: row, col: col + 1, distance: distance + 1 });
+    }
+    if (grid[row + 1] && grid[row + 1][col] !== 'X' && !visited.has(`${row + 1}-${col}`)) {
+      queue.push({ row: row + 1, col: col, distance: distance + 1 });
+    }
+    if (grid[row][col - 1] !== 'X' && grid[row][col - 1] !== undefined && !visited.has(`${row}-${col - 1}`)) {
+      queue.push({ row: row, col: col - 1, distance: distance + 1 });
+    }
+  }
+
+  return -1;
 };
