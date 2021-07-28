@@ -3915,7 +3915,8 @@ const exploreComponent = (graph, node, visited, size = 0) => {
 //
 // shortestPath(edges, 'm', 's'); // -> 6
 
-const shortestPath = (edges, nodeA, nodeB) => {
+// ========================= Breadth First =========================
+const shortestPath = (edges, nodeA, nodeB) => { // Time: O(e), Space: O(n)
   const graph = buildGraph(edges);
   const visited = new Set();
   const queue = [{ node: nodeA, length: 0 }];
@@ -3951,4 +3952,123 @@ const buildGraph = (edges) => {
     }
   }
   return graph;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #43 island count ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// Write a function, islandCount, that takes in a grid containing Ws and Ls. W 
+// represents water and L represents land. The function should return the number
+// of islands on the grid. An island is a vertically or horizontally connected 
+// region of land.
+//
+// test_00:
+// const grid = [
+//   ['W', 'L', 'W', 'W', 'W'],
+//   ['W', 'L', 'W', 'W', 'W'],
+//   ['W', 'W', 'W', 'L', 'W'],
+//   ['W', 'W', 'L', 'L', 'W'],
+//   ['L', 'W', 'W', 'L', 'L'],
+//   ['L', 'L', 'W', 'W', 'W'],
+// ];
+//
+// islandCount(grid); // -> 3
+//
+// test_01:
+// const grid = [
+//   ['L', 'W', 'W', 'L', 'W'],
+//   ['L', 'W', 'W', 'L', 'L'],
+//   ['W', 'L', 'W', 'L', 'W'],
+//   ['W', 'W', 'W', 'W', 'W'],
+//   ['W', 'W', 'L', 'L', 'L'],
+// ];
+//
+// islandCount(grid); // -> 4
+//
+// test_02:
+// const grid = [
+//   ['L', 'L', 'L'],
+//   ['L', 'L', 'L'],
+//   ['L', 'L', 'L'],
+// ];
+//
+// islandCount(grid); // -> 1
+//
+// test_03:
+// const grid = [
+//   ['W', 'W'],
+//   ['W', 'W'],
+//   ['W', 'W'],
+// ];
+//
+// islandCount(grid); // -> 0
+
+// ========================= Breadth First =========================
+const islandCount = (grid) => {
+  let visited = new Set();
+  let count = 0;
+
+  for (let r = 0; r < grid.length; r++) {
+    for (let c = 0; c < grid.length; c++) {
+      if (grid[r][c] === 'L' && exploreLand(grid, r, c, visited)) {
+        count++;
+      } 
+    }
+  }
+  
+  return count;
+};
+
+const exploreLand = (grid, r, c, visited) => {
+  if (visited.has(`${r}-${c}`)) return false;
+  const queue = [`${r}-${c}`];
+
+  while (queue.length) {
+    const land = queue.shift();
+    visited.add(land);
+    const [ r, c ] = land.split('-').map(n => parseInt(n));
+
+    if (grid[r - 1] && grid[r - 1][c] === 'L' && !visited.has(`${r - 1}-${c}`)) {
+      queue.push(`${r - 1}-${c}`);
+    }
+    if (grid[r][c + 1] === 'L' && !visited.has(`${r}-${c + 1}`)) {
+      queue.push(`${r}-${c + 1}`);
+    }
+    if (grid[r + 1] && grid[r + 1][c] === 'L' && !visited.has(`${r + 1}-${c}`)) {
+      queue.push(`${r + 1}-${c}`);
+    }
+    if (grid[r][c - 1] === 'L' && !visited.has(`${r}-${c - 1}`)) {
+      queue.push(`${r}-${c - 1}`);
+    }
+  }
+
+  return true
+};
+
+// ========================= Depth First =========================
+const islandCount = (grid) => {
+  const visited = new Set();
+  let count = 0;
+
+  for (let r = 0; r < grid.length; r++) {
+    for (let c = 0; c < grid[0].length; c++) {
+      if (grid[r][c] === 'L' && exploreLand(grid, r, c, visited)) {
+        count++;
+      }
+    }
+  }
+
+  return count;
+};
+
+const exploreLand = (grid, r, c, visited) => {
+  if (grid[r][c] === 'W') return false;
+  if (visited.has(`${r}-${c}`)) return false;
+  
+  visited.add(`${r}-${c}`);
+
+  if (grid[r - 1] && grid[r - 1][c]) exploreLand(grid, r - 1, c, visited);
+  if (grid[r][c + 1]) exploreLand(grid, r, c + 1, visited);
+  if (grid[r + 1] && grid[r + 1][c]) exploreLand(grid, r + 1, c, visited);
+  if (grid[r][c - 1]) exploreLand(grid, r, c - 1, visited);
+
+  return true;
 };
