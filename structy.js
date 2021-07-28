@@ -3954,7 +3954,7 @@ const buildGraph = (edges) => {
   return graph;
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #43 island count ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #43 island count ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, islandCount, that takes in a grid containing Ws and Ls. W 
 // represents water and L represents land. The function should return the number
 // of islands on the grid. An island is a vertically or horizontally connected 
@@ -4003,7 +4003,7 @@ const buildGraph = (edges) => {
 
 // ========================= Breadth First =========================
 const islandCount = (grid) => {
-  let visited = new Set();
+  const visited = new Set();
   let count = 0;
 
   for (let r = 0; r < grid.length; r++) {
@@ -4044,7 +4044,7 @@ const exploreLand = (grid, r, c, visited) => {
 };
 
 // ========================= Depth First =========================
-const islandCount = (grid) => {
+const islandCount = (grid) => { // Time: O(rc), Space: O(rc)
   const visited = new Set();
   let count = 0;
 
@@ -4065,10 +4065,107 @@ const exploreLand = (grid, r, c, visited) => {
   
   visited.add(`${r}-${c}`);
 
-  if (grid[r - 1] && grid[r - 1][c]) exploreLand(grid, r - 1, c, visited);
-  if (grid[r][c + 1]) exploreLand(grid, r, c + 1, visited);
-  if (grid[r + 1] && grid[r + 1][c]) exploreLand(grid, r + 1, c, visited);
-  if (grid[r][c - 1]) exploreLand(grid, r, c - 1, visited);
+  if (grid[r - 1] && grid[r - 1][c]) {
+    exploreLand(grid, r - 1, c, visited);
+  }
+  if (grid[r][c + 1]) {
+    exploreLand(grid, r, c + 1, visited);
+  }
+  if (grid[r + 1] && grid[r + 1][c]) {
+    exploreLand(grid, r + 1, c, visited);
+  }
+  if (grid[r][c - 1]) {
+    exploreLand(grid, r, c - 1, visited);
+  }
 
   return true;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #44 minimum island ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// Write a function, minimumIsland, that takes in a grid containing Ws and Ls. 
+// W represents water and L represents land. The function should return the size
+// of the smallest island. An island is a vertically or horizontally connected 
+// region of land.
+//
+// You may assume that the grid contains at least one island.
+//
+// test_00:
+// const grid = [
+//   ['W', 'L', 'W', 'W', 'W'],
+//   ['W', 'L', 'W', 'W', 'W'],
+//   ['W', 'W', 'W', 'L', 'W'],
+//   ['W', 'W', 'L', 'L', 'W'],
+//   ['L', 'W', 'W', 'L', 'L'],
+//   ['L', 'L', 'W', 'W', 'W'],
+// ];
+//
+// minimumIsland(grid); // -> 2
+//
+// test_01:
+// const grid = [
+//   ['L', 'W', 'W', 'L', 'W'],
+//   ['L', 'W', 'W', 'L', 'L'],
+//   ['W', 'L', 'W', 'L', 'W'],
+//   ['W', 'W', 'W', 'W', 'W'],
+//   ['W', 'W', 'L', 'L', 'L'],
+// ];
+//
+// minimumIsland(grid); // -> 1
+//
+// test_02:
+// const grid = [
+//   ['L', 'L', 'L'],
+//   ['L', 'L', 'L'],
+//   ['L', 'L', 'L'],
+// ];
+//
+// minimumIsland(grid); // -> 9
+//
+// test_03:
+// const grid = [
+//   ['W', 'W'],
+//   ['L', 'L'],
+//   ['W', 'W'],
+//   ['W', 'L']
+// ];
+//
+// minimumIsland(grid); // -> 1
+
+const minimumIsland = (grid) => { // Time: O(rc), Space: O(rc)
+  const visited = new Set();
+  let smallestSize = Infinity;
+
+  for (let r = 0; r < grid.length; r++) {
+    for (let c = 0; c < grid.length; c++) {
+      if (grid[r][c] === 'L' && !visited.has(`${r}-${c}`)) {
+        const currentSize = landSize(grid, r, c, visited);
+        if (currentSize < smallestSize) smallestSize = currentSize;
+      }
+    }
+  }
+
+  return smallestSize;
+};
+
+const landSize = (grid, r, c, visited) => {
+  if (grid[r][c] === 'W') return 0;
+  if (visited.has(`${r}-${c}`)) return 0;
+
+  visited.add(`${r}-${c}`);
+
+  let count = 1;
+  if (grid[r - 1] && grid[r - 1][c]) {
+    count += landSize(grid, r - 1, c, visited);
+  }
+  if (grid[r] && grid[r][c + 1]) {
+    count += landSize(grid, r, c + 1, visited);
+  }
+  if (grid[r + 1] && grid[r + 1][c]) {
+    count += landSize(grid, r + 1, c, visited);
+  }
+  if (grid[r] && grid[r][c - 1]) {
+    count += landSize(grid, r, c - 1, visited);
+  }
+
+  return count;
 };
