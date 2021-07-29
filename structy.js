@@ -4318,6 +4318,7 @@ const closestCarrot = (grid, startRow, startCol) => { // Time: O(rc), Space: O(r
 //
 // longestPath(graph); // -> 3
 
+// ========================= Depth First =========================
 const longestPath = (graph) => {
   let longest = -Infinity;
 
@@ -4410,6 +4411,7 @@ const pathLength = (graph, start) => {
 // ];
 // semestersRequired(numCourses, prereqs); // -> 2
 
+// ========================= Depth First =========================
 const semestersRequired = (numCourses, prereqs) => { // Time: O(p), Space: O(c)
   const graph = buildGraph(prereqs);
   let semsNeeded = 1;
@@ -4446,7 +4448,7 @@ const semesters = (graph, course) => {
   return 1 + Math.max(...numSems);
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #49 best bridge ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #49 best bridge ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, bestBridge, that takes in a grid as an argument. The grid 
 // contains water (W) and land (L). There are exactly two islands in the grid. 
 // An island is a vertically or horizontally connected region of land. Return 
@@ -4528,6 +4530,7 @@ const semesters = (graph, course) => {
 // ];
 // bestBridge(grid); // -> 8
 
+// ========================= My Solution (Breadth First) =========================
 const bestBridge = (grid) => {
   const visited = new Set();
   let island = [];
@@ -4608,4 +4611,140 @@ const bridgeLength = (grid, visited, island) => {
   }
 
   return minLength;
+};
+
+// ========================= Depth & Breadth First =========================
+const bestBridge = (grid) => { // Time: O(rc), Space: O(rc)
+  let mainIsland;
+  for (let r = 0; r < grid.length; r += 1) {
+    for (let c = 0; c < grid[0].length; c += 1) {
+      const possibleIsland = traverseIsland(grid, r, c, new Set());
+      if (possibleIsland.size > 0) {
+        mainIsland = possibleIsland;
+        break;
+      }
+    }
+  }
+  
+  const visited = new Set(mainIsland);
+  const queue = [];
+  for (let pos of mainIsland) {
+    const [ row, col ] = pos.split(',').map(Number);
+    queue.push([row, col, 0]);
+  }
+  
+  while (queue.length > 0) {
+    const [ row, col, distance ] = queue.shift();
+    
+    const pos = row + ',' + col;
+    if (grid[row][col] === 'L' && !mainIsland.has(pos)) return distance - 1;
+    
+    const deltas = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+    for (let delta of deltas) {
+      const [ deltaRow, deltaCol ] = delta;
+      const neighborRow = row + deltaRow;
+      const neighborCol = col + deltaCol;
+      const neighborPos = neighborRow + ',' + neighborCol;
+      if (isInbounds(grid, neighborRow, neighborCol) && !visited.has(neighborPos)) {
+        visited.add(neighborPos);
+        queue.push([neighborRow, neighborCol, distance + 1]);
+      }
+    }
+  }
+};
+
+const isInbounds = (grid, row, col) => {
+  const rowInbounds = 0 <= row  && row < grid.length;
+  const colInbounds = 0 <= col && col < grid[0].length;
+  return rowInbounds && colInbounds;
+};
+
+const traverseIsland = (grid, row, col, visited) => {
+  if (!isInbounds(grid, row, col) || grid[row][col] === 'W') return visited;
+  
+  const pos = row + ',' + col;
+  if (visited.has(pos)) return visited;
+  
+  visited.add(pos);
+  
+  traverseIsland(grid, row - 1, col, visited);
+  traverseIsland(grid, row + 1, col, visited);
+  traverseIsland(grid, row, col - 1, visited);
+  traverseIsland(grid, row, col + 1, visited);
+  
+  return visited;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #50 has cycle ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+// Write a function, hasCycle, that takes in an object representing the adjacency
+// list of a directed graph. The function should return a boolean indicating 
+// whether or not the graph contains a cycle.
+//
+// test_00:
+// hasCycle({
+//   a: ["b"],
+//   b: ["c"],
+//   c: ["a"],
+// }); // -> true
+//
+// test_01:
+// hasCycle({
+//   a: ["b", "c"],
+//   b: ["c"],
+//   c: ["d"],
+//   d: [],
+// }); // -> false
+//
+// test_02:
+// hasCycle({
+//   a: ["b", "c"],
+//   b: [],
+//   c: [],
+//   e: ["f"],
+//   f: ["e"],
+// }); // -> true
+//
+// test_03:
+// hasCycle({
+//   q: ["r", "s"],
+//   r: ["t", "u"],
+//   s: [],
+//   t: [],
+//   u: [],
+//   v: ["w"],
+//   w: [],
+//   x: ["w"],
+// }); // -> false
+//
+// test_04:
+// hasCycle({
+//   a: ["b"],
+//   b: ["c"],
+//   c: ["a"],
+//   g: [],
+// }); // -> true
+
+// ========================= White-gray-black (DFS) =========================
+const hasCycle = (graph) => {
+  const visited = new Set();
+
+  for (let node in graph) {
+    if (inCycle(graph, node, visited)) return true;
+  }
+
+  return false;
+};
+
+const inCycle = (graph, node, visited, visiting = new Set()) => {
+  if (visited.has(node)) return false;
+  if (visiting.has(node)) return true;
+
+  visiting.add(node);
+  for (let neighbor of graph[node]) {
+    if (inCycle(graph, neighbor, visited, visiting)) return true;
+  }
+
+  visiting.delete(node);
+  visited.add(node);
+  return false;
 };
