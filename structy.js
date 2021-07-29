@@ -4410,7 +4410,7 @@ const pathLength = (graph, start) => {
 // ];
 // semestersRequired(numCourses, prereqs); // -> 2
 
-const semestersRequired = (numCourses, prereqs) => {
+const semestersRequired = (numCourses, prereqs) => { // Time: O(p), Space: O(c)
   const graph = buildGraph(prereqs);
   let semsNeeded = 1;
 
@@ -4444,4 +4444,168 @@ const semesters = (graph, course) => {
   }
 
   return 1 + Math.max(...numSems);
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #49 best bridge ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// Write a function, bestBridge, that takes in a grid as an argument. The grid 
+// contains water (W) and land (L). There are exactly two islands in the grid. 
+// An island is a vertically or horizontally connected region of land. Return 
+// the minimum length bridge needed to connect the two islands. A bridge does not
+// need to form a straight line.
+//
+// test_00:
+// const grid = [
+//   ["W", "W", "W", "L", "L"],
+//   ["L", "L", "W", "W", "L"],
+//   ["L", "L", "L", "W", "L"],
+//   ["W", "L", "W", "W", "W"],
+//   ["W", "W", "W", "W", "W"],
+//   ["W", "W", "W", "W", "W"],
+// ];
+// bestBridge(grid); // -> 1
+//
+// test_01:
+// const grid = [
+//   ["W", "W", "W", "W", "W"],
+//   ["W", "W", "W", "W", "W"],
+//   ["L", "L", "W", "W", "L"],
+//   ["W", "L", "W", "W", "L"],
+//   ["W", "W", "W", "L", "L"],
+//   ["W", "W", "W", "W", "W"],
+// ];
+// bestBridge(grid); // -> 2
+//
+// test_02:
+// const grid = [
+//   ["W", "W", "W", "W", "W"],
+//   ["W", "W", "W", "L", "W"],
+//   ["L", "W", "W", "W", "W"],
+// ];
+// bestBridge(grid); // -> 3
+//
+// test_03:
+// const grid = [
+//   ["W", "W", "W", "W", "W", "W", "W", "W"],
+//   ["W", "W", "W", "W", "W", "W", "W", "W"],
+//   ["W", "W", "W", "W", "W", "W", "W", "W"],
+//   ["W", "W", "W", "W", "W", "L", "W", "W"],
+//   ["W", "W", "W", "W", "L", "L", "W", "W"],
+//   ["W", "W", "W", "W", "L", "L", "L", "W"],
+//   ["W", "W", "W", "W", "W", "L", "L", "L"],
+//   ["L", "W", "W", "W", "W", "L", "L", "L"],
+//   ["L", "L", "L", "W", "W", "W", "W", "W"],
+//   ["W", "W", "W", "W", "W", "W", "W", "W"],
+// ];
+// bestBridge(grid); // -> 3
+//
+// test_04:
+// const grid = [
+//   ["L", "L", "L", "L", "L", "L", "L", "L"],
+//   ["L", "W", "W", "W", "W", "W", "W", "L"],
+//   ["L", "W", "W", "W", "W", "W", "W", "L"],
+//   ["L", "W", "W", "W", "W", "W", "W", "L"],
+//   ["L", "W", "W", "W", "W", "W", "W", "L"],
+//   ["L", "W", "W", "W", "W", "W", "W", "L"],
+//   ["L", "W", "W", "L", "W", "W", "W", "L"],
+//   ["L", "W", "W", "W", "W", "W", "W", "L"],
+//   ["L", "W", "W", "W", "W", "W", "W", "L"],
+//   ["L", "W", "W", "W", "W", "W", "W", "L"],
+//   ["L", "W", "W", "W", "W", "W", "W", "L"],
+//   ["L", "L", "L", "L", "L", "L", "L", "L"],
+// ];
+// bestBridge(grid); // -> 2
+//
+// test_05:
+// const grid = [
+//   ["W", "L", "W", "W", "W", "W", "W", "W"],
+//   ["W", "L", "W", "W", "W", "W", "W", "W"],
+//   ["W", "W", "W", "W", "W", "W", "W", "W"],
+//   ["W", "W", "W", "W", "W", "W", "W", "W"],
+//   ["W", "W", "W", "W", "W", "W", "W", "W"],
+//   ["W", "W", "W", "W", "W", "W", "L", "W"],
+//   ["W", "W", "W", "W", "W", "W", "L", "L"],
+//   ["W", "W", "W", "W", "W", "W", "W", "L"],
+// ];
+// bestBridge(grid); // -> 8
+
+const bestBridge = (grid) => {
+  const visited = new Set();
+  let island = [];
+  let length = 0;
+  
+  outerLoop:
+  for (let r = 0; r < grid.length; r++) {
+    for (let c = 0; c < grid[0].length; c++) {
+      if (grid[r][c] === 'L') {
+        island = recordLand(grid, visited, r, c);
+        length = bridgeLength(grid, visited, island);
+        break outerLoop;
+      }
+    }
+  }
+
+  return length;
+};
+
+const recordLand = (grid, visited, row, col) => {
+  const island = [[row, col]];
+  const queue = [[row, col]];
+  const deltas = [[-1, 0], [0, 1], [1, 0], [0, -1]];
+
+  while (queue.length) {
+    const [r, c] = queue.shift();
+    visited.add(`${r}-${c}`);
+
+    for (let delta of deltas) {
+      const [y, x] = delta;
+      const newRow = r + y;
+      const newCol = c + x;
+      const validY = newRow >= 0 && newRow < grid.length;
+      const validX = newCol >= 0 && newCol < grid[0].length;
+
+      if (validY && validX && grid[newRow][newCol] === 'L' && 
+          !visited.has(`${newRow}-${newCol}`)) {
+        queue.push([newRow, newCol]);
+        island.push([newRow, newCol]);
+      }
+    }
+  }
+  
+  return island;
+};
+
+const bridgeLength = (grid, visited, island) => {
+  let minLength = Infinity;
+  
+  for (let landPos of island) {
+    let visitedWater = new Set(visited);
+    const queue = [{ pos: landPos, distance: -1 }];
+    
+    while (queue.length) {
+      const { pos, distance } = queue.shift();
+      const [r, c] = pos;
+      visitedWater.add(`${r}-${c}`);
+      
+      if (grid[r][c] === 'L' && !visited.has(`${r}-${c}`)) {
+        const currLength = distance;
+        if (currLength < minLength) minLength = currLength;
+      } else {
+        const deltas = [[-1, 0], [0, 1], [1, 0], [0, -1]];
+
+        for (let delta of deltas) {
+          const [y, x] = delta;
+          const newRow = r + y;
+          const newCol = c + x;
+          const validY = newRow >= 0 && newRow < grid.length;
+          const validX = newCol >= 0 && newCol < grid[0].length;
+    
+          if (validY && validX && !visitedWater.has(`${newRow}-${newCol}`)) {
+            queue.push({ pos: [newRow, newCol], distance: distance + 1 });
+          }
+        }
+      }
+    }
+  }
+
+  return minLength;
 };
