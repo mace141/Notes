@@ -731,7 +731,8 @@ const linkedListFind = (head, target) => {
 // getNodeValue(node1, 1); // 'mango'
 
 // ========================= Iterative =========================
-const getNodeValue = (head, index) => { // Time: O(n), Space: O(1)
+// Time: O(n), Space: O(1)
+const getNodeValue = (head, index) => {
   let nodeIdx = 0;
   let currNode = head;
 
@@ -745,7 +746,8 @@ const getNodeValue = (head, index) => { // Time: O(n), Space: O(1)
 };
 
 // ========================= Recursive =========================
-const getNodeValue = (head, index) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const getNodeValue = (head, index) => {
   if (index === 0) return head.val;
   if (head === null) return null;
 
@@ -793,7 +795,8 @@ const getNodeValue = (head, index) => { // Time: O(n), Space: O(n)
 // reverseList(p); // p
 
 // ========================= Iterative =========================
-const reverseList = (head) => { // Time: O(n), Space: O(1)
+// Time: O(n), Space: O(1)
+const reverseList = (head) => {
   let currNode = head;
   let prevNode = null;
 
@@ -808,7 +811,8 @@ const reverseList = (head) => { // Time: O(n), Space: O(1)
 };
 
 // ========================= Recursive =========================
-const reverseList = (head, prev = null) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const reverseList = (head, prev = null) => {
   if (head === null) return prev;
   
   const nextNode = head.next;
@@ -917,7 +921,8 @@ const reverseList = (head, prev = null) => { // Time: O(n), Space: O(n)
 // 1 -> w -> 2 -> 3
 
 // ========================= Iterative =========================
-const zipperLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
+// Time: O(min(n, m)), Space: O(1)
+const zipperLists = (head1, head2) => {
   let tail = head1;
   let current1 = head1.next;
   let current2 = head2;
@@ -942,7 +947,8 @@ const zipperLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
 };
 
 // ========================= Recursive =========================
-const zipperLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(min(n, m))
+// Time: O(min(n, m)), Space: O(min(n, m))
+const zipperLists = (head1, head2) => {
   if (head1 === null && head2 === null) return null;
   if (head1 === null) return head2;
   if (head2 === null) return head1;
@@ -1028,7 +1034,8 @@ const zipperLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(min(n, m
 // 15 -> 30 -> 67
 
 // ========================= Iterative =========================
-const mergeLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
+// Time: O(min(n, m)), Space: O(1)
+const mergeLists = (head1, head2) => {
   const dummyHead = new Node(null);
   let tail = dummyHead;
   let current1 = head1;
@@ -1053,7 +1060,8 @@ const mergeLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(1)
 };
 
 // ========================= Recursive =========================
-const mergeLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(min(n, m))
+// Time: O(min(n, m)), Space: O(min(n, m))
+const mergeLists = (head1, head2) => {
   if (head1 === null && head2 === null) return null;
   if (head1 === null) return head2;
   if (head2 === null) return head1;
@@ -1140,7 +1148,8 @@ const mergeLists = (head1, head2) => { // Time: O(min(n, m)), Space: O(min(n, m)
 // isUnivalueList(z); // true
 
 // ========================= Iterative =========================
-const isUnivalueList = (head) => { // Time: O(n), Space: O(1)
+// Time: O(n), Space: O(1)
+const isUnivalueList = (head) => {
   const value = head.val;
   let currNode = head;
 
@@ -1153,7 +1162,8 @@ const isUnivalueList = (head) => { // Time: O(n), Space: O(1)
 };
 
 // ========================= Recursive =========================
-const isUnivalueList = (head, prev = head) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const isUnivalueList = (head, prev = head) => {
   if (head === null) return true;
 
   if (head.val === prev.val) {
@@ -1242,7 +1252,8 @@ const isUnivalueList = (head, prev = head) => { // Time: O(n), Space: O(n)
 // test_05:
 // longestStreak(null); // 0
 
-const longestStreak = (head) => { // Time: O(n), Space: O(1)
+// Time: O(n), Space: O(1)
+const longestStreak = (head) => {
   let greatestStreak = 0;
   let currentStreak = 0;
   let currNode = head;
@@ -1344,7 +1355,8 @@ const longestStreak = (head) => { // Time: O(n), Space: O(1)
 // null
 
 // ========================= Iterative =========================
-const removeNode = (head, targetVal) => { // Time: O(n), Space: O(1)
+// Time: O(n), Space: O(1)
+const removeNode = (head, targetVal) => {
   let currNode = head;
   let prevNode = new Node(null);
   let dummyHead = prevNode;
@@ -1363,7 +1375,8 @@ const removeNode = (head, targetVal) => { // Time: O(n), Space: O(1)
 };
 
 // ========================= Recursive =========================
-const removeNode = (head, targetVal) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const removeNode = (head, targetVal) => {
   if (head === null) return null;
   if (head.val === targetVal) return head.next;
 
@@ -1439,7 +1452,8 @@ const removeNode = (head, targetVal) => { // Time: O(n), Space: O(n)
 // z -> a -> b 
 
 // ========================= Iterative =========================
-const insertNode = (head, value, index) => { // Time: O(n), Space: O(1)
+// Time: O(n), Space: O(1)
+const insertNode = (head, value, index) => {
   let count = 0;
   let currNode = new Node(null);
   let dummyHead = currNode;
@@ -1459,7 +1473,8 @@ const insertNode = (head, value, index) => { // Time: O(n), Space: O(1)
 };
 
 // ========================= Recursive =========================
-const insertNode = (head, value, index, count = 0) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const insertNode = (head, value, index, count = 0) => {
   if (index === 0) {
     const newNode = new Node(value);
     newNode.next = head;
@@ -1646,7 +1661,8 @@ const createLinkedList = (values, i = 0) => {
 // 5 -> 0 -> 0 -> 1
 
 // ========================= Iterative =========================
-const addLists = (head1, head2) => { // Time: O(max(n, m)), Space: O(max(n, m))
+// Time: O(max(n, m)), Space: O(max(n, m))
+const addLists = (head1, head2) => {
   const sumHead = new Node(null);
   let currNode = sumHead;
   let curr1 = head1;
@@ -1671,7 +1687,8 @@ const addLists = (head1, head2) => { // Time: O(max(n, m)), Space: O(max(n, m))
 };
 
 // ========================= Recursive =========================
-const addLists = (head1, head2, carry = 0) => { // Time: O(max(n, m)), Space: O(max(n, m))
+// Time: O(max(n, m)), Space: O(max(n, m))
+const addLists = (head1, head2, carry = 0) => {
   if (head1 === null && head2 === null && carry === 0) return null;
 
   let val1 = head1 === null ? 0 : head1.val;
@@ -1776,7 +1793,8 @@ const addLists = (head1, head2, carry = 0) => { // Time: O(max(n, m)), Space: O(
 
 
 // ========================= Iterative =========================
-const depthFirstValues = (root) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const depthFirstValues = (root) => {
   if (root === null) return [];
 
   const values = [];
@@ -1794,7 +1812,8 @@ const depthFirstValues = (root) => { // Time: O(n), Space: O(n)
 };
 
 // ========================= Recursive =========================
-const depthFirstValues = (root) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const depthFirstValues = (root) => {
   if (root === null) return [];
 
   return [root.val].concat(depthFirstValues(root.left))
@@ -1898,7 +1917,8 @@ const depthFirstValues = (root) => { // Time: O(n), Space: O(n)
 //    -> []
 
 // ========================= Iterative =========================
-const breadthFirstValues = (root) => { // Time: O(n^2), Space: O(n)
+// Time: O(n^2), Space: O(n)
+const breadthFirstValues = (root) => {
   if (root === null) return [];
   
   const queue = [root];
@@ -2046,7 +2066,8 @@ const breadthFirstValues = (root) => { // Time: O(n^2), Space: O(n)
 // treeIncludes(null, "b"); // -> false
 
 // ========================= Breadth First =========================
-const treeIncludes = (root, target) => { // Time: O(n^2), Space: O(n)
+// Time: O(n^2), Space: O(n)
+const treeIncludes = (root, target) => {
   if (root === null) return false;
 
   const queue = [root];
@@ -2062,7 +2083,8 @@ const treeIncludes = (root, target) => { // Time: O(n^2), Space: O(n)
 };
 
 // ========================= Depth First =========================
-const treeIncludes = (root, target) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const treeIncludes = (root, target) => {
   if (root === null) return false;
   if (root.val === target) return true;
   return treeIncludes(root.left. target) || treeIncludes(root.right. target);
@@ -2127,7 +2149,8 @@ const treeIncludes = (root, target) => { // Time: O(n), Space: O(n)
 // treeSum(null); // -> 0
 
 // ========================= Depth First =========================
-const treeSum = (root) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const treeSum = (root) => {
   if (root === null) return 0;
 
   return root.val + treeSum(root.left) + treeSum(root.right);
@@ -2220,7 +2243,8 @@ const treeSum = (root) => { // Time: O(n), Space: O(n)
 // tree_min_value(a); // -> 42
 
 // ========================= Depth First Recursive =========================
-const treeMinValue = (root) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const treeMinValue = (root) => {
   if (root === null) return Infinity;
 
   const minLeft = treeMinValue(root.left);
@@ -2230,7 +2254,8 @@ const treeMinValue = (root) => { // Time: O(n), Space: O(n)
 };
 
 // ========================= Depth First Iterative =========================
-const treeMinValue = (root) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const treeMinValue = (root) => {
   let minValue = Infinity;
   const stack = [root];
 
@@ -2246,7 +2271,8 @@ const treeMinValue = (root) => { // Time: O(n), Space: O(n)
 };
 
 // ========================= Breadth First =========================
-const treeMinValue = (root) => { // Time: O(n^2), Space: O(n)
+// Time: O(n^2), Space: O(n)
+const treeMinValue = (root) => {
   let minValue = Infinity;
   const queue = [root];
 
@@ -2352,7 +2378,8 @@ const treeMinValue = (root) => { // Time: O(n^2), Space: O(n)
 // maxPathSum(a); // -> 42
 
 // ========================= Depth First =========================
-const maxPathSum = (root) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const maxPathSum = (root) => {
   if (root === null) return -Infinity;
   if (root.left === null && root.right === null) return root.val;
 
@@ -2501,7 +2528,8 @@ const maxPathSum = (root) => { // Time: O(n), Space: O(n)
 // pathFinder(root, 3451); // -> [0, 1, 2, 3, ..., 3450, 3451]
 
 // ========================= My Solution =========================
-const pathFinder = (root, target, cameFrom = {}) => { // Time: O(n^2), Space: O(n)
+// Time: O(n^2), Space: O(n)
+const pathFinder = (root, target, cameFrom = {}) => {
   if (root === null) return null;
   if (root.val === target) return [root.val];
   cameFrom[root] = null;
@@ -2536,7 +2564,8 @@ const pathFinder = (root, target, cameFrom = {}) => { // Time: O(n^2), Space: O(
 };
 
 // ========================= Alvin's Depth First Solution =========================
-const pathFinder = (root, target) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const pathFinder = (root, target) => {
   const result = pathFinderHelper(root, target);
   if (result === null) {
     return null;
@@ -2672,7 +2701,8 @@ const pathFinderHelper = (root, target) => {
 // treeValueCount(null, 42); // -> 0
 
 // ========================= Depth First =========================
-const treeValueCount = (root, target) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const treeValueCount = (root, target) => {
   if (root === null) return 0;
 
   const leftCount = treeValueCount(root.left, target);
@@ -2758,7 +2788,8 @@ const treeValueCount = (root, target) => { // Time: O(n), Space: O(n)
 // howHigh(a); // -> 0
 
 // ========================= Recursive =========================
-const howHigh = (root) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const howHigh = (root) => {
   if (root === null) return -1;
 
   const leftHeight = howHigh(root.left);
@@ -2888,7 +2919,8 @@ const howHigh = (root) => { // Time: O(n), Space: O(n)
 // bottomRightValue(a); // -> 42
 
 // ========================= Breadth First =========================
-const bottomRightValue = (root) => { // Time: O(n^2), Space: O(n)
+// Time: O(n^2), Space: O(n)
+const bottomRightValue = (root) => {
   let node;
   const queue = [root];
 
@@ -3137,7 +3169,8 @@ const allTreePaths = (root) => {
 // treeLevels(null); // -> []
 
 // ========================= Breadth First =========================
-const treeLevels = (root) => { // Time: O(n^2), Space: O(n)
+// Time: O(n^2), Space: O(n)
+const treeLevels = (root) => {
   if (root === null) return [];
 
   const levelsArr = [];
@@ -3160,7 +3193,8 @@ const treeLevels = (root) => { // Time: O(n^2), Space: O(n)
 };
 
 // ========================= Depth First =========================
-const treeLevels = (root, levelsArr = [], level = 0) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const treeLevels = (root, levelsArr = [], level = 0) => {
   if (root === null) return [];
 
   if (levelsArr[level]) {
@@ -3286,7 +3320,8 @@ const treeLevels = (root, levelsArr = [], level = 0) => { // Time: O(n), Space: 
 // levelAverages(null); // -> [ ]
 
 // ========================= Breadth First =========================
-const levelAverages = (root) => { // Time: O(n^2), Space: O(n)
+// Time: O(n^2), Space: O(n)
+const levelAverages = (root) => {
   if (root === null) return [];
 
   const levelsArr = [];
@@ -3308,7 +3343,8 @@ const levelAverages = (root) => { // Time: O(n^2), Space: O(n)
 };
 
 // ========================= Depth First =========================
-const levelAverages = (root, levelsArr = [], level = 0) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const levelAverages = (root, levelsArr = [], level = 0) => {
   if (root === null) return [];
 
   if (levelsArr[level]) {
@@ -3414,7 +3450,8 @@ const levelAverages = (root, levelsArr = [], level = 0) => { // Time: O(n), Spac
 // leafList(null); // -> [ ]
 
 // ========================= Depth First =========================
-const leafList = (root, leaves = []) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const leafList = (root, leaves = []) => {
   if (root == null) return [];
 
   if (root.left == null && root.right == null) leaves.push(root.val);
@@ -3489,7 +3526,8 @@ const leafList = (root, leaves = []) => { // Time: O(n), Space: O(n)
 // hasPath(graph, 'v', 'z'); // false
 
 // ========================= Breadth First =========================
-const hasPath = (graph, src, dst) => { // Time: O(e^2), Space: O(n)
+// Time: O(e^2), Space: O(n)
+const hasPath = (graph, src, dst) => {
   const queue = [src];
 
   while (queue.length) {
@@ -3503,7 +3541,8 @@ const hasPath = (graph, src, dst) => { // Time: O(e^2), Space: O(n)
 };
 
 // ========================= Depth First =========================
-const hasPath = (graph, src, dst) => { // Time: O(e), Space: O(n)
+// Time: O(e), Space: O(n)
+const hasPath = (graph, src, dst) => {
   if (src === dst) return true;
 
   for (let neighbor of graph[src]) {
@@ -3625,7 +3664,8 @@ const hasPath = (graph, src, dst) => { // Time: O(e), Space: O(n)
 // undirectedPath(edges, 'r', 'b'); // -> false
 
 // ========================= Depth First =========================
-const undirectedPath = (edges, nodeA, nodeB) => { // Time: O(e), Space: O(n)
+// Time: O(e), Space: O(n)
+const undirectedPath = (edges, nodeA, nodeB) => {
   const graph = {};
   edges.forEach(edge => {
     const [ node1, node2 ] = edge;
@@ -3645,7 +3685,8 @@ const undirectedPath = (edges, nodeA, nodeB) => { // Time: O(e), Space: O(n)
   return validPath(graph, nodeA, nodeB);
 };
 
-const validPath = (graph, nodeA, nodeB, visited = new Set()) => { // Time: O(e), Space: O(n)
+// Time: O(e), Space: O(n)
+const validPath = (graph, nodeA, nodeB, visited = new Set()) => {
   if (nodeA === nodeB) return true;
   visited.add(nodeA);
 
@@ -3712,7 +3753,8 @@ const validPath = (graph, nodeA, nodeB, visited = new Set()) => { // Time: O(e),
 // }); // -> 5
 
 // ========================= Depth First =========================
-const connectedComponentsCount = (graph) => { // Time: O(e), Space: O(n)
+// Time: O(e), Space: O(n)
+const connectedComponentsCount = (graph) => {
   let count = 0;
   
   const visited = new Set();
@@ -3723,7 +3765,8 @@ const connectedComponentsCount = (graph) => { // Time: O(e), Space: O(n)
   return count;
 };
 
-const exploreComponent = (graph, node, visited) => { // Time: O(e), Space: O(n)
+// Time: O(e), Space: O(n)
+const exploreComponent = (graph, node, visited) => {
   if (visited.has(parseInt(node))) return false;
   visited.add(parseInt(node));
 
@@ -3788,7 +3831,8 @@ const exploreComponent = (graph, node, visited) => { // Time: O(e), Space: O(n)
 // }); // -> 3
 
 // ========================= Depth First =========================
-const largestComponent = (graph) => { // Time: O(e), Space: O(n)
+// Time: O(e), Space: O(n)
+const largestComponent = (graph) => {
   let largest = 0;
 
   const visited = new Set();
@@ -3916,7 +3960,8 @@ const exploreComponent = (graph, node, visited, size = 0) => {
 // shortestPath(edges, 'm', 's'); // -> 6
 
 // ========================= Breadth First =========================
-const shortestPath = (edges, nodeA, nodeB) => { // Time: O(e), Space: O(n)
+// Time: O(e), Space: O(n)
+const shortestPath = (edges, nodeA, nodeB) => {
   const graph = buildGraph(edges);
   const visited = new Set();
   const queue = [{ node: nodeA, length: 0 }];
@@ -4044,7 +4089,8 @@ const exploreLand = (grid, r, c, visited) => {
 };
 
 // ========================= Depth First =========================
-const islandCount = (grid) => { // Time: O(rc), Space: O(rc)
+// Time: O(rc), Space: O(rc)
+const islandCount = (grid) => {
   const visited = new Set();
   let count = 0;
 
@@ -4132,7 +4178,8 @@ const exploreLand = (grid, r, c, visited) => {
 // minimumIsland(grid); // -> 1
 
 // ========================= Depth First =========================
-const minimumIsland = (grid) => { // Time: O(rc), Space: O(rc)
+// Time: O(rc), Space: O(rc)
+const minimumIsland = (grid) => {
   const visited = new Set();
   let smallestSize = Infinity;
 
@@ -4236,7 +4283,8 @@ const landSize = (grid, r, c, visited) => {
 // closestCarrot(grid, 2, 0); // -> -1
 
 // ========================= Breadth First =========================
-const closestCarrot = (grid, startRow, startCol) => { // Time: O(rc), Space: O(rc)
+// Time: O(rc), Space: O(rc)
+const closestCarrot = (grid, startRow, startCol) => {
   const visited = new Set();
   const queue = [{ row: startRow, col: startCol, distance: 0 }];
   const deltas = [[-1, 0], [0, 1], [1, 0], [0, -1]];
@@ -4412,7 +4460,8 @@ const pathLength = (graph, start) => {
 // semestersRequired(numCourses, prereqs); // -> 2
 
 // ========================= Depth First =========================
-const semestersRequired = (numCourses, prereqs) => { // Time: O(p), Space: O(c)
+// Time: O(p), Space: O(c)
+const semestersRequired = (numCourses, prereqs) => {
   const graph = buildGraph(prereqs);
   let semsNeeded = 1;
 
@@ -4614,7 +4663,8 @@ const bridgeLength = (grid, visited, island) => {
 };
 
 // ========================= Depth & Breadth First =========================
-const bestBridge = (grid) => { // Time: O(rc), Space: O(rc)
+// Time: O(rc), Space: O(rc)
+const bestBridge = (grid) => {
   let mainIsland;
   for (let r = 0; r < grid.length; r += 1) {
     for (let c = 0; c < grid[0].length; c += 1) {
@@ -4725,7 +4775,8 @@ const traverseIsland = (grid, row, col, visited) => {
 // }); // -> true
 
 // ========================= White-gray-black (DFS) =========================
-const hasCycle = (graph) => { // Time: O(e), Space: O(n)
+// Time: O(e), Space: O(n)
+const hasCycle = (graph) => {
   const visited = new Set();
 
   for (let node in graph) {
@@ -4832,7 +4883,8 @@ const inCycle = (graph, node, visited, visiting = new Set()) => {
 // prereqsPossible(numCourses, prereqs); // -> true
 
 // ========================= White-gray-black (DFS) =========================
-const prereqsPossible = (numCourses, prereqs) => { // Time: O(p), Space: O(p)
+// Time: O(p), Space: O(p)
+const prereqsPossible = (numCourses, prereqs) => {
   const graph = buildGraph(prereqs);
   const visited = new Set();
 
@@ -4897,12 +4949,50 @@ const inCycle = (graph, visited, course, visiting = new Set()) => {
 // fib(46); // -> 1836311903
 
 // ========================= Memoization =========================
-const fib = (n, memo = {}) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const fib = (n, memo = {}) => {
   if (n === 0) return 0;
   if (n === 1) return 1;
   if (n in memo) return memo[n];
 
   memo[n] = fib(n - 1) + fib(n - 2);
+
+  return memo[n];
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #52 tribonacci ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function tribonacci that takes in a number argument, n, and returns
+// the n-th number of the Tribonacci sequence.
+// The 0-th and 1-st numbers of the sequence are both 0.
+// The 2-nd number of the sequence is 1.
+// To generate further numbers of the sequence, calculate the sum of previous three numbers.
+// Solve this recursively.
+//
+// test_00:
+// tribonacci(0); // -> 0
+// test_01:
+// tribonacci(1); // -> 0
+// test_02:
+// tribonacci(2); // -> 1
+// test_03:
+// tribonacci(5); // -> 4
+// test_04:
+// tribonacci(7); // -> 13
+// test_05:
+// tribonacci(14); // -> 927
+// test_06:
+// tribonacci(20); // -> 35890
+// test_07:
+// tribonacci(37); // -> 1132436852
+
+// ========================= Memoization =========================
+// Time: O(n), Space: O(n)
+const tribonacci = (n, memo = {}) => {
+  if (n === 0 || n === 1) return 0;
+  if (n === 2) return 1;
+  if (n in memo) return memo[n];
+
+  memo[n] = tribonacci(n - 1, memo) + tribonacci(n - 2, memo) + tribonacci(n - 3, memo);
 
   return memo[n];
 };
