@@ -4339,3 +4339,109 @@ const pathLength = (graph, start) => {
 
   return 1 + Math.max(...lengths);
 };
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #47 semesters required ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// Write a function, semestersRequired, that takes in a number of courses (n) and
+// a list of prerequisites as arguments. Courses have ids ranging from 0 through
+// n - 1. A single prerequisite of [A, B] means that course A must be taken 
+// before course B. Return the minimum number of semesters required to complete
+// all n courses. There is no limit on how many courses you can take in a single
+// semester, as long the prerequisites of a course are satisfied before taking it.
+//
+// Note that given prerequisite [A, B], you cannot take course A and course B
+// concurrently in the same semester. You must take A in some semester before B.
+//
+// You can assume that it is possible to eventually complete all courses.
+//
+// test_00:
+// const numCourses = 6;
+// const prereqs = [
+//   [1, 2],
+//   [2, 4],
+//   [3, 5],
+//   [0, 5],
+// ];
+// semestersRequired(numCourses, prereqs); // -> 3
+//
+// test_01:
+// const numCourses = 7;
+// const prereqs = [
+//   [4, 3],
+//   [3, 2],
+//   [2, 1],
+//   [1, 0],
+//   [5, 2],
+//   [5, 6],
+// ];
+// semestersRequired(numCourses, prereqs); // -> 5
+//
+// test_02:
+// const numCourses = 5;
+// const prereqs = [
+//   [1, 0],
+//   [3, 4],
+//   [1, 2],
+//   [3, 2],
+// ];
+// semestersRequired(numCourses, prereqs); // -> 2
+//
+// test_03:
+// const numCourses = 12;
+// const prereqs = [];
+// semestersRequired(numCourses, prereqs); // -> 1
+//
+// test_04:
+// const numCourses = 3;
+// const prereqs = [
+//   [0, 2],
+//   [0, 1],
+//   [1, 2],
+// ];
+// semestersRequired(numCourses, prereqs); // -> 3
+//
+// test_05:
+// const numCourses = 6;
+// const prereqs = [
+//   [3, 4],
+//   [3, 0],
+//   [3, 1],
+//   [3, 2],
+//   [3, 5],
+// ];
+// semestersRequired(numCourses, prereqs); // -> 2
+
+const semestersRequired = (numCourses, prereqs) => {
+  const graph = buildGraph(prereqs);
+  let semsNeeded = 1;
+
+  for (let course in graph) {
+    const numSems = semesters(graph, course);
+    if (numSems > semsNeeded) semsNeeded = numSems
+  }
+
+  return semsNeeded;
+};
+
+const buildGraph = (prereqs) => {
+  const graph = {};
+
+  for (let prereq of prereqs) {
+    const [ pre, post ] = prereq;
+
+    if (!graph[pre]) graph[pre] = [];
+    graph[pre].push(post);
+  }
+
+  return graph;
+};
+
+const semesters = (graph, course) => {
+  if (!graph[course]) return 1;
+
+  let numSems = [];
+  for (let postreq of graph[course]) {
+    numSems.push(semesters(graph, postreq))
+  }
+
+  return 1 + Math.max(...numSems);
+};
