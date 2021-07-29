@@ -4448,7 +4448,7 @@ const semesters = (graph, course) => {
   return 1 + Math.max(...numSems);
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #49 best bridge ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #48 best bridge ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, bestBridge, that takes in a grid as an argument. The grid 
 // contains water (W) and land (L). There are exactly two islands in the grid. 
 // An island is a vertically or horizontally connected region of land. Return 
@@ -4675,7 +4675,7 @@ const traverseIsland = (grid, row, col, visited) => {
   return visited;
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #50 has cycle ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #49 has cycle ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, hasCycle, that takes in an object representing the adjacency
 // list of a directed graph. The function should return a boolean indicating 
 // whether or not the graph contains a cycle.
@@ -4749,7 +4749,7 @@ const inCycle = (graph, node, visited, visiting = new Set()) => {
   return false;
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #51 prereqs possible ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #50 prereqs possible ]]]]]]]]]]]]]]]]]]]]]]]]]
 // Write a function, prereqsPossible, that takes in a number of courses (n) and
 // prerequisites as arguments. Courses have ids ranging from 0 through n - 1. A
 // single prerequisite of [A, B] means that course A must be taken before course
@@ -4871,6 +4871,7 @@ const inCycle = (graph, visited, course, visiting = new Set()) => {
   return false;
 };
 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #51 fib ]]]]]]]]]]]]]]]]]]]]]]]]]
 // Write a function fib that takes in a number argument, n, and returns the n-th
 // number of the Fibonacci sequence.
 // The 0-th number of the sequence is 0.
@@ -4894,3 +4895,14 @@ const inCycle = (graph, visited, course, visiting = new Set()) => {
 // fib(35); // -> 9227465
 // test_07:
 // fib(46); // -> 1836311903
+
+// ========================= Memoization =========================
+const fib = (n, memo = {}) => { // Time: O(n), Space: O(n)
+  if (n === 0) return 0;
+  if (n === 1) return 1;
+  if (n in memo) return memo[n];
+
+  memo[n] = fib(n - 1) + fib(n - 2);
+
+  return memo[n];
+};
