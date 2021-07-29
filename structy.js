@@ -4725,7 +4725,7 @@ const traverseIsland = (grid, row, col, visited) => {
 // }); // -> true
 
 // ========================= White-gray-black (DFS) =========================
-const hasCycle = (graph) => {
+const hasCycle = (graph) => { // Time: O(e), Space: O(n)
   const visited = new Set();
 
   for (let node in graph) {
@@ -4748,3 +4748,149 @@ const inCycle = (graph, node, visited, visiting = new Set()) => {
   visited.add(node);
   return false;
 };
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #51 prereqs possible ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function, prereqsPossible, that takes in a number of courses (n) and
+// prerequisites as arguments. Courses have ids ranging from 0 through n - 1. A
+// single prerequisite of [A, B] means that course A must be taken before course
+// B. The function should return a boolean indicating whether or not it is
+// possible to complete all courses.
+// 
+// test_00:
+// const numCourses = 6;
+// const prereqs = [
+//   [0, 1],
+//   [2, 3],
+//   [0, 2],
+//   [1, 3],
+//   [4, 5],
+// ];
+// prereqsPossible(numCourses, prereqs); // -> true
+//
+// test_01:
+// const numCourses = 6;
+// const prereqs = [
+//   [0, 1],
+//   [2, 3],
+//   [0, 2],
+//   [1, 3],
+//   [4, 5],
+//   [3, 0],
+// ];
+// prereqsPossible(numCourses, prereqs); // -> false
+//
+// test_02:
+// const numCourses = 5;
+// const prereqs = [
+//   [2, 4],
+//   [1, 0],
+//   [0, 2],
+//   [0, 4],
+// ];
+// prereqsPossible(numCourses, prereqs); // -> true
+//
+// test_03:
+// const numCourses = 6;
+// const prereqs = [
+//   [2, 4],
+//   [1, 0],
+//   [0, 2],
+//   [0, 4],
+//   [5, 3],
+//   [3, 5],
+// ];
+// prereqsPossible(numCourses, prereqs); // -> false
+//
+// test_04:
+// const numCourses = 8;
+// const prereqs = [
+//   [1, 0],
+//   [0, 6],
+//   [2, 0],
+//   [0, 5],
+//   [3, 7],
+//   [4, 3],
+// ];
+// prereqsPossible(numCourses, prereqs); // -> true
+//
+// test_05:
+// const numCourses = 8;
+// const prereqs = [
+//   [1, 0],
+//   [0, 6],
+//   [2, 0],
+//   [0, 5],
+//   [3, 7],
+//   [7, 4],
+//   [4, 3],
+// ];
+// prereqsPossible(numCourses, prereqs); // -> false
+//
+// test_06:
+// const numCourses = 42;
+// const prereqs = [[6, 36]];
+// prereqsPossible(numCourses, prereqs); // -> true
+
+// ========================= White-gray-black (DFS) =========================
+const prereqsPossible = (numCourses, prereqs) => { // Time: O(p), Space: O(p)
+  const graph = buildGraph(prereqs);
+  const visited = new Set();
+
+  for (let course in graph) {
+    if (inCycle(graph, visited, course)) return false;
+  }
+  
+  return true;
+};
+
+const buildGraph = (prereqs) => {
+  const graph = {};
+
+  for (let prereq of prereqs) {
+    const [ pre, post ] = prereq;
+
+    if (!graph[pre]) graph[pre] = [];
+    graph[pre].push(post);
+  }
+
+  return graph;
+};
+
+const inCycle = (graph, visited, course, visiting = new Set()) => {
+  if (visiting.has(course)) return true;
+  if (visited.has(course)) return false;
+  if (graph[course] === undefined) return false;
+
+  visiting.add(course);
+  for (let nextCourse of graph[course]) {
+    if (inCycle(graph, visited, nextCourse, visiting)) return true;
+  }
+
+  visiting.delete(course);
+  visited.add(course);
+  return false;
+};
+
+// Write a function fib that takes in a number argument, n, and returns the n-th
+// number of the Fibonacci sequence.
+// The 0-th number of the sequence is 0.
+// The 1-st number of the sequence is 1.
+// To generate further numbers of the sequence, calculate the sum of previous two numbers.
+// Solve this recursively.
+// 
+// test_00:
+// fib(0); // -> 0
+// test_01:
+// fib(1); // -> 1
+// test_02:
+// fib(2); // -> 1
+// test_03:
+// fib(3); // -> 2
+// test_04:
+// fib(4); // -> 3
+// test_05:
+// fib(5); // -> 5
+// test_06:
+// fib(35); // -> 9227465
+// test_07:
+// fib(46); // -> 1836311903
