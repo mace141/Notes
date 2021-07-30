@@ -5345,3 +5345,48 @@ const nonAdjacentSum = (nums, i = 0, memo = {}) => { // Time: O(n), Space: O(n)
 //   return max + nonAdjacentSum(nums);
 // };
 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #58 summing squares ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function, summingSquares, that takes a target number as an argument.
+// The function should return the minimum number of perfect squares that sum to
+// the target. A perfect square is a number of the form (i*i) where i >= 1.
+//
+// For example: 1, 4, 9, 16 are perfect squares, but 8 is not perfect square.
+// Given 12:
+// summingSquares(12) -> 3
+// The minimum squares required for 12 is three, by doing 4 + 4 + 4.
+// Another way to make 12 is 9 + 1 + 1 + 1, but that requires four perfect squares.
+//
+// test_00:
+// summingSquares(8); // -> 2
+// test_01:
+// summingSquares(9); // -> 1
+// test_02:
+// summingSquares(12); // -> 3
+// test_03:
+// summingSquares(1); // -> 1
+// test_04:
+// summingSquares(31); // -> 4
+// test_05:
+// summingSquares(50); // -> 2
+// test_06:
+// summingSquares(68); // -> 2
+// test_07:
+// summingSquares(87); // -> 4
+
+// ========================= Memoization =========================
+const summingSquares = (n, memo = {}) => {
+  if (n in memo) return memo[n];
+
+  const root = Math.sqrt(n);
+  if (root === Math.floor(root)) return 1;
+
+  let numSquares = Infinity;
+  for (let i = Math.floor(root); i > 0; i--) {
+    if (i**2 <= n) {
+      let num = 1 + summingSquares(n - i**2, memo);
+      numSquares = Math.min(num, numSquares);
+    }
+  }
+
+  return memo[n] = numSquares;
+};
