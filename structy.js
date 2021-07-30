@@ -5039,7 +5039,7 @@ const sumPossible = (amount, numbers, memo = {}) => {
   return memo[amount];
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #53 min change ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #54 min change ]]]]]]]]]]]]]]]]]]]]]]]]]
 // Write a function minChange that takes in an amount and an array of coins. The
 // function should return the minimum number of coins required to create the
 // amount. You may use each coin as many times as necessary.
@@ -5064,6 +5064,8 @@ const sumPossible = (amount, numbers, memo = {}) => {
 // test_08:
 // minChange(0, [])); // 0
 
+// ========================= Memoization =========================
+// Time: O(a*c), Space: O(c)
 const minChange = (amount, coins) => {
   const min = _minChange(amount, coins);
   return min === Infinity ? -1 : min;
@@ -5082,4 +5084,117 @@ const _minChange = (amount, coins, memo = {}) => {
   }
 
   return memo[amount] = min;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #55 count paths ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function, countPaths, that takes in a grid as an argument. In the grid,
+// 'X' represents walls and 'O' represents open spaces. You may only move down or
+// to the right and cannot pass through walls. The function should return the
+// number of ways possible to travel from the top-left corner of the grid to the
+// bottom-right corner.
+//
+// test_00:
+// const grid = [
+//   ["O", "O"],
+//   ["O", "O"],
+// ];
+// countPaths(grid); // -> 2
+// test_01:
+// const grid = [
+//   ["O", "O", "X"],
+//   ["O", "O", "O"],
+//   ["O", "O", "O"],
+// ];
+// countPaths(grid); // -> 5
+// test_02:
+// const grid = [
+//   ["O", "O", "O"],
+//   ["O", "O", "X"],
+//   ["O", "O", "O"],
+// ];
+// countPaths(grid); // -> 3
+// test_03:
+// const grid = [
+//   ["O", "O", "O"],
+//   ["O", "X", "X"],
+//   ["O", "O", "O"],
+// ];
+// countPaths(grid); // -> 1
+// test_04:
+// const grid = [
+//   ["O", "O", "X", "O", "O", "O"],
+//   ["O", "O", "X", "O", "O", "O"],
+//   ["X", "O", "X", "O", "O", "O"],
+//   ["X", "X", "X", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O"],
+// ];
+// countPaths(grid); // -> 0
+// test_05:
+// const grid = [
+//   ["O", "O", "X", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "X"],
+//   ["X", "O", "O", "O", "O", "O"],
+//   ["X", "X", "X", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O"],
+// ];
+// countPaths(grid); // -> 42
+// test_06:
+// const grid = [
+//   ["O", "O", "X", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "X"],
+//   ["X", "O", "O", "O", "O", "O"],
+//   ["X", "X", "X", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "X"],
+// ];
+// countPaths(grid); // -> 0
+// test_07:
+// const grid = [
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+// ];
+// countPaths(grid); // -> 40116600
+// test_08:
+// const grid = [
+//   ["O", "O", "X", "X", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "X", "X", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "X", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O", "O"],
+//   ["X", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O", "O"],
+//   ["X", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "X", "X", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O", "X", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O"],
+//   ["X", "X", "X", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "X", "X", "O", "O", "O", "O", "X", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "X", "X", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O"],
+//   ["O", "O", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O"],
+// ];
+// countPaths(grid); // -> 3190434
+
+// ========================= Memoization =========================
+// Time: O(r*c), Space: O(r*c)
+const countPaths = (grid, r = 0, c = 0, memo = {}) => {
+  const pos = `${r}-${c}`;
+  if (pos in memo) return memo[pos];
+  if (grid[grid.length - 1][grid[0].length - 1] === 'X') return 0;
+  if (r === grid.length || c === grid[0].length || grid[r][c] === 'X') return 0;
+  if (r === grid.length - 1 && c === grid[0].length - 1) return 1;
+
+  memo[pos] = countPaths(grid, r + 1, c, memo) + countPaths(grid, r, c + 1, memo);
+  return memo[pos];
 };
