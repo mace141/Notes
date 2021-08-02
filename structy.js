@@ -4579,7 +4579,7 @@ const semesters = (graph, course) => {
 // ];
 // bestBridge(grid); // -> 8
 
-// ========================= My Solution (Breadth First) =========================
+// ========================= My Solution (Breadth First; Slower than Alvin's) =========================
 const bestBridge = (grid) => {
   const visited = new Set();
   let island = [];
@@ -4800,7 +4800,7 @@ const inCycle = (graph, node, visited, visiting = new Set()) => {
   return false;
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #50 prereqs possible ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #50 prereqs possible ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, prereqsPossible, that takes in a number of courses (n) and
 // prerequisites as arguments. Courses have ids ranging from 0 through n - 1. A
 // single prerequisite of [A, B] means that course A must be taken before course
@@ -5086,7 +5086,7 @@ const _minChange = (amount, coins, memo = {}) => {
   return memo[amount] = min;
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #55 count paths ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #55 count paths ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, countPaths, that takes in a grid as an argument. In the grid,
 // 'X' represents walls and 'O' represents open spaces. You may only move down or
 // to the right and cannot pass through walls. The function should return the
@@ -5199,7 +5199,7 @@ const countPaths = (grid, r = 0, c = 0, memo = {}) => {
   return memo[pos];
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #56 max path sum ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #56 max path sum ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, maxPathSum, that takes in a grid as an argument. The
 // function should return the maximum sum possible by traveling a path from the
 // top-left corner to the bottom-right corner. You may only travel through the
@@ -5322,7 +5322,8 @@ const maxPathSum = (grid, r = 0, c = 0, memo = {}) => {
 // nonAdjacentSum(nums); // -> 1465
 
 // ========================= Memoization =========================
-const nonAdjacentSum = (nums, i = 0, memo = {}) => { // Time: O(n), Space: O(n)
+// Time: O(n), Space: O(n)
+const nonAdjacentSum = (nums, i = 0, memo = {}) => {
   if (i >= nums.length) return 0;
   if (i in memo) return memo[i];
 
@@ -5374,6 +5375,7 @@ const nonAdjacentSum = (nums, i = 0, memo = {}) => { // Time: O(n), Space: O(n)
 // summingSquares(87); // -> 4
 
 // ========================= Memoization =========================
+// Time: O(n*sqrt(n)), Space: O(n)
 const summingSquares = (n, memo = {}) => {
   if (n in memo) return memo[n];
 
@@ -5389,4 +5391,48 @@ const summingSquares = (n, memo = {}) => {
   }
 
   return memo[n] = numSquares;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #59 counting change ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function, countingChange, that takes in an amount and an array of
+// coins. The function should return the number of different ways it is possible
+// to make change for the given amount using the coins.
+//
+// You may reuse a coin as many times as necessary.
+// For example,
+// countingChange(4, [1,2,3]) -> 4
+// There are four different ways to make an amount of 4:
+// 1. 1 + 1 + 1 + 1
+// 2. 1 + 1 + 2
+// 3. 1 + 3
+// 4. 2 + 2
+//
+// test_00:
+// countingChange(4, [1, 2, 3]); // -> 4
+// test_01:
+// countingChange(8, [1, 2, 3]); // -> 10
+// test_02:
+// countingChange(24, [5, 7, 3]); // -> 5
+// test_03:
+// countingChange(13, [2, 6, 12, 10]); // -> 0
+// test_04:
+// countingChange(512, [1, 5, 10, 25]); // -> 20119
+// test_05:
+// countingChange(1000, [1, 5, 10, 25]); // -> 142511
+// test_06:
+// countingChange(240, [1, 2, 3, 4, 5, 6, 7, 8, 9]); // -> 1525987916
+
+const countingChange = (amount, coins, i = 0, memo = {}) => {
+  const key = amount + '-' + i;
+  if (key in memo) return memo[key];
+  if (amount === 0) return 1;
+
+  const coin = coins[i];
+  let numWays = 0;
+  for (let qty = 0; (qty * coin) <= amount; qty++) {
+    const remainder = amount - (qty * coin);
+    numWays += countingChange(remainder, coins, i + 1, memo);
+  }
+
+  return memo[key] = numWays;
 };
