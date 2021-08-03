@@ -5599,10 +5599,10 @@ const overlapSubsequence = (str1, str2, i = 0, j = 0, memo = {}) => {
 // canConcat("rrrrrrrrrrrrrrrrrrrrrrrrrrx", ["r", "rr", "rrr", "rrrr", "rrrrr", "rrrrrr"]); // -> false
 
 // ========================= Memoization =========================
-// Time: O(sw), Space: O(s)
+// Time: ~O(sw), Space: O(s)
 const canConcat = (str, words, memo = {}) => {
   if (str in memo) return memo[str];
-  if (str.length === 0) return true;
+  if (!str.length) return true;
   
   for (let word of words) {
     const slicedStr = str.slice(word.length);
@@ -5614,4 +5614,49 @@ const canConcat = (str, words, memo = {}) => {
   
   memo[str] = false;
   return memo[str];
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #64 quickest concat ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function, quickestConcat, that takes in a string and an array of words
+// as arguments. The function should return the minimum number of words needed to
+// build the string by concatenating the words.
+// You may use words of the array as many times as needed.
+//
+// test_00:
+// quickestConcat('caution', ['ca', 'ion', 'caut', 'ut']); // -> 2
+// test_01:
+// quickestConcat('caution', ['ion', 'caut', 'caution']); // -> 1
+// test_02:
+// quickestConcat('respondorreact', ['re', 'or', 'spond', 'act', 'respond']); // -> 4
+// test_03:
+// quickestConcat('simchacindy', ['sim', 'simcha', 'acindy', 'ch']); // -> 3
+// test_04:
+// quickestConcat('simchacindy', ['sim', 'simcha', 'acindy']); // -> -1
+// test_05:
+// quickestConcat('uuuuuu', ['u', 'uu', 'uuu', 'uuuu']); // -> 2
+// test_06:
+// quickestConcat('rongbetty', ['wrong', 'bet']); // -> -1
+// test_07:
+// quickestConcat('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu', ['u', 'uu', 'uuu', 'uuuu', 'uuuuu']); // -> 7
+
+// ========================= Memoization =========================
+// Time: ~O(sw), Space: O(s)
+const _quickestConcat = (str, words, memo = {}) => {
+  if (str in memo) return memo[str];
+  if (!str.length) return 0;
+
+  let minWords = Infinity;
+  for (let word of words) {
+    if (str.startsWith(word)) {
+      const numWords = 1 + _quickestConcat(str.slice(word.length), words, memo);
+      if (minWords > numWords) minWords = numWords;
+    }
+  }
+
+  return memo[str] = minWords;
+};
+
+const quickestConcat = (str, words) => {
+  const min = _quickestConcat(str, words);
+  return min === Infinity ? -1 : min;
 };
