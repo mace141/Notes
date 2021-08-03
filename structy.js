@@ -5700,3 +5700,56 @@ const pairedParentheses = (str) => {
   
   return !count
 };
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #66 befitting brackets ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function, befittingBrackets, that takes in a string as an argument.
+// The function should return a boolean indicating whether or not the string
+// contains correctly matched brackets.
+// You may assume the string contains only characters: ( ) [ ] { }
+//
+// test_00:
+// befittingBrackets('(){}[](())'); // -> true
+// test_01:
+// befittingBrackets('({[]})'); // -> true
+// test_02:
+// befittingBrackets('[][}'); // -> false
+// test_03:
+// befittingBrackets('{[]}({}'); // -> false
+// test_04:
+// befittingBrackets('[]{}(}[]'); // -> false
+// test_05:
+// befittingBrackets('[]{}()[]'); // -> true
+// test_06:
+// befittingBrackets(']{}'); // -> false
+// test_07:
+// befittingBrackets(''); // -> true
+
+// ========================= Counter =========================
+// Time: O(n), Space: O(1);
+const befittingBrackets = (str) => {
+  const count = {
+    '(': 0,
+    '[': 0,
+    '{': 0
+  };
+  
+  const pairing = {
+    ')': '(',
+    ']': '[',
+    '}': '{'
+  };
+
+  for (let char of str) {
+    if (char in count) {
+      count[char] += 1;
+    } else {
+      if (count[pairing[char]] > 0) {
+        count[pairing[char]] -= 1;
+      } else {
+        return false;
+      }
+    }
+  }
+
+  return Object.values(count).every(el => el === 0);
+};
