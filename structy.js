@@ -5766,28 +5766,28 @@ const befittingBrackets = (str) => {
 //
 // test_00:
 // decompressBraces("2{q}3{tu}v"); 
-// // -> qqtututuv 
+// -> qqtututuv 
 // test_01:
 // decompressBraces("ch3{ao}"); 
-// // -> chaoaoao
+// -> chaoaoao
 // test_02:
 // decompressBraces("2{y3{o}}s"); 
-// // -> yoooyooos
+// -> yoooyooos
 // test_03:
 // decompressBraces("z3{a2{xy}b}"); 
-// // -> zaxyxybaxyxybaxyxyb 
+// -> zaxyxybaxyxybaxyxyb 
 // test_04:
 // decompressBraces("2{3{r4{e}r}io}"); 
-// // -> reeeerreeeerreeeerioreeeerreeeerreeeerio 
+// -> reeeerreeeerreeeerioreeeerreeeerreeeerio 
 // test_05:
 // decompressBraces("go3{spinn2{ing}s}"); 
-// // -> gospinningingsspinningingsspinningings 
+// -> gospinningingsspinningingsspinningings 
 // test_06:
 // decompressBraces("2{l2{if}azu}l"); 
-// // -> lififazulififazul 
+// -> lififazulififazul 
 // test_07:
 // decompressBraces("3{al4{ec}2{icia}}"); 
-// // -> alececececiciaiciaalececececiciaiciaalececececiciaicia 
+// -> alececececiciaiciaalececececiciaiciaalececececiciaicia 
 
 // ========================= Stack =========================
 // Time: O((9^m) * s), Space: O((9^m) * s)
@@ -5873,4 +5873,70 @@ const nestingScore = (str) => {
   }
 
   return stack[0];
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #69 subsets ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function, subsets, that takes in an array an argument. The function
+// should return a 2D array where each subarray represents one of the possible
+// subsets of the array.
+// The elements within the subsets and the subsets themselves may be returned in any order.
+// You may assume that the input array contains unique elements.
+//
+// test_00:
+// subsets(['a', 'b']); // ->
+// [ 
+//   [], 
+//   [ 'b' ], 
+//   [ 'a' ], 
+//   [ 'a', 'b' ] 
+// ]
+// test_01:
+// subsets(['a', 'b', 'c']); // ->
+// [
+//   [],
+//   [ 'c' ],
+//   [ 'b' ],
+//   [ 'b', 'c' ],
+//   [ 'a' ],
+//   [ 'a', 'c' ],
+//   [ 'a', 'b' ],
+//   [ 'a', 'b', 'c' ]
+// ]
+// test_02:
+// subsets(['x']); // ->
+// [ 
+//   [], 
+//   [ 'x' ] 
+// ]
+// test_03:
+// subsets([]); // ->
+// [ 
+//   []
+// ]
+// test_04:
+// subsets(['q', 'r', 's', 't']); // ->
+// [
+//   [],
+//   [ 't' ],
+//   [ 's' ],
+//   [ 's', 't' ],
+//   [ 'r' ],
+//   [ 'r', 't' ],
+//   [ 'r', 's' ],
+//   [ 'r', 's', 't' ],
+//   [ 'q' ],
+//   [ 'q', 't' ],
+//   [ 'q', 's' ],
+//   [ 'q', 's', 't' ],
+//   [ 'q', 'r' ],
+//   [ 'q', 'r', 't' ],
+//   [ 'q', 'r', 's' ],
+//   [ 'q', 'r', 's', 't' ]
+// ]
+
+const subsets = (elements) => {
+  if (!elements.length) return [[]];
+  
+  const subs = subsets(elements.slice(1));
+  return subs.concat(subs.map(el => el.concat(elements[0])));
 };
