@@ -5934,9 +5934,73 @@ const nestingScore = (str) => {
 //   [ 'q', 'r', 's', 't' ]
 // ]
 
+// ========================= Recursive =========================
+// Time: O(2*n), Space: O(2*n)
 const subsets = (elements) => {
   if (!elements.length) return [[]];
   
   const subs = subsets(elements.slice(1));
-  return subs.concat(subs.map(el => el.concat(elements[0])));
+  return subs.concat(subs.map(sub => sub.concat(elements[0])));
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #70 permutations ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function, permutations, that takes in an array an argument. The
+// function should return a 2D array where each subarray represents one of the
+// possible permutations of the array.
+// The subarrays may be returned in any order.
+// You may assume that the input array contains unique elements.
+//
+// test_00:
+// permutations(['a', 'b', 'c']); // -> 
+// [ 
+//   [ 'a', 'b', 'c' ], 
+//   [ 'b', 'a', 'c' ], 
+//   [ 'b', 'c', 'a' ], 
+//   [ 'a', 'c', 'b' ], 
+//   [ 'c', 'a', 'b' ], 
+//   [ 'c', 'b', 'a' ] 
+// ] 
+// test_01:
+// permutations(['red', 'blue']); // ->
+// [ 
+//   [ 'red', 'blue' ], 
+//   [ 'blue', 'red' ] 
+// ]
+// test_02:
+// permutations([8, 2, 1, 4]); // ->
+// [ 
+//   [ 8, 2, 1, 4 ], [ 2, 8, 1, 4 ], 
+//   [ 2, 1, 8, 4 ], [ 2, 1, 4, 8 ], 
+//   [ 8, 1, 2, 4 ], [ 1, 8, 2, 4 ], 
+//   [ 1, 2, 8, 4 ], [ 1, 2, 4, 8 ], 
+//   [ 8, 1, 4, 2 ], [ 1, 8, 4, 2 ], 
+//   [ 1, 4, 8, 2 ], [ 1, 4, 2, 8 ], 
+//   [ 8, 2, 4, 1 ], [ 2, 8, 4, 1 ], 
+//   [ 2, 4, 8, 1 ], [ 2, 4, 1, 8 ], 
+//   [ 8, 4, 2, 1 ], [ 4, 8, 2, 1 ], 
+//   [ 4, 2, 8, 1 ], [ 4, 2, 1, 8 ], 
+//   [ 8, 4, 1, 2 ], [ 4, 8, 1, 2 ], 
+//   [ 4, 1, 8, 2 ], [ 4, 1, 2, 8 ] 
+// ] 
+// test_03:
+// permutations([]); // ->
+// [
+//  [ ]
+// ]
+
+// ========================= Recursive =========================
+// Time: O(n!), Space: O(n!)
+const permutations = (items) => {
+  if (!items.length) return [[]];
+
+  const first = items[0];
+  const perms = permutations(items.slice(1));
+  const allPerms = [];
+  for (let perm of perms) {
+    for (let i = 0; i <= perm.length; i++) {
+      allPerms.push([...perm.slice(0, i), first, ...perm.slice(i)]);
+    }
+  }
+
+  return allPerms;
 };
