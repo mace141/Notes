@@ -5280,7 +5280,7 @@ const maxPathSum = (grid, r = 0, c = 0, memo = {}) => {
   return memo[pos];
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #57 non adjacent sum ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #57 non adjacent sum ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, nonAdjacentSum, that takes in an array of numbers as an
 // argument. The function should return the maximum sum of non-adjacent elements
 // in the array. There is no limit on how many elements can be taken into the sum
@@ -5393,7 +5393,7 @@ const summingSquares = (n, memo = {}) => {
   return memo[n] = numSquares;
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #59 counting change ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #59 counting change ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, countingChange, that takes in an amount and an array of
 // coins. The function should return the number of different ways it is possible
 // to make change for the given amount using the coins.
@@ -5494,7 +5494,7 @@ const arrayStepper = (nums, idx = 0, memo = {}) => {
   return memo[idx];
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #61 max palin subsequence ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #61 max palin subsequence ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, maxPalinSubsequence, that takes in a string as an argument.
 // The function should return the length of the longest subsequence of the string
 // that is also a palindrome.
@@ -5754,7 +5754,7 @@ const befittingBrackets = (str) => {
   return Object.values(count).every(el => el === 0);
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #67 decompress braces ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #67 decompress braces ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, decompressBraces, that takes in a compressed string as an
 // argument. The function should return the string decompressed.
 // The compression format of the input string is 'n{subString}', where the
@@ -5789,6 +5789,8 @@ const befittingBrackets = (str) => {
 // decompressBraces("3{al4{ec}2{icia}}"); 
 // // -> alececececiciaiciaalececececiciaiciaalececececiciaicia 
 
+// ========================= Stack =========================
+// Time: O((9^m) * s), Space: O((9^m) * s)
 const decompressBraces = (str) => {
   const integers = '123456789';
   const stack = [];
@@ -5823,4 +5825,52 @@ const stringMultiply = (stack) => {
   }
 
   return result;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #68 nesting score ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+// Write a function, nestingScore, that takes in a string of brackets as an
+// argument. The function should return the score of the string according to the
+// following rules:
+//
+// [] is worth 1 point
+// XY is worth m + n points where X, Y are substrings of well-formed brackets and m, n are their respective scores
+// [S] is worth 2 * k points where S is a substring of well-formed brackets and k is the score of that substring
+// You may assume that the input only contains well-formed square brackets.
+//
+// test_00:
+// nestingScore("[]"); // -> 1
+// test_01:
+// nestingScore("[][][]"); // -> 3
+// test_02:
+// nestingScore("[[]]"); // -> 2
+// test_03:
+// nestingScore("[[][]]"); // -> 4
+// test_04:
+// nestingScore("[[][][]]"); // -> 6
+// test_05:
+// nestingScore("[[][]][]"); // -> 5
+// test_06:
+// nestingScore("[][[][]][[]]"); // -> 7
+// test_07:
+// nestingScore("[[[[[[[][]]]]]]][]"); // -> 129
+
+// ========================= Stack =========================
+// Time: O(n), Space: O(n)
+const nestingScore = (str) => {
+  const stack = [0];
+
+  for (let char of str) {
+    if (char === '[') {
+      stack.push(0);
+    } else {
+      const last = stack.pop();
+      if (last !== 0) {
+        stack[stack.length - 1] += 2 * last;
+      } else {
+        stack[stack.length - 1] += 1;
+      }
+    }
+  }
+
+  return stack[0];
 };
