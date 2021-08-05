@@ -5875,7 +5875,7 @@ const nestingScore = (str) => {
   return stack[0];
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #69 subsets ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #69 subsets ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, subsets, that takes in an array an argument. The function
 // should return a 2D array where each subarray represents one of the possible
 // subsets of the array.
@@ -5943,7 +5943,7 @@ const subsets = (elements) => {
   return subs.concat(subs.map(sub => sub.concat(elements[0])));
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #70 permutations ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #70 permutations ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, permutations, that takes in an array an argument. The
 // function should return a 2D array where each subarray represents one of the
 // possible permutations of the array.
@@ -6005,7 +6005,7 @@ const permutations = (items) => {
   return allPerms;
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #71 create combinations ]]]]]]]]]]]]]]]]]]]]]]]]]
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #71 create combinations ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, createCombinations, that takes in an array and a length as
 // arguments. The function should return a 2D array representing all of the
 // combinations of the specifized length.
@@ -6092,15 +6092,15 @@ const createCombinations = (items, k) => {
 // ]
 
 // ========================= My Solution (Memoization) =========================
+// n: num letters, m: max letters in parentheses
 // Time: ~O(m^n), Space: ~O(m^n)
-const parentheticalPossibilities = (str, memo = {}) => {
-  if (str in memo) return memo[str];
+const parentheticalPossibilities = (str) => {
   if (!str.length) return [''];
-  let possibilities = [];
+  const possibilities = [];
   let suffixes;
 
   if (str[0] !== '(') {
-    suffixes = parentheticalPossibilities(str.slice(1), memo);
+    suffixes = parentheticalPossibilities(str.slice(1));
 
     for (let i = 0; i < suffixes.length; i++) {
       possibilities.push(str[0] + suffixes[i]);
@@ -6108,7 +6108,7 @@ const parentheticalPossibilities = (str, memo = {}) => {
   } else {
     const closeParenIdx = str.indexOf(')');
     const parenChars = str.slice(1, closeParenIdx);
-    suffixes = parentheticalPossibilities(str.slice(closeParenIdx + 1), memo);
+    suffixes = parentheticalPossibilities(str.slice(closeParenIdx + 1));
 
     for (let char of parenChars) {
       for (let i = 0; i < suffixes.length; i++) {
@@ -6117,7 +6117,7 @@ const parentheticalPossibilities = (str, memo = {}) => {
     }
   }
 
-  return memo[str] = possibilities;
+  return possibilities;
 };
 
 // ========================= Alvin's Solution =========================
@@ -6148,4 +6148,130 @@ const getOptions = (s) => {
     const chars = [s[0]];
     return { remaining, chars };
   }
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #73 substituting synonyms ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+// Write a function, substitutingSynonyms, that takes in a sentence and an object
+// as arguments. The object contains words as keys whose values are arrays
+// containing synonyms. The function should return an array containing all
+// possible sentences that can be formed by substituting words of the sentence
+// with their synonyms.
+// You may return the possible sentences in any order, as long as you return
+// all of them.
+//
+// test_00:
+// const sentence = "follow the yellow brick road";
+// const synonyms = {
+//   follow: ["chase", "pursue"],
+//   yellow: ["gold", "amber", "lemon"],
+// };
+// substituteSynonyms(sentence, synonyms);
+// [
+//   'chase the gold brick road',
+//   'chase the amber brick road',
+//   'chase the lemon brick road',
+//   'pursue the gold brick road',
+//   'pursue the amber brick road',
+//   'pursue the lemon brick road'
+// ]
+// test_01:
+// const sentence = "I think it's gonna be a long long time";
+// const synonyms = {
+//   think: ["believe", "reckon"],
+//   long: ["lengthy", "prolonged"],
+// };
+// substituteSynonyms(sentence, synonyms);
+// [
+//   "I believe it's gonna be a lengthy lengthy time",
+//   "I believe it's gonna be a lengthy prolonged time",
+//   "I believe it's gonna be a prolonged lengthy time",
+//   "I believe it's gonna be a prolonged prolonged time",
+//   "I reckon it's gonna be a lengthy lengthy time",
+//   "I reckon it's gonna be a lengthy prolonged time",
+//   "I reckon it's gonna be a prolonged lengthy time",
+//   "I reckon it's gonna be a prolonged prolonged time"
+// ]
+// test_02:
+// const sentence = "palms sweaty knees weak arms heavy";
+// const synonyms = {
+//   palms: ["hands", "fists"],
+//   heavy: ["weighty", "hefty", "burdensome"],
+//   weak: ["fragile", "feeble", "frail", "sickly"],
+// };
+// substituteSynonyms(sentence, synonyms);
+// [
+//   'hands sweaty knees fragile arms weighty',
+//   'hands sweaty knees fragile arms hefty',
+//   'hands sweaty knees fragile arms burdensome',
+//   'hands sweaty knees feeble arms weighty',
+//   'hands sweaty knees feeble arms hefty',
+//   'hands sweaty knees feeble arms burdensome',
+//   'hands sweaty knees frail arms weighty',
+//   'hands sweaty knees frail arms hefty',
+//   'hands sweaty knees frail arms burdensome',
+//   'hands sweaty knees sickly arms weighty',
+//   'hands sweaty knees sickly arms hefty',
+//   'hands sweaty knees sickly arms burdensome',
+//   'fists sweaty knees fragile arms weighty',
+//   'fists sweaty knees fragile arms hefty',
+//   'fists sweaty knees fragile arms burdensome',
+//   'fists sweaty knees feeble arms weighty',
+//   'fists sweaty knees feeble arms hefty',
+//   'fists sweaty knees feeble arms burdensome',
+//   'fists sweaty knees frail arms weighty',
+//   'fists sweaty knees frail arms hefty',
+//   'fists sweaty knees frail arms burdensome',
+//   'fists sweaty knees sickly arms weighty',
+//   'fists sweaty knees sickly arms hefty',
+//   'fists sweaty knees sickly arms burdensome'
+// ]
+
+// ========================= My Solution (Recursive) =========================
+// n: num words in a sentence, m: max num of synonyms for a word
+// Time: ~O(m^n), Space: ~O(m^n)
+const substituteSynonyms = (sentence, synonyms) => {
+  const substitutions = _substituteSynonyms(sentence.split(' '), synonyms);
+
+  return substitutions.map(sub => sub.join(' '));
+};
+
+const _substituteSynonyms = (words, synonyms) => {
+  if (!words.length) return [[]];
+
+  const suffixes = _substituteSynonyms(words.slice(1), synonyms);
+  const prefixes = words[0] in synonyms ? synonyms[words[0]] : [words[0]];
+  const substitutions = [];
+
+  for (let suffix of suffixes) {
+    for (let syn of prefixes) {
+      substitutions.push([syn, ...suffix]);
+    }
+  }
+
+  return substitutions;
+};
+
+// ========================= Alvin's Solution =========================
+const substituteSynonyms = (sentence, synonyms) => {
+  const words = sentence.split(' ');
+  const arrays = generate(words, synonyms);
+  return arrays.map(subarray => subarray.join(' '));
+};
+
+const generate = (words, synonyms) => {
+  if (words.length === 0) return [[]];
+  
+  const firstWord = words[0];
+  const remainingWords = words.slice(1);
+  if (firstWord in synonyms) {
+    const result = [];
+    const subarrays = generate(remainingWords, synonyms);
+    for (let synonym of synonyms[firstWord]) {
+      result.push(...subarrays.map(subarray => [ synonym, ...subarray ]));
+    }
+    return result;
+  } else {
+    const subarrays = generate(remainingWords, synonyms);
+    return subarrays.map(subarray => [ firstWord, ...subarray ]);
+  };
 };
