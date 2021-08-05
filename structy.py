@@ -17,7 +17,14 @@
 # test_05:
 # maxValue([1000, 8, 9000]); # -> 9000
 
-
+def max_value(nums):
+  max = float('-inf')
+  
+  for num in nums:
+    if num > max:
+      max = num
+      
+  return max
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #2 is prime ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, isPrime, that takes in a number as an argument. The function 
