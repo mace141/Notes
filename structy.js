@@ -6423,7 +6423,7 @@ const middleValue = (head) => {
   return values[Math.floor(values.length / 2)];
 };
 
-// ========================= Pointer =========================
+// ========================= 2 Pointers =========================
 // Time: O(n), Space: O(1)
 const middleValue = (head) => {
   let fast = head;
@@ -6502,6 +6502,8 @@ const middleValue = (head) => {
 // test_05:
 // linkedListCycle(null); // false
 
+// ========================= Set =========================
+// Time: O(n), Space: O(n)
 const linkedListCycle = (head) => {
   const visited = new Set();
   let currNode = head;
@@ -6510,6 +6512,24 @@ const linkedListCycle = (head) => {
     if (visited.has(currNode.val)) return true;
     visited.add(currNode.val);
     currNode = currNode.next;
+  }
+
+  return false;
+};
+
+// ========================= 2 Pointers =========================
+// Time: O(n), Space: O(1)
+const linkedListCycle = (head) => {
+  let fast = head;
+  let slow = head;
+  let firstIteration = true;
+
+  while (fast !== null && fast.next !== null) {
+    if (fast === slow && !firstIteration) return true;
+    
+    fast = fast.next.next;
+    slow = slow.next;
+    firstIteration = false;
   }
 
   return false;
