@@ -6423,7 +6423,7 @@ const middleValue = (head) => {
   return values[Math.floor(values.length / 2)];
 };
 
-// ========================= Array =========================
+// ========================= Pointer =========================
 // Time: O(n), Space: O(1)
 const middleValue = (head) => {
   let fast = head;
