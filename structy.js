@@ -1918,6 +1918,7 @@ const depthFirstValues = (root) => {
 
 // ========================= Iterative =========================
 // Time: O(n^2), Space: O(n)
+// Time is n^2 because of JavaScript's shift function
 const breadthFirstValues = (root) => {
   if (root === null) return [];
   
@@ -6911,12 +6912,12 @@ const flipTree = (root) => {
 // leftyNodes(null); // [ ]
 
 // ========================= BFS =========================
-// Time: O(n), Space: O(n)
+// Time: O(n^2), Space: O(n)
 const leftyNodes = (root) => {
   const queue = [{ node: root, level: 0 }];
   const levels = [];
 
-  while (queue.length) {
+  while (queue.length && root) {
     const { node, level } = queue.shift();
     if (!levels[level]) levels[level] = node.val;
 
@@ -6943,4 +6944,100 @@ const leftyNodes = (root) => {
   
   traverse(root, 0);
   return values;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #80 can color ]]]]]]]]]]]]]]]]]]]]]]]]] !!I
+// Write a function, canColor, that takes in an object representing the adjacency
+// list of an undirected graph. The function should return a boolean indicating
+// whether or not it is possible to color nodes of the graph using two colors in
+// such a way that adjacent nodes are always different colors.
+//
+// For example, given this graph:
+// x-y-z
+// It is possible to color the nodes by using red for x and z, 
+// then use blue for y. So the answer is true.
+//
+// For example, given this graph:
+//     q
+//    / \
+//   s - r
+// It is not possible to color the nodes without making two 
+// adjacent nodes the same color. So the answer is false.
+//
+// test_00:
+// canColor({
+//   x: ["y"],
+//   y: ["x","z"],
+//   z: ["y"]
+// }); // -> true
+// test_01:
+// canColor({
+//   q: ["r", "s"],
+//   r: ["q", "s"],
+//   s: ["r", "q"]
+// }); // -> false
+// test_02:
+// canColor({
+//   a: ["b", "c", "d"],
+//   b: ["a"],
+//   c: ["a"],
+//   d: ["a"],
+// }); // -> true
+// test_03:
+// canColor({
+//   a: ["b", "c", "d"],
+//   b: ["a"],
+//   c: ["a", "d"],
+//   d: ["a", "c"],
+// }); // -> false
+// test_04:
+// canColor({
+//   h: ["i", "k"],
+//   i: ["h", "j"],
+//   j: ["i", "k"],
+//   k: ["h", "j"],
+// }); // -> true
+// test_05:
+// canColor({
+//   z: []
+// }); // -> true
+// test_06:
+// canColor({
+//   h: ["i", "k"],
+//   i: ["h", "j"],
+//   j: ["i", "k"],
+//   k: ["h", "j"],
+//   q: ["r", "s"],
+//   r: ["q", "s"],
+//   s: ["r", "q"]
+// }); // -> false
+
+// ========================= Alvin's Solution (DFS) =========================
+// Time: O(n^2), Space: O(n)
+const canColor = (graph) => {
+  const coloring = {};
+  
+  for (let node in graph) {
+    if (!(node in coloring)) {
+      if (!valid(graph, node, coloring, false)) {
+        return false;
+      }
+    }
+  }
+  
+  return true;
+};
+
+const valid = (graph, node, coloring, currentColor) => {
+  if (node in coloring) return currentColor === coloring[node];
+  
+  coloring[node] = currentColor;
+  
+  for (let neighbor of graph[node]) {
+    if (!valid(graph, neighbor, coloring, !currentColor)) {
+      return false;
+    }
+  }
+  
+  return true;
 };
