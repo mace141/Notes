@@ -201,8 +201,8 @@ def max_value(nums):
 # test_03:
 # intersection([0,1,2], [10,11]) # -> []
 # test_04:
-# const a = [];
-# const b = [];
+# a = [];
+# b = [];
 # for (let i = 0; i < 50000; i += 1) {
 #   a.push(i);
 #   b.push(i);
@@ -241,23 +241,23 @@ def max_value(nums):
 # the nodes in the linked list.
 #
 # test_00:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
 # a.next = b;
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
 # linkedListValues(a); # -> [ 'a', 'b', 'c', 'd' ]
 # test_01:
-# const x = new Node("x");
-# const y = new Node("y");
+# x = new Node("x");
+# y = new Node("y");
 # x.next = y;
 # x -> y
 # linkedListValues(x); # -> [ 'x', 'y' ]
 # test_02:
-# const q = new Node("q");
+# q = new Node("q");
 # q
 # linkedListValues(q); # -> [ 'q' ]
 # test_03:
@@ -270,11 +270,11 @@ def max_value(nums):
 # in the linked list.
 #
 # test_00:
-# const a = new Node(2);
-# const b = new Node(8);
-# const c = new Node(3);
-# const d = new Node(-1);
-# const e = new Node(7);
+# a = new Node(2);
+# b = new Node(8);
+# c = new Node(3);
+# d = new Node(-1);
+# e = new Node(7);
 # a.next = b;
 # b.next = c;
 # c.next = d;
@@ -282,13 +282,13 @@ def max_value(nums):
 # 2 -> 8 -> 3 -> -1 -> 7
 # sumList(a); # 19
 # test_01:
-# const x = new Node(38);
-# const y = new Node(4);
+# x = new Node(38);
+# y = new Node(4);
 # x.next = y;
 # 38 -> 4
 # sumList(x); # 42
 # test_02:
-# const z = new Node(100);
+# z = new Node(100);
 # 100
 # sumList(z); # 100
 # test_03:
@@ -301,47 +301,47 @@ def max_value(nums):
 # the linked list contains the target.
 #
 # test_00:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
 # a.next = b;
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
 # linkedListFind(a, "c"); # true
 # test_01:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
 # a.next = b;
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
 # linkedListFind(a, "d"); # true
 # test_02:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
 # a.next = b;
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
 # linkedListFind(a, "q"); # false
 # test_03:
-# const node1 = new Node("jason");
-# const node2 = new Node("leneli");
+# node1 = new Node("jason");
+# node2 = new Node("leneli");
 # node1.next = node2;
 # jason -> leneli
 # linkedListFind(node1, "jason"); # true
 # test_04:
-# const node1 = new Node(42);
+# node1 = new Node(42);
 # 42
 # linkedListFind(node1, 42); # true
 # test_05:
-# const node1 = new Node(42);
+# node1 = new Node(42);
 # 42
 # linkedListFind(node1, 100); # false
 
@@ -353,44 +353,44 @@ def max_value(nums):
 # If there is no node at the given index, then return null.
 #
 # test_00:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
 # a.next = b;
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
 # getNodeValue(a, 2); # 'c'
 # test_01:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
 # a.next = b;
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
 # getNodeValue(a, 3); # 'd'
 # test_02:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
 # a.next = b;
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
 # getNodeValue(a, 7); # null
 # test_03:
-# const node1 = new Node("banana");
-# const node2 = new Node("mango");
+# node1 = new Node("banana");
+# node2 = new Node("mango");
 # node1.next = node2;
 # banana -> mango
 # getNodeValue(node1, 0); # 'banana'
 # test_04:
-# const node1 = new Node("banana");
-# const node2 = new Node("mango");
+# node1 = new Node("banana");
+# node2 = new Node("mango");
 # node1.next = node2;
 # banana -> mango
 # getNodeValue(node1, 1); # 'mango'
@@ -402,12 +402,12 @@ def max_value(nums):
 # list in-place and return the new head of the reversed linked list.
 #
 # test_00:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
 # a.next = b;
 # b.next = c;
 # c.next = d;
@@ -416,13 +416,13 @@ def max_value(nums):
 # a -> b -> c -> d -> e -> f
 # reverseList(a); # f -> e -> d -> c -> b -> a
 # test_01:
-# const x = new Node("x");
-# const y = new Node("y");
+# x = new Node("x");
+# y = new Node("y");
 # x.next = y;
 # x -> y
 # reverseList(x); # y -> x
 # test_02:
-# const p = new Node("p");
+# p = new Node("p");
 # p
 # reverseList(p); # p
 
@@ -437,50 +437,50 @@ def max_value(nums):
 # You may assume that both input lists are non-empty.
 #
 # test_00:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
 # a.next = b;
 # b.next = c;
 # a -> b -> c
-# const x = new Node("x");
-# const y = new Node("y");
-# const z = new Node("z");
+# x = new Node("x");
+# y = new Node("y");
+# z = new Node("z");
 # x.next = y;
 # y.next = z;
 # x -> y -> z
 # zipperLists(a, x);
 # a -> x -> b -> y -> c -> z
 # test_01:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
 # a.next = b;
 # b.next = c;
 # c.next = d;
 # d.next = e;
 # e.next = f;
 # a -> b -> c -> d -> e -> f
-# const x = new Node("x");
-# const y = new Node("y");
-# const z = new Node("z");
+# x = new Node("x");
+# y = new Node("y");
+# z = new Node("z");
 # x.next = y;
 # y.next = z;
 # x -> y -> z
 # zipperLists(a, x);
 # a -> x -> b -> y -> c -> z -> d -> e -> f
 # test_02:
-# const s = new Node("s");
-# const t = new Node("t");
+# s = new Node("s");
+# t = new Node("t");
 # s.next = t;
 # s -> t
-# const one = new Node(1);
-# const two = new Node(2);
-# const three = new Node(3);
-# const four = new Node(4);
+# one = new Node(1);
+# two = new Node(2);
+# three = new Node(3);
+# four = new Node(4);
 # one.next = two;
 # two.next = three;
 # three.next = four;
@@ -488,24 +488,24 @@ def max_value(nums):
 # zipperLists(s, one);
 # s -> 1 -> t -> 2 -> 3 -> 4
 # test_03:
-# const w = new Node("w");
+# w = new Node("w");
 # w
-# const one = new Node(1);
-# const two = new Node(2);
-# const three = new Node(3);
+# one = new Node(1);
+# two = new Node(2);
+# three = new Node(3);
 # one.next = two;
 # two.next = three;
 # 1 -> 2 -> 3 
 # zipperLists(w, one);
 # w -> 1 -> 2 -> 3
 # test_04:
-# const one = new Node(1);
-# const two = new Node(2);
-# const three = new Node(3);
+# one = new Node(1);
+# two = new Node(2);
+# three = new Node(3);
 # one.next = two;
 # two.next = three;
 # 1 -> 2 -> 3 
-# const w = new Node("w");
+# w = new Node("w");
 # w
 # zipperLists(one, w);
 # 1 -> w -> 2 -> 3
@@ -519,22 +519,22 @@ def max_value(nums):
 # You may assume that both input lists are non-empty and contain increasing sorted numbers.
 #
 # test_00:
-# const a = new Node(5);
-# const b = new Node(7);
-# const c = new Node(10);
-# const d = new Node(12);
-# const e = new Node(20);
-# const f = new Node(28);
+# a = new Node(5);
+# b = new Node(7);
+# c = new Node(10);
+# d = new Node(12);
+# e = new Node(20);
+# f = new Node(28);
 # a.next = b;
 # b.next = c;
 # c.next = d;
 # d.next = e;
 # e.next = f;
 # 5 -> 7 -> 10 -> 12 -> 20 -> 28
-# const q = new Node(6);
-# const r = new Node(8);
-# const s = new Node(9);
-# const t = new Node(25);
+# q = new Node(6);
+# r = new Node(8);
+# s = new Node(9);
+# t = new Node(25);
 # q.next = r;
 # r.next = s;
 # s.next = t;
@@ -542,22 +542,22 @@ def max_value(nums):
 # mergeLists(a, q);
 # 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 12 -> 20 -> 25 -> 28 
 # test_01:
-# const a = new Node(5);
-# const b = new Node(7);
-# const c = new Node(10);
-# const d = new Node(12);
-# const e = new Node(20);
-# const f = new Node(28);
+# a = new Node(5);
+# b = new Node(7);
+# c = new Node(10);
+# d = new Node(12);
+# e = new Node(20);
+# f = new Node(28);
 # a.next = b;
 # b.next = c;
 # c.next = d;
 # d.next = e;
 # e.next = f;
 # 5 -> 7 -> 10 -> 12 -> 20 -> 28
-# const q = new Node(1);
-# const r = new Node(8);
-# const s = new Node(9);
-# const t = new Node(10);
+# q = new Node(1);
+# r = new Node(8);
+# s = new Node(9);
+# t = new Node(10);
 # q.next = r;
 # r.next = s;
 # s.next = t;
@@ -565,10 +565,10 @@ def max_value(nums):
 # mergeLists(a, q);
 # 1 -> 5 -> 7 -> 8 -> 9 -> 10 -> 10 -> 12 -> 20 -> 28 
 # test_02:
-# const h = new Node(30);
+# h = new Node(30);
 # 30
-# const p = new Node(15);
-# const q = new Node(67);
+# p = new Node(15);
+# q = new Node(67);
 # p.next = q;
 # 15 -> 67
 # mergeLists(h, p);
@@ -583,27 +583,27 @@ def max_value(nums):
 # You may assume that the input list is non-empty.
 #
 # test_00:
-# const a = new Node(7);
-# const b = new Node(7);
-# const c = new Node(7);
+# a = new Node(7);
+# b = new Node(7);
+# c = new Node(7);
 # a.next = b;
 # b.next = c;
 # 7 -> 7 -> 7
 # isUnivalueList(a); # true
 # test_01:
-# const a = new Node(7);
-# const b = new Node(7);
-# const c = new Node(4);
+# a = new Node(7);
+# b = new Node(7);
+# c = new Node(4);
 # a.next = b;
 # b.next = c;
 # 7 -> 7 -> 4
 # isUnivalueList(a); # false
 # test_02:
-# const u = new Node(2);
-# const v = new Node(2);
-# const w = new Node(2);
-# const x = new Node(2);
-# const y = new Node(2);
+# u = new Node(2);
+# v = new Node(2);
+# w = new Node(2);
+# x = new Node(2);
+# y = new Node(2);
 # u.next = v;
 # v.next = w;
 # w.next = x;
@@ -611,11 +611,11 @@ def max_value(nums):
 # 2 -> 2 -> 2 -> 2 -> 2
 # isUnivalueList(u); # true
 # test_03:
-# const u = new Node(2);
-# const v = new Node(2);
-# const w = new Node(3);
-# const x = new Node(3);
-# const y = new Node(2);
+# u = new Node(2);
+# v = new Node(2);
+# w = new Node(3);
+# x = new Node(3);
+# y = new Node(2);
 # u.next = v;
 # v.next = w;
 # w.next = x;
@@ -623,7 +623,7 @@ def max_value(nums):
 # 2 -> 2 -> 3 -> 3 -> 2
 # isUnivalueList(u); # false
 # test_04:
-# const z = new Node('z');
+# z = new Node('z');
 # z
 # isUnivalueList(z); # true
 
@@ -634,12 +634,12 @@ def max_value(nums):
 # streak of the same value within the list.
 # 
 # test_00:
-# const a = new Node(5);
-# const b = new Node(5);
-# const c = new Node(7);
-# const d = new Node(7);
-# const e = new Node(7);
-# const f = new Node(6);
+# a = new Node(5);
+# b = new Node(5);
+# c = new Node(7);
+# d = new Node(7);
+# e = new Node(7);
+# f = new Node(6);
 # a.next = b;
 # b.next = c;
 # c.next = d;
@@ -648,12 +648,12 @@ def max_value(nums):
 # 5 -> 5 -> 7 -> 7 -> 7 -> 6
 # longestStreak(a); # 3
 # test_01:
-# const a = new Node(3);
-# const b = new Node(3);
-# const c = new Node(3);
-# const d = new Node(3);
-# const e = new Node(9);
-# const f = new Node(9);
+# a = new Node(3);
+# b = new Node(3);
+# c = new Node(3);
+# d = new Node(3);
+# e = new Node(9);
+# f = new Node(9);
 # a.next = b;
 # b.next = c;
 # c.next = d;
@@ -662,12 +662,12 @@ def max_value(nums):
 # 3 -> 3 -> 3 -> 3 -> 9 -> 9
 # longestStreak(a); # 4
 # test_02:
-# const a = new Node(9);
-# const b = new Node(9);
-# const c = new Node(1);
-# const d = new Node(9);
-# const e = new Node(9);
-# const f = new Node(9);
+# a = new Node(9);
+# b = new Node(9);
+# c = new Node(1);
+# d = new Node(9);
+# e = new Node(9);
+# f = new Node(9);
 # a.next = b;
 # b.next = c;
 # c.next = d;
@@ -676,13 +676,13 @@ def max_value(nums):
 # 9 -> 9 -> 1 -> 9 -> 9 -> 9
 # longestStreak(a); # 3
 # test_03:
-# const a = new Node(5);
-# const b = new Node(5);
+# a = new Node(5);
+# b = new Node(5);
 # a.next = b;
 # 5 -> 5
 # longestStreak(a); # 2
 # test_04:
-# const a = new Node(4);
+# a = new Node(4);
 # 4
 # longestStreak(a); # 1
 # test_05:
@@ -699,12 +699,12 @@ def max_value(nums):
 # You may assume that the input list is non-empty.
 #
 # test_00:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
 # a.next = b;
 # b.next = c;
 # c.next = d;
@@ -714,28 +714,28 @@ def max_value(nums):
 # removeNode(a, "c");
 # a -> b -> d -> e -> f
 # test_01:
-# const x = new Node("x");
-# const y = new Node("y");
-# const z = new Node("z");
+# x = new Node("x");
+# y = new Node("y");
+# z = new Node("z");
 # x.next = y;
 # y.next = z;
 # x -> y -> z
 # removeNode(x, "z");
 # x -> y
 # test_02:
-# const q = new Node("q");
-# const r = new Node("r");
-# const s = new Node("s");
+# q = new Node("q");
+# r = new Node("r");
+# s = new Node("s");
 # q.next = r;
 # r.next = s;
 # q -> r -> s
 # removeNode(q, "q");
 # r -> s
 # test_03:
-# const node1 = new Node("h");
-# const node2 = new Node("i");
-# const node3 = new Node("j");
-# const node4 = new Node("i");
+# node1 = new Node("h");
+# node2 = new Node("i");
+# node3 = new Node("j");
+# node4 = new Node("i");
 # node1.next = node2;
 # node2.next = node3;
 # node3.next = node4;
@@ -743,7 +743,7 @@ def max_value(nums):
 # removeNode(node1, "i");
 # h -> j -> i
 # test_04:
-# const t = new Node("t");
+# t = new Node("t");
 # t
 # removeNode(t, "t");
 # null
@@ -759,10 +759,10 @@ def max_value(nums):
 # than the length of the input list.
 #
 # test_00:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
 # a.next = b;
 # b.next = c;
 # c.next = d;
@@ -770,10 +770,10 @@ def max_value(nums):
 # insertNode(a, 'x', 2);
 # a -> b -> x -> c -> d
 # test_01:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
 # a.next = b;
 # b.next = c;
 # c.next = d;
@@ -781,10 +781,10 @@ def max_value(nums):
 # insertNode(a, 'v', 3);
 # a -> b -> c -> v -> d
 # test_02:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
 # a.next = b;
 # b.next = c;
 # c.next = d;
@@ -792,8 +792,8 @@ def max_value(nums):
 # insertNode(a, 'm', 4);
 # a -> b -> c -> d -> m
 # test_03:
-# const a = new Node("a");
-# const b = new Node("b");
+# a = new Node("a");
+# b = new Node("b");
 # a.next = b;
 # a -> b
 # insertNode(a, 'z', 0);
@@ -847,15 +847,15 @@ def max_value(nums):
 # + 354
 # -----
 #   975
-# const a1 = new Node(1);
-# const a2 = new Node(2);
-# const a3 = new Node(6);
+# a1 = new Node(1);
+# a2 = new Node(2);
+# a3 = new Node(6);
 # a1.next = a2;
 # a2.next = a3;
 # 1 -> 2 -> 6
-# const b1 = new Node(4);
-# const b2 = new Node(5);
-# const b3 = new Node(3);
+# b1 = new Node(4);
+# b2 = new Node(5);
+# b3 = new Node(3);
 # b1.next = b2;
 # b2.next = b3;
 # 4 -> 5 -> 3
@@ -866,16 +866,16 @@ def max_value(nums):
 # +  32
 # -----
 #  7573
-# const a1 = new Node(1);
-# const a2 = new Node(4);
-# const a3 = new Node(5);
-# const a4 = new Node(7);
+# a1 = new Node(1);
+# a2 = new Node(4);
+# a3 = new Node(5);
+# a4 = new Node(7);
 # a1.next = a2;
 # a2.next = a3;
 # a3.next = a4;
 # 1 -> 4 -> 5 -> 7
-# const b1 = new Node(2);
-# const b2 = new Node(3);
+# b1 = new Node(2);
+# b2 = new Node(3);
 # b1.next = b2;
 # 2 -> 3 
 # addLists(a1, b1);
@@ -885,12 +885,12 @@ def max_value(nums):
 # + 47
 # ----
 #   86
-# const a1 = new Node(9);
-# const a2 = new Node(3);
+# a1 = new Node(9);
+# a2 = new Node(3);
 # a1.next = a2;
 # 9 -> 3
-# const b1 = new Node(7);
-# const b2 = new Node(4);
+# b1 = new Node(7);
+# b2 = new Node(4);
 # b1.next = b2;
 # 7 -> 4
 # addLists(a1, b1);
@@ -900,12 +900,12 @@ def max_value(nums):
 # + 47
 # ----
 #  136
-# const a1 = new Node(9);
-# const a2 = new Node(8);
+# a1 = new Node(9);
+# a2 = new Node(8);
 # a1.next = a2;
 # 9 -> 8
-# const b1 = new Node(7);
-# const b2 = new Node(4);
+# b1 = new Node(7);
+# b2 = new Node(4);
 # b1.next = b2;
 # 7 -> 4
 # addLists(a1, b1);
@@ -915,13 +915,13 @@ def max_value(nums):
 #  +  6
 #  ----
 #  1005
-# const a1 = new Node(9);
-# const a2 = new Node(9);
-# const a3 = new Node(9);
+# a1 = new Node(9);
+# a2 = new Node(9);
+# a3 = new Node(9);
 # a1.next = a2;
 # a2.next = a3;
 # 9 -> 9 -> 9
-# const b1 = new Node(6);
+# b1 = new Node(6);
 # 6
 # addLists(a1, b1);
 # 5 -> 0 -> 0 -> 1
@@ -933,12 +933,12 @@ def max_value(nums):
 # depth-first order.
 #
 # test_00:
-# const a = new Node('a');
-# const b = new Node('b');
-# const c = new Node('c');
-# const d = new Node('d');
-# const e = new Node('e');
-# const f = new Node('f');
+# a = new Node('a');
+# b = new Node('b');
+# c = new Node('c');
+# d = new Node('d');
+# e = new Node('e');
+# f = new Node('f');
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -952,13 +952,13 @@ def max_value(nums):
 # depthFirstValues(a); 
 #    -> ['a', 'b', 'd', 'e', 'c', 'f']
 # test_01:
-# const a = new Node('a');
-# const b = new Node('b');
-# const c = new Node('c');
-# const d = new Node('d');
-# const e = new Node('e');
-# const f = new Node('f');
-# const g = new Node('g');
+# a = new Node('a');
+# b = new Node('b');
+# c = new Node('c');
+# d = new Node('d');
+# e = new Node('e');
+# f = new Node('f');
+# g = new Node('g');
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -975,16 +975,16 @@ def max_value(nums):
 # depthFirstValues(a); 
 #    -> ['a', 'b', 'd', 'e', 'g', 'c', 'f']
 # test_02:
-# const a = new Node('a');
+# a = new Node('a');
 #      a
 # depthFirstValues(a); 
 #    -> ['a']
 # test_03:
-# const a = new Node('a');
-# const b = new Node('b');
-# const c = new Node('c');
-# const d = new Node('d');
-# const e = new Node('e');
+# a = new Node('a');
+# b = new Node('b');
+# c = new Node('c');
+# d = new Node('d');
+# e = new Node('e');
 # a.right = b;
 # b.left = c;
 # c.right = d;
@@ -1012,12 +1012,12 @@ def max_value(nums):
 # breadth-first order.
 #
 # test_00:
-# const a = new Node('a');
-# const b = new Node('b');
-# const c = new Node('c');
-# const d = new Node('d');
-# const e = new Node('e');
-# const f = new Node('f');
+# a = new Node('a');
+# b = new Node('b');
+# c = new Node('c');
+# d = new Node('d');
+# e = new Node('e');
+# f = new Node('f');
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -1031,14 +1031,14 @@ def max_value(nums):
 # breadthFirstValues(a); 
 #    -> ['a', 'b', 'c', 'd', 'e', 'f']
 # test_01:
-# const a = new Node('a');
-# const b = new Node('b');
-# const c = new Node('c');
-# const d = new Node('d');
-# const e = new Node('e');
-# const f = new Node('f');
-# const g = new Node('g');
-# const h = new Node('h');
+# a = new Node('a');
+# b = new Node('b');
+# c = new Node('c');
+# d = new Node('d');
+# e = new Node('e');
+# f = new Node('f');
+# g = new Node('g');
+# h = new Node('h');
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -1056,17 +1056,17 @@ def max_value(nums):
 # breadthFirstValues(a); 
 #   -> ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 # test_02:
-# const a = new Node('a');
+# a = new Node('a');
 #      a
 # breadthFirstValues(a); 
 #    -> ['a']
 # test_03:
-# const a = new Node('a');
-# const b = new Node('b');
-# const c = new Node('c');
-# const d = new Node('d');
-# const e = new Node('e');
-# const x = new Node('x');
+# a = new Node('a');
+# b = new Node('b');
+# c = new Node('c');
+# d = new Node('d');
+# e = new Node('e');
+# x = new Node('x');
 # a.right = b;
 # b.left = c;
 # c.left = x;
@@ -1094,12 +1094,12 @@ def max_value(nums):
 # not the value is contained in the tree.
 #
 # test_00:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -1112,12 +1112,12 @@ def max_value(nums):
 # d   e     f
 # treeIncludes(a, "e"); # -> true
 # test_01:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -1130,12 +1130,12 @@ def max_value(nums):
 # d   e     f
 # treeIncludes(a, "a"); # -> true
 # test_02:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -1148,14 +1148,14 @@ def max_value(nums):
 # d   e     f
 # treeIncludes(a, "n"); # -> false
 # test_03:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
-# const g = new Node("g");
-# const h = new Node("h");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
+# g = new Node("g");
+# h = new Node("h");
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -1172,14 +1172,14 @@ def max_value(nums):
 #   g         h
 # treeIncludes(a, "f"); # -> true
 # test_04:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
-# const g = new Node("g");
-# const h = new Node("h");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
+# g = new Node("g");
+# h = new Node("h");
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -1205,12 +1205,12 @@ def max_value(nums):
 # in the tree.
 #
 # test_00:
-# const a = new Node(3);
-# const b = new Node(11);
-# const c = new Node(4);
-# const d = new Node(4);
-# const e = new Node(-2);
-# const f = new Node(1);
+# a = new Node(3);
+# b = new Node(11);
+# c = new Node(4);
+# d = new Node(4);
+# e = new Node(-2);
+# f = new Node(1);
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -1223,14 +1223,14 @@ def max_value(nums):
 # 4   -2     1
 # treeSum(a); # -> 21
 # test_01:
-# const a = new Node(1);
-# const b = new Node(6);
-# const c = new Node(0);
-# const d = new Node(3);
-# const e = new Node(-6);
-# const f = new Node(2);
-# const g = new Node(2);
-# const h = new Node(2);
+# a = new Node(1);
+# b = new Node(6);
+# c = new Node(0);
+# d = new Node(3);
+# e = new Node(-6);
+# f = new Node(2);
+# g = new Node(2);
+# h = new Node(2);
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -1257,12 +1257,12 @@ def max_value(nums):
 # You may assume that the input tree is non-empty.
 #
 # test_00:
-# const a = new Node(3);
-# const b = new Node(11);
-# const c = new Node(4);
-# const d = new Node(4);
-# const e = new Node(-2);
-# const f = new Node(1);
+# a = new Node(3);
+# b = new Node(11);
+# c = new Node(4);
+# d = new Node(4);
+# e = new Node(-2);
+# f = new Node(1);
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -1275,12 +1275,12 @@ def max_value(nums):
 # 4   -2     1
 # treeMinValue(a); # -> -2
 # test_01:
-# const a = new Node(5);
-# const b = new Node(11);
-# const c = new Node(3);
-# const d = new Node(4);
-# const e = new Node(14);
-# const f = new Node(12);
+# a = new Node(5);
+# b = new Node(11);
+# c = new Node(3);
+# d = new Node(4);
+# e = new Node(14);
+# f = new Node(12);
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -1293,14 +1293,14 @@ def max_value(nums):
 # 4   15     12
 # treeMinValue(a); # -> 3
 # test_02:
-# const a = new Node(-1);
-# const b = new Node(-6);
-# const c = new Node(-5);
-# const d = new Node(-3);
-# const e = new Node(-4);
-# const f = new Node(-13);
-# const g = new Node(-2);
-# const h = new Node(-2);
+# a = new Node(-1);
+# b = new Node(-6);
+# c = new Node(-5);
+# d = new Node(-3);
+# e = new Node(-4);
+# f = new Node(-13);
+# g = new Node(-2);
+# h = new Node(-2);
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -1317,7 +1317,7 @@ def max_value(nums):
 #    -2       -2
 # tree_min_value(a); # -> -13
 # test_03:
-# const a = new Node(42);
+# a = new Node(42);
 #        42
 # tree_min_value(a); # -> 42
 
@@ -1330,12 +1330,12 @@ def max_value(nums):
 # You may assume that the input tree is non-empty.
 #
 # test_00:
-# const a = new Node(3);
-# const b = new Node(11);
-# const c = new Node(4);
-# const d = new Node(4);
-# const e = new Node(-2);
-# const f = new Node(1);
+# a = new Node(3);
+# b = new Node(11);
+# c = new Node(4);
+# d = new Node(4);
+# e = new Node(-2);
+# f = new Node(1);
 #
 # a.left = b;
 # a.right = c;
@@ -1352,13 +1352,13 @@ def max_value(nums):
 # maxPathSum(a); # -> 18
 #
 # test_01:
-# const a = new Node(5);
-# const b = new Node(11);
-# const c = new Node(54);
-# const d = new Node(20);
-# const e = new Node(15);
-# const f = new Node(1);
-# const g = new Node(3);
+# a = new Node(5);
+# b = new Node(11);
+# c = new Node(54);
+# d = new Node(20);
+# e = new Node(15);
+# f = new Node(1);
+# g = new Node(3);
 #
 # a.left = b;
 # a.right = c;
@@ -1378,14 +1378,14 @@ def max_value(nums):
 # maxPathSum(a); # -> 59
 #
 # test_02:
-# const a = new Node(-1);
-# const b = new Node(-6);
-# const c = new Node(-5);
-# const d = new Node(-3);
-# const e = new Node(0);
-# const f = new Node(-13);
-# const g = new Node(-1);
-# const h = new Node(-2);
+# a = new Node(-1);
+# b = new Node(-6);
+# c = new Node(-5);
+# d = new Node(-3);
+# e = new Node(0);
+# f = new Node(-13);
+# g = new Node(-1);
+# h = new Node(-2);
 #
 # a.left = b;
 # a.right = c;
@@ -1406,7 +1406,7 @@ def max_value(nums):
 # maxPathSum(a); # -> -8
 #
 # test_03:
-# const a = new Node(42);
+# a = new Node(42);
 #
 #        42
 #
@@ -1421,12 +1421,12 @@ def max_value(nums):
 # You may assume that the tree contains unique values.
 #
 # test_00:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
 #
 # a.left = b;
 # a.right = c;
@@ -1443,12 +1443,12 @@ def max_value(nums):
 # pathFinder(a, 'e'); # -> [ 'a', 'b', 'e' ]
 #
 # test_01:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
 #
 # a.left = b;
 # a.right = c;
@@ -1465,14 +1465,14 @@ def max_value(nums):
 # pathFinder(a, 'p'); # -> null
 #
 # test_02:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
-# const g = new Node("g");
-# const h = new Node("h");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
+# g = new Node("g");
+# h = new Node("h");
 #
 # a.left = b;
 # a.right = c;
@@ -1493,14 +1493,14 @@ def max_value(nums):
 # pathFinder(a, "c"); # -> ['a', 'c']
 #
 # test_03:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
-# const g = new Node("g");
-# const h = new Node("h");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
+# g = new Node("g");
+# h = new Node("h");
 #
 # a.left = b;
 # a.right = c;
@@ -1521,7 +1521,7 @@ def max_value(nums):
 # pathFinder(a, "h"); # -> ['a', 'c', 'f', 'h']
 #
 # test_04:
-# const x = new Node("x");
+# x = new Node("x");
 #
 #      x
 #
@@ -1531,7 +1531,7 @@ def max_value(nums):
 # pathFinder(null, "x"); # -> null
 #
 # test_06:
-# const root = new Node(0);
+# root = new Node(0);
 # let curr = root;
 # for (let i = 1; i <= 6000; i += 1) {
 #   curr.right = new Node(i);
@@ -1561,12 +1561,12 @@ def max_value(nums):
 # occurs in the tree.
 #
 # test_00:
-# const a = new Node(12);
-# const b = new Node(6);
-# const c = new Node(6);
-# const d = new Node(4);
-# const e = new Node(6);
-# const f = new Node(12);
+# a = new Node(12);
+# b = new Node(6);
+# c = new Node(6);
+# d = new Node(4);
+# e = new Node(6);
+# f = new Node(12);
 #
 # a.left = b;
 # a.right = c;
@@ -1583,12 +1583,12 @@ def max_value(nums):
 # treeValueCount(a,  6); # -> 3
 #
 # test_01:
-# const a = new Node(12);
-# const b = new Node(6);
-# const c = new Node(6);
-# const d = new Node(4);
-# const e = new Node(6);
-# const f = new Node(12);
+# a = new Node(12);
+# b = new Node(6);
+# c = new Node(6);
+# d = new Node(4);
+# e = new Node(6);
+# f = new Node(12);
 #
 # a.left = b;
 # a.right = c;
@@ -1605,14 +1605,14 @@ def max_value(nums):
 # treeValueCount(a,  12); # -> 2
 #
 # test_02:
-# const a = new Node(7);
-# const b = new Node(5);
-# const c = new Node(1);
-# const d = new Node(1);
-# const e = new Node(8);
-# const f = new Node(7);
-# const g = new Node(1);
-# const h = new Node(1);
+# a = new Node(7);
+# b = new Node(5);
+# c = new Node(1);
+# d = new Node(1);
+# e = new Node(8);
+# f = new Node(7);
+# g = new Node(1);
+# h = new Node(1);
 #
 # a.left = b;
 # a.right = c;
@@ -1632,14 +1632,14 @@ def max_value(nums):
 # treeValueCount(a, 1); # -> 4
 #
 # test_03:
-# const a = new Node(7);
-# const b = new Node(5);
-# const c = new Node(1);
-# const d = new Node(1);
-# const e = new Node(8);
-# const f = new Node(7);
-# const g = new Node(1);
-# const h = new Node(1);
+# a = new Node(7);
+# b = new Node(5);
+# c = new Node(1);
+# d = new Node(1);
+# e = new Node(8);
+# f = new Node(7);
+# g = new Node(1);
+# h = new Node(1);
 #
 # a.left = b;
 # a.right = c;
@@ -1673,12 +1673,12 @@ def max_value(nums):
 # If the tree is empty, return -1.
 #
 # test_00:
-# const a = new Node('a');
-# const b = new Node('b');
-# const c = new Node('c');
-# const d = new Node('d');
-# const e = new Node('e');
-# const f = new Node('f');
+# a = new Node('a');
+# b = new Node('b');
+# c = new Node('c');
+# d = new Node('d');
+# e = new Node('e');
+# f = new Node('f');
 #
 # a.left = b;
 # a.right = c;
@@ -1695,13 +1695,13 @@ def max_value(nums):
 # howHigh(a); # -> 2
 #
 # test_01:
-# const a = new Node('a');
-# const b = new Node('b');
-# const c = new Node('c');
-# const d = new Node('d');
-# const e = new Node('e');
-# const f = new Node('f');
-# const g = new Node('g');
+# a = new Node('a');
+# b = new Node('b');
+# c = new Node('c');
+# d = new Node('d');
+# e = new Node('e');
+# f = new Node('f');
+# g = new Node('g');
 #
 # a.left = b;
 # a.right = c;
@@ -1721,8 +1721,8 @@ def max_value(nums):
 # howHigh(a); # -> 3
 #
 # test_02:
-# const a = new Node('a');
-# const c = new Node('c');
+# a = new Node('a');
+# c = new Node('c');
 #
 # a.right = c;
 #
@@ -1733,7 +1733,7 @@ def max_value(nums):
 # howHigh(a); # -> 1
 #
 # test_03:
-# const a = new Node('a');
+# a = new Node('a');
 #
 #      a
 #
@@ -1748,12 +1748,12 @@ def max_value(nums):
 # You may assume that the input tree is non-empty.
 #
 # test_00:
-# const a = new Node(3);
-# const b = new Node(11);
-# const c = new Node(10);
-# const d = new Node(4);
-# const e = new Node(-2);
-# const f = new Node(1);
+# a = new Node(3);
+# b = new Node(11);
+# c = new Node(10);
+# d = new Node(4);
+# e = new Node(-2);
+# f = new Node(1);
 #
 # a.left = b;
 # a.right = c;
@@ -1770,14 +1770,14 @@ def max_value(nums):
 # bottomRightValue(a); # -> 1
 #
 # test_01:
-# const a = new Node(-1);
-# const b = new Node(-6);
-# const c = new Node(-5);
-# const d = new Node(-3);
-# const e = new Node(-4);
-# const f = new Node(-13);
-# const g = new Node(-2);
-# const h = new Node(6);
+# a = new Node(-1);
+# b = new Node(-6);
+# c = new Node(-5);
+# d = new Node(-3);
+# e = new Node(-4);
+# f = new Node(-13);
+# g = new Node(-2);
+# h = new Node(6);
 #
 # a.left = b;
 # a.right = c;
@@ -1798,15 +1798,15 @@ def max_value(nums):
 # bottomRightValue(a); # -> 6
 #
 # test_02:
-# const a = new Node(-1);
-# const b = new Node(-6);
-# const c = new Node(-5);
-# const d = new Node(-3);
-# const e = new Node(-4);
-# const f = new Node(-13);
-# const g = new Node(-2);
-# const h = new Node(6);
-# const i = new Node(7);
+# a = new Node(-1);
+# b = new Node(-6);
+# c = new Node(-5);
+# d = new Node(-3);
+# e = new Node(-4);
+# f = new Node(-13);
+# g = new Node(-2);
+# h = new Node(6);
+# i = new Node(7);
 #
 # a.left = b;
 # a.right = c;
@@ -1828,12 +1828,12 @@ def max_value(nums):
 # bottomRightValue(a); # -> 7
 #
 # test_03
-# const a = new Node('a');
-# const b = new Node('b');
-# const c = new Node('c');
-# const d = new Node('d');
-# const e = new Node('e');
-# const f = new Node('f');
+# a = new Node('a');
+# b = new Node('b');
+# c = new Node('c');
+# d = new Node('d');
+# e = new Node('e');
+# f = new Node('f');
 #
 # a.left = b;
 # a.right = c;
@@ -1854,7 +1854,7 @@ def max_value(nums):
 # bottomRightValue(a); # -> 'f'
 #
 # test_04
-# const a = new Node(42);
+# a = new Node(42);
 #
 #      42
 #
@@ -1872,12 +1872,12 @@ def max_value(nums):
 # You may assume that the input tree is non-empty.
 #
 # test_00:
-# const a = new Node('a');
-# const b = new Node('b');
-# const c = new Node('c');
-# const d = new Node('d');
-# const e = new Node('e');
-# const f = new Node('f');
+# a = new Node('a');
+# b = new Node('b');
+# c = new Node('c');
+# d = new Node('d');
+# e = new Node('e');
+# f = new Node('f');
 #
 # a.left = b;
 # a.right = c;
@@ -1899,15 +1899,15 @@ def max_value(nums):
 # ] 
 #
 # test_01:
-# const a = new Node('a');
-# const b = new Node('b');
-# const c = new Node('c');
-# const d = new Node('d');
-# const e = new Node('e');
-# const f = new Node('f');
-# const g = new Node('g');
-# const h = new Node('h');
-# const i = new Node('i');
+# a = new Node('a');
+# b = new Node('b');
+# c = new Node('c');
+# d = new Node('d');
+# e = new Node('e');
+# f = new Node('f');
+# g = new Node('g');
+# h = new Node('h');
+# i = new Node('i');
 #
 # a.l#eft = b;
 # a.right = c;
@@ -1935,12 +1935,12 @@ def max_value(nums):
 # ] 
 #
 # test_02:
-# const q = new Node('q');
-# const r = new Node('r');
-# const s = new Node('s');
-# const t = new Node('t');
-# const u = new Node('u');
-# const v = new Node('v');
+# q = new Node('q');
+# r = new Node('r');
+# s = new Node('s');
+# t = new Node('t');
+# u = new Node('u');
+# v = new Node('v');
 #
 # q.left = r;
 # q.right = s;
@@ -1965,7 +1965,7 @@ def max_value(nums):
 # ] 
 #
 # test_03:
-# const z = new Node('z');
+# z = new Node('z');
 #
 #      z
 #
@@ -1981,12 +1981,12 @@ def max_value(nums):
 # level of the tree.
 #
 # test_00:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
 #
 # a.left = b;
 # a.right = c;
@@ -2008,15 +2008,15 @@ def max_value(nums):
 # ]
 #
 # test_01:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
-# const g = new Node("g");
-# const h = new Node("h");
-# const i = new Node("i");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
+# g = new Node("g");
+# h = new Node("h");
+# i = new Node("i");
 #
 # a.left = b;
 # a.right = c;
@@ -2044,12 +2044,12 @@ def max_value(nums):
 # ]
 #
 # test_02:
-# const q = new Node("q");
-# const r = new Node("r");
-# const s = new Node("s");
-# const t = new Node("t");
-# const u = new Node("u");
-# const v = new Node("v");
+# q = new Node("q");
+# r = new Node("r");
+# s = new Node("s");
+# t = new Node("t");
+# u = new Node("u");
+# v = new Node("v");
 #
 # q.left = r;
 # q.right = s;
@@ -2088,12 +2088,12 @@ def max_value(nums):
 # average value of each level.
 #
 # test_00:
-# const a = new Node(3);
-# const b = new Node(11);
-# const c = new Node(4);
-# const d = new Node(4);
-# const e = new Node(-2);
-# const f = new Node(1);
+# a = new Node(3);
+# b = new Node(11);
+# c = new Node(4);
+# d = new Node(4);
+# e = new Node(-2);
+# f = new Node(1);
 #
 # a.left = b;
 # a.right = c;
@@ -2110,13 +2110,13 @@ def max_value(nums):
 # levelAverages(a); # -> [ 3, 7.5, 1 ] 
 #
 # test_01:
-# const a = new Node(5);
-# const b = new Node(11);
-# const c = new Node(54);
-# const d = new Node(20);
-# const e = new Node(15);
-# const f = new Node(1);
-# const g = new Node(3);
+# a = new Node(5);
+# b = new Node(11);
+# c = new Node(54);
+# d = new Node(20);
+# e = new Node(15);
+# f = new Node(1);
+# g = new Node(3);
 #
 # a.left = b;
 # a.right = c;
@@ -2136,14 +2136,14 @@ def max_value(nums):
 # levelAverages(a); # -> [ 5, 32.5, 17.5, 2 ] 
 #
 # test_02:
-# const a = new Node(-1);
-# const b = new Node(-6);
-# const c = new Node(-5);
-# const d = new Node(-3);
-# const e = new Node(0);
-# const f = new Node(45);
-# const g = new Node(-1);
-# const h = new Node(-2);
+# a = new Node(-1);
+# b = new Node(-6);
+# c = new Node(-5);
+# d = new Node(-3);
+# e = new Node(0);
+# f = new Node(45);
+# g = new Node(-1);
+# h = new Node(-2);
 #
 # a.left = b;
 # a.right = c;
@@ -2164,12 +2164,12 @@ def max_value(nums):
 # levelAverages(a); # -> [ -1, -5.5, 14, -1.5 ]
 #
 # test_03:
-# const q = new Node(13);
-# const r = new Node(4);
-# const s = new Node(2);
-# const t = new Node(9);
-# const u = new Node(2);
-# const v = new Node(42);
+# q = new Node(13);
+# r = new Node(4);
+# s = new Node(2);
+# t = new Node(9);
+# u = new Node(2);
+# v = new Node(42);
 #
 # q.left = r;
 # q.right = s;
@@ -2198,12 +2198,12 @@ def max_value(nums):
 # returns an array containing the values of all leaf nodes in left-to-right order.
 #
 # test_00:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
 #
 # a.left = b;
 # a.right = c;
@@ -2220,14 +2220,14 @@ def max_value(nums):
 # leafList(a); # -> [ 'd', 'e', 'f' ] 
 #
 # test_01:
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
-# const g = new Node("g");
-# const h = new Node("h");
+# a = new Node("a");
+# b = new Node("b");
+# c = new Node("c");
+# d = new Node("d");
+# e = new Node("e");
+# f = new Node("f");
+# g = new Node("g");
+# h = new Node("h");
 #
 # a.left = b;
 # a.right = c;
@@ -2248,13 +2248,13 @@ def max_value(nums):
 # leafList(a); # -> [ 'd', 'g', 'h' ]
 #
 # test_02:
-# const a = new Node(5);
-# const b = new Node(11);
-# const c = new Node(54);
-# const d = new Node(20);
-# const e = new Node(15);
-# const f = new Node(1);
-# const g = new Node(3);
+# a = new Node(5);
+# b = new Node(11);
+# c = new Node(54);
+# d = new Node(20);
+# e = new Node(15);
+# f = new Node(1);
+# g = new Node(3);
 #
 # a.left = b;
 # a.right = c;
@@ -2274,7 +2274,7 @@ def max_value(nums):
 # leafList(a); # -> [ 20, 1, 3, 54 ]
 #
 # test_03:
-# const x = new Node('x');
+# x = new Node('x');
 #
 #      x
 #
@@ -2291,7 +2291,7 @@ def max_value(nums):
 # the source and destination nodes.
 #
 # test_00:
-# const graph = {
+# graph = {
 #   f: ['g', 'i'],
 #   g: ['h'],
 #   h: [],
@@ -2303,7 +2303,7 @@ def max_value(nums):
 # hasPath(graph, 'f', 'k'); # true
 #
 # test_01:
-# const graph = {
+# graph = {
 #   f: ['g', 'i'],
 #   g: ['h'],
 #   h: [],
@@ -2315,7 +2315,7 @@ def max_value(nums):
 # hasPath(graph, 'f', 'j'); # false
 #
 # test_02:
-# const graph = {
+# graph = {
 #   f: ['g', 'i'],
 #   g: ['h'],
 #   h: [],
@@ -2327,7 +2327,7 @@ def max_value(nums):
 # hasPath(graph, 'i', 'h'); # true
 #
 # test_03:
-# const graph = {
+# graph = {
 #   v: ['x', 'w'],
 #   w: [],
 #   x: [],
@@ -2338,7 +2338,7 @@ def max_value(nums):
 # hasPath(graph, 'v', 'w'); # true
 #
 # test_04:
-# const graph = {
+# graph = {
 #   v: ['x', 'w'],
 #   w: [],
 #   x: [],
@@ -2355,7 +2355,7 @@ def max_value(nums):
 # boolean indicating whether or not there exists a path between nodeA and nodeB.
 #
 # test_00:
-# const edges = [
+# edges = [
 #   ['i', 'j'],
 #   ['k', 'i'],
 #   ['m', 'k'],
@@ -2366,7 +2366,7 @@ def max_value(nums):
 # undirectedPath(edges, 'j', 'm'); # -> true
 #
 # test_01:
-# const edges = [
+# edges = [
 #   ['i', 'j'],
 #   ['k', 'i'],
 #   ['m', 'k'],
@@ -2377,7 +2377,7 @@ def max_value(nums):
 # undirectedPath(edges, 'm', 'j'); # -> true
 #
 # test_02:
-# const edges = [
+# edges = [
 #   ['i', 'j'],
 #   ['k', 'i'],
 #   ['m', 'k'],
@@ -2388,7 +2388,7 @@ def max_value(nums):
 # undirectedPath(edges, 'l', 'j'); # -> true
 #
 # test_03:
-# const edges = [
+# edges = [
 #   ['i', 'j'],
 #   ['k', 'i'],
 #   ['m', 'k'],
@@ -2398,7 +2398,7 @@ def max_value(nums):
 #
 # undirectedPath(edges, 'k', 'o'); # -> false
 # test_04:
-# const edges = [
+# edges = [
 #   ['i', 'j'],
 #   ['k', 'i'],
 #   ['m', 'k'],
@@ -2409,7 +2409,7 @@ def max_value(nums):
 # undirectedPath(edges, 'i', 'o'); # -> false
 #
 # test_05:
-# const edges = [
+# edges = [
 #   ['b', 'a'],
 #   ['c', 'a'],
 #   ['b', 'c'],
@@ -2422,7 +2422,7 @@ def max_value(nums):
 # undirectedPath(edges, 'a', 'b'); # -> true
 #
 # test_06:
-# const edges = [
+# edges = [
 #   ['b', 'a'],
 #   ['c', 'a'],
 #   ['b', 'c'],
@@ -2435,7 +2435,7 @@ def max_value(nums):
 # undirectedPath(edges, 'a', 'c'); # -> true
 #
 # test_07:
-# const edges = [
+# edges = [
 #   ['b', 'a'],
 #   ['c', 'a'],
 #   ['b', 'c'],
@@ -2448,7 +2448,7 @@ def max_value(nums):
 # undirectedPath(edges, 'r', 't'); # -> true
 #
 # test_08:
-# const edges = [
+# edges = [
 #   ['b', 'a'],
 #   ['c', 'a'],
 #   ['b', 'c'],
@@ -2577,7 +2577,7 @@ def max_value(nums):
 # and B, then return -1.
 #
 # test_00:
-# const edges = [
+# edges = [
 #   ['w', 'x'],
 #   ['x', 'y'],
 #   ['z', 'y'],
@@ -2588,7 +2588,7 @@ def max_value(nums):
 # shortestPath(edges, 'w', 'z'); # -> 2
 #
 # test_01:
-# const edges = [
+# edges = [
 #   ['w', 'x'],
 #   ['x', 'y'],
 #   ['z', 'y'],
@@ -2599,7 +2599,7 @@ def max_value(nums):
 # shortestPath(edges, 'y', 'x'); # -> 1
 #
 # test_02:
-# const edges = [
+# edges = [
 #   ['a', 'c'],
 #   ['a', 'b'],
 #   ['c', 'b'],
@@ -2612,7 +2612,7 @@ def max_value(nums):
 # shortestPath(edges, 'a', 'e'); # -> 3
 #
 # test_03:
-# const edges = [
+# edges = [
 #   ['a', 'c'],
 #   ['a', 'b'],
 #   ['c', 'b'],
@@ -2625,7 +2625,7 @@ def max_value(nums):
 # shortestPath(edges, 'e', 'c'); # -> 2
 #
 # test_04:
-# const edges = [
+# edges = [
 #   ['a', 'c'],
 #   ['a', 'b'],
 #   ['c', 'b'],
@@ -2638,7 +2638,7 @@ def max_value(nums):
 # shortestPath(edges, 'b', 'g'); # -> -1
 #
 # test_05:
-# const edges = [
+# edges = [
 #   ['c', 'n'],
 #   ['c', 'e'],
 #   ['c', 's'],
@@ -2649,7 +2649,7 @@ def max_value(nums):
 # shortestPath(edges, 'w', 'e'); # -> 1
 #
 # test_06:
-# const edges = [
+# edges = [
 #   ['c', 'n'],
 #   ['c', 'e'],
 #   ['c', 's'],
@@ -2660,7 +2660,7 @@ def max_value(nums):
 # shortestPath(edges, 'n', 'e'); # -> 2
 #
 # test_07:
-# const edges = [
+# edges = [
 #   ['m', 'n'],
 #   ['n', 'o'],
 #   ['o', 'p'],
@@ -2680,7 +2680,7 @@ def max_value(nums):
 # region of land.
 #
 # test_00:
-# const grid = [
+# grid = [
 #   ['W', 'L', 'W', 'W', 'W'],
 #   ['W', 'L', 'W', 'W', 'W'],
 #   ['W', 'W', 'W', 'L', 'W'],
@@ -2692,7 +2692,7 @@ def max_value(nums):
 # islandCount(grid); # -> 3
 #
 # test_01:
-# const grid = [
+# grid = [
 #   ['L', 'W', 'W', 'L', 'W'],
 #   ['L', 'W', 'W', 'L', 'L'],
 #   ['W', 'L', 'W', 'L', 'W'],
@@ -2703,7 +2703,7 @@ def max_value(nums):
 # islandCount(grid); # -> 4
 #
 # test_02:
-# const grid = [
+# grid = [
 #   ['L', 'L', 'L'],
 #   ['L', 'L', 'L'],
 #   ['L', 'L', 'L'],
@@ -2712,7 +2712,7 @@ def max_value(nums):
 # islandCount(grid); # -> 1
 #
 # test_03:
-# const grid = [
+# grid = [
 #   ['W', 'W'],
 #   ['W', 'W'],
 #   ['W', 'W'],
@@ -2730,7 +2730,7 @@ def max_value(nums):
 # You may assume that the grid contains at least one island.
 #
 # test_00:
-# const grid = [
+# grid = [
 #   ['W', 'L', 'W', 'W', 'W'],
 #   ['W', 'L', 'W', 'W', 'W'],
 #   ['W', 'W', 'W', 'L', 'W'],
@@ -2742,7 +2742,7 @@ def max_value(nums):
 # minimumIsland(grid); # -> 2
 #
 # test_01:
-# const grid = [
+# grid = [
 #   ['L', 'W', 'W', 'L', 'W'],
 #   ['L', 'W', 'W', 'L', 'L'],
 #   ['W', 'L', 'W', 'L', 'W'],
@@ -2753,7 +2753,7 @@ def max_value(nums):
 # minimumIsland(grid); # -> 1
 #
 # test_02:
-# const grid = [
+# grid = [
 #   ['L', 'L', 'L'],
 #   ['L', 'L', 'L'],
 #   ['L', 'L', 'L'],
@@ -2762,7 +2762,7 @@ def max_value(nums):
 # minimumIsland(grid); # -> 9
 #
 # test_03:
-# const grid = [
+# grid = [
 #   ['W', 'W'],
 #   ['L', 'L'],
 #   ['W', 'W'],
@@ -2781,7 +2781,7 @@ def max_value(nums):
 # possible path to a carrot, then return -1.
 # 
 # test_00:
-# const grid = [
+# grid = [
 #   ['O', 'O', 'O', 'O', 'O'],
 #   ['O', 'X', 'O', 'O', 'O'],
 #   ['O', 'X', 'X', 'O', 'O'],
@@ -2793,7 +2793,7 @@ def max_value(nums):
 # closestCarrot(grid, 1, 2); # -> 4
 #
 # test_01:
-# const grid = [
+# grid = [
 #   ['O', 'O', 'O', 'O', 'O'],
 #   ['O', 'X', 'O', 'O', 'O'],
 #   ['O', 'X', 'X', 'O', 'O'],
@@ -2805,7 +2805,7 @@ def max_value(nums):
 # closestCarrot(grid, 0, 0); # -> 5
 #
 # test_02:
-# const grid = [
+# grid = [
 #   ['O', 'O', 'X', 'X', 'X'],
 #   ['O', 'X', 'X', 'X', 'C'],
 #   ['O', 'X', 'O', 'X', 'X'],
@@ -2819,7 +2819,7 @@ def max_value(nums):
 # closestCarrot(grid, 3, 4); # -> 9
 #
 # test_03:
-# const grid = [
+# grid = [
 #   ['O', 'O', 'X', 'O', 'O'],
 #   ['O', 'X', 'X', 'X', 'O'],
 #   ['O', 'X', 'C', 'C', 'O'],
@@ -2828,7 +2828,7 @@ def max_value(nums):
 # closestCarrot(grid, 1, 4); # -> 2
 #
 # test_04:
-# const grid = [
+# grid = [
 #   ['O', 'O', 'X', 'O', 'O'],
 #   ['O', 'X', 'X', 'X', 'O'],
 #   ['O', 'X', 'C', 'C', 'O'],
@@ -2844,7 +2844,7 @@ def max_value(nums):
 # path is considered the number of edges in the path, not the number of nodes.
 #
 # test_00:
-# const graph = {
+# graph = {
 #   a: ['c', 'b'],
 #   b: ['c'],
 #   c: []
@@ -2853,7 +2853,7 @@ def max_value(nums):
 # longestPath(graph); # -> 2
 #
 # test_01:
-# const graph = {
+# graph = {
 #   a: ['c', 'b'],
 #   b: ['c'],
 #   c: [],
@@ -2867,7 +2867,7 @@ def max_value(nums):
 # longestPath(graph); # -> 4
 #
 # test_02:
-# const graph = {
+# graph = {
 #   h: ['i', 'j', 'k'],
 #   g: ['h'],
 #   i: [],
@@ -2880,7 +2880,7 @@ def max_value(nums):
 # longestPath(graph); # -> 2
 #
 # test_03:
-# const graph = {
+# graph = {
 #   a: ['b'],
 #   b: ['c'],
 #   c: [],
@@ -2907,8 +2907,8 @@ def max_value(nums):
 # You can assume that it is possible to eventually complete all courses.
 #
 # test_00:
-# const numCourses = 6;
-# const prereqs = [
+# numCourses = 6;
+# prereqs = [
 #   [1, 2],
 #   [2, 4],
 #   [3, 5],
@@ -2917,8 +2917,8 @@ def max_value(nums):
 # semestersRequired(numCourses, prereqs); # -> 3
 #
 # test_01:
-# const numCourses = 7;
-# const prereqs = [
+# numCourses = 7;
+# prereqs = [
 #   [4, 3],
 #   [3, 2],
 #   [2, 1],
@@ -2929,8 +2929,8 @@ def max_value(nums):
 # semestersRequired(numCourses, prereqs); # -> 5
 #
 # test_02:
-# const numCourses = 5;
-# const prereqs = [
+# numCourses = 5;
+# prereqs = [
 #   [1, 0],
 #   [3, 4],
 #   [1, 2],
@@ -2939,13 +2939,13 @@ def max_value(nums):
 # semestersRequired(numCourses, prereqs); # -> 2
 #
 # test_03:
-# const numCourses = 12;
-# const prereqs = [];
+# numCourses = 12;
+# prereqs = [];
 # semestersRequired(numCourses, prereqs); # -> 1
 #
 # test_04:
-# const numCourses = 3;
-# const prereqs = [
+# numCourses = 3;
+# prereqs = [
 #   [0, 2],
 #   [0, 1],
 #   [1, 2],
@@ -2953,8 +2953,8 @@ def max_value(nums):
 # semestersRequired(numCourses, prereqs); # -> 3
 #
 # test_05:
-# const numCourses = 6;
-# const prereqs = [
+# numCourses = 6;
+# prereqs = [
 #   [3, 4],
 #   [3, 0],
 #   [3, 1],
@@ -2972,7 +2972,7 @@ def max_value(nums):
 # need to form a straight line.
 #
 # test_00:
-# const grid = [
+# grid = [
 #   ["W", "W", "W", "L", "L"],
 #   ["L", "L", "W", "W", "L"],
 #   ["L", "L", "L", "W", "L"],
@@ -2983,7 +2983,7 @@ def max_value(nums):
 # bestBridge(grid); # -> 1
 #
 # test_01:
-# const grid = [
+# grid = [
 #   ["W", "W", "W", "W", "W"],
 #   ["W", "W", "W", "W", "W"],
 #   ["L", "L", "W", "W", "L"],
@@ -2994,7 +2994,7 @@ def max_value(nums):
 # bestBridge(grid); # -> 2
 #
 # test_02:
-# const grid = [
+# grid = [
 #   ["W", "W", "W", "W", "W"],
 #   ["W", "W", "W", "L", "W"],
 #   ["L", "W", "W", "W", "W"],
@@ -3002,7 +3002,7 @@ def max_value(nums):
 # bestBridge(grid); # -> 3
 #
 # test_03:
-# const grid = [
+# grid = [
 #   ["W", "W", "W", "W", "W", "W", "W", "W"],
 #   ["W", "W", "W", "W", "W", "W", "W", "W"],
 #   ["W", "W", "W", "W", "W", "W", "W", "W"],
@@ -3017,7 +3017,7 @@ def max_value(nums):
 # bestBridge(grid); # -> 3
 #
 # test_04:
-# const grid = [
+# grid = [
 #   ["L", "L", "L", "L", "L", "L", "L", "L"],
 #   ["L", "W", "W", "W", "W", "W", "W", "L"],
 #   ["L", "W", "W", "W", "W", "W", "W", "L"],
@@ -3034,7 +3034,7 @@ def max_value(nums):
 # bestBridge(grid); # -> 2
 #
 # test_05:
-# const grid = [
+# grid = [
 #   ["W", "L", "W", "W", "W", "W", "W", "W"],
 #   ["W", "L", "W", "W", "W", "W", "W", "W"],
 #   ["W", "W", "W", "W", "W", "W", "W", "W"],
@@ -3105,8 +3105,8 @@ def max_value(nums):
 # possible to complete all courses.
 # 
 # test_00:
-# const numCourses = 6;
-# const prereqs = [
+# numCourses = 6;
+# prereqs = [
 #   [0, 1],
 #   [2, 3],
 #   [0, 2],
@@ -3116,8 +3116,8 @@ def max_value(nums):
 # prereqsPossible(numCourses, prereqs); # -> true
 #
 # test_01:
-# const numCourses = 6;
-# const prereqs = [
+# numCourses = 6;
+# prereqs = [
 #   [0, 1],
 #   [2, 3],
 #   [0, 2],
@@ -3128,8 +3128,8 @@ def max_value(nums):
 # prereqsPossible(numCourses, prereqs); # -> false
 #
 # test_02:
-# const numCourses = 5;
-# const prereqs = [
+# numCourses = 5;
+# prereqs = [
 #   [2, 4],
 #   [1, 0],
 #   [0, 2],
@@ -3138,8 +3138,8 @@ def max_value(nums):
 # prereqsPossible(numCourses, prereqs); # -> true
 #
 # test_03:
-# const numCourses = 6;
-# const prereqs = [
+# numCourses = 6;
+# prereqs = [
 #   [2, 4],
 #   [1, 0],
 #   [0, 2],
@@ -3150,8 +3150,8 @@ def max_value(nums):
 # prereqsPossible(numCourses, prereqs); # -> false
 #
 # test_04:
-# const numCourses = 8;
-# const prereqs = [
+# numCourses = 8;
+# prereqs = [
 #   [1, 0],
 #   [0, 6],
 #   [2, 0],
@@ -3162,8 +3162,8 @@ def max_value(nums):
 # prereqsPossible(numCourses, prereqs); # -> true
 #
 # test_05:
-# const numCourses = 8;
-# const prereqs = [
+# numCourses = 8;
+# prereqs = [
 #   [1, 0],
 #   [0, 6],
 #   [2, 0],
@@ -3175,8 +3175,8 @@ def max_value(nums):
 # prereqsPossible(numCourses, prereqs); # -> false
 #
 # test_06:
-# const numCourses = 42;
-# const prereqs = [[6, 36]];
+# numCourses = 42;
+# prereqs = [[6, 36]];
 # prereqsPossible(numCourses, prereqs); # -> true
 
 
@@ -3293,34 +3293,34 @@ def max_value(nums):
 # bottom-right corner.
 #
 # test_00:
-# const grid = [
+# grid = [
 #   ["O", "O"],
 #   ["O", "O"],
 # ];
 # countPaths(grid); # -> 2
 # test_01:
-# const grid = [
+# grid = [
 #   ["O", "O", "X"],
 #   ["O", "O", "O"],
 #   ["O", "O", "O"],
 # ];
 # countPaths(grid); # -> 5
 # test_02:
-# const grid = [
+# grid = [
 #   ["O", "O", "O"],
 #   ["O", "O", "X"],
 #   ["O", "O", "O"],
 # ];
 # countPaths(grid); # -> 3
 # test_03:
-# const grid = [
+# grid = [
 #   ["O", "O", "O"],
 #   ["O", "X", "X"],
 #   ["O", "O", "O"],
 # ];
 # countPaths(grid); # -> 1
 # test_04:
-# const grid = [
+# grid = [
 #   ["O", "O", "X", "O", "O", "O"],
 #   ["O", "O", "X", "O", "O", "O"],
 #   ["X", "O", "X", "O", "O", "O"],
@@ -3329,7 +3329,7 @@ def max_value(nums):
 # ];
 # countPaths(grid); # -> 0
 # test_05:
-# const grid = [
+# grid = [
 #   ["O", "O", "X", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "X"],
 #   ["X", "O", "O", "O", "O", "O"],
@@ -3338,7 +3338,7 @@ def max_value(nums):
 # ];
 # countPaths(grid); # -> 42
 # test_06:
-# const grid = [
+# grid = [
 #   ["O", "O", "X", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "X"],
 #   ["X", "O", "O", "O", "O", "O"],
@@ -3347,7 +3347,7 @@ def max_value(nums):
 # ];
 # countPaths(grid); # -> 0
 # test_07:
-# const grid = [
+# grid = [
 #   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
@@ -3366,7 +3366,7 @@ def max_value(nums):
 # ];
 # countPaths(grid); # -> 40116600
 # test_08:
-# const grid = [
+# grid = [
 #   ["O", "O", "X", "X", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O", "O"],
 #   ["O", "O", "X", "X", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O", "O"],
 #   ["O", "O", "O", "X", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O", "O"],
@@ -3393,28 +3393,28 @@ def max_value(nums):
 # grid by moving down or right.
 #
 # test_00:
-# const grid = [
+# grid = [
 #   [1, 3, 12],
 #   [5, 1, 1],
 #   [3, 6, 1],
 # ];
 # maxPathSum(grid); # -> 18
 # test_01:
-# const grid = [
+# grid = [
 #   [1, 2, 8, 1],
 #   [3, 1, 12, 10],
 #   [4, 0, 6, 3],
 # ];
 # maxPathSum(grid); # -> 36
 # test_02:
-# const grid = [
+# grid = [
 #   [1, 2, 8, 1],
 #   [3, 10, 12, 10],
 #   [4, 0, 6, 3],
 # ];
 # maxPathSum(grid); # -> 39
 # test_03:
-# const grid = [
+# grid = [
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -3433,7 +3433,7 @@ def max_value(nums):
 # ];
 # maxPathSum(grid); # -> 27
 # test_04:
-# const grid = [
+# grid = [
 #   [1, 1, 3, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1],
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 #   [1, 2, 1, 1, 6, 1, 1, 5, 1, 1, 0, 0, 1],
@@ -3466,16 +3466,16 @@ def max_value(nums):
 # 4 and 12 are not adjacent in the array.
 #
 # test_00:
-# const nums = [2, 4, 5, 12, 7];
+# nums = [2, 4, 5, 12, 7];
 # nonAdjacentSum(nums); # -> 16
 # test_01:
-# const nums = [7, 5, 5, 12];
+# nums = [7, 5, 5, 12];
 # nonAdjacentSum(nums); # -> 19
 # test_02:
-# const nums = [7, 5, 5, 12, 17, 29];
+# nums = [7, 5, 5, 12, 17, 29];
 # nonAdjacentSum(nums); # -> 48
 # test_03:
-# const nums = [
+# nums = [
 #   72, 62, 10,  6, 20, 19, 42,
 #   46, 24, 78, 30, 41, 75, 38,
 #   23, 28, 66, 55, 12, 17, 9,
@@ -3483,7 +3483,7 @@ def max_value(nums):
 # ];
 # nonAdjacentSum(nums); # -> 488
 # test_04:
-# const nums = [
+# nums = [
 #   72, 62, 10,  6, 20, 19, 42, 46, 24, 78,
 #   30, 41, 75, 38, 23, 28, 66, 55, 12, 17,
 #   83, 80, 56, 68,  6, 22, 56, 96, 77, 98,
@@ -3986,8 +3986,8 @@ def max_value(nums):
 # all of them.
 #
 # test_00:
-# const sentence = "follow the yellow brick road";
-# const synonyms = {
+# sentence = "follow the yellow brick road";
+# synonyms = {
 #   follow: ["chase", "pursue"],
 #   yellow: ["gold", "amber", "lemon"],
 # };
@@ -4001,8 +4001,8 @@ def max_value(nums):
 #   'pursue the lemon brick road'
 # ]
 # test_01:
-# const sentence = "I think it's gonna be a long long time";
-# const synonyms = {
+# sentence = "I think it's gonna be a long long time";
+# synonyms = {
 #   think: ["believe", "reckon"],
 #   long: ["lengthy", "prolonged"],
 # };
@@ -4018,8 +4018,8 @@ def max_value(nums):
 #   "I reckon it's gonna be a prolonged prolonged time"
 # ]
 # test_02:
-# const sentence = "palms sweaty knees weak arms heavy";
-# const synonyms = {
+# sentence = "palms sweaty knees weak arms heavy";
+# synonyms = {
 #   palms: ["hands", "fists"],
 #   heavy: ["weighty", "hefty", "burdensome"],
 #   weak: ["fragile", "feeble", "frail", "sickly"],
@@ -4060,12 +4060,12 @@ def max_value(nums):
 # same both forwards and backwards.
 #
 # test_00:
-# const a = new Node(3);
-# const b = new Node(2);
-# const c = new Node(7);
-# const d = new Node(7);
-# const e = new Node(2);
-# const f = new Node(3);
+# a = new Node(3);
+# b = new Node(2);
+# c = new Node(7);
+# d = new Node(7);
+# e = new Node(2);
+# f = new Node(3);
 # a.next = b;
 # b.next = c;
 # c.next = d;
@@ -4074,27 +4074,27 @@ def max_value(nums):
 # 3 -> 2 -> 7 -> 7 -> 2 -> 3
 # linkedPalindrome(a); # true
 # test_01:
-# const a = new Node(3);
-# const b = new Node(2);
-# const c = new Node(4);
+# a = new Node(3);
+# b = new Node(2);
+# c = new Node(4);
 # a.next = b;
 # b.next = c;
 # 3 -> 2 -> 4
 # linkedPalindrome(a); # false
 # test_02:
-# const a = new Node(3);
-# const b = new Node(2);
-# const c = new Node(3);
+# a = new Node(3);
+# b = new Node(2);
+# c = new Node(3);
 # a.next = b;
 # b.next = c;
 # 3 -> 2 -> 3
 # linkedPalindrome(a); # true
 # test_03:
-# const a = new Node(0);
-# const b = new Node(1);
-# const c = new Node(0);
-# const d = new Node(1);
-# const e = new Node(0);
+# a = new Node(0);
+# b = new Node(1);
+# c = new Node(0);
+# d = new Node(1);
+# e = new Node(0);
 # a.next = b;
 # b.next = c;
 # c.next = d;
@@ -4102,11 +4102,11 @@ def max_value(nums):
 # 0 -> 1 -> 0 -> 1 -> 0
 # linkedPalindrome(a); # true
 # test_04:
-# const a = new Node(0);
-# const b = new Node(1);
-# const c = new Node(0);
-# const d = new Node(1);
-# const e = new Node(1);
+# a = new Node(0);
+# b = new Node(1);
+# c = new Node(0);
+# d = new Node(1);
+# e = new Node(1);
 # a.next = b;
 # b.next = c;
 # c.next = d;
@@ -4114,7 +4114,7 @@ def max_value(nums):
 # 0 -> 1 -> 0 -> 1 -> 1
 # linkedPalindrome(a); # false
 # test_05:
-# const a = new Node(5);
+# a = new Node(5);
 # 5
 # linkedPalindrome(a); # true
 # test_06:
@@ -4129,11 +4129,11 @@ def max_value(nums):
 # You may assume that the input list is non-empty.
 #
 # test_00:
-# const a = new Node('a');
-# const b = new Node('b');
-# const c = new Node('c');
-# const d = new Node('d');
-# const e = new Node('e');
+# a = new Node('a');
+# b = new Node('b');
+# c = new Node('c');
+# d = new Node('d');
+# e = new Node('e');
 # a.next = b;
 # b.next = c;
 # c.next = d;
@@ -4141,12 +4141,12 @@ def max_value(nums):
 # a -> b -> c -> d -> e
 # middleValue(a); # c
 # test_01:
-# const a = new Node('a');
-# const b = new Node('b');
-# const c = new Node('c');
-# const d = new Node('d');
-# const e = new Node('e');
-# const f = new Node('f');
+# a = new Node('a');
+# b = new Node('b');
+# c = new Node('c');
+# d = new Node('d');
+# e = new Node('e');
+# f = new Node('f');
 # a.next = b;
 # b.next = c;
 # c.next = d;
@@ -4155,20 +4155,20 @@ def max_value(nums):
 # a -> b -> c -> d -> e -> f
 # middleValue(a); # d
 # test_02:
-# const x = new Node('x');
-# const y = new Node('y');
-# const z = new Node('z');
+# x = new Node('x');
+# y = new Node('y');
+# z = new Node('z');
 # x.next = y;
 # y.next = z;
 # x -> y -> z
 # middleValue(x); # y
 # test_03:
-# const x = new Node('x');
-# const y = new Node('y');
+# x = new Node('x');
+# y = new Node('y');
 # x.next = y;
 # x -> y 
 # middleValue(x); # y
 # test_04:
-# const q = new Node('q');
+# q = new Node('q');
 # q
 # middleValue(q); # q

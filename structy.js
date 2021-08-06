@@ -6357,7 +6357,7 @@ const linkedPalindrome = (head) => {
   return values.join('') === values.reverse().join('');
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #75 middle value ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #75 middle value ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, middleValue, that takes in the head of a linked list as an
 // argument. The function should return the value of the middle node in the
 // linked list. If the linked list has an even number of nodes, then return the
@@ -6437,7 +6437,7 @@ const middleValue = (head) => {
   return slow.val;
 }
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #76 linked list cycle ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #76 linked list cycle ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, linkedListCycle, that takes in the head of a linked list as
 // an argument. The function should return a boolean indicating whether or not
 // the linked list contains a cycle.
@@ -6533,4 +6533,152 @@ const linkedListCycle = (head) => {
   }
 
   return false;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #77 lowest common ancestor ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// Write a function, lowestCommonAncestor, that takes in the root of a binary
+// tree and two values. The function should return the value of the lowest common
+// ancestor of the two values in the tree.
+// You may assume that the tree values are unique and the tree is non-empty.
+// Note that a node may be considered an ancestor of itself.
+//
+// Example Tree:
+// const a = new Node('a');
+// const b = new Node('b');
+// const c = new Node('c');
+// const d = new Node('d');
+// const e = new Node('e');
+// const f = new Node('f');
+// const g = new Node('g');
+// const h = new Node('h');
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+// e.left = g;
+// e.right = h;
+//      a
+//    /    \
+//   b      c
+//  / \      \
+// d   e      f
+//    / \
+//    g  h
+//
+// test_00
+// lowestCommonAncestor(a, 'd', 'h'); // b
+// test_01
+// lowestCommonAncestor(a, 'd', 'g'); // b
+// test_02
+// lowestCommonAncestor(a, 'g', 'c'); // a
+// test_03
+// lowestCommonAncestor(a, 'b', 'g'); // b
+// test_04
+// lowestCommonAncestor(a, 'f', 'c'); // c
+// example tree
+// const l = new Node('l');
+// const m = new Node('m');
+// const n = new Node('n');
+// const o = new Node('o');
+// const p = new Node('p');
+// const q = new Node('q');
+// const r = new Node('r');
+// const s = new Node('s');
+// const t = new Node('t');
+// l.left = m;
+// l.right = n;
+// n.left = o;
+// n.right = p;
+// o.left = q;
+// o.right = r;
+// p.left = s;
+// p.right = t;
+//        l
+//     /     \
+//    m       n
+//         /    \
+//         o     p
+//        / \   / \
+//       q   r s   t
+// test_05
+// lowestCommonAncestor(l, 'r', 'p'); // n
+// test_06
+// lowestCommonAncestor(l, 'm', 'o'); // l
+// test_07
+// lowestCommonAncestor(l, 't', 'q'); // n
+// test_08
+// lowestCommonAncestor(l, 's', 'p'); // p
+
+// ========================= My Solution (DFS) =========================
+// Time: O(n), Space: O(n)
+const lowestCommonAncestor = (root, val1, val2) => {
+  const ancestry = buildAncestry(root);
+
+  const ancestors1 = new Set(val1);
+  const ancestors2 = new Set(val2);
+  let ancestor1 = ancestry[val1];
+  let ancestor2 = ancestry[val2];
+
+  while (ancestor1 !== null || ancestor2 !== null) {
+    ancestors1.add(ancestor1);
+    ancestors2.add(ancestor2);
+
+    if (ancestors1.has(ancestor2)) return ancestor2;
+    if (ancestors2.has(ancestor1)) return ancestor1;
+
+    ancestor1 = ancestry[ancestor1];
+    ancestor2 = ancestry[ancestor2];
+  }
+};
+
+const buildAncestry = (root) => {
+  const ancestry = { [root.val]: null };
+  const stack = [root];
+
+  while (stack.length) {
+    const node = stack.pop();
+    if (node.left) {
+      ancestry[node.left.val] = node.val;
+      stack.push(node.left);
+    }
+    if (node.right) {
+      ancestry[node.right.val] = node.val;
+      stack.push(node.right);
+    }
+  }
+
+  return ancestry;
+};
+
+// ========================= Alvin's Solution (DFS) =========================
+// Time: O(n), Space: O(n)
+const lowestCommonAncestor = (root, val1, val2) => {
+  const path1 = findPath(root, val1);
+  const path2 = findPath(root, val2);
+  const set2 = new Set(path2);
+  
+  for (let val of path1) {
+    if (set2.has(val)) return val;
+  }
+};
+
+const findPath = (root, targetVal) => {
+  if (root === null) return null;
+  
+  if (root.val === targetVal) return [ root.val ];
+
+  const leftPath = findPath(root.left, targetVal);
+  if (leftPath !== null) {
+    leftPath.push(root.val);
+    return leftPath;
+  }
+  
+  const rightPath = findPath(root.right, targetVal);
+  if (rightPath !== null) {
+    rightPath.push(root.val);
+    return rightPath;
+  }  
+  
+  return null;
 };
