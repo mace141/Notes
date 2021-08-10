@@ -7042,7 +7042,7 @@ const valid = (graph, node, coloring, currentColor) => {
   return true;
 };
 
-// [[[[[[[[[[[[[[[[[[[[[[[[[ #81 tolerant teams ]]]]]]]]]]]]]]]]]]]]]]]]] 
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #81 tolerant teams ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 // Write a function, tolerantTeams, that takes in an array of rivalries as an
 // argument. A rivalry is a pair of people who should not be placed on the same
 // team. The function should return a boolean indicating whether or not it is
@@ -7146,6 +7146,110 @@ const setTeams = (graph, teams, player, whichTeam) => {
 
   for (let rival of graph[player]) {
     if (!setTeams(graph, teams, rival, !whichTeam)) return false;
+  }
+
+  return true;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #82 rare routing ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+// Write a function, rareRouting, that takes in a number of cities (n) and a two
+// dimensional array where each subarray represents a direct road that connects
+// a pair of cities. The function should return a boolean indicating whether or
+// not there exists a unique route for every pair of cities. A route is a
+// sequence of roads that does not visit a city more than once.
+//
+// Cities will be numbered 0 to n - 1.
+// You can assume that all roads are two-way roads. This means if there is a
+// road between A and B, then you can use that road to go from A to B or go from
+// B to A.
+//
+// For example, given these roads:
+// 0 --- 1
+// | \
+// |  \
+// |   \
+// 2    3
+// There is a unique route for between every pair of cities.
+// So the answer is true.
+//
+// For example, given these roads:
+// 0 --- 1
+// | \
+// |  \
+// |   \
+// 2 -- 3
+// There are two routes that can be used to travel from city 1 to city 2:
+// - first route:  1, 0, 2
+// - second route: 1, 0, 3, 2 
+// The answer is false, because routes should be unique.
+//
+// test_00:
+// rareRouting(4, [
+//   [0, 1],
+//   [0, 2],
+//   [0, 3]
+// ]); // -> true
+// test_01:
+// rareRouting(4, [
+//   [0, 1],
+//   [0, 2],
+//   [0, 3],
+//   [3, 2]
+// ]); // -> false
+// test_02:
+// rareRouting(6, [
+//   [1, 2],
+//   [5, 4],
+//   [3, 0],
+//   [0, 1],
+//   [0, 4],
+// ]); // -> true
+// test_03:
+// rareRouting(6, [
+//   [1, 2],
+//   [4, 1],
+//   [5, 4],
+//   [3, 0],
+//   [0, 1],
+//   [0, 4],
+// ]); // -> false
+// test_04:
+// rareRouting(4, [
+//   [0, 1],
+//   [3, 2],
+// ]); // -> false
+
+const rareRouting = (n, roads) => {
+  const graph = buildGraph(roads);
+  const visited = new Set();
+  const traversable = traverse(graph, 0, visited, null);
+
+  return traversable && visited.size() === n;
+};
+
+const buildGraph = (roads) => {
+  const graph = {};
+
+  for (let pair of roads) {
+    const [ city1, city2 ] = pair;
+
+    if (!(city1 in graph)) graph[city1] = [];
+    if (!(city2 in graph)) graph[city2] = [];
+    graph[city1].push(city2);
+    graph[city2].push(city1);
+  }
+
+  return graph;
+};
+
+const traverse = (graph, city, visited, lastCity) => {
+  if (visited.has(city)) return false;
+
+  visited.add(city);
+  for (let neighbor of graph[city]) {
+    if (lastCity !== neighbor) {
+      if (!traverse(graph, neighbor, visited, city)) return false;
+    }
   }
 
   return true;
