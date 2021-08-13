@@ -130,7 +130,7 @@ def compress(s):
   i = 0
   j = 0
 
-  for char in s:
+  while j < len(s):
     if s[j] != s[j - 1] and j != 0:
       result += s[i] if j - i == 1 else str(j - i) + s[i]
       i = j
@@ -141,9 +141,10 @@ def compress(s):
   return result
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #5 anagrams ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, anagrams, that takes in two strings as arguments. The function
-# should return a boolean indicating whether or not the strings are anagrams. 
-# Anagrams are strings that contain the same characters, but in any order.
+# Write a function, anagrams, that takes in two strings as arguments. The 
+# function should return a boolean indicating whether or not the strings are
+# anagrams. Anagrams are strings that contain the same characters, but in any
+# order.
 #
 # test_00:
 # anagrams('restful', 'fluster'); # -> true
@@ -158,6 +159,47 @@ def compress(s):
 # test_05:
 # anagrams('tax', 'taxi'); # -> false
 
+def anagrams(s1, s2):
+  count = {}
+
+  for char in s1:
+    if char not in count:
+      count[char] = 0
+    count[char] += 1
+
+  for char in s2:
+    if char not in count:
+      count[char] = -1
+    count[char] -= 1
+
+  for k, v in count.items():
+    if v != 0:
+      return False
+
+  return True
+
+# ========================= using dictionaries =========================
+# n = length of string 1, m = length of string 2
+# Time: O(n + m), Space: O(n + m)
+def anagrams(s1, s2):
+  return char_count(s1) == char_count(s2)
+
+def char_count(s):
+  count = {}
+  
+  for char in s:
+    if char not in count:
+      count[char] = 0
+    count[char] += 1
+  
+  return count
+# ========================= using Counters =========================
+# n = length of string 1, m = length of string 2
+# Time: O(n + m), Space: O(n + m)
+from collections import Counter
+
+def anagrams(s1, s2):
+  return Counter(s1) == Counter(s2)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #6 most frequent char ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, mostFrequentChar, that takes in a string as an argument. The
