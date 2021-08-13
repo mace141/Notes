@@ -91,7 +91,19 @@ def is_prime(n):
 # test_03:
 # uncompress("3n12e2z"); # -> 'nnneeeeeeeeeeeezz'
 
+def uncompress(str):
+  nums = '1234567890'
+  times = ''
+  result = ''
 
+  for i in range(len(str)):
+    if str[i] not in nums:
+      result += str[i] * int(times)
+      times = ''
+    else: 
+      times += str[i]
+  
+  return result
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #4 compress ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, compress, that takes in a string as an argument. The function 
