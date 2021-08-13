@@ -125,7 +125,20 @@ def uncompress(str):
 # test_03:
 # compress('nnneeeeeeeeeeeezz'); # -> '3n12e2z'
 
+def compress(s):
+  result = ''
+  i = 0
+  j = 0
 
+  for char in s:
+    if s[j] != s[j - 1] and j != 0:
+      result += s[i] if j - i == 1 else str(j - i) + s[i]
+      i = j
+    j += 1
+
+  result += s[i] if j - i == 1 else str(j - i) + s[i]
+
+  return result
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #5 anagrams ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, anagrams, that takes in two strings as arguments. The function
