@@ -159,6 +159,7 @@ def compress(s):
 # test_05:
 # anagrams('tax', 'taxi'); # -> false
 
+# ========================= My Solution =========================
 def anagrams(s1, s2):
   count = {}
 
@@ -178,7 +179,7 @@ def anagrams(s1, s2):
 
   return True
 
-# ========================= using dictionaries =========================
+# ========================= Alvin's (Dictionaries) =========================
 # n = length of string 1, m = length of string 2
 # Time: O(n + m), Space: O(n + m)
 def anagrams(s1, s2):
@@ -193,7 +194,7 @@ def char_count(s):
     count[char] += 1
   
   return count
-# ========================= using Counters =========================
+# ========================= Alvin's (Counters) =========================
 # n = length of string 1, m = length of string 2
 # Time: O(n + m), Space: O(n + m)
 from collections import Counter
@@ -202,24 +203,33 @@ def anagrams(s1, s2):
   return Counter(s1) == Counter(s2)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #6 most frequent char ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, mostFrequentChar, that takes in a string as an argument. The
+# Write a function, most_frequent_char, that takes in a string as an argument. The
 # function should return the most frequent character of the string. If there are 
 # ties, return the character that appears earlier in the string.
 # You can assume that the input string is non-empty.
 #
 # test_00:
-# mostFrequentChar('bookeeper'); # -> 'e'
+# most_frequent_char('bookeeper'); # -> 'e'
 # test_01:
-# mostFrequentChar('david'); # -> 'd'
+# most_frequent_char('david'); # -> 'd'
 # test_02:
-# mostFrequentChar('abby'); # -> 'b'
+# most_frequent_char('abby'); # -> 'b'
 # test_03:
-# mostFrequentChar('mississippi'); # -> 'i'
+# most_frequent_char('mississippi'); # -> 'i'
 # test_04:
-# mostFrequentChar('potato'); # -> 'o'
+# most_frequent_char('potato'); # -> 'o'
 # test_05:
-# mostFrequentChar('eleventennine'); # -> 'e'
+# most_frequent_char('eleventennine'); # -> 'e'
 
+from collections import Counter
+
+def most_frequent_char(s):
+  count = Counter(s)
+  char = None
+  for c in s:
+    if char is None or count[c] > count[char]:
+      char = c 
+  return char
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #7 pair sum ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, pairSum, that takes in an array and a target sum as 
