@@ -439,7 +439,7 @@ def sum_list(head):
     current = current.next
   return sum
 
-# ========================= Iterative =========================
+# ========================= Recursive =========================
 # Time: O(n), Space: O(n)
 def sum_list(head):
   if head is None:
@@ -447,7 +447,7 @@ def sum_list(head):
   return head.val + sum_list(head.next)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #13 linked list find ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, linkedListFind, that takes in the head of a linked list and
+# Write a function, linked_list_find, that takes in the head of a linked list and
 # a target value. The function should return a boolean indicating whether or not
 # the linked list contains the target.
 #
@@ -460,7 +460,7 @@ def sum_list(head):
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
-# linkedListFind(a, "c"); # true
+# linked_list_find(a, "c"); # true
 # test_01:
 # a = new Node("a");
 # b = new Node("b");
@@ -470,7 +470,7 @@ def sum_list(head):
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
-# linkedListFind(a, "d"); # true
+# linked_list_find(a, "d"); # true
 # test_02:
 # a = new Node("a");
 # b = new Node("b");
@@ -480,22 +480,38 @@ def sum_list(head):
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
-# linkedListFind(a, "q"); # false
+# linked_list_find(a, "q"); # false
 # test_03:
 # node1 = new Node("jason");
 # node2 = new Node("leneli");
 # node1.next = node2;
 # jason -> leneli
-# linkedListFind(node1, "jason"); # true
+# linked_list_find(node1, "jason"); # true
 # test_04:
 # node1 = new Node(42);
 # 42
-# linkedListFind(node1, 42); # true
+# linked_list_find(node1, 42); # true
 # test_05:
 # node1 = new Node(42);
 # 42
-# linkedListFind(node1, 100); # false
+# linked_list_find(node1, 100); # false
 
+# ========================= Iterative =========================
+# Time: O(n), Space: O(1)
+def linked_list_find(head, target):
+  current = head
+  while current is not None:
+    if current.val is target:
+      return True 
+    current = current.next
+  return False
+
+# ========================= Recursive =========================
+# Time: O(n), Space: O(n)
+def linked_list_find(head, target):
+  if head is None:
+    return False
+  return head.val is target or linked_list_find(head.next, target)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #14 get node value ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, getNodeValue, that takes in the head of a linked list and 
