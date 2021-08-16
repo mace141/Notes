@@ -3436,6 +3436,30 @@ def zipper_lists(head_1, head_2):
 # test_07:
 # fib(46); # -> 1836311903
 
+# ========================= Memoization =========================
+# Time: O(n), Space: O(n)
+def fib(n, memo = {}):
+  if n == 0 or n == 1:
+    return n 
+  if n in memo:
+    return memo[n]
+  memo[n] = fib(n - 1, memo) + fib(n - 2, memo)
+  return memo[n]
+
+# ========================= Tabulation =========================
+# Time: O(n), Space: O(1)
+def fib(n):
+  if n == 0 or n == 1:
+    return n
+  
+  nums = [0, 1]
+  count = 1
+  while count < n:
+    next = sum(nums)
+    nums[0] = nums[1]
+    nums[1] = next
+    count += 1
+  return nums[-1]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #52 tribonacci ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function tribonacci that takes in a number argument, n, and returns
