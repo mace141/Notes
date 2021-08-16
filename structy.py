@@ -757,11 +757,13 @@ def zipper_lists(head_1, head_2):
   return head_1
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #17 merge lists ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, mergeLists, that takes in the head of two sorted linked 
-# lists as arguments. The function should merge the two lists together into single 
-# sorted linked list. The function should return the head of the merged linked list.
+# Write a function, merge_lists, that takes in the head of two sorted linked 
+# lists as arguments. The function should merge the two lists together into
+# single sorted linked list. The function should return the head of the merged
+# linked list.
 # Do this in-place, by mutating the original Nodes.
-# You may assume that both input lists are non-empty and contain increasing sorted numbers.
+# You may assume that both input lists are non-empty and contain increasing
+# sorted numbers.
 #
 # test_00:
 # a = new Node(5);
@@ -784,7 +786,7 @@ def zipper_lists(head_1, head_2):
 # r.next = s;
 # s.next = t;
 # 6 -> 8 -> 9 -> 25
-# mergeLists(a, q);
+# merge_lists(a, q);
 # 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 12 -> 20 -> 25 -> 28 
 # test_01:
 # a = new Node(5);
@@ -807,7 +809,7 @@ def zipper_lists(head_1, head_2):
 # r.next = s;
 # s.next = t;
 # 1 -> 8 -> 9 -> 10
-# mergeLists(a, q);
+# merge_lists(a, q);
 # 1 -> 5 -> 7 -> 8 -> 9 -> 10 -> 10 -> 12 -> 20 -> 28 
 # test_02:
 # h = new Node(30);
@@ -816,10 +818,51 @@ def zipper_lists(head_1, head_2):
 # q = new Node(67);
 # p.next = q;
 # 15 -> 67
-# mergeLists(h, p);
+# merge_lists(h, p);
 # 15 -> 30 -> 67
 
+# ========================= Iterative =========================
+# Time: O(min(n, m)), Space: O(1)
+def merge_lists(head_1, head_2):
+  dummy_head = Node(None)
+  tail = dummy_head
+  current_1 = head_1
+  current_2 = head_2
 
+  while current_1 is not None and current_2 is not None:
+    if current_1.val < current_2.val:
+      tail.next = current_1
+      current_1 = current_1.next
+    else:
+      tail.next = current_2
+      current_2 = current_2.next
+    tail = tail.next
+  
+  if current_1 is None:
+    tail.next = current_2
+  if current_2 is None:
+    tail.next = current_1
+
+  return dummy_head.next
+
+# ========================= Recursive =========================
+# Time: O(min(n, m)), Space: O(min(n, m))
+def merge_lists(head_1, head_2):
+  if head_1 is None and head_2 is None:
+    return None
+  if head_1 is None:
+    return head_2
+  if head_2 is None:
+    return head_1
+  
+  if head_1.val < head_2.val:
+    next_1 = head_1.next
+    head_1.next = merge_lists(next_1, head_2)
+    return head_1
+  else:
+    next_2 = head_2.next
+    head_2.next = merge_lists(head_1, next_2)
+    return head_2
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #18 is univalue list ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, isUnivalueList, that takes in the head of a linked list as 
