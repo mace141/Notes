@@ -326,8 +326,8 @@ def intersection(a, b):
   set_a = set(a)
   return [ item for item in b if item in set_a ]
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #10 fivesort ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, fiveSort, that takes in an array of numbers as an argument.
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #10 five sort ]]]]]]]]]]]]]]]]]]]]]]]]]
+# Write a function, five_sort, that takes in an array of numbers as an argument.
 # The function should rearrange elements of the array such that all 5s appear at 
 # the end. Your function should perform this operation in-place by mutating the 
 # original array. The function should return the array.
@@ -335,21 +335,33 @@ def intersection(a, b):
 # 5s are at the end of the array.
 #
 # test_00
-# fiveSort([12, 5, 1, 5, 12, 7]);
+# five_sort([12, 5, 1, 5, 12, 7]);
 # -> [12, 7, 1, 12, 5, 5] 
 # test_01
-# fiveSort([5, 2, 5, 6, 5, 1, 10, 2, 5, 5]);
+# five_sort([5, 2, 5, 6, 5, 1, 10, 2, 5, 5]);
 # -> [2, 2, 10, 6, 1, 5, 5, 5, 5, 5] 
 # test_02
-# fiveSort([5, 5, 5, 1, 1, 1, 4]);
+# five_sort([5, 5, 5, 1, 1, 1, 4]);
 # -> [4, 1, 1, 1, 5, 5, 5] 
 # test_03
-# fiveSort([5, 5, 6, 5, 5, 5, 5]);
+# five_sort([5, 5, 6, 5, 5, 5, 5]);
 # -> [6, 5, 5, 5, 5, 5, 5] 
 # test_04
-# fiveSort([5, 1, 2, 5, 5, 3, 2, 5, 1, 5, 5, 5, 4, 5]);
+# five_sort([5, 1, 2, 5, 5, 3, 2, 5, 1, 5, 5, 5, 4, 5]);
 # -> [4, 1, 2, 1, 2, 3, 5, 5, 5, 5, 5, 5, 5, 5] 
 
+def five_sort(nums):
+  i = 0
+  j = len(nums) - 1
+  while i <= j:
+    if nums[j] is 5:
+      j -= 1
+    elif nums[i] is 5:
+      nums[i], nums[j] = nums[j], nums[i]
+      i += 1
+    else:
+      i += 1
+  return nums
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #11 linked list values ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, linkedListValues, that takes in the head of a linked list 
