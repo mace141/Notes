@@ -865,7 +865,7 @@ def merge_lists(head_1, head_2):
     return head_2
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #18 is univalue list ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, isUnivalueList, that takes in the head of a linked list as 
+# Write a function, is_univalue_list, that takes in the head of a linked list as 
 # an argument. The function should return a boolean indicating whether or not the 
 # linked list contains exactly one unique value.
 # You may assume that the input list is non-empty.
@@ -877,7 +877,7 @@ def merge_lists(head_1, head_2):
 # a.next = b;
 # b.next = c;
 # 7 -> 7 -> 7
-# isUnivalueList(a); # true
+# is_univalue_list(a); # true
 # test_01:
 # a = new Node(7);
 # b = new Node(7);
@@ -885,7 +885,7 @@ def merge_lists(head_1, head_2):
 # a.next = b;
 # b.next = c;
 # 7 -> 7 -> 4
-# isUnivalueList(a); # false
+# is_univalue_list(a); # false
 # test_02:
 # u = new Node(2);
 # v = new Node(2);
@@ -897,7 +897,7 @@ def merge_lists(head_1, head_2):
 # w.next = x;
 # x.next = y;
 # 2 -> 2 -> 2 -> 2 -> 2
-# isUnivalueList(u); # true
+# is_univalue_list(u); # true
 # test_03:
 # u = new Node(2);
 # v = new Node(2);
@@ -909,12 +909,32 @@ def merge_lists(head_1, head_2):
 # w.next = x;
 # x.next = y;
 # 2 -> 2 -> 3 -> 3 -> 2
-# isUnivalueList(u); # false
+# is_univalue_list(u); # false
 # test_04:
 # z = new Node('z');
 # z
-# isUnivalueList(z); # true
+# is_univalue_list(z); # true
 
+# ========================= Recursive =========================
+# Time: O(n), Space: O(1)
+def is_univalue_list(head):
+  current = head 
+  while current is not None:
+    if current.val is not head.val:
+      return False
+    current = current.next
+  return True
+
+# ========================= Recursive =========================
+# Time: O(n), Space: O(n)
+def is_univalue_list(head, prev = None):
+  if head is None:
+    return True
+  
+  if prev is None or head.val is prev:
+    return is_univalue_list(head.next, head.val)
+  else:
+    return False
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #19 longest streak ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, longestStreak, that takes in the head of a linked list as 
