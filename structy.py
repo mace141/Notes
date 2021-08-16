@@ -400,7 +400,7 @@ def linked_list_values(head):
   return result
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #12 sum list ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, sumList, that takes in the head of a linked list containing 
+# Write a function, sum_list, that takes in the head of a linked list containing 
 # numbers as an argument. The function should return the total sum of all values 
 # in the linked list.
 #
@@ -415,20 +415,36 @@ def linked_list_values(head):
 # c.next = d;
 # d.next = e;
 # 2 -> 8 -> 3 -> -1 -> 7
-# sumList(a); # 19
+# sum_list(a); # 19
 # test_01:
 # x = new Node(38);
 # y = new Node(4);
 # x.next = y;
 # 38 -> 4
-# sumList(x); # 42
+# sum_list(x); # 42
 # test_02:
 # z = new Node(100);
 # 100
-# sumList(z); # 100
+# sum_list(z); # 100
 # test_03:
-# sumList(None); # 0
+# sum_list(None); # 0
 
+# ========================= Iterative =========================
+# Time: O(n), Space: O(1)
+def sum_list(head):
+  sum = 0
+  current = head 
+  while current is not None:
+    sum += current.val
+    current = current.next
+  return sum
+
+# ========================= Iterative =========================
+# Time: O(n), Space: O(n)
+def sum_list(head):
+  if head is None:
+    return 0
+  return head.val + sum_list(head.next)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #13 linked list find ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, linkedListFind, that takes in the head of a linked list and
