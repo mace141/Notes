@@ -1,8 +1,8 @@
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #1 max value ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, max_value, that takes in array of numbers as an argument. 
-# The function should return the largest number in the array.
-# Solve this without using any built-in array methods.
-# You can assume that the array is non-empty.
+# Write a function, max_value, that takes in list of numbers as an argument. 
+# The function should return the largest number in the list.
+# Solve this without using any built-in list methods.
+# You can assume that the list is non-empty.
 #
 # test_00:
 # max_value([4, 7, 2, 8, 10, 9]); # -> 10
@@ -290,10 +290,10 @@ def pair_product(numbers, target_product):
     quotients[quotient] = i
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #9 intersection ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, intersection, that takes in two arrays, a,b, as arguments. 
-# The function should return a new array containing elements that are in both of 
-# the two arrays.
-# You may assume that each input array does not contain duplicate elements.
+# Write a function, intersection, that takes in two lists, a,b, as arguments. 
+# The function should return a new list containing elements that are in both of 
+# the two lists.
+# You may assume that each input list does not contain duplicate elements.
 #
 # test_00:
 # intersection([4,2,1,6], [3,6,9,2,10]) # -> [2,6]
@@ -327,12 +327,12 @@ def intersection(a, b):
   return [ item for item in b if item in set_a ]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #10 five sort ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, five_sort, that takes in an array of numbers as an argument.
-# The function should rearrange elements of the array such that all 5s appear at 
+# Write a function, five_sort, that takes in an list of numbers as an argument.
+# The function should rearrange elements of the list such that all 5s appear at 
 # the end. Your function should perform this operation in-place by mutating the 
-# original array. The function should return the array.
+# original list. The function should return the list.
 # Elements that are not 5 can appear in any order in the output, as long as all
-# 5s are at the end of the array.
+# 5s are at the end of the list.
 #
 # test_00
 # five_sort([12, 5, 1, 5, 12, 7]);
@@ -365,7 +365,7 @@ def five_sort(nums):
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #11 linked list values ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, linked_list_values, that takes in the head of a linked list 
-# as an argument. The function should return an array containing all values of 
+# as an argument. The function should return an list containing all values of 
 # the nodes in the linked list.
 #
 # test_00:
@@ -582,9 +582,9 @@ def get_node_value(head, index):
   if index is 0:
     return head.val
   return get_node_value(head.next, index - 1)
-  
+
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #15 reverse list ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, reverseList, that takes in the head of a linked list as an 
+# Write a function, reverse_list, that takes in the head of a linked list as an 
 # argument. The function should reverse the order of the nodes in the linked 
 # list in-place and return the new head of the reversed linked list.
 #
@@ -601,18 +601,38 @@ def get_node_value(head, index):
 # d.next = e;
 # e.next = f;
 # a -> b -> c -> d -> e -> f
-# reverseList(a); # f -> e -> d -> c -> b -> a
+# reverse_list(a); # f -> e -> d -> c -> b -> a
 # test_01:
 # x = new Node("x");
 # y = new Node("y");
 # x.next = y;
 # x -> y
-# reverseList(x); # y -> x
+# reverse_list(x); # y -> x
 # test_02:
 # p = new Node("p");
 # p
-# reverseList(p); # p
+# reverse_list(p); # p
 
+# ========================= Iterative =========================
+# Time: O(n), Space: O(1)
+def reverse_list(head):
+  prev = None
+  current = head
+  while current is not None:
+    next = current.next
+    current.next = prev
+    prev = current
+    current = next
+  return prev
+
+# ========================= Recursive =========================
+# Time: O(n), Space: O(n)
+def reverse_list(head, prev = None):
+  if head is None:
+    return prev
+  next = head.next
+  head.next = prev
+  return reverse_list(next, head)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #16 zipper list ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, zipperLists, that takes in the head of two linked lists as 
@@ -988,9 +1008,9 @@ def get_node_value(head, index):
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #22 create linked list ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, createLinkedList, that takes in an array of values as an 
+# Write a function, createLinkedList, that takes in an list of values as an 
 # argument. The function should create a linked list containing each element of 
-# the array as the values of the nodes. The function should return the head of 
+# the list as the values of the nodes. The function should return the head of 
 # the linked list.
 #
 # test_00:
@@ -1116,7 +1136,7 @@ def get_node_value(head, index):
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #24 depth first values ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, depthFirstValues, that takes in the root of a binary tree. 
-# The function should return an array containing all values of the tree in 
+# The function should return an list containing all values of the tree in 
 # depth-first order.
 #
 # test_00:
@@ -1195,7 +1215,7 @@ def get_node_value(head, index):
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #25 breadth first values ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, breadthFirstValues, that takes in the root of a binary tree.
-# The function should return an array containing all values of the tree in 
+# The function should return an list containing all values of the tree in 
 # breadth-first order.
 #
 # test_00:
@@ -1602,7 +1622,7 @@ def get_node_value(head, index):
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #30 path finder ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, pathFinder, that takes in the root of a binary tree and a 
-# target value. The function should return an array representing a path to the 
+# target value. The function should return an list representing a path to the 
 # target value. If the target value is not found in the tree, then return None.
 #
 # You may assume that the tree contains unique values.
@@ -2050,11 +2070,11 @@ def get_node_value(head, index):
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #34 all tree paths ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, allTreePaths, that takes in the root of a binary tree. The
-# function should return a 2-Dimensional array where each subarray represents a
+# function should return a 2-Dimensional list where each sublist represents a
 # root-to-leaf path in the tree.
 #
 # The order within an individual path must start at the root and end at the leaf,
-# but the relative order of among paths in the outer array does not matter.
+# but the relative order of among paths in the outer list does not matter.
 #
 # You may assume that the input tree is non-empty.
 #
@@ -2164,7 +2184,7 @@ def get_node_value(head, index):
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #35 tree levels ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, treeLevels, that takes in the root of a binary tree. The 
-# function should return a 2-Dimensional array where each subarray represents a
+# function should return a 2-Dimensional list where each sublist represents a
 # level of the tree.
 #
 # test_00:
@@ -2271,7 +2291,7 @@ def get_node_value(head, index):
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #36 level averages ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, levelAverages, that takes in the root of a binary tree that
-# contains number values. The function should return an array containing the 
+# contains number values. The function should return an list containing the 
 # average value of each level.
 #
 # test_00:
@@ -2382,7 +2402,7 @@ def get_node_value(head, index):
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #37 leaf list ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, leafList, that takes in the root of a binary tree and 
-# returns an array containing the values of all leaf nodes in left-to-right order.
+# returns an list containing the values of all leaf nodes in left-to-right order.
 #
 # test_00:
 # a = new Node("a");
@@ -2537,7 +2557,7 @@ def get_node_value(head, index):
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #39 undirected path ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, undirectedPath, that takes in an array of edges for an 
+# Write a function, undirectedPath, that takes in an list of edges for an 
 # undirected graph and two nodes (nodeA, nodeB). The function should return a 
 # boolean indicating whether or not there exists a path between nodeA and nodeB.
 #
@@ -2757,7 +2777,7 @@ def get_node_value(head, index):
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #42 shortest path ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, shortestPath, that takes in an array of edges for an 
+# Write a function, shortestPath, that takes in an list of edges for an 
 # undirected graph and two nodes (nodeA, nodeB). The function should return the
 # length of the shortest path between A and B. Consider the length as the number
 # of edges in the path, not the number of nodes. If there is no path between A 
@@ -3420,10 +3440,10 @@ def get_node_value(head, index):
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #53 sum possible ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function sumPossible that takes in an amount and an array of positive
+# Write a function sumPossible that takes in an amount and an list of positive
 # numbers. The function should return a boolean indicating whether or not it is
-# possible to create the amount by summing numbers of the array. You may reuse
-# numbers of the array as many times as necessary.
+# possible to create the amount by summing numbers of the list. You may reuse
+# numbers of the list as many times as necessary.
 # You may assume that the target amount is non-negative.
 #
 # test_00:
@@ -3447,7 +3467,7 @@ def get_node_value(head, index):
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #54 min change ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function minChange that takes in an amount and an array of coins. The
+# Write a function minChange that takes in an amount and an list of coins. The
 # function should return the minimum number of coins required to create the
 # amount. You may use each coin as many times as necessary.
 # If it is not possible to create the amount, then return -1.
@@ -3641,16 +3661,16 @@ def get_node_value(head, index):
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #57 non adjacent sum ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, nonAdjacentSum, that takes in an array of numbers as an
+# Write a function, nonAdjacentSum, that takes in an list of numbers as an
 # argument. The function should return the maximum sum of non-adjacent elements
-# in the array. There is no limit on how many elements can be taken into the sum
+# in the list. There is no limit on how many elements can be taken into the sum
 # as long as they are not adjacent.
 #
 # For example, given:
 # [2, 4, 5, 12, 7]
 #
 # The maximum non-adjacent sum is 16, because 4 + 12. 
-# 4 and 12 are not adjacent in the array.
+# 4 and 12 are not adjacent in the list.
 #
 # test_00:
 # nums = [2, 4, 5, 12, 7];
@@ -3712,7 +3732,7 @@ def get_node_value(head, index):
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #59 counting change ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, countingChange, that takes in an amount and an array of
+# Write a function, countingChange, that takes in an amount and an list of
 # coins. The function should return the number of different ways it is possible
 # to make change for the given amount using the coins.
 #
@@ -3741,11 +3761,11 @@ def get_node_value(head, index):
 # countingChange(240, [1, 2, 3, 4, 5, 6, 7, 8, 9]); # -> 1525987916
 
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #60 array stepper ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, arrayStepper, that takes in an array of numbers as an
-# argument. You start at the first position of the array. The function should
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #60 list stepper ]]]]]]]]]]]]]]]]]]]]]]]]]
+# Write a function, listStepper, that takes in an list of numbers as an
+# argument. You start at the first position of the list. The function should
 # return a boolean indicating whether or not it is possible reach the last
-# position of the array. When situated at some position of the array, you may
+# position of the list. When situated at some position of the list, you may
 # take a maximum number of steps based on the number at that position.
 #
 # For example, given:
@@ -3757,21 +3777,21 @@ def get_node_value(head, index):
 # Then take 4 steps forward to the end at idx 5.
 #
 # test_00:
-# arrayStepper([2, 4, 2, 0, 0, 1]); # -> true
+# listStepper([2, 4, 2, 0, 0, 1]); # -> true
 # test_01:
-# arrayStepper([2, 3, 2, 0, 0, 1]); # -> false
+# listStepper([2, 3, 2, 0, 0, 1]); # -> false
 # test_02:
-# arrayStepper([3, 1, 3, 1, 0, 1]); # -> true
+# listStepper([3, 1, 3, 1, 0, 1]); # -> true
 # test_03:
-# arrayStepper([4, 1, 5, 1, 1, 1, 0, 4]); # -> true
+# listStepper([4, 1, 5, 1, 1, 1, 0, 4]); # -> true
 # test_04:
-# arrayStepper([4, 1, 2, 1, 1, 1, 0, 4]); # -> false
+# listStepper([4, 1, 2, 1, 1, 1, 0, 4]); # -> false
 # test_05:
-# arrayStepper([1, 1, 1, 1, 1, 0]); # -> true
+# listStepper([1, 1, 1, 1, 1, 0]); # -> true
 # test_06:
-# arrayStepper([1, 1, 1, 1, 0, 0]); # -> false
+# listStepper([1, 1, 1, 1, 0, 0]); # -> false
 # test_07:
-# arrayStepper([ 
+# listStepper([ 
 #   31, 30, 29, 28, 27,
 #   26, 25, 24, 23, 22,
 #   21, 20, 19, 18, 17,
@@ -3828,10 +3848,10 @@ def get_node_value(head, index):
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #63 can concat ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, canConcat, that takes in a string and an array of words as
+# Write a function, canConcat, that takes in a string and an list of words as
 # arguments. The function should return boolean indicating whether or not it is
-# possible to concatenate words of the array together to form the string.
-# You may reuse words of the array as many times as needed.
+# possible to concatenate words of the list together to form the string.
+# You may reuse words of the list as many times as needed.
 #
 # test_00:
 # canConcat("oneisnone", ["one", "none", "is"]); # -> true
@@ -3850,10 +3870,10 @@ def get_node_value(head, index):
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #64 quickest concat ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, quickestConcat, that takes in a string and an array of words
+# Write a function, quickestConcat, that takes in a string and an list of words
 # as arguments. The function should return the minimum number of words needed to
 # build the string by concatenating the words.
-# You may use words of the array as many times as needed.
+# You may use words of the list as many times as needed.
 #
 # test_00:
 # quickestConcat('caution', ['ca', 'ion', 'caut', 'ut']); # -> 2
@@ -3986,11 +4006,11 @@ def get_node_value(head, index):
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #69 subsets ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, subsets, that takes in an array an argument. The function
-# should return a 2D array where each subarray represents one of the possible
-# subsets of the array.
+# Write a function, subsets, that takes in an list an argument. The function
+# should return a 2D list where each sublist represents one of the possible
+# subsets of the list.
 # The elements within the subsets and the subsets themselves may be returned in any order.
-# You may assume that the input array contains unique elements.
+# You may assume that the input list contains unique elements.
 #
 # test_00:
 # subsets(['a', 'b']); # ->
@@ -4046,11 +4066,11 @@ def get_node_value(head, index):
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #70 permutations ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, permutations, that takes in an array an argument. The
-# function should return a 2D array where each subarray represents one of the
-# possible permutations of the array.
-# The subarrays may be returned in any order.
-# You may assume that the input array contains unique elements.
+# Write a function, permutations, that takes in an list an argument. The
+# function should return a 2D list where each sublist represents one of the
+# possible permutations of the list.
+# The sublists may be returned in any order.
+# You may assume that the input list contains unique elements.
 #
 # test_00:
 # permutations(['a', 'b', 'c']); # -> 
@@ -4092,11 +4112,11 @@ def get_node_value(head, index):
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #71 create combinations ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, createCombinations, that takes in an array and a length as
-# arguments. The function should return a 2D array representing all of the
+# Write a function, createCombinations, that takes in an list and a length as
+# arguments. The function should return a 2D list representing all of the
 # combinations of the specifized length.
 # The items within the combinations and the combinations themselves may be returned in any order.
-# You may assume that the input array contains unique elements and 1 <= k <= items.length.
+# You may assume that the input list contains unique elements and 1 <= k <= items.length.
 #
 # test_00:
 # createCombinations(["a", "b", "c"], 2); # ->
@@ -4132,7 +4152,7 @@ def get_node_value(head, index):
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #72 parenthetical possibilities ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, parentheticalPossibilities, that takes in a string as an
-# argument. The function should return an array containing all of the strings
+# argument. The function should return an list containing all of the strings
 # that could be generated by expanding all parentheses of the string into its
 # possibilities.
 # For example, the possibilities for 'x(mn)yz' are 'xmyz', 'xnyz'.
@@ -4165,8 +4185,8 @@ def get_node_value(head, index):
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #73 substituting synonyms ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, substitutingSynonyms, that takes in a sentence and an object
-# as arguments. The object contains words as keys whose values are arrays
-# containing synonyms. The function should return an array containing all
+# as arguments. The object contains words as keys whose values are lists
+# containing synonyms. The function should return an list containing all
 # possible sentences that can be formed by substituting words of the sentence
 # with their synonyms.
 # You may return the possible sentences in any order, as long as you return
