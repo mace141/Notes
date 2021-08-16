@@ -514,7 +514,7 @@ def linked_list_find(head, target):
   return head.val is target or linked_list_find(head.next, target)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #14 get node value ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, getNodeValue, that takes in the head of a linked list and 
+# Write a function, get_node_value, that takes in the head of a linked list and 
 # an index. The function should return the value of the linked list at the 
 # specified index.
 # If there is no node at the given index, then return None.
@@ -528,7 +528,7 @@ def linked_list_find(head, target):
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
-# getNodeValue(a, 2); # 'c'
+# get_node_value(a, 2); # 'c'
 # test_01:
 # a = new Node("a");
 # b = new Node("b");
@@ -538,7 +538,7 @@ def linked_list_find(head, target):
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
-# getNodeValue(a, 3); # 'd'
+# get_node_value(a, 3); # 'd'
 # test_02:
 # a = new Node("a");
 # b = new Node("b");
@@ -548,21 +548,41 @@ def linked_list_find(head, target):
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
-# getNodeValue(a, 7); # None
+# get_node_value(a, 7); # None
 # test_03:
 # node1 = new Node("banana");
 # node2 = new Node("mango");
 # node1.next = node2;
 # banana -> mango
-# getNodeValue(node1, 0); # 'banana'
+# get_node_value(node1, 0); # 'banana'
 # test_04:
 # node1 = new Node("banana");
 # node2 = new Node("mango");
 # node1.next = node2;
 # banana -> mango
-# getNodeValue(node1, 1); # 'mango'
+# get_node_value(node1, 1); # 'mango'
 
+# ========================= Iterative =========================
+# Time: O(n), Space: O(1)
+def get_node_value(head, index):
+  current = head
+  idx = 0
+  while current is not None:
+    if idx == index:
+      return current.val
+    current = current.next
+    idx += 1
+  return None
 
+# ========================= Recursive =========================
+# Time: O(n), Space: O(n)
+def get_node_value(head, index):
+  if head is None:
+    return None
+  if index is 0:
+    return head.val
+  return get_node_value(head.next, index - 1)
+  
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #15 reverse list ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, reverseList, that takes in the head of a linked list as an 
 # argument. The function should reverse the order of the nodes in the linked 
