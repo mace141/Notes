@@ -312,6 +312,19 @@ def pair_product(numbers, target_product):
 # }
 # intersection(a, b) # -> [0,1,2,3,..., 49999]
 
+# ========================= My Solution =========================
+def intersection(a, b):
+  first_set = set(a)
+  result = []
+  for el in b:
+    if el in first_set:
+      result.append(el)
+  return result
+
+# ========================= Alvin's Solution =========================
+def intersection(a, b):
+  set_a = set(a)
+  return [ item for item in b if item in set_a ]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #10 fivesort ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, fiveSort, that takes in an array of numbers as an argument.
