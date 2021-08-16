@@ -915,7 +915,7 @@ def merge_lists(head_1, head_2):
 # z
 # is_univalue_list(z); # true
 
-# ========================= Recursive =========================
+# ========================= Iterative =========================
 # Time: O(n), Space: O(1)
 def is_univalue_list(head):
   current = head 
@@ -937,7 +937,7 @@ def is_univalue_list(head, prev = None):
     return False
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #19 longest streak ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, longestStreak, that takes in the head of a linked list as 
+# Write a function, longest_streak, that takes in the head of a linked list as 
 # an argument. The function should return the length of the longest consecutive 
 # streak of the same value within the list.
 # 
@@ -954,7 +954,7 @@ def is_univalue_list(head, prev = None):
 # d.next = e;
 # e.next = f;
 # 5 -> 5 -> 7 -> 7 -> 7 -> 6
-# longestStreak(a); # 3
+# longest_streak(a); # 3
 # test_01:
 # a = new Node(3);
 # b = new Node(3);
@@ -968,7 +968,7 @@ def is_univalue_list(head, prev = None):
 # d.next = e;
 # e.next = f;
 # 3 -> 3 -> 3 -> 3 -> 9 -> 9
-# longestStreak(a); # 4
+# longest_streak(a); # 4
 # test_02:
 # a = new Node(9);
 # b = new Node(9);
@@ -982,20 +982,37 @@ def is_univalue_list(head, prev = None):
 # d.next = e;
 # e.next = f;
 # 9 -> 9 -> 1 -> 9 -> 9 -> 9
-# longestStreak(a); # 3
+# longest_streak(a); # 3
 # test_03:
 # a = new Node(5);
 # b = new Node(5);
 # a.next = b;
 # 5 -> 5
-# longestStreak(a); # 2
+# longest_streak(a); # 2
 # test_04:
 # a = new Node(4);
 # 4
-# longestStreak(a); # 1
+# longest_streak(a); # 1
 # test_05:
-# longestStreak(None); # 0
+# longest_streak(None); # 0
 
+# ========================= Iterative =========================
+# Time: O(n), Space: O(1)
+def longest_streak(head):
+  count = 0
+  max = 0
+  current = head
+  last = head
+  while current is not None:
+    if current.val is last.val:
+      count += 1
+    else:
+      last.val = current.val
+      count = 1
+    if max < count:
+      max = count
+    current = current.next
+  return max
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #20 remove node ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, removeNode, that takes in the head of a linked list and a 
