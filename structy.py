@@ -718,7 +718,7 @@ def reverse_list(head, prev = None):
 # 1 -> w -> 2 -> 3
 
 # ========================= Iterative =========================
-# Time: O(n), Space: O(1)
+# Time: O(min(n, m)), Space: O(1)
 def zipper_lists(head_1, head_2):
   tail = head_1
   current_1 = head_1.next
@@ -741,6 +741,20 @@ def zipper_lists(head_1, head_2):
 
   return head_1
 
+# ========================= Recursive =========================
+# Time: O(min(n, m)), Space: O(min(n, m))
+def zipper_lists(head_1, head_2):
+  if head_1 is None and head_2 is None:
+    return None
+  if head_1 is None:
+    return head_2
+  if head_2 is None:
+    return head_1
+  next_1 = head_1.next
+  next_2 = head_2.next
+  head_1.next = head_2
+  head_2.next = zipper_lists(next_1, next_2)
+  return head_1
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #17 merge lists ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, mergeLists, that takes in the head of two sorted linked 
