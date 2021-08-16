@@ -392,6 +392,12 @@ def five_sort(nums):
 # linked_list_values(None); # -> [ ]
 
 def linked_list_values(head):
+  result = []
+  current = head
+  while current is not None:
+    result.append(current.val)
+    current = current.next
+  return result
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #12 sum list ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, sumList, that takes in the head of a linked list containing 
