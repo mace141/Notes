@@ -364,7 +364,7 @@ def five_sort(nums):
   return nums
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #11 linked list values ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, linkedListValues, that takes in the head of a linked list 
+# Write a function, linked_list_values, that takes in the head of a linked list 
 # as an argument. The function should return an array containing all values of 
 # the nodes in the linked list.
 #
@@ -377,20 +377,21 @@ def five_sort(nums):
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
-# linkedListValues(a); # -> [ 'a', 'b', 'c', 'd' ]
+# linked_list_values(a); # -> [ 'a', 'b', 'c', 'd' ]
 # test_01:
 # x = new Node("x");
 # y = new Node("y");
 # x.next = y;
 # x -> y
-# linkedListValues(x); # -> [ 'x', 'y' ]
+# linked_list_values(x); # -> [ 'x', 'y' ]
 # test_02:
 # q = new Node("q");
 # q
-# linkedListValues(q); # -> [ 'q' ]
+# linked_list_values(q); # -> [ 'q' ]
 # test_03:
-# linkedListValues(null); # -> [ ]
+# linked_list_values(None); # -> [ ]
 
+def linked_list_values(head):
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #12 sum list ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, sumList, that takes in the head of a linked list containing 
@@ -420,7 +421,7 @@ def five_sort(nums):
 # 100
 # sumList(z); # 100
 # test_03:
-# sumList(null); # 0
+# sumList(None); # 0
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #13 linked list find ]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -478,7 +479,7 @@ def five_sort(nums):
 # Write a function, getNodeValue, that takes in the head of a linked list and 
 # an index. The function should return the value of the linked list at the 
 # specified index.
-# If there is no node at the given index, then return null.
+# If there is no node at the given index, then return None.
 #
 # test_00:
 # a = new Node("a");
@@ -509,7 +510,7 @@ def five_sort(nums):
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
-# getNodeValue(a, 7); # null
+# getNodeValue(a, 7); # None
 # test_03:
 # node1 = new Node("banana");
 # node2 = new Node("mango");
@@ -814,7 +815,7 @@ def five_sort(nums):
 # 4
 # longestStreak(a); # 1
 # test_05:
-# longestStreak(null); # 0
+# longestStreak(None); # 0
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #20 remove node ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -874,7 +875,7 @@ def five_sort(nums):
 # t = new Node("t");
 # t
 # removeNode(t, "t");
-# null
+# None
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #21 insert node ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -945,7 +946,7 @@ def five_sort(nums):
 # a
 # test_03:
 # createLinkedList([]);
-# null
+# None
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #23 add lists ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -1129,7 +1130,7 @@ def five_sort(nums):
 # depthFirstValues(a); 
 #    -> ['a', 'b', 'c', 'd', 'e']
 # test_04:
-# howHigh(null); 
+# howHigh(None); 
 #    -> []
 
 
@@ -1212,7 +1213,7 @@ def five_sort(nums):
 # breadthFirstValues(a); 
 #    -> ['a', 'b', 'c', 'x', 'd', 'e']
 # test_04:
-# howHigh(null); 
+# howHigh(None); 
 #    -> []
 
 
@@ -1324,7 +1325,7 @@ def five_sort(nums):
 #   g         h
 # treeIncludes(a, "p"); # -> false
 # test_05:
-# treeIncludes(null, "b"); # -> false
+# treeIncludes(None, "b"); # -> false
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #27 tree sum ]]]]]]]]]]]]]]]]]]]]]]]]] 
@@ -1375,7 +1376,7 @@ def five_sort(nums):
 #   2         2
 # treeSum(a); # -> 10
 # test_02:
-# treeSum(null); # -> 0
+# treeSum(None); # -> 0
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #28 tree min value ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -1544,7 +1545,7 @@ def five_sort(nums):
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #30 path finder ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, pathFinder, that takes in the root of a binary tree and a 
 # target value. The function should return an array representing a path to the 
-# target value. If the target value is not found in the tree, then return null.
+# target value. If the target value is not found in the tree, then return None.
 #
 # You may assume that the tree contains unique values.
 #
@@ -1590,7 +1591,7 @@ def five_sort(nums):
 #  / \     \
 # d   e     f
 #
-# pathFinder(a, 'p'); # -> null
+# pathFinder(a, 'p'); # -> None
 #
 # test_02:
 # a = new Node("a");
@@ -1656,7 +1657,7 @@ def five_sort(nums):
 # pathFinder(x, "x"); # -> ['x']
 #
 # test_05:
-# pathFinder(null, "x"); # -> null
+# pathFinder(None, "x"); # -> None
 #
 # test_06:
 # root = new Node(0);
@@ -1788,7 +1789,7 @@ def five_sort(nums):
 # treeValueCount(a, 9); # -> 0
 #
 # test_04:
-# treeValueCount(null, 42); # -> 0
+# treeValueCount(None, 42); # -> 0
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #32 how high ]]]]]]]]]]]]]]]]]]]]]]]]] 
@@ -2206,7 +2207,7 @@ def five_sort(nums):
 #
 #
 # test_03:
-# treeLevels(null); # -> []
+# treeLevels(None); # -> []
 
 
 
@@ -2318,7 +2319,7 @@ def five_sort(nums):
 # levelAverages(q); # -> [ 13, 3, 9, 2, 42 ]
 #
 # test_04:
-# levelAverages(null); # -> [ ]
+# levelAverages(None); # -> [ ]
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #37 leaf list ]]]]]]]]]]]]]]]]]]]]]]]]] 
@@ -2409,7 +2410,7 @@ def five_sort(nums):
 # leafList(x); # -> [ 'x' ]
 #
 # test_04:
-# leafList(null); # -> [ ]
+# leafList(None); # -> [ ]
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #38 has path ]]]]]]]]]]]]]]]]]]]]]]]]] 
@@ -4246,7 +4247,7 @@ def five_sort(nums):
 # 5
 # linkedPalindrome(a); # true
 # test_06:
-# linkedPalindrome(null); # true
+# linkedPalindrome(None); # true
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #75 middle value ]]]]]]]]]]]]]]]]]]]]]]]]] 
