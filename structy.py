@@ -260,7 +260,7 @@ def pair_sum(numbers, target_sum):
     differences[diff] = i
 
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #8 pair product ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #8 pair product ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, pair_product, that takes in a list and a target product as 
 # arguments. The function should return a tuple containing a pair of indices 
 # whose elements multiply to the given target. The indices returned must be 
@@ -635,7 +635,7 @@ def reverse_list(head, prev = None):
   return reverse_list(next, head)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #16 zipper list ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, zipperLists, that takes in the head of two linked lists as 
+# Write a function, zipper_lists, that takes in the head of two linked lists as 
 # arguments. The function should zipper the two lists together into single linked 
 # list by alternating nodes. If one of the linked lists is longer than the other, 
 # the resulting list should terminate with the remaining nodes. The function 
@@ -656,7 +656,7 @@ def reverse_list(head, prev = None):
 # x.next = y;
 # y.next = z;
 # x -> y -> z
-# zipperLists(a, x);
+# zipper_lists(a, x);
 # a -> x -> b -> y -> c -> z
 # test_01:
 # a = new Node("a");
@@ -677,7 +677,7 @@ def reverse_list(head, prev = None):
 # x.next = y;
 # y.next = z;
 # x -> y -> z
-# zipperLists(a, x);
+# zipper_lists(a, x);
 # a -> x -> b -> y -> c -> z -> d -> e -> f
 # test_02:
 # s = new Node("s");
@@ -692,7 +692,7 @@ def reverse_list(head, prev = None):
 # two.next = three;
 # three.next = four;
 # 1 -> 2 -> 3 -> 4
-# zipperLists(s, one);
+# zipper_lists(s, one);
 # s -> 1 -> t -> 2 -> 3 -> 4
 # test_03:
 # w = new Node("w");
@@ -703,7 +703,7 @@ def reverse_list(head, prev = None):
 # one.next = two;
 # two.next = three;
 # 1 -> 2 -> 3 
-# zipperLists(w, one);
+# zipper_lists(w, one);
 # w -> 1 -> 2 -> 3
 # test_04:
 # one = new Node(1);
@@ -714,8 +714,32 @@ def reverse_list(head, prev = None):
 # 1 -> 2 -> 3 
 # w = new Node("w");
 # w
-# zipperLists(one, w);
+# zipper_lists(one, w);
 # 1 -> w -> 2 -> 3
+
+# ========================= Iterative =========================
+# Time: O(n), Space: O(1)
+def zipper_lists(head_1, head_2):
+  tail = head_1
+  current_1 = head_1.next
+  current_2 = head_2
+  count = 0
+  while current_1 is not None and current_2 is not None:
+    if count % 2 == 0:
+      tail.next = current_2
+      current_2 = current_2.next
+    else:
+      tail.next = current_1
+      current_1 = current_1.next
+    tail = tail.next
+    count += 1
+
+  if current_1 is not None:
+    tail.next = current_1
+  if current_2 is not None:
+    tail.next = current_2
+
+  return head_1
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #17 merge lists ]]]]]]]]]]]]]]]]]]]]]]]]] !I
