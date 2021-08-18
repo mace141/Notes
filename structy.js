@@ -7653,3 +7653,22 @@ const merge = (left, right) => {
 // ];
 // combineIntervals(intervals);
 // // -> [ [12, 55], [62, 70], [72, 300000] ]
+
+const combineIntervals = (intervals) => {
+  const sortedIntervals = intervals.sort((a, b) => a[0] - b[0]);
+  const combinedIntervals = [sortedIntervals[0]];
+
+  for (let i = 1; i < intervals.length; i++) {
+    const currInterval = intervals[i]
+    const [start, end] = [currInterval[0], currInterval[1]]
+    const len = combinedIntervals.length - 1
+    const lastInterval = combinedIntervals[len]
+    if (start <= lastInterval[1]) {
+      lastInterval[1] = end < lastInterval[1] ? lastInterval[1] : end
+    } else {
+      combinedIntervals.push(currInterval)
+    }
+  }
+
+  return combinedIntervals;
+};
