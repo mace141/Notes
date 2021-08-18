@@ -3971,29 +3971,52 @@ def fib(n):
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #61 max palin subsequence ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, maxPalinSubsequence, that takes in a string as an argument.
+# Write a function, max_palin_subsequence, that takes in a string as an argument.
 # The function should return the length of the longest subsequence of the string
 # that is also a palindrome.
 # A subsequence of a string can be created by deleting any characters of the
 # string, while maintaining the relative order of characters.
 #
 # test_00:
-# maxPalinSubsequence("luwxult"); # -> 5
+# max_palin_subsequence("luwxult"); # -> 5
 # test_01:
-# maxPalinSubsequence("xyzaxxzy"); # -> 6
+# max_palin_subsequence("xyzaxxzy"); # -> 6
 # test_02:
-# maxPalinSubsequence("lol"); # -> 3
+# max_palin_subsequence("lol"); # -> 3
 # test_03:
-# maxPalinSubsequence("boabcdefop"); # -> 3
+# max_palin_subsequence("boabcdefop"); # -> 3
 # test_04:
-# maxPalinSubsequence("z"); # -> 1
+# max_palin_subsequence("z"); # -> 1
 # test_05:
-# maxPalinSubsequence("chartreusepugvicefree"); # -> 7
+# max_palin_subsequence("chartreusepugvicefree"); # -> 7
 # test_06:
-# maxPalinSubsequence("qwueoiuahsdjnweuueueunasdnmnqweuzqwerty"); # -> 15
+# max_palin_subsequence("qwueoiuahsdjnweuueueunasdnmnqweuzqwerty"); # -> 15
 # test_07:
-# maxPalinSubsequence("enamelpinportlandtildecoldpressedironyflannelsemioticsedisonbulbfashionaxe"); # -> 31
+# max_palin_subsequence("enamelpinportlandtildecoldpressedironyflannelsemioticsedisonbulbfashionaxe"); # -> 31
 
+def max_palin_subsequence(string, memo = {}):
+  return _helper(string, 0, len(string), memo)
+
+def _helper(string, i, j, memo):
+  key = str(i) + '-' + str(j)
+
+  if key in memo:
+    return memo[key]
+  if i == j:
+    return 1
+  if i > j:
+    return 0
+  
+  if string[i] == string[j]:
+    memo[key] = 2 + _helper(string, i + 1, j - 1, memo)
+  else:
+    memo[key] = max(
+      _helper(string, i + 1, j, memo),
+      _helper(string, i, j - 1, memo)
+    )
+  
+  return memo[key]
+  
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #62 overlap subsequence ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, overlapSubsequence, that takes in two strings as arguments.
