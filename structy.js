@@ -7654,6 +7654,7 @@ const merge = (left, right) => {
 // combineIntervals(intervals);
 // // -> [ [12, 55], [62, 70], [72, 300000] ]
 
+// Time: O(n*log(n)), Space: O(n)
 const combineIntervals = (intervals) => {
   const sortedIntervals = intervals.sort((a, b) => a[0] - b[0]);
   const combinedIntervals = [sortedIntervals[0]];
@@ -7671,4 +7672,70 @@ const combineIntervals = (intervals) => {
   }
 
   return combinedIntervals;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #88 binary search ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function, binarySearch, that takes in a sorted array of numbers and a
+// target. The function should return the index where the target can be found
+// within the array. If the target is not found in the array, then return -1.
+// You may assume that the input array contains unique numbers sorted in
+// increasing order.
+// Your function must implement the binary search algorithm.
+//
+// test_00
+// binarySearch([0, 1, 2, 3, 4, 5, 6, 7, 8], 6); // -> 6
+// test_01
+// binarySearch([0, 6, 8, 12, 16, 19, 20, 24, 28], 27); // -> -1
+// test_02
+// binarySearch([0, 6, 8, 12, 16, 19, 20, 28], 8); // -> 2
+// test_03
+// binarySearch([0, 6, 8, 12, 16, 19, 20, 24, 28], 28); // -> 8
+// test_04
+// binarySearch([7, 9], 7); // -> 0
+// test_05
+// binarySearch([7, 9], 9); // -> 1
+// test_06
+// binarySearch([7, 9], 12); // -> -1
+// test_07
+// binarySearch([7], 7); // -> 0
+// test_08
+// binarySearch([], 7); // -> -1
+
+// ========================= Iterative =========================
+// Time: O(log(n)), Space: O(1)
+const binarySearch = (numbers, target) => {
+  let lo = 0
+  let hi = numbers.length - 1;
+  
+  while (lo <= hi) {
+    const mid = Math.floor((lo + hi) / 2);
+    const num = numbers[mid];
+    if (target < num) {
+      hi = mid - 1;
+    } else if (target > num) {
+      lo = mid + 1;
+    } else {
+      return mid;
+    }
+  }
+
+  return -1;
+};
+
+// ========================= Recursive =========================
+// Time: O(log(n)), Space: O(log(n))
+const binarySearch = (numbers, target) => {
+  if (!numbers.length) return -1;
+
+  const midIdx = Math.floor(numbers.length / 2);
+  const num = numbers[midIdx];
+  
+  if (num === target) {
+    return midIdx;
+  } else if (num < target) {
+    const rightSearch = binarySearch(numbers.slice(midIdx + 1), target);
+    return rightSearch === -1 ? -1 : midIdx + rightSearch + 1;
+  } else {
+    return binarySearch(numbers.slice(0, midIdx), target);
+  }
 };
