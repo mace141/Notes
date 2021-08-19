@@ -3998,7 +3998,7 @@ def max_palin_subsequence(string, memo = {}):
   return _helper(string, 0, len(string), memo)
 
 def _helper(string, i, j, memo):
-  key = str(i) + '-' + str(j)
+  key = (i, j)
 
   if key in memo:
     return memo[key]

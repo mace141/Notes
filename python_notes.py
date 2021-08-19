@@ -1,3 +1,18 @@
+# Northspyre backend challenge
+
+# import boto3
+# from botocore import UNSIGNED
+# from botocore.client import Config
+
+# BUCKET_NAME = 'coderbytechallengesandbox'
+# s3 = boto3.client('s3', config=Config(signature_version=UNSIGNED))
+# resource = boto3.resource('s3', config=Config(signature_version=UNSIGNED))
+# bucket = s3.list_objects_v2(BUCKET_NAME)
+# for file in bucket['Contents']:
+#   if file['Key'].startswith('__cb__'):
+#     target_file = resource.Object(BUCKET_NAME, file['Key']).get()['Body'].read()
+#     print(target_file)
+
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Differences with JavaScript ]]]]]]]]]]]]]]]]]]]]]]]]]
 
 # ========================= Whitespace-aware =========================
