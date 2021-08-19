@@ -7950,7 +7950,9 @@ const binarySearchTreeIncludes = (root, target) => {
 //    47         90
 // isBinarySearchTree(q); // -> true
 
-const isBinarySearchTree = (root, topRoot) => {
+// ========================= In Order DF Traversal =========================
+// Time: O(n), Space: O(n)
+const isBinarySearchTree = (root) => {
   const values = [];
   inOrderTraversal(root, values);
   return isSorted(values);
@@ -8064,6 +8066,8 @@ const isSorted = (values) => {
 // postOrder(null);
 // []
 
+// ========================= Post Order DF Traversal =========================
+// Time: O(n), Space: O(n)
 const postOrder = (root) => {
   const values = [];
   postOrderTraversal(root, values);
@@ -8072,8 +8076,77 @@ const postOrder = (root) => {
 
 const postOrderTraversal = (root, values) => {
   if (root === null) return null;
-  
-  postOrderTraversal(root.left);
-  postOrderTraversal(root.right);
+  postOrderTraversal(root.left, values);
+  postOrderTraversal(root.right, values);
   values.push(root.val);
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #92 build tree in post ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function, buildTreeInPost, that takes in an array of in-ordered values
+// and an array of post-ordered values for a binary tree. The function should
+// build a binary tree that has the given in-order and post-order traversal
+// structure. The function should return the root of this tree.
+// You can assume that the values of inorder and postorder are unique.
+//
+// test_00
+// buildTreeInPost(
+//   [ 'y', 'x', 'z' ],
+//   [ 'y', 'z', 'x' ] 
+// );
+//       x
+//    /    \
+//   y      z
+// test_01
+// buildTreeInPost(
+//   [ 'd', 'b', 'e', 'a', 'f', 'c', 'g' ],
+//   [ 'd', 'e', 'b', 'f', 'g', 'c', 'a' ] 
+// );
+//      a
+//    /    \
+//   b      c
+//  / \    / \
+// d   e  f   g
+// test_02
+// buildTreeInPost(
+//   [ 'd', 'b', 'g', 'e', 'h', 'a', 'c', 'f' ],
+//   [ 'd', 'g', 'h', 'e', 'b', 'f', 'c', 'a' ] 
+// );
+//      a
+//    /    \
+//   b      c
+//  / \      \
+// d   e      f
+//    / \
+//    g  h
+// test_03
+// buildTreeInPost(
+//   ['m', 'n'],
+//   ['m', 'n']
+// );
+//       n
+//     /
+//    m
+// test_04
+// buildTreeInPost(
+//   ['n', 'm'],
+//   ['m', 'n']
+// );
+//     n
+//      \
+//       m
+
+// ========================= Recursive =========================
+// Time: O(n^2), Space: O(n^2)
+const buildTreeInPost = (inOrder, postOrder) => {
+  if (!inOrder.length) return null;
+  const rootVal = postOrder[postOrder.length - 1];
+  const root = new Node(rootVal);
+  const idx = inOrder.indexOf(rootVal);
+  const leftInOrder = inOrder.slice(0, idx)
+  const leftPostOrder = postOrder.slice(0, idx);
+  const rightInOrder = inOrder.slice(idx + 1);
+  const rightPostOrder = postOrder.slice(idx, -1);
+  root.left = buildTreeInPost(leftInOrder, leftPostOrder);
+  root.right = buildTreeInPost(rightInOrder, rightPostOrder);
+  return root;
 };
