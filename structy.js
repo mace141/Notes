@@ -8428,6 +8428,7 @@ const lexicalOrder = (word1, word2, alphabet) => {
 //   z: ["w"],
 // }); // -> ['y', 'x', 'v', 'z', 'w']
 
+// n: num nodes, e: num edges
 // Time: O(n+e), Space: O(n)
 const topologicalOrder = (graph) => {
   const numParents = {};
@@ -8455,4 +8456,113 @@ const topologicalOrder = (graph) => {
     }
   }
   return ordered;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #97 safe cracking ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Oh-no! You forgot the number combination that unlocks your safe. Luckily, you
+// knew that you'd be forgetful so you previously wrote down a bunch of hints
+// that can be used to determine the correct combination. Each hint is a pair of
+// numbers 'x, y' that indicates you must enter digit 'x' before 'y' (but not
+// necessarily immediately before y).
+// The keypad on the safe has digits 0-9. You can assume that the hints will
+// generate exactly one working combination and that a digit can occur zero or
+// one time in the answer.
+//
+// Write a function, safeCracking, that takes in an array of hints as an argument
+// and determines the combination that will unlock the safe. The function should
+// return a string representing the combination.
+//
+// test_00:
+// safeCracking([
+//   [7, 1],
+//   [1, 8],
+//   [7, 8],
+// ]); // -> '718'
+// test_01:
+// safeCracking([
+//   [3, 1],
+//   [4, 7],
+//   [5, 9],
+//   [4, 3],
+//   [7, 3],
+//   [3, 5],
+//   [9, 1],
+// ]); // -> '473591'
+// test_02:
+// safeCracking([
+//   [2, 5],
+//   [8, 6],
+//   [0, 6],
+//   [6, 2],
+//   [0, 8],
+//   [2, 3],
+//   [3, 5],
+//   [6, 5],
+// ]); // -> '086235'
+// test_03:
+// safeCracking([
+//   [0, 1],
+//   [6, 0],
+//   [1, 8],
+// ]); // -> '6018'
+// test_04:
+// safeCracking([
+//   [8, 9],
+//   [4, 2],
+//   [8, 2],
+//   [3, 8],
+//   [2, 9],
+//   [4, 9],
+//   [8, 4],
+// ]); // -> '38429'
+
+// n: num nodes, e: num edges
+// Time: O(n+e), Space: O(n)
+const safeCracking = (hints) => {
+  const graph = buildGraph(hints);
+  const numParents = {};
+  for (let node in graph) {
+    numParents[node] = 0;
+  }
+  for (let node in graph) {
+    for (let neighbor of graph[node]) {
+      numParents[neighbor]++;
+    }
+  }
+
+  const topMost = [];
+  for (let node in numParents) {
+    if (numParents[node] === 0) topMost.push(node);
+  }
+
+  const combination = '';
+  while (topMost.length) {
+    const current = topMost.pop();
+    combination += current;
+    for (let neighbor of graph[current]) {
+      numParents[neighbor]--;
+      if (numParents[neighbor] === 0) topMost.push(neighbor);
+    }
+  }
+
+  return combination;
+};
+
+const buildGraph = (pairs) => {
+  const graph = {};
+  
+  for (let pair of pairs) {
+    const node1 = pair[0];
+    const node2 = pair[1];
+    if (node1 in graph) {
+      graph[node1].push(node2);
+    } else {
+      graph[node1] = [node2];
+    }
+    if (!(node2 in graph)) {
+      graph[node2] = [];
+    }
+  }
+
+  return graph;
 };
