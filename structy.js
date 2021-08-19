@@ -8239,14 +8239,15 @@ const buildTreeInPre = (
   preOrderStart = 0,
   preOrderEnd = preOrder.length - 1
   ) => {
+    if (inOrderEnd < inOrderStart) return null;
     const rootVal = preOrder[preOrderStart];
     const root = new Node(rootVal);
     const idx = inOrder.indexOf(rootVal);
-    const leftSize = mid - inOrderStart;
+    const leftSize = idx - inOrderStart;
     root.left = buildTreeInPre(
       inOrder,
       preOrder,
-      0,
+      inOrderStart,
       idx - 1,
       preOrderStart + 1,
       preOrderStart + leftSize
