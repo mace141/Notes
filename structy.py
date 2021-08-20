@@ -1801,6 +1801,30 @@ def tree_includes(root, target):
 # test_02:
 # treeSum(None); # -> 0
 
+# ========================= Breadth First =========================
+# Time: O(n), Space: O(n)
+def tree_sum(root):
+  if root is None:
+    return 0
+  
+  sum = 0
+  queue = deque([root])
+  while queue:
+    node = queue.popleft()
+    sum += node.val
+    if node.left:
+      queue.append(node.left)
+    if node.right:
+      queue.append(node.right)
+  return sum
+
+# ========================= Depth First =========================
+# Time: O(n), Space: O(n)
+def tree_sum(root):
+  if root is None:
+    return 0
+  
+  return root.val + tree_sum(root.left) + tree_sum(root.right)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #28 tree min value ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, treeMinValue, that takes in the root of a binary tree that 
