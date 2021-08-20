@@ -8819,6 +8819,9 @@ const tokenReplace = (s, tokens) => {
 // tokenTransform("z$0$z$0$z$0$z$0$z$0$z$0$z", tokens);
 // -> 'zzzzzzz'
 
+// ========================= 2 Pointers & Recursion =========================
+// n: length of the longest string, m: num tokens
+// Time: O(n^m), Space: O(n^m)
 const tokenTransform = (s, tokens) => {
   let replaced = '';
 
