@@ -1102,7 +1102,7 @@ def remove_node(head, target_val):
   return head
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #21 insert node ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, insertNode, that takes in the head of a linked list, a 
+# Write a function, insert_node, that takes in the head of a linked list, a 
 # value, and an index. The function should insert a new node with the value into 
 # the list at the specified index. Consider the head of the linked list as index 
 # 0. The function should return the head of the resulting linked list.
@@ -1119,7 +1119,7 @@ def remove_node(head, target_val):
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
-# insertNode(a, 'x', 2);
+# insert_node(a, 'x', 2);
 # a -> b -> x -> c -> d
 # test_01:
 # a = new Node("a");
@@ -1130,7 +1130,7 @@ def remove_node(head, target_val):
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
-# insertNode(a, 'v', 3);
+# insert_node(a, 'v', 3);
 # a -> b -> c -> v -> d
 # test_02:
 # a = new Node("a");
@@ -1141,16 +1141,67 @@ def remove_node(head, target_val):
 # b.next = c;
 # c.next = d;
 # a -> b -> c -> d
-# insertNode(a, 'm', 4);
+# insert_node(a, 'm', 4);
 # a -> b -> c -> d -> m
 # test_03:
 # a = new Node("a");
 # b = new Node("b");
 # a.next = b;
 # a -> b
-# insertNode(a, 'z', 0);
+# insert_node(a, 'z', 0);
 # z -> a -> b 
 
+# ========================= Iterative =========================
+# Time: O(n), Space: O(1)
+def insert_node(head, value, index):
+  node = Node(value)
+  if index == 0:
+    node.next = head 
+    return node
+  
+  count = 0
+  current = head
+  while count < index:
+    if count == index - 1:
+      next_node = current.next
+      current.next = node
+      node.next = next_node
+    current = current.next
+    count += 1
+  return head
+
+# ========================= My Solution (Recursive) =========================
+# Time: O(n), Space: O(n)
+def insert_node(head, value, index, count = 0):
+  if count == index:
+    node = Node(value)
+    node.next = head
+    return node
+
+  if head is None:
+    return None
+    
+  head.next = insert_node(head, value, index, count + 1)
+  return head
+
+# ========================= Alvin's Solution (Recursive) =========================
+def insert_node(head, value, index, count = 0):
+  if index == 0:
+    new_head = Node(value)
+    new_head.next = head
+    return new_head
+
+  if head is None:
+    return None
+
+  if count == index - 1:
+      temp = head.next
+      head.next = Node(value)
+      head.next.next = temp
+      return 
+
+  insert_node(head.next, value, index, count + 1)
+  return head
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #22 create linked list ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, createLinkedList, that takes in an list of values as an 
