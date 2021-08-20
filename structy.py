@@ -1590,19 +1590,27 @@ def depth_first_values(root):
 # howHigh(None); 
 #    -> []
 
+# ========================= Breadth First =========================
+# Time: O(n), Space: O(n)
+from collections import deque
+
 def breadth_first_values(root):
+  if root is None:
+    return []
+
   values = []
-  queue = [root]
+  queue = deque([root])
   while queue:
-    current = queue.pop(0)
+    current = queue.popleft()
     values.append(current.val)
     if current.left is not None:
       queue.append(current.left)
     if current.right is not None:
       queue.append(current.right)
+  return values
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #26 tree includes ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, treeIncludes, that takes in the root of a binary tree and 
+# Write a function, tree_includes, that takes in the root of a binary tree and 
 # a target value. The function should return a boolean indicating whether or 
 # not the value is contained in the tree.
 #
@@ -1623,7 +1631,7 @@ def breadth_first_values(root):
 #   b     c
 #  / \     \
 # d   e     f
-# treeIncludes(a, "e"); # -> true
+# tree_includes(a, "e"); # -> true
 # test_01:
 # a = new Node("a");
 # b = new Node("b");
@@ -1641,7 +1649,7 @@ def breadth_first_values(root):
 #   b     c
 #  / \     \
 # d   e     f
-# treeIncludes(a, "a"); # -> true
+# tree_includes(a, "a"); # -> true
 # test_02:
 # a = new Node("a");
 # b = new Node("b");
@@ -1659,7 +1667,7 @@ def breadth_first_values(root):
 #   b     c
 #  / \     \
 # d   e     f
-# treeIncludes(a, "n"); # -> false
+# tree_includes(a, "n"); # -> false
 # test_03:
 # a = new Node("a");
 # b = new Node("b");
@@ -1683,7 +1691,7 @@ def breadth_first_values(root):
 # d   e     f
 #    /       \
 #   g         h
-# treeIncludes(a, "f"); # -> true
+# tree_includes(a, "f"); # -> true
 # test_04:
 # a = new Node("a");
 # b = new Node("b");
@@ -1707,10 +1715,41 @@ def breadth_first_values(root):
 # d   e     f
 #    /       \
 #   g         h
-# treeIncludes(a, "p"); # -> false
+# tree_includes(a, "p"); # -> false
 # test_05:
-# treeIncludes(None, "b"); # -> false
+# tree_includes(None, "b"); # -> false
 
+# ========================= Breadth First =========================
+# Time: O(n), Space: O(n)
+from collections import deque
+
+def tree_includes(root, target):
+  if root is None:
+    return False
+  
+  queue = deque([root])
+  while queue:
+    current = queue.popleft()
+    if current.val is target:
+      return True
+    
+    if current.left is not None:
+      queue.append(current.left)
+    if current.right is not None:
+      queue.append(current.right)
+  return False
+
+# ========================= Depth First =========================
+# Time: O(n), Space: O(n)
+def tree_includes(root, target):
+  if root is None:
+    return False
+  if root.val is target:
+    return True
+  
+  left_inclusion = tree_includes(root.left, target)
+  right_inclusion = tree_includes(root.right, target)
+  return left_inclusion or right_inclusion
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #27 tree sum ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, treeSum, that takes in the root of a binary tree that 
