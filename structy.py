@@ -1362,6 +1362,31 @@ def create_linked_list(values, i = 0):
 # addLists(a1, b1);
 # 5 -> 0 -> 0 -> 1
 
+# ========================= Iterative =========================
+# Time: O(min(n, m)), Space: O(min(n, m))
+def add_lists(head_1, head_2):
+  puppet_head = Node(None)
+  tail = puppet_head
+
+  carry = 0
+  current_1 = head_1
+  current_2 = head_2 
+  while current_1 is not None or current_2 is not None or carry == 1:
+    val_1 = 0 if current_1 is None else current_1.val
+    val_2 = 0 if current_2 is None else current_2.val
+    sum = val_1 + val_2 + carry
+    digit = sum % 10
+    carry = 1 if sum > 9 else 0
+
+    tail.next = Node(digit)
+    tail = tail.next
+    current_1 = current_1.next if current_1 is not None else None
+    current_2 = current_2.next if current_2 is not None else None
+  
+  return puppet_head.next
+
+# ========================= Recursive =========================
+# Time: O(min(n, m)), Space: O(min(n, m))
 def add_lists(head_1, head_2, carry = 0):
   if head_1 is None and head_2 is None and carry == 0:
     return None
@@ -1376,12 +1401,12 @@ def add_lists(head_1, head_2, carry = 0):
   next_1 = head_1.next if head_1 is not None else None
   next_2 = head_2.next if head_2 is not None else None
   node.next = add_lists(next_1, next_2, carry)
-  
+
   return node
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #24 depth first values ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, depthFirstValues, that takes in the root of a binary tree. 
+# Write a function, depth_first_values, that takes in the root of a binary tree. 
 # The function should return an list containing all values of the tree in 
 # depth-first order.
 #
@@ -1402,7 +1427,7 @@ def add_lists(head_1, head_2, carry = 0):
 #   b     c
 #  / \     \
 # d   e     f
-# depthFirstValues(a); 
+# depth_first_values(a); 
 #    -> ['a', 'b', 'd', 'e', 'c', 'f']
 # test_01:
 # a = new Node('a');
@@ -1425,12 +1450,12 @@ def add_lists(head_1, head_2, carry = 0):
 # d   e     f
 #    /
 #   g
-# depthFirstValues(a); 
+# depth_first_values(a); 
 #    -> ['a', 'b', 'd', 'e', 'g', 'c', 'f']
 # test_02:
 # a = new Node('a');
 #      a
-# depthFirstValues(a); 
+# depth_first_values(a); 
 #    -> ['a']
 # test_03:
 # a = new Node('a');
@@ -1451,16 +1476,41 @@ def add_lists(head_1, head_2, carry = 0):
 #        d
 #         \
 #          e
-# depthFirstValues(a); 
+# depth_first_values(a); 
 #    -> ['a', 'b', 'c', 'd', 'e']
 # test_04:
 # howHigh(None); 
 #    -> []
 
+# ========================= Iterative =========================
+# Time: O(n), Space: O(n)
+def depth_first_values(root):
+  if not root:
+    return []
 
+  values = []
+  stack = [root]
+  while len(stack) > 0:
+    current = stack.pop()
+    values.append(current.val)
+    if current.right is not None:
+      stack.append(current.right)
+    if current.left is not None:
+      stack.append(current.left)
+  return values
+
+# ========================= Recursive =========================
+# Time: O(n), Space: O(n)
+def depth_first_values(root):
+  if root is None:
+    return []
+    
+  left_values = depth_first_values(root.left)
+  right_values = depth_first_values(root.right)
+  return [root.val, *left_values, *right_values]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #25 breadth first values ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, breadthFirstValues, that takes in the root of a binary tree.
+# Write a function, breadth_first_values, that takes in the root of a binary tree.
 # The function should return an list containing all values of the tree in 
 # breadth-first order.
 #
@@ -1481,7 +1531,7 @@ def add_lists(head_1, head_2, carry = 0):
 #   b     c
 #  / \     \
 # d   e     f
-# breadthFirstValues(a); 
+# breadth_first_values(a); 
 #    -> ['a', 'b', 'c', 'd', 'e', 'f']
 # test_01:
 # a = new Node('a');
@@ -1506,12 +1556,12 @@ def add_lists(head_1, head_2, carry = 0):
 # d   e     f
 #    /       \
 #   g         h
-# breadthFirstValues(a); 
+# breadth_first_values(a); 
 #   -> ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 # test_02:
 # a = new Node('a');
 #      a
-# breadthFirstValues(a); 
+# breadth_first_values(a); 
 #    -> ['a']
 # test_03:
 # a = new Node('a');
@@ -1534,7 +1584,7 @@ def add_lists(head_1, head_2, carry = 0):
 #   x    d
 #         \
 #          e
-# breadthFirstValues(a); 
+# breadth_first_values(a); 
 #    -> ['a', 'b', 'c', 'x', 'd', 'e']
 # test_04:
 # howHigh(None); 
