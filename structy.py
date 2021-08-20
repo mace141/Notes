@@ -482,19 +482,19 @@ def sum_list(head):
 # a -> b -> c -> d
 # linked_list_find(a, "q"); # false
 # test_03:
-# node1 = new Node("jason");
+# node_1 = new Node("jason");
 # node2 = new Node("leneli");
-# node1.next = node2;
+# node_1.next = node2;
 # jason -> leneli
-# linked_list_find(node1, "jason"); # true
+# linked_list_find(node_1, "jason"); # true
 # test_04:
-# node1 = new Node(42);
+# node_1 = new Node(42);
 # 42
-# linked_list_find(node1, 42); # true
+# linked_list_find(node_1, 42); # true
 # test_05:
-# node1 = new Node(42);
+# node_1 = new Node(42);
 # 42
-# linked_list_find(node1, 100); # false
+# linked_list_find(node_1, 100); # false
 
 # ========================= Iterative =========================
 # Time: O(n), Space: O(1)
@@ -550,17 +550,17 @@ def linked_list_find(head, target):
 # a -> b -> c -> d
 # get_node_value(a, 7); # None
 # test_03:
-# node1 = new Node("banana");
+# node_1 = new Node("banana");
 # node2 = new Node("mango");
-# node1.next = node2;
+# node_1.next = node2;
 # banana -> mango
-# get_node_value(node1, 0); # 'banana'
+# get_node_value(node_1, 0); # 'banana'
 # test_04:
-# node1 = new Node("banana");
+# node_1 = new Node("banana");
 # node2 = new Node("mango");
-# node1.next = node2;
+# node_1.next = node2;
 # banana -> mango
-# get_node_value(node1, 1); # 'mango'
+# get_node_value(node_1, 1); # 'mango'
 
 # ========================= Iterative =========================
 # Time: O(n), Space: O(1)
@@ -1057,15 +1057,15 @@ def longest_streak(head):
 # remove_node(q, "q");
 # r -> s
 # test_03:
-# node1 = new Node("h");
+# node_1 = new Node("h");
 # node2 = new Node("i");
 # node3 = new Node("j");
 # node4 = new Node("i");
-# node1.next = node2;
+# node_1.next = node2;
 # node2.next = node3;
 # node3.next = node4;
 # h -> i -> j -> i
-# remove_node(node1, "i");
+# remove_node(node_1, "i");
 # h -> j -> i
 # test_04:
 # t = new Node("t");
@@ -1204,22 +1204,22 @@ def insert_node(head, value, index, count = 0):
   return head
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #22 create linked list ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, createLinkedList, that takes in an list of values as an 
+# Write a function, create_linked_list, that takes in an list of values as an 
 # argument. The function should create a linked list containing each element of 
 # the list as the values of the nodes. The function should return the head of 
 # the linked list.
 #
 # test_00:
-# createLinkedList(["h", "e", "y"]);
+# create_linked_list(["h", "e", "y"]);
 # h -> e -> y
 # test_01:
-# createLinkedList([1, 7, 1, 8]);
+# create_linked_list([1, 7, 1, 8]);
 # 1 -> 7 -> 1 -> 8
 # test_02:
-# createLinkedList(["a"]);
+# create_linked_list(["a"]);
 # a
 # test_03:
-# createLinkedList([]);
+# create_linked_list([]);
 # None
 
 # ========================= Iterative =========================
@@ -1361,6 +1361,23 @@ def create_linked_list(values, i = 0):
 # 6
 # addLists(a1, b1);
 # 5 -> 0 -> 0 -> 1
+
+def add_lists(head_1, head_2, carry = 0):
+  if head_1 is None and head_2 is None and carry == 0:
+    return None
+
+  val_1 = 0 if head_1 is None else head_1.val
+  val_2 = 0 if head_2 is None else head_2.val
+  sum = val_1 + val_2 + carry
+  digit = sum % 10
+  carry = 1 if sum > 9 else 0
+
+  node = Node(digit)
+  next_1 = head_1.next if head_1 is not None else None
+  next_2 = head_2.next if head_2 is not None else None
+  node.next = add_lists(next_1, next_2, carry)
+  
+  return node
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #24 depth first values ]]]]]]]]]]]]]]]]]]]]]]]]] 
