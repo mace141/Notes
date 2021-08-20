@@ -1180,7 +1180,7 @@ def insert_node(head, value, index, count = 0):
 
   if head is None:
     return None
-    
+
   head.next = insert_node(head, value, index, count + 1)
   return head
 
@@ -1222,6 +1222,39 @@ def insert_node(head, value, index, count = 0):
 # createLinkedList([]);
 # None
 
+# ========================= Iterative =========================
+# Time: O(n), Space: O(n)
+def create_linked_list(values):
+  if len(values) == 0:
+    return None 
+  
+  head = Node(values[0])
+  current = head
+  for i in range(1, len(values)):
+    node = Node(values[i])
+    current.next = node 
+    current = current.next
+  
+  return head
+
+# ========================= Alvin's Solution (Iterative) =========================
+# Time: O(n), Space: O(n)
+def create_linked_list(values):
+  dummy_head = Node(None)
+  tail = dummy_head
+  for val in values:
+    tail.next = Node(val)
+    tail = tail.next
+  return dummy_head.next
+
+# ========================= Recursive =========================
+# Time: O(n), Space: O(n)
+def create_linked_list(values, i = 0):
+  if i == len(values):
+    return None
+  node = Node(values[i])
+  node.next = create_linked_list(values, i + 1)
+  return node
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #23 add lists ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, addLists, that takes in the head of two linked lists, each 
