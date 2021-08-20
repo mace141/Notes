@@ -1490,7 +1490,7 @@ def depth_first_values(root):
 
   values = []
   stack = [root]
-  while len(stack) > 0:
+  while stack:
     current = stack.pop()
     values.append(current.val)
     if current.right is not None:
@@ -1590,6 +1590,16 @@ def depth_first_values(root):
 # howHigh(None); 
 #    -> []
 
+def breadth_first_values(root):
+  values = []
+  queue = [root]
+  while queue:
+    current = queue.pop(0)
+    values.append(current.val)
+    if current.left is not None:
+      queue.append(current.left)
+    if current.right is not None:
+      queue.append(current.right)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #26 tree includes ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, treeIncludes, that takes in the root of a binary tree and 
