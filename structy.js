@@ -8428,6 +8428,7 @@ const lexicalOrder = (word1, word2, alphabet) => {
 //   z: ["w"],
 // }); // -> ['y', 'x', 'v', 'z', 'w']
 
+// ========================= Topological Order =========================
 // n: num nodes, e: num edges
 // Time: O(n+e), Space: O(n)
 const topologicalOrder = (graph) => {
@@ -8516,6 +8517,7 @@ const topologicalOrder = (graph) => {
 //   [8, 4],
 // ]); // -> '38429'
 
+// ========================= Topological Order =========================
 // n: num nodes, e: num edges
 // Time: O(n+e), Space: O(n)
 const safeCracking = (hints) => {
@@ -8647,6 +8649,8 @@ const buildGraph = (pairs) => {
 // ];
 // stringSearch(grid, 'sssssssh'); // -> false
 
+// ========================= Depth First =========================
+// Time: O(3^(r*c)), Space: O(r*c)
 const stringSearch = (grid, s) => {
   const visited = new Set();
   for (let row = 0; row < grid.length; row++) {
@@ -8675,4 +8679,82 @@ const traverseWord = (grid, row, col, s, i, visited) => {
     }
   }
   return false;
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[ #99 token replace ]]]]]]]]]]]]]]]]]]]]]]]]]
+// Write a function, tokenReplace, that takes in an object of tokens and a string.
+// The function should return a new string where tokens are replaced.
+// Tokens are enclosed in a pair of '$'. You can assume that the input string is
+// properly formatted. Tokens should be replaced from left to right in the string
+// (see test_05).
+//
+// test_00:
+// const tokens = {
+//   '$LOCATION$': 'park',
+//   '$ANIMAL$': 'dog',
+// };
+// tokenReplace('Walk the $ANIMAL$ in the $LOCATION$!', tokens); 
+// -> 'Walk the dog in the park!'
+// test_01:
+// const tokens = {
+//   '$ADJECTIVE$': 'quick',
+//   '$VERB$': 'hopped',
+//   '$DIRECTION$': 'North'
+// };
+// tokenReplace('the $ADJECTIVE$ fox $VERB$ $ADJECTIVE$ly $DIRECTION$ward', tokens); 
+// -> 'the quick fox hopped quickly Northward'
+// test_02:
+// const tokens = {
+//   '$greeting$': 'hey programmer',
+// };
+// tokenReplace('his greeting is always $greeting$.', tokens); 
+// -> 'his greeting is always hey programmer.'
+// test_03:
+// const tokens = {
+//   '$A$': 'lions',
+//   '$B$': 'tigers',
+//   '$C$': 'bears',
+// };
+// tokenReplace('$A$$B$$C$, oh my.', tokens); 
+// -> 'lionstigersbears, oh my.'
+// test_04:
+// const tokens = {
+//   '$A$': 'lions',
+//   '$B$': 'tigers',
+//   '$C$': 'bears',
+// };
+// tokenReplace('$B$', tokens); 
+// -> 'tigers'
+// test_05:
+// const tokens = {
+//   '$second$': 'beta',
+//   '$first$': 'alpha',
+//   '$third$': 'gamma',
+// };
+// tokenReplace('$first$second$third$', tokens); 
+// -> 'alphasecondgamma'
+
+// ========================= 2 Pointers =========================
+// Time: O(n), Space: O(n)
+const tokenReplace = (s, tokens) => {
+  let replaced = '';
+
+  let i = 0;
+  let j = 1;
+  while (i < s.length) {
+    if (s[i] !== '$') {
+      replaced += s[i];
+      i++;
+      j = i + 1;
+    } else if (s[j] !== '$') {
+      j++;
+    } else {
+      const token = s.slice(i, j + 1);
+      replaced += tokens[token];
+      i = j + 1;
+      j = i + 1;
+    }
+  }
+
+  return replaced;
 };
