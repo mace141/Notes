@@ -2239,12 +2239,10 @@ def tree_value_count(root, target):
   return count + tree_value_count(root.left) + tree_value_count(root.right)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #32 how high ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, howHigh, that takes in the root of a binary tree. The 
+# Write a function, how_high, that takes in the root of a binary tree. The 
 # function should return a number representing the height of the tree.
-#
 # The height of a binary tree is defined as the maximal number of edges from 
 # the root node to any leaf node.
-#
 # If the tree is empty, return -1.
 #
 # test_00:
@@ -2254,21 +2252,17 @@ def tree_value_count(root, target):
 # d = new Node('d');
 # e = new Node('e');
 # f = new Node('f');
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
 # b.right = e;
 # c.right = f;
-#
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-#
-# howHigh(a); # -> 2
-#
+# how_high(a); # -> 2
 # test_01:
 # a = new Node('a');
 # b = new Node('b');
@@ -2277,14 +2271,12 @@ def tree_value_count(root, target):
 # e = new Node('e');
 # f = new Node('f');
 # g = new Node('g');
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
 # b.right = e;
 # c.right = f;
 # e.left = g
-#
 #      a
 #    /   \
 #   b     c
@@ -2292,28 +2284,27 @@ def tree_value_count(root, target):
 # d   e     f
 #    /
 #   g
-#
-# howHigh(a); # -> 3
-#
+# how_high(a); # -> 3
 # test_02:
 # a = new Node('a');
 # c = new Node('c');
-#
 # a.right = c;
-#
 #      a
 #       \
 #        c
-#
-# howHigh(a); # -> 1
-#
+# how_high(a); # -> 1
 # test_03:
 # a = new Node('a');
-#
 #      a
-#
-# howHigh(a); # -> 0
+# how_high(a); # -> 0
 
+def how_high(root, i = 0):
+  if root is None:
+    return i - 1
+  
+  left = how_high(root.left, i + 1)
+  right = how_high(root.right, i + 1)
+  return max(left, right)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #33 bottom right value ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, bottomRightValue, that takes in the root of a binary tree. 
