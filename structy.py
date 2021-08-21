@@ -2534,12 +2534,12 @@ def all_tree_paths(root):
   right_paths = all_tree_paths(root.right)
   for path in right_paths:
     paths.append([root.val, *path])
-    
+
   return paths
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #35 tree levels ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, treeLevels, that takes in the root of a binary tree. The 
+# Write a function, tree_levels, that takes in the root of a binary tree. The 
 # function should return a 2-Dimensional list where each sublist represents a
 # level of the tree.
 #
@@ -2550,26 +2550,22 @@ def all_tree_paths(root):
 # d = new Node("d");
 # e = new Node("e");
 # f = new Node("f");
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
 # b.right = e;
 # c.right = f;
-#
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-#
-# treeLevels(a); # ->
+# tree_levels(a); # ->
 # [
 #   ['a'],
 #   ['b', 'c'],
 #   ['d', 'e', 'f']
 # ]
-#
 # test_01:
 # a = new Node("a");
 # b = new Node("b");
@@ -2580,7 +2576,6 @@ def all_tree_paths(root):
 # g = new Node("g");
 # h = new Node("h");
 # i = new Node("i");
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -2589,7 +2584,6 @@ def all_tree_paths(root):
 # e.left = g;
 # e.right = h;
 # f.left = i;
-#
 #         a
 #      /    \
 #     b      c
@@ -2597,15 +2591,13 @@ def all_tree_paths(root):
 #  d    e      f
 #      / \    /
 #     g  h   i
-#
-# treeLevels(a); # ->
+# tree_levels(a); # ->
 # [
 #   ['a'],
 #   ['b', 'c'],
 #   ['d', 'e', 'f'],
 #   ['g', 'h', 'i']
 # ]
-#
 # test_02:
 # q = new Node("q");
 # r = new Node("r");
@@ -2613,13 +2605,11 @@ def all_tree_paths(root):
 # t = new Node("t");
 # u = new Node("u");
 # v = new Node("v");
-#
 # q.left = r;
 # q.right = s;
 # r.right = t;
 # t.left = u;
 # u.right = v;
-#
 #      q
 #    /   \
 #   r     s
@@ -2629,8 +2619,7 @@ def all_tree_paths(root):
 #   u
 #  /
 # v
-#
-# treeLevels(q); #->
+# tree_levels(q); #->
 # [
 #   ['q'],
 #   ['r', 's'],
@@ -2638,12 +2627,29 @@ def all_tree_paths(root):
 #   ['u'],
 #   ['v']
 # ]
-#
-#
 # test_03:
-# treeLevels(None); # -> []
+# tree_levels(None); # -> []
 
+def tree_levels(root):
+  if root is None:
+    return []
+    
+  levels = []
+  queue = deque([(root, 0)])
+  while queue:
+    node, level = queue.popleft()
 
+    if len(levels) == level:
+      levels.append([ node.val ])
+    else:
+      levels[level].append(node.val)
+    
+    if node.left:
+      queue.append((node.left, level + 1))
+    if node.right:
+      queue.append((node.right, level + 1))
+  
+  return levels
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #36 level averages ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, levelAverages, that takes in the root of a binary tree that
