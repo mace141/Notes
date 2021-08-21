@@ -2112,6 +2112,8 @@ def max_path_sum(root):
 #                6000
 # path_finder(root, 3451); # -> [0, 1, 2, 3, ..., 3450, 3451]
 
+# ========================= Depth First =========================
+# Time: O(n), Space: O(n)
 def path_finder(root, target):
   path = _path_finder(root, target)
   if path is not None:
@@ -2228,6 +2230,8 @@ def _path_finder(root, target):
 # test_04:
 # tree_value_count(None, 42); # -> 0
 
+# ========================= Depth First =========================
+# Time: O(n), Space: O(n)
 def tree_value_count(root, target):
   if root is None:
     return 0
@@ -2298,6 +2302,8 @@ def tree_value_count(root, target):
 #      a
 # how_high(a); # -> 0
 
+# ========================= Depth First =========================
+# Time: O(n), Space: O(n)
 def how_high(root, i = 0):
   if root is None:
     return i - 1
@@ -2408,6 +2414,8 @@ def how_high(root, i = 0):
 #      42
 # bottom_right_value(a); # -> 42
 
+# ========================= Breadth First =========================
+# Time: O(n), Space: O(1)
 from collections import deque
 
 def bottom_right_value(root):
@@ -2519,6 +2527,8 @@ def bottom_right_value(root):
 #   ['z']
 # ]
 
+# ========================= Depth First =========================
+# Time: O(n), Space: O(n)
 def all_tree_paths(root):
   if root is None:
     return []
@@ -2630,10 +2640,14 @@ def all_tree_paths(root):
 # test_03:
 # tree_levels(None); # -> []
 
+# ========================= Breadth First =========================
+# Time: O(n), Space: O(n)
+from collections import deque
+
 def tree_levels(root):
   if root is None:
     return []
-    
+
   levels = []
   queue = deque([(root, 0)])
   while queue:
@@ -2652,7 +2666,7 @@ def tree_levels(root):
   return levels
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #36 level averages ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, levelAverages, that takes in the root of a binary tree that
+# Write a function, level_averages, that takes in the root of a binary tree that
 # contains number values. The function should return an list containing the 
 # average value of each level.
 #
@@ -2663,21 +2677,17 @@ def tree_levels(root):
 # d = new Node(4);
 # e = new Node(-2);
 # f = new Node(1);
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
 # b.right = e;
 # c.right = f;
-#
 #       3
 #    /    \
 #   11     4
 #  / \      \
 # 4   -2     1
-#
-# levelAverages(a); # -> [ 3, 7.5, 1 ] 
-#
+# level_averages(a); # -> [ 3, 7.5, 1 ] 
 # test_01:
 # a = new Node(5);
 # b = new Node(11);
@@ -2686,14 +2696,12 @@ def tree_levels(root):
 # e = new Node(15);
 # f = new Node(1);
 # g = new Node(3);
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
 # b.right = e;
 # e.left = f;
 # e.right = g;
-#
 #        5
 #     /    \
 #    11    54
@@ -2701,9 +2709,7 @@ def tree_levels(root):
 # 20   15
 #      / \
 #     1  3
-#
-# levelAverages(a); # -> [ 5, 32.5, 17.5, 2 ] 
-#
+# level_averages(a); # -> [ 5, 32.5, 17.5, 2 ] 
 # test_02:
 # a = new Node(-1);
 # b = new Node(-6);
@@ -2713,7 +2719,6 @@ def tree_levels(root):
 # f = new Node(45);
 # g = new Node(-1);
 # h = new Node(-2);
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -2721,7 +2726,6 @@ def tree_levels(root):
 # c.right = f;
 # e.left = g;
 # f.right = h;
-#
 #        -1
 #      /   \
 #    -6    -5
@@ -2729,9 +2733,7 @@ def tree_levels(root):
 # -3   0     45
 #     /       \
 #    -1       -2
-#
-# levelAverages(a); # -> [ -1, -5.5, 14, -1.5 ]
-#
+# level_averages(a); # -> [ -1, -5.5, 14, -1.5 ]
 # test_03:
 # q = new Node(13);
 # r = new Node(4);
@@ -2739,13 +2741,11 @@ def tree_levels(root):
 # t = new Node(9);
 # u = new Node(2);
 # v = new Node(42);
-#
 # q.left = r;
 # q.right = s;
 # r.right = t;
 # t.left = u;
 # u.right = v;
-#
 #        13
 #      /   \
 #     4     2
@@ -2755,12 +2755,45 @@ def tree_levels(root):
 #     2
 #    /
 #   42
-#
-# levelAverages(q); # -> [ 13, 3, 9, 2, 42 ]
-#
+# level_averages(q); # -> [ 13, 3, 9, 2, 42 ]
 # test_04:
-# levelAverages(None); # -> [ ]
+# level_averages(None); # -> [ ]
 
+# ========================= Breadth First =========================
+# Time: O(n), Space: O(n)
+from collections import deque
+from statistics import mean
+
+def level_averages(root):
+  if root is None:
+    return []
+
+  levels = tree_levels(root)
+  for i in range(len(levels)):
+    levels[i] = mean(levels[i])
+
+  return levels 
+
+def tree_levels(root):
+  if root is None:
+    return []
+
+  levels = []
+  queue = deque([(root, 0)])
+  while queue:
+    node, level = queue.popleft()
+
+    if len(levels) == level:
+      levels.append([ node.val ])
+    else:
+      levels[level].append(node.val)
+    
+    if node.left:
+      queue.append((node.left, level + 1))
+    if node.right:
+      queue.append((node.right, level + 1))
+  
+  return levels
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #37 leaf list ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, leafList, that takes in the root of a binary tree and 
