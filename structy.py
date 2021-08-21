@@ -2137,7 +2137,7 @@ def _path_finder(root, target):
   return None
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #31 tree value count ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, treeValueCount, that takes in the root of a binary tree and
+# Write a function, tree_value_count, that takes in the root of a binary tree and
 # a target value. The function should return the number of times that the target
 # occurs in the tree.
 #
@@ -2148,21 +2148,17 @@ def _path_finder(root, target):
 # d = new Node(4);
 # e = new Node(6);
 # f = new Node(12);
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
 # b.right = e;
 # c.right = f;
-#
 #     12
 #    /  \
 #   6    6
 #  / \    \
 # 4   6    12
-#
-# treeValueCount(a,  6); # -> 3
-#
+# tree_value_count(a,  6); # -> 3
 # test_01:
 # a = new Node(12);
 # b = new Node(6);
@@ -2170,21 +2166,17 @@ def _path_finder(root, target):
 # d = new Node(4);
 # e = new Node(6);
 # f = new Node(12);
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
 # b.right = e;
 # c.right = f;
-#
 #     12
 #    /  \
 #   6    6
 #  / \    \
 # 4   6    12
-#
-# treeValueCount(a,  12); # -> 2
-#
+# tree_value_count(a,  12); # -> 2
 # test_02:
 # a = new Node(7);
 # b = new Node(5);
@@ -2194,7 +2186,6 @@ def _path_finder(root, target):
 # f = new Node(7);
 # g = new Node(1);
 # h = new Node(1);
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -2202,7 +2193,6 @@ def _path_finder(root, target):
 # c.right = f;
 # e.left = g;
 # f.right = h;
-#
 #      7
 #    /   \
 #   5     1
@@ -2210,8 +2200,7 @@ def _path_finder(root, target):
 # 1   8     7
 #    /       \
 #   1         1
-# treeValueCount(a, 1); # -> 4
-#
+# tree_value_count(a, 1); # -> 4
 # test_03:
 # a = new Node(7);
 # b = new Node(5);
@@ -2221,7 +2210,6 @@ def _path_finder(root, target):
 # f = new Node(7);
 # g = new Node(1);
 # h = new Node(1);
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -2229,7 +2217,6 @@ def _path_finder(root, target):
 # c.right = f;
 # e.left = g;
 # f.right = h;
-#
 #      7
 #    /   \
 #   5     1
@@ -2237,12 +2224,19 @@ def _path_finder(root, target):
 # 1   8     7
 #    /       \
 #   1         1
-#
-# treeValueCount(a, 9); # -> 0
-#
+# tree_value_count(a, 9); # -> 0
 # test_04:
-# treeValueCount(None, 42); # -> 0
+# tree_value_count(None, 42); # -> 0
 
+def tree_value_count(root, target):
+  if root is None:
+    return 0
+  
+  count = 0
+  if root.val == target:
+    count += 1
+  
+  return count + tree_value_count(root.left) + tree_value_count(root.right)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #32 how high ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, howHigh, that takes in the root of a binary tree. The 
