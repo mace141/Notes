@@ -2112,6 +2112,29 @@ def max_path_sum(root):
 #                6000
 # path_finder(root, 3451); # -> [0, 1, 2, 3, ..., 3450, 3451]
 
+def path_finder(root, target):
+  path = _path_finder(root, target)
+  if path is not None:
+    return path[::-1]
+  return None
+
+def _path_finder(root, target):
+  if root is None:
+    return None
+  if root.val == target:
+    return [root.val]
+
+  left_path = _path_finder(root.left, target)
+  if left_path is not None:
+    left_path.append(root.val)
+    return left_path
+
+  right_path = _path_finder(root.right, target)
+  if right_path is not None:
+    right_path.append(root.val)
+    return right_path
+
+  return None
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #31 tree value count ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, treeValueCount, that takes in the root of a binary tree and
