@@ -1897,6 +1897,15 @@ def tree_sum(root):
 #        42
 # tree_min_value(a); # -> 42
 
+# ========================= Depth First =========================
+# Time: O(n), Space: O(n)
+def tree_min_value(root):
+  if root == None:
+    return float('inf')
+
+  left = tree_min_value(root.left)
+  right = tree_min_value(root.right)
+  return min(root.val, left, right)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #29 max path sum ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, maxPathSum, that takes in the root of a binary tree that 
