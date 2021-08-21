@@ -1826,7 +1826,7 @@ def tree_sum(root):
   
   return root.val + tree_sum(root.left) + tree_sum(root.right)
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #28 tree min value ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #28 tree min value ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, treeMinValue, that takes in the root of a binary tree that 
 # contains number values. The function should return the minimum value within 
 # the tree.
@@ -1908,10 +1908,9 @@ def tree_min_value(root):
   return min(root.val, left, right)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #29 max path sum ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, maxPathSum, that takes in the root of a binary tree that 
+# Write a function, max_path_sum, that takes in the root of a binary tree that 
 # contains number values. The function should return the maximum sum of any root
 # to leaf path within the tree.
-#
 # You may assume that the input tree is non-empty.
 #
 # test_00:
@@ -1921,21 +1920,17 @@ def tree_min_value(root):
 # d = new Node(4);
 # e = new Node(-2);
 # f = new Node(1);
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
 # b.right = e;
 # c.right = f;
-#
 #      3
 #    /   \
 #   11    4
 #  / \     \
 # 4   -2    1
-#
-# maxPathSum(a); # -> 18
-#
+# max_path_sum(a); # -> 18
 # test_01:
 # a = new Node(5);
 # b = new Node(11);
@@ -1944,14 +1939,12 @@ def tree_min_value(root):
 # e = new Node(15);
 # f = new Node(1);
 # g = new Node(3);
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
 # b.right = e;
 # e.left = f;
 # e.right = g;
-#
 #       5
 #     /   \
 #    11   54
@@ -1959,9 +1952,7 @@ def tree_min_value(root):
 # 20   15
 #      / \
 #     1  3
-#
-# maxPathSum(a); # -> 59
-#
+# max_path_sum(a); # -> 59
 # test_02:
 # a = new Node(-1);
 # b = new Node(-6);
@@ -1971,7 +1962,6 @@ def tree_min_value(root):
 # f = new Node(-13);
 # g = new Node(-1);
 # h = new Node(-2);
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -1979,7 +1969,6 @@ def tree_min_value(root):
 # c.right = f;
 # e.left = g;
 # f.right = h;
-#
 #        -1
 #      /   \
 #    -6    -5
@@ -1987,22 +1976,28 @@ def tree_min_value(root):
 # -3   0    -13
 #     /       \
 #    -1       -2
-#
-# maxPathSum(a); # -> -8
-#
+# max_path_sum(a); # -> -8
 # test_03:
 # a = new Node(42);
-#
 #        42
-#
-# maxPathSum(a); # -> 42
+# max_path_sum(a); # -> 42
 
+# ========================= Depth First =========================
+# Time: O(n), Space: O(n)
+def max_path_sum(root):
+  if root is None:
+    return float('-inf')
+  if root.left is None and root.right is None:
+    return root.val
+  
+  left = max_path_sum(root.left)
+  right = max_path_sum(root.right)
+  return root.val + max(left, right)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #30 path finder ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, pathFinder, that takes in the root of a binary tree and a 
+# Write a function, path_finder, that takes in the root of a binary tree and a 
 # target value. The function should return an list representing a path to the 
 # target value. If the target value is not found in the tree, then return None.
-#
 # You may assume that the tree contains unique values.
 #
 # test_00:
@@ -2012,21 +2007,17 @@ def tree_min_value(root):
 # d = new Node("d");
 # e = new Node("e");
 # f = new Node("f");
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
 # b.right = e;
 # c.right = f;
-#
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-#
-# pathFinder(a, 'e'); # -> [ 'a', 'b', 'e' ]
-#
+# path_finder(a, 'e'); # -> [ 'a', 'b', 'e' ]
 # test_01:
 # a = new Node("a");
 # b = new Node("b");
@@ -2034,21 +2025,17 @@ def tree_min_value(root):
 # d = new Node("d");
 # e = new Node("e");
 # f = new Node("f");
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
 # b.right = e;
 # c.right = f;
-#
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-#
-# pathFinder(a, 'p'); # -> None
-#
+# path_finder(a, 'p'); # -> None
 # test_02:
 # a = new Node("a");
 # b = new Node("b");
@@ -2058,7 +2045,6 @@ def tree_min_value(root):
 # f = new Node("f");
 # g = new Node("g");
 # h = new Node("h");
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -2066,7 +2052,6 @@ def tree_min_value(root):
 # c.right = f;
 # e.left = g;
 # f.right = h;
-#
 #      a
 #    /   \
 #   b     c
@@ -2074,9 +2059,7 @@ def tree_min_value(root):
 # d   e     f
 #    /       \
 #   g         h
-#
-# pathFinder(a, "c"); # -> ['a', 'c']
-#
+# path_finder(a, "c"); # -> ['a', 'c']
 # test_03:
 # a = new Node("a");
 # b = new Node("b");
@@ -2086,7 +2069,6 @@ def tree_min_value(root):
 # f = new Node("f");
 # g = new Node("g");
 # h = new Node("h");
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -2094,7 +2076,6 @@ def tree_min_value(root):
 # c.right = f;
 # e.left = g;
 # f.right = h;
-#
 #      a
 #    /   \
 #   b     c
@@ -2102,19 +2083,13 @@ def tree_min_value(root):
 # d   e     f
 #    /       \
 #   g         h
-#
-# pathFinder(a, "h"); # -> ['a', 'c', 'f', 'h']
-#
+# path_finder(a, "h"); # -> ['a', 'c', 'f', 'h']
 # test_04:
 # x = new Node("x");
-#
 #      x
-#
-# pathFinder(x, "x"); # -> ['x']
-#
+# path_finder(x, "x"); # -> ['x']
 # test_05:
-# pathFinder(None, "x"); # -> None
-#
+# path_finder(None, "x"); # -> None
 # test_06:
 # root = new Node(0);
 # let curr = root;
@@ -2122,7 +2097,6 @@ def tree_min_value(root):
 #   curr.right = new Node(i);
 #   curr = curr.right;
 # }
-#
 #      0
 #       \
 #        1
@@ -2136,8 +2110,7 @@ def tree_min_value(root):
 #              5999
 #                \
 #                6000
-#
-# pathFinder(root, 3451); # -> [0, 1, 2, 3, ..., 3450, 3451]
+# path_finder(root, 3451); # -> [0, 1, 2, 3, ..., 3450, 3451]
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #31 tree value count ]]]]]]]]]]]]]]]]]]]]]]]]] 
