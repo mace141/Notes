@@ -2885,7 +2885,7 @@ def leaf_list(root, values = []):
   return values
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #38 has path ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, hasPath, that takes in an object representing the adjacency
+# Write a function, has_path, that takes in an object representing the adjacency
 # list of a directed acyclic graph and two nodes (src, dst). The function should
 # return a boolean indicating whether or not there exists a directed path between
 # the source and destination nodes.
@@ -2899,9 +2899,7 @@ def leaf_list(root, values = []):
 #   j: ['i'],
 #   k: []
 # };
-#
-# hasPath(graph, 'f', 'k'); # true
-#
+# has_path(graph, 'f', 'k'); # true
 # test_01:
 # graph = {
 #   f: ['g', 'i'],
@@ -2911,9 +2909,7 @@ def leaf_list(root, values = []):
 #   j: ['i'],
 #   k: []
 # };
-#
-# hasPath(graph, 'f', 'j'); # false
-#
+# has_path(graph, 'f', 'j'); # false
 # test_02:
 # graph = {
 #   f: ['g', 'i'],
@@ -2923,9 +2919,7 @@ def leaf_list(root, values = []):
 #   j: ['i'],
 #   k: []
 # };
-#
-# hasPath(graph, 'i', 'h'); # true
-#
+# has_path(graph, 'i', 'h'); # true
 # test_03:
 # graph = {
 #   v: ['x', 'w'],
@@ -2934,9 +2928,7 @@ def leaf_list(root, values = []):
 #   y: ['z'],
 #   z: [],  
 # };
-#
-# hasPath(graph, 'v', 'w'); # true
-#
+# has_path(graph, 'v', 'w'); # true
 # test_04:
 # graph = {
 #   v: ['x', 'w'],
@@ -2945,9 +2937,19 @@ def leaf_list(root, values = []):
 #   y: ['z'],
 #   z: [],  
 # };
-#
-# hasPath(graph, 'v', 'z'); # false
+# has_path(graph, 'v', 'z'); # false
 
+def has_path(graph, src, dst):
+  if not graph[src]:
+    return False
+  if src == dst:
+    return True
+  
+  for node in graph[src]:
+    if has_path(graph, node, dst):
+      return True
+  
+  return False
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #39 undirected path ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, undirectedPath, that takes in an list of edges for an 
