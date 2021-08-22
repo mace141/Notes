@@ -2952,7 +2952,7 @@ def has_path(graph, src, dst):
   return False
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #39 undirected path ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, undirectedPath, that takes in an list of edges for an 
+# Write a function, undirected_path, that takes in an list of edges for an 
 # undirected graph and two nodes (nodeA, nodeB). The function should return a 
 # boolean indicating whether or not there exists a path between nodeA and nodeB.
 #
@@ -2964,9 +2964,7 @@ def has_path(graph, src, dst):
 #   ['k', 'l'],
 #   ['o', 'n']
 # ];
-#
-# undirectedPath(edges, 'j', 'm'); # -> true
-#
+# undirected_path(edges, 'j', 'm'); # -> true
 # test_01:
 # edges = [
 #   ['i', 'j'],
@@ -2975,9 +2973,7 @@ def has_path(graph, src, dst):
 #   ['k', 'l'],
 #   ['o', 'n']
 # ];
-#
-# undirectedPath(edges, 'm', 'j'); # -> true
-#
+# undirected_path(edges, 'm', 'j'); # -> true
 # test_02:
 # edges = [
 #   ['i', 'j'],
@@ -2986,9 +2982,7 @@ def has_path(graph, src, dst):
 #   ['k', 'l'],
 #   ['o', 'n']
 # ];
-#
-# undirectedPath(edges, 'l', 'j'); # -> true
-#
+# undirected_path(edges, 'l', 'j'); # -> true
 # test_03:
 # edges = [
 #   ['i', 'j'],
@@ -2997,8 +2991,7 @@ def has_path(graph, src, dst):
 #   ['k', 'l'],
 #   ['o', 'n']
 # ];
-#
-# undirectedPath(edges, 'k', 'o'); # -> false
+# undirected_path(edges, 'k', 'o'); # -> false
 # test_04:
 # edges = [
 #   ['i', 'j'],
@@ -3007,9 +3000,7 @@ def has_path(graph, src, dst):
 #   ['k', 'l'],
 #   ['o', 'n']
 # ];
-#
-# undirectedPath(edges, 'i', 'o'); # -> false
-#
+# undirected_path(edges, 'i', 'o'); # -> false
 # test_05:
 # edges = [
 #   ['b', 'a'],
@@ -3020,9 +3011,7 @@ def has_path(graph, src, dst):
 #   ['q', 'u'],
 #   ['q', 't'],
 # ];
-#
-# undirectedPath(edges, 'a', 'b'); # -> true
-#
+# undirected_path(edges, 'a', 'b'); # -> true
 # test_06:
 # edges = [
 #   ['b', 'a'],
@@ -3033,9 +3022,7 @@ def has_path(graph, src, dst):
 #   ['q', 'u'],
 #   ['q', 't'],
 # ];
-#
-# undirectedPath(edges, 'a', 'c'); # -> true
-#
+# undirected_path(edges, 'a', 'c'); # -> true
 # test_07:
 # edges = [
 #   ['b', 'a'],
@@ -3046,9 +3033,7 @@ def has_path(graph, src, dst):
 #   ['q', 'u'],
 #   ['q', 't'],
 # ];
-#
-# undirectedPath(edges, 'r', 't'); # -> true
-#
+# undirected_path(edges, 'r', 't'); # -> true
 # test_08:
 # edges = [
 #   ['b', 'a'],
@@ -3059,17 +3044,41 @@ def has_path(graph, src, dst):
 #   ['q', 'u'],
 #   ['q', 't'],
 # ];
-#
-# undirectedPath(edges, 'r', 'b'); # -> false
+# undirected_path(edges, 'r', 'b'); # -> false
 
+def undirected_path(edges, node_A, node_B, visited = set()):
+  graph = build_graph(edges)
+
+  if node_A in visited:
+    return False
+  if node_A == node_B:
+    return True
+  visited.add(node_A)
+  for node in graph[node_A]:
+    if undirected_path(edges, node, node_B):
+      return True
+
+  return False
+
+def build_graph(edges):
+  graph = {}
+  for edge in edges:
+    src, dst = edge
+    if src not in graph:
+      graph[src] = []
+    if dst not in graph:
+      graph[dst] = []
+    graph[src].append(dst)
+    graph[dst].append(src)
+  return graph
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #40 connected components count ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, connectedComponentsCount, that takes in the adjacency list 
+# Write a function, connected_components_count, that takes in the adjacency list 
 # of an undirected graph. The function should return the number of connected 
 # components within the graph.
 #
 # test_00:
-# connectedComponentsCount({
+# connected_components_count({
 #   0: [8, 1, 5],
 #   1: [0],
 #   5: [0, 8],
@@ -3080,7 +3089,7 @@ def has_path(graph, src, dst):
 # }); # -> 2
 #
 # test_01:
-# connectedComponentsCount({
+# connected_components_count({
 #   1: [2],
 #   2: [1,8],
 #   6: [7],
@@ -3090,7 +3099,7 @@ def has_path(graph, src, dst):
 # }); # -> 1
 #
 # test_02:
-# connectedComponentsCount({
+# connected_components_count({
 #   3: [],
 #   4: [6],
 #   6: [4, 5, 7, 8],
@@ -3102,10 +3111,10 @@ def has_path(graph, src, dst):
 # }); # -> 3
 #
 # test_03:
-# connectedComponentsCount({}); # -> 0
+# connected_components_count({}); # -> 0
 #
 # test_04:
-# connectedComponentsCount({
+# connected_components_count({
 #   0: [4,7],
 #   1: [],
 #   2: [],
