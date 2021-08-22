@@ -2796,7 +2796,7 @@ def tree_levels(root):
   return levels
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #37 leaf list ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, leafList, that takes in the root of a binary tree and 
+# Write a function, leaf_list, that takes in the root of a binary tree and 
 # returns an list containing the values of all leaf nodes in left-to-right order.
 #
 # test_00:
@@ -2806,21 +2806,17 @@ def tree_levels(root):
 # d = new Node("d");
 # e = new Node("e");
 # f = new Node("f");
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
 # b.right = e;
 # c.right = f;
-#
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-#
-# leafList(a); # -> [ 'd', 'e', 'f' ] 
-#
+# leaf_list(a); # -> [ 'd', 'e', 'f' ] 
 # test_01:
 # a = new Node("a");
 # b = new Node("b");
@@ -2830,7 +2826,6 @@ def tree_levels(root):
 # f = new Node("f");
 # g = new Node("g");
 # h = new Node("h");
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -2838,7 +2833,6 @@ def tree_levels(root):
 # c.right = f;
 # e.left = g;
 # f.right = h;
-#
 #      a
 #    /   \
 #   b     c
@@ -2846,9 +2840,7 @@ def tree_levels(root):
 # d   e     f
 #    /       \
 #   g         h
-#
-# leafList(a); # -> [ 'd', 'g', 'h' ]
-#
+# leaf_list(a); # -> [ 'd', 'g', 'h' ]
 # test_02:
 # a = new Node(5);
 # b = new Node(11);
@@ -2857,14 +2849,12 @@ def tree_levels(root):
 # e = new Node(15);
 # f = new Node(1);
 # g = new Node(3);
-#
 # a.left = b;
 # a.right = c;
 # b.left = d;
 # b.right = e;
 # e.left = f;
 # e.right = g;
-#
 #        5
 #     /    \
 #    11    54
@@ -2872,19 +2862,27 @@ def tree_levels(root):
 # 20   15
 #      / \
 #     1  3
-#
-# leafList(a); # -> [ 20, 1, 3, 54 ]
-#
+# leaf_list(a); # -> [ 20, 1, 3, 54 ]
 # test_03:
 # x = new Node('x');
-#
 #      x
-#
-# leafList(x); # -> [ 'x' ]
-#
+# leaf_list(x); # -> [ 'x' ]
 # test_04:
-# leafList(None); # -> [ ]
+# leaf_list(None); # -> [ ]
 
+# ========================= Depth First =========================
+# Time: O(n), Space: O(n)
+def leaf_list(root, values = []):
+  if root is None:
+    return values 
+  
+  if root.left is None and root.right is None:
+    values.append(root.val)
+
+  leaf_list(root.left, values)
+  leaf_list(root.right, values)
+
+  return values
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #38 has path ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, hasPath, that takes in an object representing the adjacency
