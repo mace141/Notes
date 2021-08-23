@@ -2939,9 +2939,9 @@ def leaf_list(root, values = []):
 # };
 # has_path(graph, 'v', 'z'); # false
 
+# ========================= Depth First =========================
+# Time: O(e), Space: O(n)
 def has_path(graph, src, dst):
-  if not graph[src]:
-    return False
   if src == dst:
     return True
   
@@ -2951,7 +2951,7 @@ def has_path(graph, src, dst):
   
   return False
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #39 undirected path ]]]]]]]]]]]]]]]]]]]]]]]]] 
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #39 undirected path ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, undirected_path, that takes in an list of edges for an 
 # undirected graph and two nodes (nodeA, nodeB). The function should return a 
 # boolean indicating whether or not there exists a path between nodeA and nodeB.
@@ -3046,6 +3046,8 @@ def has_path(graph, src, dst):
 # ];
 # undirected_path(edges, 'r', 'b'); # -> false
 
+# ========================= Depth First =========================
+# Time: O(e), Space: O(n)
 def undirected_path(edges, node_A, node_B, visited = set()):
   graph = build_graph(edges)
 
@@ -3053,6 +3055,7 @@ def undirected_path(edges, node_A, node_B, visited = set()):
     return False
   if node_A == node_B:
     return True
+
   visited.add(node_A)
   for node in graph[node_A]:
     if undirected_path(edges, node, node_B):
@@ -3072,7 +3075,7 @@ def build_graph(edges):
     graph[dst].append(src)
   return graph
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #40 connected components count ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #40 connected components count ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, connected_components_count, that takes in the adjacency list 
 # of an undirected graph. The function should return the number of connected 
 # components within the graph.
@@ -3087,7 +3090,6 @@ def build_graph(edges):
 #   3: [2, 4],
 #   4: [3, 2]
 # }); # -> 2
-#
 # test_01:
 # connected_components_count({
 #   1: [2],
@@ -3097,7 +3099,6 @@ def build_graph(edges):
 #   7: [6, 8],
 #   8: [9, 7, 2]
 # }); # -> 1
-#
 # test_02:
 # connected_components_count({
 #   3: [],
@@ -3109,10 +3110,8 @@ def build_graph(edges):
 #   1: [2],
 #   2: [1]
 # }); # -> 3
-#
 # test_03:
 # connected_components_count({}); # -> 0
-#
 # test_04:
 # connected_components_count({
 #   0: [4,7],
@@ -3125,6 +3124,25 @@ def build_graph(edges):
 #   8: []
 # }); # -> 5
 
+# ========================= Depth First =========================
+# Time: O(e), Space: O(n)
+def connected_components_count(graph):
+  count = 0
+  visited = set()
+
+  for node in graph:
+    if node not in visited:
+      count += 1
+      traverse(graph, node, visited)
+  return count
+
+def traverse(graph, node, visited):
+  if node in visited:
+    return
+
+  visited.add(node)
+  for neighbor in graph[node]:
+    traverse(graph, neighbor, visited)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #41 largest component ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, largestComponent, that takes in the adjacency list of an 
