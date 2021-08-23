@@ -3335,7 +3335,7 @@ def build_graph(edges):
 
   return graph
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #43 island count ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #43 island count ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, island_count, that takes in a grid containing Ws and Ls. W 
 # represents water and L represents land. The function should return the number
 # of islands on the grid. An island is a vertically or horizontally connected 
@@ -3375,6 +3375,8 @@ def build_graph(edges):
 # ];
 # island_count(grid); # -> 0
 
+# ========================= Depth First =========================
+# Time: O(rc), Space: O(rc)
 def island_count(grid):
   visited = set()
   count = 0
@@ -3401,11 +3403,10 @@ def traverse_land(grid, r, c, visited):
   traverse_land(grid, r, c - 1, visited)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #44 minimum island ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, minimumIsland, that takes in a grid containing Ws and Ls. 
+# Write a function, minimum_island, that takes in a grid containing Ws and Ls. 
 # W represents water and L represents land. The function should return the size
 # of the smallest island. An island is a vertically or horizontally connected 
 # region of land.
-#
 # You may assume that the grid contains at least one island.
 #
 # test_00:
@@ -3417,9 +3418,7 @@ def traverse_land(grid, r, c, visited):
 #   ['L', 'W', 'W', 'L', 'L'],
 #   ['L', 'L', 'W', 'W', 'W'],
 # ];
-#
-# minimumIsland(grid); # -> 2
-#
+# minimum_island(grid); # -> 2
 # test_01:
 # grid = [
 #   ['L', 'W', 'W', 'L', 'W'],
@@ -3428,18 +3427,14 @@ def traverse_land(grid, r, c, visited):
 #   ['W', 'W', 'W', 'W', 'W'],
 #   ['W', 'W', 'L', 'L', 'L'],
 # ];
-#
-# minimumIsland(grid); # -> 1
-#
+# minimum_island(grid); # -> 1
 # test_02:
 # grid = [
 #   ['L', 'L', 'L'],
 #   ['L', 'L', 'L'],
 #   ['L', 'L', 'L'],
 # ];
-#
-# minimumIsland(grid); # -> 9
-#
+# minimum_island(grid); # -> 9
 # test_03:
 # grid = [
 #   ['W', 'W'],
@@ -3447,10 +3442,36 @@ def traverse_land(grid, r, c, visited):
 #   ['W', 'W'],
 #   ['W', 'L']
 # ];
-#
-# minimumIsland(grid); # -> 1
+# minimum_island(grid); # -> 1
 
+# ========================= Depth First =========================
+# Time: O(rc), Space: O(rc)
+def minimum_island(grid):
+  visited = set()
+  min_size = float('inf')
 
+  for r in range(len(grid)):
+    for c in range(len(grid[0])):
+      if (r, c) not in visited and grid[r][c] == 'L':
+        size = land_size(grid, r, c, visited)
+        min_size = min_size if min_size < size else size
+
+  return min_size
+
+def land_size(grid, r, c, visited):
+  if r < 0 or r == len(grid) or c < 0 or c == len(grid[0]):
+    return 0
+  if grid[r][c] == 'W' or (r, c) in visited:
+    return 0
+
+  size = 1
+  visited.add((r, c))
+  size += land_size(grid, r + 1, c, visited)
+  size += land_size(grid, r, c + 1, visited)
+  size += land_size(grid, r - 1, c, visited)
+  size += land_size(grid, r, c - 1, visited)
+  return size
+  
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #45 closest carrot ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, closestCarrot, that takes in a grid, a starting row, and a 
 # starting column. In the grid, 'X's are walls, 'O's are open spaces, and 'C's 
