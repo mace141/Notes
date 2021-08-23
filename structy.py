@@ -3304,6 +3304,8 @@ def component_size(graph, node, visited):
 # ];
 # shortest_path(edges, 'm', 's'); # -> 6
 
+# ========================= Depth First =========================
+# Time: O(e), Space: O(e)
 from collections import deque
 
 def shortest_path(edges, node_A, node_B):
@@ -3334,7 +3336,7 @@ def build_graph(edges):
   return graph
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #43 island count ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, islandCount, that takes in a grid containing Ws and Ls. W 
+# Write a function, island_count, that takes in a grid containing Ws and Ls. W 
 # represents water and L represents land. The function should return the number
 # of islands on the grid. An island is a vertically or horizontally connected 
 # region of land.
@@ -3348,9 +3350,7 @@ def build_graph(edges):
 #   ['L', 'W', 'W', 'L', 'L'],
 #   ['L', 'L', 'W', 'W', 'W'],
 # ];
-#
-# islandCount(grid); # -> 3
-#
+# island_count(grid); # -> 3
 # test_01:
 # grid = [
 #   ['L', 'W', 'W', 'L', 'W'],
@@ -3359,27 +3359,46 @@ def build_graph(edges):
 #   ['W', 'W', 'W', 'W', 'W'],
 #   ['W', 'W', 'L', 'L', 'L'],
 # ];
-#
-# islandCount(grid); # -> 4
-#
+# island_count(grid); # -> 4
 # test_02:
 # grid = [
 #   ['L', 'L', 'L'],
 #   ['L', 'L', 'L'],
 #   ['L', 'L', 'L'],
 # ];
-#
-# islandCount(grid); # -> 1
-#
+# island_count(grid); # -> 1
 # test_03:
 # grid = [
 #   ['W', 'W'],
 #   ['W', 'W'],
 #   ['W', 'W'],
 # ];
-#
-# islandCount(grid); # -> 0
+# island_count(grid); # -> 0
 
+def island_count(grid):
+  visited = set()
+  count = 0
+
+  for r in range(len(grid)):
+    for c in range(len(grid[0])):
+      pos = (r, c)
+      if pos not in visited and grid[r][c] == 'L':
+        count += 1
+        traverse_land(grid, r, c, visited)
+  
+  return count
+
+def traverse_land(grid, r, c, visited):
+  if r < 0 or r == len(grid) or c < 0 or c == len(grid[0]):
+    return
+  if grid[r][c] == 'W' or (r, c) in visited:
+    return
+
+  visited.add((r, c))
+  traverse_land(grid, r + 1, c, visited)
+  traverse_land(grid, r, c + 1, visited)
+  traverse_land(grid, r - 1, c, visited)
+  traverse_land(grid, r, c - 1, visited)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #44 minimum island ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, minimumIsland, that takes in a grid containing Ws and Ls. 
