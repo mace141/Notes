@@ -3144,7 +3144,7 @@ def traverse(graph, node, visited):
   for neighbor in graph[node]:
     traverse(graph, neighbor, visited)
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #41 largest component ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #41 largest component ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, largest_component, that takes in the adjacency list of an 
 # undirected graph. The function should return the size of the largest connected
 # component in the graph.
@@ -3193,6 +3193,8 @@ def traverse(graph, node, visited):
 #   8: []
 # }); # -> 3
 
+# ========================= Depth First =========================
+# Time: O(e), Space: O(n)
 def largest_component(graph):
   visited = set()
   largest = 0
@@ -3215,7 +3217,7 @@ def component_size(graph, node, visited):
   return size
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #42 shortest path ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, shortestPath, that takes in an list of edges for an 
+# Write a function, shortest_path, that takes in an list of edges for an 
 # undirected graph and two nodes (nodeA, nodeB). The function should return the
 # length of the shortest path between A and B. Consider the length as the number
 # of edges in the path, not the number of nodes. If there is no path between A 
@@ -3229,9 +3231,7 @@ def component_size(graph, node, visited):
 #   ['z', 'v'],
 #   ['w', 'v']
 # ];
-#
-# shortestPath(edges, 'w', 'z'); # -> 2
-#
+# shortest_path(edges, 'w', 'z'); # -> 2
 # test_01:
 # edges = [
 #   ['w', 'x'],
@@ -3240,9 +3240,7 @@ def component_size(graph, node, visited):
 #   ['z', 'v'],
 #   ['w', 'v']
 # ];
-#
-# shortestPath(edges, 'y', 'x'); # -> 1
-#
+# shortest_path(edges, 'y', 'x'); # -> 1
 # test_02:
 # edges = [
 #   ['a', 'c'],
@@ -3253,9 +3251,7 @@ def component_size(graph, node, visited):
 #   ['e', 'd'],
 #   ['g', 'f']
 # ];
-#
-# shortestPath(edges, 'a', 'e'); # -> 3
-#
+# shortest_path(edges, 'a', 'e'); # -> 3
 # test_03:
 # edges = [
 #   ['a', 'c'],
@@ -3266,9 +3262,7 @@ def component_size(graph, node, visited):
 #   ['e', 'd'],
 #   ['g', 'f']
 # ];
-#
-# shortestPath(edges, 'e', 'c'); # -> 2
-#
+# shortest_path(edges, 'e', 'c'); # -> 2
 # test_04:
 # edges = [
 #   ['a', 'c'],
@@ -3279,9 +3273,7 @@ def component_size(graph, node, visited):
 #   ['e', 'd'],
 #   ['g', 'f']
 # ];
-#
-# shortestPath(edges, 'b', 'g'); # -> -1
-#
+# shortest_path(edges, 'b', 'g'); # -> -1
 # test_05:
 # edges = [
 #   ['c', 'n'],
@@ -3290,9 +3282,7 @@ def component_size(graph, node, visited):
 #   ['c', 'w'],
 #   ['w', 'e'],
 # ];
-#
-# shortestPath(edges, 'w', 'e'); # -> 1
-#
+# shortest_path(edges, 'w', 'e'); # -> 1
 # test_06:
 # edges = [
 #   ['c', 'n'],
@@ -3301,9 +3291,7 @@ def component_size(graph, node, visited):
 #   ['c', 'w'],
 #   ['w', 'e'],
 # ];
-#
-# shortestPath(edges, 'n', 'e'); # -> 2
-#
+# shortest_path(edges, 'n', 'e'); # -> 2
 # test_07:
 # edges = [
 #   ['m', 'n'],
@@ -3314,9 +3302,36 @@ def component_size(graph, node, visited):
 #   ['r', 'q'],
 #   ['r', 's']
 # ];
-#
-# shortestPath(edges, 'm', 's'); # -> 6
+# shortest_path(edges, 'm', 's'); # -> 6
 
+from collections import deque
+
+def shortest_path(edges, node_A, node_B):
+  graph = build_graph(edges)
+
+  queue = deque([ (node_A, 0) ])
+  while queue:
+    node, length = queue.popleft()
+    if node == node_B:
+      return length
+    for neighbor in graph[node]:
+      queue.append((neighbor, length + 1))
+    
+  return -1
+
+def build_graph(edges):
+  graph = {}
+
+  for edge in edges:
+    a, b = edge
+    if a not in graph:
+      a = []
+    if b not in graph:
+      b = []
+    graph[a].append(b)
+    graph[b].append(a)
+
+  return graph
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #43 island count ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, islandCount, that takes in a grid containing Ws and Ls. W 
