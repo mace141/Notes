@@ -3145,12 +3145,12 @@ def traverse(graph, node, visited):
     traverse(graph, neighbor, visited)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #41 largest component ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, largestComponent, that takes in the adjacency list of an 
+# Write a function, largest_component, that takes in the adjacency list of an 
 # undirected graph. The function should return the size of the largest connected
 # component in the graph.
 #
 # test_00:
-# largestComponent({
+# largest_component({
 #   0: ['8', '1', '5'],
 #   1: ['0'],
 #   5: ['0', '8'],
@@ -3159,9 +3159,8 @@ def traverse(graph, node, visited):
 #   3: ['2', '4'],
 #   4: ['3', '2']
 # }); # -> 4
-#
 # test_01:
-# largestComponent({
+# largest_component({
 #   1: ['2'],
 #   2: ['1','8'],
 #   6: ['7'],
@@ -3169,9 +3168,8 @@ def traverse(graph, node, visited):
 #   7: ['6', '8'],
 #   8: ['9', '7', '2']
 # }); # -> 6
-#
 # test_02:
-# largestComponent({
+# largest_component({
 #   3: [],
 #   4: ['6'],
 #   6: ['4', '5', '7', '8'],
@@ -3181,12 +3179,10 @@ def traverse(graph, node, visited):
 #   1: ['2'],
 #   2: ['1']
 # }); # -> 5
-#
 # test_03:
-# largestComponent({}); # -> 0
-#
+# largest_component({}); # -> 0
 # test_04:
-# largestComponent({
+# largest_component({
 #   0: ['4','7'],
 #   1: [],
 #   2: [],
@@ -3197,6 +3193,26 @@ def traverse(graph, node, visited):
 #   8: []
 # }); # -> 3
 
+def largest_component(graph):
+  visited = set()
+  largest = 0
+
+  for node in graph:
+    if node not in visited:
+      size = component_size(graph, node, visited)
+      largest = largest if largest > size else size
+  return largest
+
+def component_size(graph, node, visited):
+  if node in visited:
+    return 0
+
+  visited.add(node)
+  size = 1
+  for neighbor in graph[node]:
+    size += component_size(graph, neighbor, visited)
+
+  return size
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #42 shortest path ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, shortestPath, that takes in an list of edges for an 
