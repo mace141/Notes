@@ -3489,9 +3489,7 @@ def land_size(grid, r, c, visited):
 #   ['O', 'X', 'X', 'O', 'O'],
 #   ['C', 'O', 'O', 'O', 'O'],
 # ];
-# 
 # closestCarrot(grid, 1, 2); # -> 4
-#
 # test_01:
 # grid = [
 #   ['O', 'O', 'O', 'O', 'O'],
@@ -3501,9 +3499,7 @@ def land_size(grid, r, c, visited):
 #   ['O', 'X', 'X', 'O', 'O'],
 #   ['C', 'O', 'O', 'O', 'O'],
 # ];
-# 
 # closestCarrot(grid, 0, 0); # -> 5
-#
 # test_02:
 # grid = [
 #   ['O', 'O', 'X', 'X', 'X'],
@@ -3515,9 +3511,7 @@ def land_size(grid, r, c, visited):
 #   ['O', 'O', 'C', 'O', 'O'],
 #   ['O', 'O', 'O', 'O', 'O'],
 # ];
-# 
 # closestCarrot(grid, 3, 4); # -> 9
-#
 # test_03:
 # grid = [
 #   ['O', 'O', 'X', 'O', 'O'],
@@ -3526,14 +3520,12 @@ def land_size(grid, r, c, visited):
 # ];
 # 
 # closestCarrot(grid, 1, 4); # -> 2
-#
 # test_04:
 # grid = [
 #   ['O', 'O', 'X', 'O', 'O'],
 #   ['O', 'X', 'X', 'X', 'O'],
 #   ['O', 'X', 'C', 'C', 'O'],
 # ];
-# 
 # closestCarrot(grid, 2, 0); # -> -1
 
 
@@ -3542,7 +3534,7 @@ def land_size(grid, r, c, visited):
 # acyclic graph. The function should return the length of the longest path 
 # within the graph. A path may start and end at any two nodes. The length of a
 # path is considered the number of edges in the path, not the number of nodes.
-#
+
 # test_00:
 # graph = {
 #   a: ['c', 'b'],
@@ -4656,7 +4648,7 @@ def _helper(string, i, j, memo):
 # arguments. The function should return a 2D list representing all of the
 # combinations of the specifized length.
 # The items within the combinations and the combinations themselves may be returned in any order.
-# You may assume that the input list contains unique elements and 1 <= k <= items.length.
+# You may assume that the input list contains unique elements and 1 <= k <= len(items).
 #
 # test_00:
 # createCombinations(["a", "b", "c"], 2); # ->
