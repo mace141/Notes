@@ -74,9 +74,7 @@ def is_prime(n):
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #3 uncompress ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, uncompress, that takes in a string as an argument. The input 
 # string will be formatted into multiple groups according to the following pattern:
-#
 # <number><char>
-#
 # for example, '2c' or '3a'.
 # The function should return an uncompressed version of the string where each 
 # 'char' of a group is repeated 'number' times concecutively. You may assume that 
@@ -110,7 +108,6 @@ def uncompress(str):
 # should return a compressed version of the string where consecutive occurences
 # of the same characters are compressed into the number of occurences followed 
 # by the character. Single character occurences should not be changed.
-#
 # 'aaa' compresses to '3a'
 # 'cc' compresses to '2c'
 # 't' should remain as 't'
@@ -941,6 +938,7 @@ def is_univalue_list(head, prev = None):
 # an argument. The function should return the length of the longest consecutive 
 # streak of the same value within the list.
 # 
+#
 # test_00:
 # a = new Node(5)
 # b = new Node(5)
@@ -1263,16 +1261,12 @@ def create_linked_list(values, i = 0):
 # digit of the number is the head. The function should return the head of a new 
 # linked listed representing the sum of the input lists. The output list should 
 # have it's digits reversed as well.
-#
 # Say we wanted to compute 621 + 354 normally. The sum is 975:
-#
 #    621
 #  + 354
 #  -----
 #    975
-#
 # Then, the reversed linked list format of this problem would appear as:
-#
 #     1 -> 2 -> 6
 #  +  4 -> 5 -> 3
 #  --------------
@@ -3480,6 +3474,7 @@ def land_size(grid, r, c, visited):
 # down, left, or right, but cannot pass through walls (X). If there is no 
 # possible path to a carrot, then return -1.
 # 
+#
 # test_00:
 # grid = [
 #   ['O', 'O', 'O', 'O', 'O'],
@@ -3555,7 +3550,7 @@ def closest_carrot(grid, row, col):
   return -1
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #46 longest path ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, longestPath, that takes in an adjacency list for a directed
+# Write a function, longest_path, that takes in an adjacency list for a directed
 # acyclic graph. The function should return the length of the longest path 
 # within the graph. A path may start and end at any two nodes. The length of a
 # path is considered the number of edges in the path, not the number of nodes.
@@ -3566,7 +3561,7 @@ def closest_carrot(grid, row, col):
 #   b: ['c'],
 #   c: []
 # }
-# longestPath(graph) # -> 2
+# longest_path(graph) # -> 2
 # test_01:
 # graph = {
 #   a: ['c', 'b'],
@@ -3578,7 +3573,7 @@ def closest_carrot(grid, row, col):
 #   t: ['u'],
 #   u: []
 # }
-# longestPath(graph) # -> 4
+# longest_path(graph) # -> 4
 # test_02:
 # graph = {
 #   h: ['i', 'j', 'k'],
@@ -3589,7 +3584,7 @@ def closest_carrot(grid, row, col):
 #   x: ['y'],
 #   y: []
 # }
-# longestPath(graph) # -> 2
+# longest_path(graph) # -> 2
 # test_03:
 # graph = {
 #   a: ['b'],
@@ -3600,8 +3595,23 @@ def closest_carrot(grid, row, col):
 #   g: ['h'],
 #   h: []
 # }
-# longestPath(graph) # -> 3
+# longest_path(graph) # -> 3
 
+def longest_path(graph):
+  longest = float('-inf')
+  for node in graph:
+    length = traverse(graph, node)
+    longest = length if longest < length else longest
+  return longest
+
+def traverse(graph, node):
+  if not graph[node]:
+    return 0
+  max = 0
+  for neighbor in graph[node]:
+    length = traverse(graph, neighbor)
+    max = max if max > length else length
+  return 1 + max
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #47 semesters required ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, semestersRequired, that takes in a number of courses (n) and
@@ -3610,10 +3620,8 @@ def closest_carrot(grid, row, col):
 # before course B. Return the minimum number of semesters required to complete
 # all n courses. There is no limit on how many courses you can take in a single
 # semester, as long the prerequisites of a course are satisfied before taking it.
-#
 # Note that given prerequisite [A, B], you cannot take course A and course B
 # concurrently in the same semester. You must take A in some semester before B.
-#
 # You can assume that it is possible to eventually complete all courses.
 #
 # test_00:
@@ -3625,7 +3633,6 @@ def closest_carrot(grid, row, col):
 #   [0, 5],
 # ]
 # semestersRequired(numCourses, prereqs) # -> 3
-#
 # test_01:
 # numCourses = 7
 # prereqs = [
@@ -3637,7 +3644,6 @@ def closest_carrot(grid, row, col):
 #   [5, 6],
 # ]
 # semestersRequired(numCourses, prereqs) # -> 5
-#
 # test_02:
 # numCourses = 5
 # prereqs = [
@@ -3647,12 +3653,10 @@ def closest_carrot(grid, row, col):
 #   [3, 2],
 # ]
 # semestersRequired(numCourses, prereqs) # -> 2
-#
 # test_03:
 # numCourses = 12
 # prereqs = []
 # semestersRequired(numCourses, prereqs) # -> 1
-#
 # test_04:
 # numCourses = 3
 # prereqs = [
@@ -3661,7 +3665,6 @@ def closest_carrot(grid, row, col):
 #   [1, 2],
 # ]
 # semestersRequired(numCourses, prereqs) # -> 3
-#
 # test_05:
 # numCourses = 6
 # prereqs = [
@@ -3691,7 +3694,6 @@ def closest_carrot(grid, row, col):
 #   ["W", "W", "W", "W", "W"],
 # ]
 # bestBridge(grid) # -> 1
-#
 # test_01:
 # grid = [
 #   ["W", "W", "W", "W", "W"],
@@ -3702,7 +3704,6 @@ def closest_carrot(grid, row, col):
 #   ["W", "W", "W", "W", "W"],
 # ]
 # bestBridge(grid) # -> 2
-#
 # test_02:
 # grid = [
 #   ["W", "W", "W", "W", "W"],
@@ -3710,7 +3711,6 @@ def closest_carrot(grid, row, col):
 #   ["L", "W", "W", "W", "W"],
 # ]
 # bestBridge(grid) # -> 3
-#
 # test_03:
 # grid = [
 #   ["W", "W", "W", "W", "W", "W", "W", "W"],
@@ -3725,7 +3725,6 @@ def closest_carrot(grid, row, col):
 #   ["W", "W", "W", "W", "W", "W", "W", "W"],
 # ]
 # bestBridge(grid) # -> 3
-#
 # test_04:
 # grid = [
 #   ["L", "L", "L", "L", "L", "L", "L", "L"],
@@ -3742,7 +3741,6 @@ def closest_carrot(grid, row, col):
 #   ["L", "L", "L", "L", "L", "L", "L", "L"],
 # ]
 # bestBridge(grid) # -> 2
-#
 # test_05:
 # grid = [
 #   ["W", "L", "W", "W", "W", "W", "W", "W"],
@@ -3768,7 +3766,6 @@ def closest_carrot(grid, row, col):
 #   b: ["c"],
 #   c: ["a"],
 # }) # -> true
-#
 # test_01:
 # hasCycle({
 #   a: ["b", "c"],
@@ -3776,7 +3773,6 @@ def closest_carrot(grid, row, col):
 #   c: ["d"],
 #   d: [],
 # }) # -> false
-#
 # test_02:
 # hasCycle({
 #   a: ["b", "c"],
@@ -3785,7 +3781,6 @@ def closest_carrot(grid, row, col):
 #   e: ["f"],
 #   f: ["e"],
 # }) # -> true
-#
 # test_03:
 # hasCycle({
 #   q: ["r", "s"],
@@ -3797,7 +3792,6 @@ def closest_carrot(grid, row, col):
 #   w: [],
 #   x: ["w"],
 # }) # -> false
-#
 # test_04:
 # hasCycle({
 #   a: ["b"],
@@ -3814,6 +3808,7 @@ def closest_carrot(grid, row, col):
 # B. The function should return a boolean indicating whether or not it is
 # possible to complete all courses.
 # 
+#
 # test_00:
 # numCourses = 6
 # prereqs = [
@@ -3824,7 +3819,6 @@ def closest_carrot(grid, row, col):
 #   [4, 5],
 # ]
 # prereqsPossible(numCourses, prereqs) # -> true
-#
 # test_01:
 # numCourses = 6
 # prereqs = [
@@ -3836,7 +3830,6 @@ def closest_carrot(grid, row, col):
 #   [3, 0],
 # ]
 # prereqsPossible(numCourses, prereqs) # -> false
-#
 # test_02:
 # numCourses = 5
 # prereqs = [
@@ -3846,7 +3839,6 @@ def closest_carrot(grid, row, col):
 #   [0, 4],
 # ]
 # prereqsPossible(numCourses, prereqs) # -> true
-#
 # test_03:
 # numCourses = 6
 # prereqs = [
@@ -3858,7 +3850,6 @@ def closest_carrot(grid, row, col):
 #   [3, 5],
 # ]
 # prereqsPossible(numCourses, prereqs) # -> false
-#
 # test_04:
 # numCourses = 8
 # prereqs = [
@@ -3870,7 +3861,6 @@ def closest_carrot(grid, row, col):
 #   [4, 3],
 # ]
 # prereqsPossible(numCourses, prereqs) # -> true
-#
 # test_05:
 # numCourses = 8
 # prereqs = [
@@ -3883,7 +3873,6 @@ def closest_carrot(grid, row, col):
 #   [4, 3],
 # ]
 # prereqsPossible(numCourses, prereqs) # -> false
-#
 # test_06:
 # numCourses = 42
 # prereqs = [[6, 36]]
@@ -3898,6 +3887,7 @@ def closest_carrot(grid, row, col):
 # To generate further numbers of the sequence, calculate the sum of previous two numbers.
 # Solve this recursively.
 # 
+#
 # test_00:
 # fib(0) # -> 0
 # test_01:
@@ -4192,10 +4182,8 @@ def fib(n):
 # argument. The function should return the maximum sum of non-adjacent elements
 # in the list. There is no limit on how many elements can be taken into the sum
 # as long as they are not adjacent.
-#
 # For example, given:
 # [2, 4, 5, 12, 7]
-#
 # The maximum non-adjacent sum is 16, because 4 + 12. 
 # 4 and 12 are not adjacent in the list.
 #
@@ -4233,7 +4221,6 @@ def fib(n):
 # Write a function, summingSquares, that takes a target number as an argument.
 # The function should return the minimum number of perfect squares that sum to
 # the target. A perfect square is a number of the form (i*i) where i >= 1.
-#
 # For example: 1, 4, 9, 16 are perfect squares, but 8 is not perfect square.
 # Given 12:
 # summingSquares(12) -> 3
@@ -4262,7 +4249,6 @@ def fib(n):
 # Write a function, countingChange, that takes in an amount and an list of
 # coins. The function should return the number of different ways it is possible
 # to make change for the given amount using the coins.
-#
 # You may reuse a coin as many times as necessary.
 # For example,
 # countingChange(4, [1,2,3]) -> 4
@@ -4294,7 +4280,6 @@ def fib(n):
 # return a boolean indicating whether or not it is possible reach the last
 # position of the list. When situated at some position of the list, you may
 # take a maximum number of steps based on the number at that position.
-#
 # For example, given:
 #     idx =  0  1  2  3  4  5
 # numbers = [2, 4, 2, 0, 0, 1]
@@ -4531,7 +4516,6 @@ def _helper(string, i, j, memo):
 # Write a function, nestingScore, that takes in a string of brackets as an
 # argument. The function should return the score of the string according to the
 # following rules:
-#
 # [] is worth 1 point
 # XY is worth m + n points where X, Y are substrings of well-formed brackets and m, n are their respective scores
 # [S] is worth 2 * k points where S is a substring of well-formed brackets and k is the score of that substring

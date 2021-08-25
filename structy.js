@@ -1,26 +1,19 @@
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #1 max value ]]]]]]]]]]]]]]]]]]]]]]]]]
 // Write a function, maxValue, that takes in array of numbers as an argument. 
 // The function should return the largest number in the array.
-//
 // Solve this without using any built-in array methods.
-//
 // You can assume that the array is non-empty.
 //
 // test_00:
 // maxValue([4, 7, 2, 8, 10, 9]); // -> 10
-//
 // test_01:
 // maxValue([10, 5, 40, 40.3]); // -> 40.3
-//
 // test_02:
 // maxValue([-5, -2, -1, -11]); // -> -1
-//
 // test_03:
 // maxValue([42]); // -> 42
-//
 // test_04:
 // maxValue([1000, 8]); // -> 1000
-//
 // test_05:
 // maxValue([1000, 8, 9000]); // -> 9000
 
@@ -39,61 +32,44 @@ const maxValue = (nums) => {
 };
 
 // ========================= Solution =========================
-//
 // const maxValue = (nums) => {
 //   let maximum = -Infinity;
-//
 //   for (let num of nums) {
 //     if (num > maximum) maximum = num;
 //   }
-//
 //   return maximum;
 // };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #2 is prime ]]]]]]]]]]]]]]]]]]]]]]]]]
 // Write a function, isPrime, that takes in a number as an argument. The function 
 // should return a boolean indicating whether or not the given number is prime.
-//
 // A prime number is a number that is only divisible two distinct numbers: 1 and itself.
-//
 // For example, 7 is a prime because it is only divisible by 1 and 7. For example, 
 // 6 is not a prime because it is divisible by 1, 2, 3, and 6.
-//
 // You can assume that the input number is a positive integer.
 //
 // test_00:
 // isPrime(2); // -> true
-//
 // test_01:
 // isPrime(3); // -> true
-//
 // test_02:
 // isPrime(4); // -> false
-//
 // test_03:
 // isPrime(5); // -> true
-//
 // test_04:
 // isPrime(6); // -> false
-//
 // test_05:
 // isPrime(7); // -> true
-//
 // test_06:
 // isPrime(8); // -> false
-//
 // test_07:
 // isPrime(25); // -> false
-//
 // test_08:
 // isPrime(31); // -> true
-//
 // test_09:
 // isPrime(2017); // -> true
-//
 // test_10:
 // isPrime(2048); // -> false
-//
 // test_11:
 // isPrime(1); // -> false
 
@@ -110,9 +86,7 @@ const isPrime = (n) => {
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #3 uncompress ]]]]]]]]]]]]]]]]]]]]]]]]]
 // Write a function, uncompress, that takes in a string as an argument. The input 
 // string will be formatted into multiple groups according to the following pattern:
-//
 // <number><char>
-//
 // for example, '2c' or '3a'.
 // The function should return an uncompressed version of the string where each 
 // 'char' of a group is repeated 'number' times concecutively. You may assume that 
@@ -120,13 +94,10 @@ const isPrime = (n) => {
 //
 // test_00:
 // uncompress("2c3a1t"); // -> 'ccaaat'
-//
 // test_01:
 // uncompress("4s2b"); // -> 'ssssbb'
-//
 // test_02:
 // uncompress("2p1o5p"); // -> 'ppoppppp'
-//
 // test_03:
 // uncompress("3n12e2z"); // -> 'nnneeeeeeeeeeeezz'
 
@@ -172,12 +143,10 @@ const uncompress = (s) => {
 // };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #4 compress ]]]]]]]]]]]]]]]]]]]]]]]]]
-//
 // Write a function, compress, that takes in a string as an argument. The function 
 // should return a compressed version of the string where consecutive occurences
 // of the same characters are compressed into the number of occurences followed 
 // by the character. Single character occurences should not be changed.
-//
 // 'aaa' compresses to '3a'
 // 'cc' compresses to '2c'
 // 't' should remain as 't'
@@ -185,13 +154,10 @@ const uncompress = (s) => {
 //
 // test_00:
 // compress('ccaaatsss'); // -> '2c3at3s'
-//
 // test_01:
 // compress('ssssbbz'); // -> '4s2bz'
-//
 // test_02:
 // compress('ppoppppp'); // -> '2po5p'
-//
 // test_03:
 // compress('nnneeeeeeeeeeeezz'); // -> '3n12e2z'
 
@@ -222,19 +188,14 @@ const compress = (s) => {
 //
 // test_00:
 // anagrams('restful', 'fluster'); // -> true
-//
 // test_01:
 // anagrams('cats', 'tocs'); // -> false
-//
 // test_02:
 // anagrams('monkeyswrite', 'newyorktimes'); // -> true
-//
 // test_03:
 // anagrams('paper', 'reapa'); // -> false
-//
 // test_04:
 // anagrams('elbow', 'below'); // -> true
-//
 // test_05:
 // anagrams('tax', 'taxi'); // -> false
 
@@ -268,24 +229,18 @@ const anagrams = (s1, s2) => {
 // Write a function, mostFrequentChar, that takes in a string as an argument. The
 // function should return the most frequent character of the string. If there are 
 // ties, return the character that appears earlier in the string.
-//
 // You can assume that the input string is non-empty.
 //
 // test_00:
 // mostFrequentChar('bookeeper'); // -> 'e'
-//
 // test_01:
 // mostFrequentChar('david'); // -> 'd'
-//
 // test_02:
 // mostFrequentChar('abby'); // -> 'b'
-//
 // test_03:
 // mostFrequentChar('mississippi'); // -> 'i'
-//
 // test_04:
 // mostFrequentChar('potato'); // -> 'o'
-//
 // test_05:
 // mostFrequentChar('eleventennine'); // -> 'e'
 
@@ -314,26 +269,19 @@ const mostFrequentChar = (s) => {
 // Write a function, pairSum, that takes in an array and a target sum as 
 // arguments. The function should return an array containing a pair of indices 
 // whose elements sum to the given target. The indices returned must be unique.
-//
 // Be sure to return the indices, not the elements themselves.
-//
 // There is guaranteed to be one such pair that sums to the target.
 //
 // test_00:
 // pairSum([3, 2, 5, 4, 1], 8); // -> [0, 2]
-//
 // test_01:
 // pairSum([4, 7, 9, 2, 5, 1], 5); // -> [0, 5]
-//
 // test_02:
 // pairSum([4, 7, 9, 2, 5, 1], 3); // -> [3, 5]
-//
 // test_03:
 // pairSum([1, 6, 7, 2], 13); // -> [1, 2]
-//
 // test_04:
 // pairSum([9, 9], 18); // -> [0, 1]
-//
 // test_05:
 // pairSum([6, 4, 2, 8 ], 12); // -> [1, 3]
 
@@ -354,26 +302,19 @@ const pairSum = (numbers, targetSum) => {
 // Write a function, pairProduct, that takes in an array and a target product as
 // arguments. The function should return an array containing a pair of indices 
 // whose elements multiply to the given target. The indices returned must be unique.
-//
 // Be sure to return the indices, not the elements themselves.
-//
 // There is guaranteed to be one such pair whose product is the target.
 //
 // test_00:
 // pairProduct([3, 2, 5, 4, 1], 8); // -> [1, 3]
-//
 // test_01:
 // pairProduct([3, 2, 5, 4, 1], 10); // -> [1, 2]
-//
 // test_02:
 // pairProduct([4, 7, 9, 2, 5, 1], 5); // -> [4, 5]
-//
 // test_03:
 // pairProduct([4, 7, 9, 2, 5, 1], 35); // -> [1, 4]
-//
 // test_04:
 // pairProduct([3, 2, 5, 4, 1], 10); // -> [1, 2]
-//
 // test_05:
 // pairProduct([4, 6, 8, 2], 16); // -> [2, 3]
 
@@ -394,21 +335,16 @@ const pairProduct = (numbers, targetProduct) => {
 // Write a function, intersection, that takes in two arrays, a,b, as arguments. 
 // The function should return a new array containing elements that are in both of 
 // the two arrays.
-//
 // You may assume that each input array does not contain duplicate elements.
 //
 // test_00:
 // intersection([4,2,1,6], [3,6,9,2,10]) // -> [2,6]
-//
 // test_01:
 // intersection([2,4,6], [4,2]) // -> [2,4]
-//
 // test_02:
 // intersection([4,2,1], [1,2,4,6]) // -> [1,2,4]
-//
 // test_03:
 // intersection([0,1,2], [10,11]) // -> []
-//
 // test_04:
 // const a = [];
 // const b = [];
@@ -436,26 +372,20 @@ const intersection = (a, b) => {
 // The function should rearrange elements of the array such that all 5s appear at 
 // the end. Your function should perform this operation in-place by mutating the 
 // original array. The function should return the array.
-//
 // Elements that are not 5 can appear in any order in the output, as long as all 5s are at the end of the array.
-//
 //
 // test_00
 // fiveSort([12, 5, 1, 5, 12, 7]);
 // -> [12, 7, 1, 12, 5, 5] 
-//
 // test_01
 // fiveSort([5, 2, 5, 6, 5, 1, 10, 2, 5, 5]);
 // -> [2, 2, 10, 6, 1, 5, 5, 5, 5, 5] 
-//
 // test_02
 // fiveSort([5, 5, 5, 1, 1, 1, 4]);
 // -> [4, 1, 1, 1, 5, 5, 5] 
-//
 // test_03
 // fiveSort([5, 5, 6, 5, 5, 5, 5]);
 // -> [6, 5, 5, 5, 5, 5, 5] 
-//
 // test_04
 // fiveSort([5, 1, 2, 5, 5, 3, 2, 5, 1, 5, 5, 5, 4, 5]);
 // -> [4, 1, 2, 1, 2, 3, 5, 5, 5, 5, 5, 5, 5, 5] 
@@ -489,32 +419,21 @@ const fiveSort = (nums) => {
 // const b = new Node("b");
 // const c = new Node("c");
 // const d = new Node("d");
-//
 // a.next = b;
 // b.next = c;
 // c.next = d;
-//
 // a -> b -> c -> d
-//
 // linkedListValues(a); // -> [ 'a', 'b', 'c', 'd' ]
-//
 // test_01:
 // const x = new Node("x");
 // const y = new Node("y");
-//
 // x.next = y;
-//
 // x -> y
-//
 // linkedListValues(x); // -> [ 'x', 'y' ]
-//
 // test_02:
 // const q = new Node("q");
-//
 // q
-//
 // linkedListValues(q); // -> [ 'q' ]
-//
 // test_03:
 // linkedListValues(null); // -> [ ]
 
@@ -541,33 +460,22 @@ const linkedListValues = (head) => {
 // const c = new Node(3);
 // const d = new Node(-1);
 // const e = new Node(7);
-//
 // a.next = b;
 // b.next = c;
 // c.next = d;
 // d.next = e;
-//
 // 2 -> 8 -> 3 -> -1 -> 7
-//
 // sumList(a); // 19
-//
 // test_01:
 // const x = new Node(38);
 // const y = new Node(4);
-//
 // x.next = y;
-//
 // 38 -> 4
-//
 // sumList(x); // 42
-//
 // test_02:
 // const z = new Node(100);
-//
 // 100
-//
 // sumList(z); // 100
-//
 // test_03:
 // sumList(null); // 0
 
@@ -593,65 +501,44 @@ const sumList = (head) => {
 // const b = new Node("b");
 // const c = new Node("c");
 // const d = new Node("d");
-//
 // a.next = b;
 // b.next = c;
 // c.next = d;
-//
 // a -> b -> c -> d
-//
 // linkedListFind(a, "c"); // true
-//
 // test_01:
 // const a = new Node("a");
 // const b = new Node("b");
 // const c = new Node("c");
 // const d = new Node("d");
-//
 // a.next = b;
 // b.next = c;
 // c.next = d;
-//
 // a -> b -> c -> d
-//
 // linkedListFind(a, "d"); // true
-//
 // test_02:
 // const a = new Node("a");
 // const b = new Node("b");
 // const c = new Node("c");
 // const d = new Node("d");
-//
 // a.next = b;
 // b.next = c;
 // c.next = d;
-//
 // a -> b -> c -> d
-//
 // linkedListFind(a, "q"); // false
-//
 // test_03:
 // const node1 = new Node("jason");
 // const node2 = new Node("leneli");
-//
 // node1.next = node2;
-//
 // jason -> leneli
-//
 // linkedListFind(node1, "jason"); // true
-//
 // test_04:
 // const node1 = new Node(42);
-//
 // 42
-//
 // linkedListFind(node1, 42); // true
-//
 // test_05:
 // const node1 = new Node(42);
-//
 // 42
-//
 // linkedListFind(node1, 100); // false
 
 const linkedListFind = (head, target) => {
@@ -665,7 +552,6 @@ const linkedListFind = (head, target) => {
 // Write a function, getNodeValue, that takes in the head of a linked list and 
 // an index. The function should return the value of the linked list at the 
 // specified index.
-//
 // If there is no node at the given index, then return null.
 //
 // test_00:
@@ -673,61 +559,42 @@ const linkedListFind = (head, target) => {
 // const b = new Node("b");
 // const c = new Node("c");
 // const d = new Node("d");
-//
 // a.next = b;
 // b.next = c;
 // c.next = d;
-//
 // a -> b -> c -> d
-//
 // getNodeValue(a, 2); // 'c'
-//
 // test_01:
 // const a = new Node("a");
 // const b = new Node("b");
 // const c = new Node("c");
 // const d = new Node("d");
-//
 // a.next = b;
 // b.next = c;
 // c.next = d;
-//
 // a -> b -> c -> d
-//
 // getNodeValue(a, 3); // 'd'
-//
 // test_02:
 // const a = new Node("a");
 // const b = new Node("b");
 // const c = new Node("c");
 // const d = new Node("d");
-//
 // a.next = b;
 // b.next = c;
 // c.next = d;
-//
 // a -> b -> c -> d
-//
 // getNodeValue(a, 7); // null
-//
 // test_03:
 // const node1 = new Node("banana");
 // const node2 = new Node("mango");
-//
 // node1.next = node2;
-//
 // banana -> mango
-//
 // getNodeValue(node1, 0); // 'banana'
-//
 // test_04:
 // const node1 = new Node("banana");
 // const node2 = new Node("mango");
-//
 // node1.next = node2;
-//
 // banana -> mango
-//
 // getNodeValue(node1, 1); // 'mango'
 
 // ========================= Iterative =========================
@@ -766,32 +633,22 @@ const getNodeValue = (head, index) => {
 // const d = new Node("d");
 // const e = new Node("e");
 // const f = new Node("f");
-//
 // a.next = b;
 // b.next = c;
 // c.next = d;
 // d.next = e;
 // e.next = f;
-//
 // a -> b -> c -> d -> e -> f
-//
 // reverseList(a); // f -> e -> d -> c -> b -> a
-//
 // test_01:
 // const x = new Node("x");
 // const y = new Node("y");
-//
 // x.next = y;
-//
 // x -> y
-//
 // reverseList(x); // y -> x
-//
 // test_02:
 // const p = new Node("p");
-//
 // p
-//
 // reverseList(p); // p
 
 // ========================= Iterative =========================
@@ -826,9 +683,7 @@ const reverseList = (head, prev = null) => {
 // list by alternating nodes. If one of the linked lists is longer than the other, 
 // the resulting list should terminate with the remaining nodes. The function 
 // should return the head of the zippered linked list.
-//
 // Do this in-place, by mutating the original Nodes.
-//
 // You may assume that both input lists are non-empty.
 //
 // test_00:
@@ -838,17 +693,14 @@ const reverseList = (head, prev = null) => {
 // a.next = b;
 // b.next = c;
 // a -> b -> c
-//
 // const x = new Node("x");
 // const y = new Node("y");
 // const z = new Node("z");
 // x.next = y;
 // y.next = z;
 // x -> y -> z
-//
 // zipperLists(a, x);
 // a -> x -> b -> y -> c -> z
-//
 // test_01:
 // const a = new Node("a");
 // const b = new Node("b");
@@ -862,23 +714,19 @@ const reverseList = (head, prev = null) => {
 // d.next = e;
 // e.next = f;
 // a -> b -> c -> d -> e -> f
-//
 // const x = new Node("x");
 // const y = new Node("y");
 // const z = new Node("z");
 // x.next = y;
 // y.next = z;
 // x -> y -> z
-//
 // zipperLists(a, x);
 // a -> x -> b -> y -> c -> z -> d -> e -> f
-//
 // test_02:
 // const s = new Node("s");
 // const t = new Node("t");
 // s.next = t;
 // s -> t
-//
 // const one = new Node(1);
 // const two = new Node(2);
 // const three = new Node(3);
@@ -887,15 +735,11 @@ const reverseList = (head, prev = null) => {
 // two.next = three;
 // three.next = four;
 // 1 -> 2 -> 3 -> 4
-//
 // zipperLists(s, one);
 // s -> 1 -> t -> 2 -> 3 -> 4
-//
 // test_03:
 // const w = new Node("w");
-//
 // w
-//
 // const one = new Node(1);
 // const two = new Node(2);
 // const three = new Node(3);
@@ -905,7 +749,6 @@ const reverseList = (head, prev = null) => {
 // 
 // zipperLists(w, one);
 // w -> 1 -> 2 -> 3
-//
 // test_04:
 // const one = new Node(1);
 // const two = new Node(2);
@@ -913,10 +756,8 @@ const reverseList = (head, prev = null) => {
 // one.next = two;
 // two.next = three;
 // 1 -> 2 -> 3 
-//
 // const w = new Node("w");
 // w
-//
 // zipperLists(one, w);
 // 1 -> w -> 2 -> 3
 
@@ -964,9 +805,7 @@ const zipperLists = (head1, head2) => {
 // Write a function, mergeLists, that takes in the head of two sorted linked 
 // lists as arguments. The function should merge the two lists together into single 
 // sorted linked list. The function should return the head of the merged linked list.
-//
 // Do this in-place, by mutating the original Nodes.
-//
 // You may assume that both input lists are non-empty and contain increasing sorted numbers.
 //
 // test_00:
@@ -982,7 +821,6 @@ const zipperLists = (head1, head2) => {
 // d.next = e;
 // e.next = f;
 // 5 -> 7 -> 10 -> 12 -> 20 -> 28
-//
 // const q = new Node(6);
 // const r = new Node(8);
 // const s = new Node(9);
@@ -991,10 +829,8 @@ const zipperLists = (head1, head2) => {
 // r.next = s;
 // s.next = t;
 // 6 -> 8 -> 9 -> 25
-//
 // mergeLists(a, q);
 // 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 12 -> 20 -> 25 -> 28 
-//
 // test_01:
 // const a = new Node(5);
 // const b = new Node(7);
@@ -1008,7 +844,6 @@ const zipperLists = (head1, head2) => {
 // d.next = e;
 // e.next = f;
 // 5 -> 7 -> 10 -> 12 -> 20 -> 28
-//
 // const q = new Node(1);
 // const r = new Node(8);
 // const s = new Node(9);
@@ -1017,19 +852,15 @@ const zipperLists = (head1, head2) => {
 // r.next = s;
 // s.next = t;
 // 1 -> 8 -> 9 -> 10
-//
 // mergeLists(a, q);
 // 1 -> 5 -> 7 -> 8 -> 9 -> 10 -> 10 -> 12 -> 20 -> 28 
-//
 // test_02:
 // const h = new Node(30);
 // 30
-//
 // const p = new Node(15);
 // const q = new Node(67);
 // p.next = q;
 // 15 -> 67
-//
 // mergeLists(h, p);
 // 15 -> 30 -> 67
 
@@ -1081,70 +912,51 @@ const mergeLists = (head1, head2) => {
 // Write a function, isUnivalueList, that takes in the head of a linked list as 
 // an argument. The function should return a boolean indicating whether or not the 
 // linked list contains exactly one unique value.
-//
 // You may assume that the input list is non-empty.
 //
 // test_00:
 // const a = new Node(7);
 // const b = new Node(7);
 // const c = new Node(7);
-//
 // a.next = b;
 // b.next = c;
-//
 // 7 -> 7 -> 7
-//
 // isUnivalueList(a); // true
-//
 // test_01:
 // const a = new Node(7);
 // const b = new Node(7);
 // const c = new Node(4);
-//
 // a.next = b;
 // b.next = c;
-//
 // 7 -> 7 -> 4
-//
 // isUnivalueList(a); // false
-//
 // test_02:
 // const u = new Node(2);
 // const v = new Node(2);
 // const w = new Node(2);
 // const x = new Node(2);
 // const y = new Node(2);
-//
 // u.next = v;
 // v.next = w;
 // w.next = x;
 // x.next = y;
-//
 // 2 -> 2 -> 2 -> 2 -> 2
-//
 // isUnivalueList(u); // true
-//
 // test_03:
 // const u = new Node(2);
 // const v = new Node(2);
 // const w = new Node(3);
 // const x = new Node(3);
 // const y = new Node(2);
-//
 // u.next = v;
 // v.next = w;
 // w.next = x;
 // x.next = y;
-//
 // 2 -> 2 -> 3 -> 3 -> 2
-//
 // isUnivalueList(u); // false
-//
 // test_04:
 // const z = new Node('z');
-//
 // z
-//
 // isUnivalueList(z); // true
 
 // ========================= Iterative =========================
@@ -1178,6 +990,7 @@ const isUnivalueList = (head, prev = head) => {
 // an argument. The function should return the length of the longest consecutive 
 // streak of the same value within the list.
 // 
+//
 // test_00:
 // const a = new Node(5);
 // const b = new Node(5);
@@ -1195,7 +1008,6 @@ const isUnivalueList = (head, prev = head) => {
 // 5 -> 5 -> 7 -> 7 -> 7 -> 6
 // 
 // longestStreak(a); // 3
-//
 // test_01:
 // const a = new Node(3);
 // const b = new Node(3);
@@ -1203,17 +1015,13 @@ const isUnivalueList = (head, prev = head) => {
 // const d = new Node(3);
 // const e = new Node(9);
 // const f = new Node(9);
-//
 // a.next = b;
 // b.next = c;
 // c.next = d;
 // d.next = e;
 // e.next = f;
-//
 // 3 -> 3 -> 3 -> 3 -> 9 -> 9
-//
 // longestStreak(a); // 4
-//
 // test_02:
 // const a = new Node(9);
 // const b = new Node(9);
@@ -1221,34 +1029,23 @@ const isUnivalueList = (head, prev = head) => {
 // const d = new Node(9);
 // const e = new Node(9);
 // const f = new Node(9);
-//
 // a.next = b;
 // b.next = c;
 // c.next = d;
 // d.next = e;
 // e.next = f;
-//
 // 9 -> 9 -> 1 -> 9 -> 9 -> 9
-//
 // longestStreak(a); // 3
-//
 // test_03:
 // const a = new Node(5);
 // const b = new Node(5);
-//
 // a.next = b;
-//
 // 5 -> 5
-//
 // longestStreak(a); // 2
-//
 // test_04:
 // const a = new Node(4);
-//
 // 4
-//
 // longestStreak(a); // 1
-//
 // test_05:
 // longestStreak(null); // 0
 
@@ -1281,9 +1078,7 @@ const longestStreak = (head) => {
 // target value from the linked list and return the head of the resulting linked 
 // list. If the target appears multiple times in the linked list, only remove the 
 // first instance of the target in the list.
-//
 // Do this in-place.
-//
 // You may assume that the input list is non-empty.
 //
 // test_00:
@@ -1293,64 +1088,46 @@ const longestStreak = (head) => {
 // const d = new Node("d");
 // const e = new Node("e");
 // const f = new Node("f");
-//
 // a.next = b;
 // b.next = c;
 // c.next = d;
 // d.next = e;
 // e.next = f;
-//
 // a -> b -> c -> d -> e -> f
-//
 // removeNode(a, "c");
 // a -> b -> d -> e -> f
-//
 // test_01:
 // const x = new Node("x");
 // const y = new Node("y");
 // const z = new Node("z");
-//
 // x.next = y;
 // y.next = z;
-//
 // x -> y -> z
-//
 // removeNode(x, "z");
 // x -> y
-//
 // test_02:
 // const q = new Node("q");
 // const r = new Node("r");
 // const s = new Node("s");
-//
 // q.next = r;
 // r.next = s;
-//
 // q -> r -> s
-//
 // removeNode(q, "q");
 // r -> s
-//
 // test_03:
 // const node1 = new Node("h");
 // const node2 = new Node("i");
 // const node3 = new Node("j");
 // const node4 = new Node("i");
-//
 // node1.next = node2;
 // node2.next = node3;
 // node3.next = node4;
-//
 // h -> i -> j -> i
-//
 // removeNode(node1, "i");
 // h -> j -> i
-//
 // test_04:
 // const t = new Node("t");
-//
 // t
-//
 // removeNode(t, "t");
 // null
 
@@ -1389,9 +1166,7 @@ const removeNode = (head, targetVal) => {
 // value, and an index. The function should insert a new node with the value into 
 // the list at the specified index. Consider the head of the linked list as index 
 // 0. The function should return the head of the resulting linked list.
-//
 // Do this in-place.
-//
 // You may assume that the input list is non-empty and the index is not greater 
 // than the length of the input list.
 //
@@ -1400,54 +1175,39 @@ const removeNode = (head, targetVal) => {
 // const b = new Node("b");
 // const c = new Node("c");
 // const d = new Node("d");
-//
 // a.next = b;
 // b.next = c;
 // c.next = d;
-//
 // a -> b -> c -> d
-//
 // insertNode(a, 'x', 2);
 // a -> b -> x -> c -> d
-//
 // test_01:
 // const a = new Node("a");
 // const b = new Node("b");
 // const c = new Node("c");
 // const d = new Node("d");
-//
 // a.next = b;
 // b.next = c;
 // c.next = d;
-//
 // a -> b -> c -> d
-//
 // insertNode(a, 'v', 3);
 // a -> b -> c -> v -> d
-//
 // test_02:
 // const a = new Node("a");
 // const b = new Node("b");
 // const c = new Node("c");
 // const d = new Node("d");
-//
 // a.next = b;
 // b.next = c;
 // c.next = d;
-//
 // a -> b -> c -> d
-//
 // insertNode(a, 'm', 4);
 // a -> b -> c -> d -> m
-//
 // test_03:
 // const a = new Node("a");
 // const b = new Node("b");
-//
 // a.next = b;
-//
 // a -> b
-//
 // insertNode(a, 'z', 0);
 // z -> a -> b 
 
@@ -1501,15 +1261,12 @@ const insertNode = (head, value, index, count = 0) => {
 // test_00:
 // createLinkedList(["h", "e", "y"]);
 // h -> e -> y
-//
 // test_01:
 // createLinkedList([1, 7, 1, 8]);
 // 1 -> 7 -> 1 -> 8
-//
 // test_02:
 // createLinkedList(["a"]);
 // a
-//
 // test_03:
 // createLinkedList([]);
 // null
@@ -1542,16 +1299,12 @@ const createLinkedList = (values, i = 0) => {
 // digit of the number is the head. The function should return the head of a new 
 // linked listed representing the sum of the input lists. The output list should 
 // have it's digits reversed as well.
-//
 // Say we wanted to compute 621 + 354 normally. The sum is 975:
-//
 //    621
 //  + 354
 //  -----
 //    975
-//
 // Then, the reversed linked list format of this problem would appear as:
-//
 //     1 -> 2 -> 6
 //  +  4 -> 5 -> 3
 //  --------------
@@ -1562,30 +1315,25 @@ const createLinkedList = (values, i = 0) => {
 // + 354
 // -----
 //   975
-//
 // const a1 = new Node(1);
 // const a2 = new Node(2);
 // const a3 = new Node(6);
 // a1.next = a2;
 // a2.next = a3;
 // 1 -> 2 -> 6
-//
 // const b1 = new Node(4);
 // const b2 = new Node(5);
 // const b3 = new Node(3);
 // b1.next = b2;
 // b2.next = b3;
 // 4 -> 5 -> 3
-//
 // addLists(a1, b1);
 // 5 -> 7 -> 9
-//
 // test_01:
 //  7541
 // +  32
 // -----
 //  7573
-//
 // const a1 = new Node(1);
 // const a2 = new Node(4);
 // const a3 = new Node(5);
@@ -1594,69 +1342,55 @@ const createLinkedList = (values, i = 0) => {
 // a2.next = a3;
 // a3.next = a4;
 // 1 -> 4 -> 5 -> 7
-//
 // const b1 = new Node(2);
 // const b2 = new Node(3);
 // b1.next = b2;
 // 2 -> 3 
-//
 // addLists(a1, b1);
 // 3 -> 7 -> 5 -> 7
-//
 // test_02:
 //   39
 // + 47
 // ----
 //   86
-//
 // const a1 = new Node(9);
 // const a2 = new Node(3);
 // a1.next = a2;
 // 9 -> 3
-//
 // const b1 = new Node(7);
 // const b2 = new Node(4);
 // b1.next = b2;
 // 7 -> 4
-//
 // addLists(a1, b1);
 // 6 -> 8
-//
 // test_03:
 //   89
 // + 47
 // ----
 //  136
-//
 // const a1 = new Node(9);
 // const a2 = new Node(8);
 // a1.next = a2;
 // 9 -> 8
-//
 // const b1 = new Node(7);
 // const b2 = new Node(4);
 // b1.next = b2;
 // 7 -> 4
-//
 // addLists(a1, b1);
 // 6 -> 3 -> 1
-//
 // test_04:
 //   999
 //  +  6
 //  ----
 //  1005
-//
 // const a1 = new Node(9);
 // const a2 = new Node(9);
 // const a3 = new Node(9);
 // a1.next = a2;
 // a2.next = a3;
 // 9 -> 9 -> 9
-//
 // const b1 = new Node(6);
 // 6
-//
 // addLists(a1, b1);
 // 5 -> 0 -> 0 -> 1
 
@@ -1717,19 +1451,16 @@ const addLists = (head1, head2, carry = 0) => {
 // const d = new Node('d');
 // const e = new Node('e');
 // const f = new Node('f');
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //      a
 //    /   \
 //   b     c
 //  / \     \
 // d   e     f
-//
 // depthFirstValues(a); 
 //    -> ['a', 'b', 'd', 'e', 'c', 'f']
 // test_01:
@@ -1740,14 +1471,12 @@ const addLists = (head1, head2, carry = 0) => {
 // const e = new Node('e');
 // const f = new Node('f');
 // const g = new Node('g');
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
 // e.left = g;
-//
 //      a
 //    /   \
 //   b     c
@@ -1755,7 +1484,6 @@ const addLists = (head1, head2, carry = 0) => {
 // d   e     f
 //    /
 //   g
-//
 // depthFirstValues(a); 
 //    -> ['a', 'b', 'd', 'e', 'g', 'c', 'f']
 // test_02:
@@ -1769,12 +1497,10 @@ const addLists = (head1, head2, carry = 0) => {
 // const c = new Node('c');
 // const d = new Node('d');
 // const e = new Node('e');
-//
 // a.right = b;
 // b.left = c;
 // c.right = d;
 // d.right = e;
-//
 //      a
 //       \
 //        b
@@ -1784,7 +1510,6 @@ const addLists = (head1, head2, carry = 0) => {
 //        d
 //         \
 //          e
-//
 // depthFirstValues(a); 
 //    -> ['a', 'b', 'c', 'd', 'e']
 // test_04:
@@ -1832,22 +1557,18 @@ const depthFirstValues = (root) => {
 // const d = new Node('d');
 // const e = new Node('e');
 // const f = new Node('f');
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //      a
 //    /   \
 //   b     c
 //  / \     \
 // d   e     f
-//
 // breadthFirstValues(a); 
 //    -> ['a', 'b', 'c', 'd', 'e', 'f']
-//
 // test_01:
 // const a = new Node('a');
 // const b = new Node('b');
@@ -1857,7 +1578,6 @@ const depthFirstValues = (root) => {
 // const f = new Node('f');
 // const g = new Node('g');
 // const h = new Node('h');
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
@@ -1865,7 +1585,6 @@ const depthFirstValues = (root) => {
 // c.right = f;
 // e.left = g;
 // f.right = h;
-//
 //      a
 //    /   \
 //   b     c
@@ -1873,18 +1592,13 @@ const depthFirstValues = (root) => {
 // d   e     f
 //    /       \
 //   g         h
-//
 // breadthFirstValues(a); 
 //   -> ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
-//
 // test_02:
 // const a = new Node('a');
-//
 //      a
-//
 // breadthFirstValues(a); 
 //    -> ['a']
-//
 // test_03:
 // const a = new Node('a');
 // const b = new Node('b');
@@ -1892,13 +1606,11 @@ const depthFirstValues = (root) => {
 // const d = new Node('d');
 // const e = new Node('e');
 // const x = new Node('x');
-//
 // a.right = b;
 // b.left = c;
 // c.left = x;
 // c.right = d;
 // d.right = e;
-//
 //      a
 //       \
 //        b
@@ -1908,10 +1620,8 @@ const depthFirstValues = (root) => {
 //   x    d
 //         \
 //          e
-//
 // breadthFirstValues(a); 
 //    -> ['a', 'b', 'c', 'x', 'd', 'e']
-//
 // test_04:
 // howHigh(null); 
 //    -> []
@@ -1948,21 +1658,17 @@ const breadthFirstValues = (root) => {
 // const d = new Node("d");
 // const e = new Node("e");
 // const f = new Node("f");
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //      a
 //    /   \
 //   b     c
 //  / \     \
 // d   e     f
-//
 // treeIncludes(a, "e"); // -> true
-//
 // test_01:
 // const a = new Node("a");
 // const b = new Node("b");
@@ -1970,21 +1676,17 @@ const breadthFirstValues = (root) => {
 // const d = new Node("d");
 // const e = new Node("e");
 // const f = new Node("f");
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //      a
 //    /   \
 //   b     c
 //  / \     \
 // d   e     f
-//
 // treeIncludes(a, "a"); // -> true
-//
 // test_02:
 // const a = new Node("a");
 // const b = new Node("b");
@@ -1992,21 +1694,17 @@ const breadthFirstValues = (root) => {
 // const d = new Node("d");
 // const e = new Node("e");
 // const f = new Node("f");
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //      a
 //    /   \
 //   b     c
 //  / \     \
 // d   e     f
-//
 // treeIncludes(a, "n"); // -> false
-//
 // test_03:
 // const a = new Node("a");
 // const b = new Node("b");
@@ -2016,7 +1714,6 @@ const breadthFirstValues = (root) => {
 // const f = new Node("f");
 // const g = new Node("g");
 // const h = new Node("h");
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
@@ -2024,7 +1721,6 @@ const breadthFirstValues = (root) => {
 // c.right = f;
 // e.left = g;
 // f.right = h;
-//
 //      a
 //    /   \
 //   b     c
@@ -2032,9 +1728,7 @@ const breadthFirstValues = (root) => {
 // d   e     f
 //    /       \
 //   g         h
-//
 // treeIncludes(a, "f"); // -> true
-//
 // test_04:
 // const a = new Node("a");
 // const b = new Node("b");
@@ -2044,7 +1738,6 @@ const breadthFirstValues = (root) => {
 // const f = new Node("f");
 // const g = new Node("g");
 // const h = new Node("h");
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
@@ -2052,7 +1745,6 @@ const breadthFirstValues = (root) => {
 // c.right = f;
 // e.left = g;
 // f.right = h;
-//
 //      a
 //    /   \
 //   b     c
@@ -2060,9 +1752,7 @@ const breadthFirstValues = (root) => {
 // d   e     f
 //    /       \
 //   g         h
-//
 // treeIncludes(a, "p"); // -> false
-//
 // test_05:
 // treeIncludes(null, "b"); // -> false
 
@@ -2103,21 +1793,17 @@ const treeIncludes = (root, target) => {
 // const d = new Node(4);
 // const e = new Node(-2);
 // const f = new Node(1);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //       3
 //    /    \
 //   11     4
 //  / \      \
 // 4   -2     1
-//
 // treeSum(a); // -> 21
-//
 // test_01:
 // const a = new Node(1);
 // const b = new Node(6);
@@ -2127,7 +1813,6 @@ const treeIncludes = (root, target) => {
 // const f = new Node(2);
 // const g = new Node(2);
 // const h = new Node(2);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
@@ -2135,7 +1820,6 @@ const treeIncludes = (root, target) => {
 // c.right = f;
 // e.left = g;
 // f.right = h;
-//
 //      1
 //    /   \
 //   6     0
@@ -2143,9 +1827,7 @@ const treeIncludes = (root, target) => {
 // 3   -6    2
 //    /       \
 //   2         2
-//
 // treeSum(a); // -> 10
-//
 // test_02:
 // treeSum(null); // -> 0
 
@@ -2161,7 +1843,6 @@ const treeSum = (root) => {
 // Write a function, treeMinValue, that takes in the root of a binary tree that 
 // contains number values. The function should return the minimum value within 
 // the tree.
-//
 // You may assume that the input tree is non-empty.
 //
 // test_00:
@@ -2171,21 +1852,17 @@ const treeSum = (root) => {
 // const d = new Node(4);
 // const e = new Node(-2);
 // const f = new Node(1);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //       3
 //    /    \
 //   11     4
 //  / \      \
 // 4   -2     1
-//
 // treeMinValue(a); // -> -2
-//
 // test_01:
 // const a = new Node(5);
 // const b = new Node(11);
@@ -2193,21 +1870,17 @@ const treeSum = (root) => {
 // const d = new Node(4);
 // const e = new Node(14);
 // const f = new Node(12);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //       5
 //    /    \
 //   11     3
 //  / \      \
 // 4   15     12
-//
 // treeMinValue(a); // -> 3
-//
 // test_02:
 // const a = new Node(-1);
 // const b = new Node(-6);
@@ -2217,7 +1890,6 @@ const treeSum = (root) => {
 // const f = new Node(-13);
 // const g = new Node(-2);
 // const h = new Node(-2);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
@@ -2225,7 +1897,6 @@ const treeSum = (root) => {
 // c.right = f;
 // e.left = g;
 // f.right = h;
-//
 //        -1
 //      /   \
 //    -6    -5
@@ -2233,14 +1904,10 @@ const treeSum = (root) => {
 // -3   -4   -13
 //     /       \
 //    -2       -2
-//
 // tree_min_value(a); // -> -13
-//
 // test_03:
 // const a = new Node(42);
-//
 //        42
-//
 // tree_min_value(a); // -> 42
 
 // ========================= Depth First Recursive =========================
@@ -2292,7 +1959,6 @@ const treeMinValue = (root) => {
 // Write a function, maxPathSum, that takes in the root of a binary tree that 
 // contains number values. The function should return the maximum sum of any root
 // to leaf path within the tree.
-//
 // You may assume that the input tree is non-empty.
 //
 // test_00:
@@ -2302,21 +1968,17 @@ const treeMinValue = (root) => {
 // const d = new Node(4);
 // const e = new Node(-2);
 // const f = new Node(1);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //      3
 //    /   \
 //   11    4
 //  / \     \
 // 4   -2    1
-//
 // maxPathSum(a); // -> 18
-//
 // test_01:
 // const a = new Node(5);
 // const b = new Node(11);
@@ -2325,14 +1987,12 @@ const treeMinValue = (root) => {
 // const e = new Node(15);
 // const f = new Node(1);
 // const g = new Node(3);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // e.left = f;
 // e.right = g;
-//
 //       5
 //     /   \
 //    11   54
@@ -2340,9 +2000,7 @@ const treeMinValue = (root) => {
 // 20   15
 //      / \
 //     1  3
-//
 // maxPathSum(a); // -> 59
-//
 // test_02:
 // const a = new Node(-1);
 // const b = new Node(-6);
@@ -2352,7 +2010,6 @@ const treeMinValue = (root) => {
 // const f = new Node(-13);
 // const g = new Node(-1);
 // const h = new Node(-2);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
@@ -2360,7 +2017,6 @@ const treeMinValue = (root) => {
 // c.right = f;
 // e.left = g;
 // f.right = h;
-//
 //        -1
 //      /   \
 //    -6    -5
@@ -2368,14 +2024,10 @@ const treeMinValue = (root) => {
 // -3   0    -13
 //     /       \
 //    -1       -2
-//
 // maxPathSum(a); // -> -8
-//
 // test_03:
 // const a = new Node(42);
-//
 //        42
-//
 // maxPathSum(a); // -> 42
 
 // ========================= Depth First =========================
@@ -2391,7 +2043,6 @@ const maxPathSum = (root) => {
 // Write a function, pathFinder, that takes in the root of a binary tree and a 
 // target value. The function should return an array representing a path to the 
 // target value. If the target value is not found in the tree, then return null.
-//
 // You may assume that the tree contains unique values.
 //
 // test_00:
@@ -2401,21 +2052,17 @@ const maxPathSum = (root) => {
 // const d = new Node("d");
 // const e = new Node("e");
 // const f = new Node("f");
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //      a
 //    /   \
 //   b     c
 //  / \     \
 // d   e     f
-//
 // pathFinder(a, 'e'); // -> [ 'a', 'b', 'e' ]
-//
 // test_01:
 // const a = new Node("a");
 // const b = new Node("b");
@@ -2423,21 +2070,17 @@ const maxPathSum = (root) => {
 // const d = new Node("d");
 // const e = new Node("e");
 // const f = new Node("f");
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //      a
 //    /   \
 //   b     c
 //  / \     \
 // d   e     f
-//
 // pathFinder(a, 'p'); // -> null
-//
 // test_02:
 // const a = new Node("a");
 // const b = new Node("b");
@@ -2447,7 +2090,6 @@ const maxPathSum = (root) => {
 // const f = new Node("f");
 // const g = new Node("g");
 // const h = new Node("h");
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
@@ -2455,7 +2097,6 @@ const maxPathSum = (root) => {
 // c.right = f;
 // e.left = g;
 // f.right = h;
-//
 //      a
 //    /   \
 //   b     c
@@ -2463,9 +2104,7 @@ const maxPathSum = (root) => {
 // d   e     f
 //    /       \
 //   g         h
-//
 // pathFinder(a, "c"); // -> ['a', 'c']
-//
 // test_03:
 // const a = new Node("a");
 // const b = new Node("b");
@@ -2475,7 +2114,6 @@ const maxPathSum = (root) => {
 // const f = new Node("f");
 // const g = new Node("g");
 // const h = new Node("h");
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
@@ -2483,7 +2121,6 @@ const maxPathSum = (root) => {
 // c.right = f;
 // e.left = g;
 // f.right = h;
-//
 //      a
 //    /   \
 //   b     c
@@ -2491,19 +2128,13 @@ const maxPathSum = (root) => {
 // d   e     f
 //    /       \
 //   g         h
-//
 // pathFinder(a, "h"); // -> ['a', 'c', 'f', 'h']
-//
 // test_04:
 // const x = new Node("x");
-//
 //      x
-//
 // pathFinder(x, "x"); // -> ['x']
-//
 // test_05:
 // pathFinder(null, "x"); // -> null
-//
 // test_06:
 // const root = new Node(0);
 // let curr = root;
@@ -2511,7 +2142,6 @@ const maxPathSum = (root) => {
 //   curr.right = new Node(i);
 //   curr = curr.right;
 // }
-//
 //      0
 //       \
 //        1
@@ -2525,7 +2155,6 @@ const maxPathSum = (root) => {
 //              5999
 //                \
 //                6000
-//
 // pathFinder(root, 3451); // -> [0, 1, 2, 3, ..., 3450, 3451]
 
 // ========================= My Solution =========================
@@ -2606,21 +2235,17 @@ const pathFinderHelper = (root, target) => {
 // const d = new Node(4);
 // const e = new Node(6);
 // const f = new Node(12);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //     12
 //    /  \
 //   6    6
 //  / \    \
 // 4   6    12
-//
 // treeValueCount(a,  6); // -> 3
-//
 // test_01:
 // const a = new Node(12);
 // const b = new Node(6);
@@ -2628,21 +2253,17 @@ const pathFinderHelper = (root, target) => {
 // const d = new Node(4);
 // const e = new Node(6);
 // const f = new Node(12);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //     12
 //    /  \
 //   6    6
 //  / \    \
 // 4   6    12
-//
 // treeValueCount(a,  12); // -> 2
-//
 // test_02:
 // const a = new Node(7);
 // const b = new Node(5);
@@ -2652,7 +2273,6 @@ const pathFinderHelper = (root, target) => {
 // const f = new Node(7);
 // const g = new Node(1);
 // const h = new Node(1);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
@@ -2660,7 +2280,6 @@ const pathFinderHelper = (root, target) => {
 // c.right = f;
 // e.left = g;
 // f.right = h;
-//
 //      7
 //    /   \
 //   5     1
@@ -2669,7 +2288,6 @@ const pathFinderHelper = (root, target) => {
 //    /       \
 //   1         1
 // treeValueCount(a, 1); // -> 4
-//
 // test_03:
 // const a = new Node(7);
 // const b = new Node(5);
@@ -2679,7 +2297,6 @@ const pathFinderHelper = (root, target) => {
 // const f = new Node(7);
 // const g = new Node(1);
 // const h = new Node(1);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
@@ -2687,7 +2304,6 @@ const pathFinderHelper = (root, target) => {
 // c.right = f;
 // e.left = g;
 // f.right = h;
-//
 //      7
 //    /   \
 //   5     1
@@ -2695,9 +2311,7 @@ const pathFinderHelper = (root, target) => {
 // 1   8     7
 //    /       \
 //   1         1
-//
 // treeValueCount(a, 9); // -> 0
-//
 // test_04:
 // treeValueCount(null, 42); // -> 0
 
@@ -2715,10 +2329,8 @@ const treeValueCount = (root, target) => {
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #32 how high ]]]]]]]]]]]]]]]]]]]]]]]]] 
 // Write a function, howHigh, that takes in the root of a binary tree. The 
 // function should return a number representing the height of the tree.
-//
 // The height of a binary tree is defined as the maximal number of edges from 
 // the root node to any leaf node.
-//
 // If the tree is empty, return -1.
 //
 // test_00:
@@ -2728,21 +2340,17 @@ const treeValueCount = (root, target) => {
 // const d = new Node('d');
 // const e = new Node('e');
 // const f = new Node('f');
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //      a
 //    /   \
 //   b     c
 //  / \     \
 // d   e     f
-//
 // howHigh(a); // -> 2
-//
 // test_01:
 // const a = new Node('a');
 // const b = new Node('b');
@@ -2751,14 +2359,12 @@ const treeValueCount = (root, target) => {
 // const e = new Node('e');
 // const f = new Node('f');
 // const g = new Node('g');
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
 // e.left = g
-//
 //      a
 //    /   \
 //   b     c
@@ -2766,26 +2372,18 @@ const treeValueCount = (root, target) => {
 // d   e     f
 //    /
 //   g
-//
 // howHigh(a); // -> 3
-//
 // test_02:
 // const a = new Node('a');
 // const c = new Node('c');
-//
 // a.right = c;
-//
 //      a
 //       \
 //        c
-//
 // howHigh(a); // -> 1
-//
 // test_03:
 // const a = new Node('a');
-//
 //      a
-//
 // howHigh(a); // -> 0
 
 // ========================= Recursive =========================
@@ -2803,7 +2401,6 @@ const howHigh = (root) => {
 // Write a function, bottomRightValue, that takes in the root of a binary tree. 
 // The function should return the right-most value in the bottom-most level of 
 // the tree.
-//
 // You may assume that the input tree is non-empty.
 //
 // test_00:
@@ -2813,21 +2410,17 @@ const howHigh = (root) => {
 // const d = new Node(4);
 // const e = new Node(-2);
 // const f = new Node(1);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //       3
 //    /    \
 //   11     10
 //  / \      \
 // 4   -2     1
-//
 // bottomRightValue(a); // -> 1
-//
 // test_01:
 // const a = new Node(-1);
 // const b = new Node(-6);
@@ -2837,7 +2430,6 @@ const howHigh = (root) => {
 // const f = new Node(-13);
 // const g = new Node(-2);
 // const h = new Node(6);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
@@ -2845,7 +2437,6 @@ const howHigh = (root) => {
 // c.right = f;
 // e.left = g;
 // e.right = h;
-//
 //        -1
 //      /   \
 //    -6    -5
@@ -2853,9 +2444,7 @@ const howHigh = (root) => {
 // -3   -4   -13
 //     / \       
 //    -2  6
-//
 // bottomRightValue(a); // -> 6
-//
 // test_02:
 // const a = new Node(-1);
 // const b = new Node(-6);
@@ -2866,7 +2455,6 @@ const howHigh = (root) => {
 // const g = new Node(-2);
 // const h = new Node(6);
 // const i = new Node(7);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
@@ -2875,7 +2463,6 @@ const howHigh = (root) => {
 // e.left = g;
 // e.right = h;
 // f.left = i;
-//
 //        -1
 //      /   \
 //    -6    -5
@@ -2883,9 +2470,7 @@ const howHigh = (root) => {
 // -3   -4   -13
 //     / \    /   
 //    -2  6  7 
-//
 // bottomRightValue(a); // -> 7
-//
 // test_03
 // const a = new Node('a');
 // const b = new Node('b');
@@ -2893,13 +2478,11 @@ const howHigh = (root) => {
 // const d = new Node('d');
 // const e = new Node('e');
 // const f = new Node('f');
-//
 // a.left = b;
 // a.right = c;
 // b.right = d;
 // d.left = e;
 // e.right = f;
-//
 //      a
 //    /   \ 
 //   b     c
@@ -2911,12 +2494,9 @@ const howHigh = (root) => {
 // f
 //       
 // bottomRightValue(a); // -> 'f'
-//
 // test_04
 // const a = new Node(42);
-//
 //      42
-//
 // bottomRightValue(a); // -> 42
 
 // ========================= Breadth First =========================
@@ -2939,10 +2519,8 @@ const bottomRightValue = (root) => {
 // Write a function, allTreePaths, that takes in the root of a binary tree. The
 // function should return a 2-Dimensional array where each subarray represents a
 // root-to-leaf path in the tree.
-//
 // The order within an individual path must start at the root and end at the leaf,
 // but the relative order of among paths in the outer array does not matter.
-//
 // You may assume that the input tree is non-empty.
 //
 // test_00:
@@ -2952,26 +2530,22 @@ const bottomRightValue = (root) => {
 // const d = new Node('d');
 // const e = new Node('e');
 // const f = new Node('f');
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //      a
 //    /   \
 //   b     c
 //  / \     \
 // d   e     f
-//
 // allTreePaths(a); // ->
 // [ 
 //   [ 'a', 'b', 'd' ], 
 //   [ 'a', 'b', 'e' ], 
 //   [ 'a', 'c', 'f' ] 
 // ] 
-//
 // test_01:
 // const a = new Node('a');
 // const b = new Node('b');
@@ -2982,7 +2556,6 @@ const bottomRightValue = (root) => {
 // const g = new Node('g');
 // const h = new Node('h');
 // const i = new Node('i');
-//
 // a.l//eft = b;
 // a.right = c;
 // b.left = d;
@@ -2991,7 +2564,6 @@ const bottomRightValue = (root) => {
 // e.left = g;
 // e.right = h;
 // f.left = i;
-//
 //         a
 //      /    \
 //     b      c
@@ -2999,7 +2571,6 @@ const bottomRightValue = (root) => {
 //  d    e      f
 //      / \    /   
 //     g  h   i 
-//
 // allTreePaths(a); // ->
 // [ 
 //   [ 'a', 'b', 'd' ], 
@@ -3007,7 +2578,6 @@ const bottomRightValue = (root) => {
 //   [ 'a', 'b', 'e', 'h' ], 
 //   [ 'a', 'c', 'f', 'i' ] 
 // ] 
-//
 // test_02:
 // const q = new Node('q');
 // const r = new Node('r');
@@ -3015,13 +2585,11 @@ const bottomRightValue = (root) => {
 // const t = new Node('t');
 // const u = new Node('u');
 // const v = new Node('v');
-//
 // q.left = r;
 // q.right = s;
 // r.right = t;
 // t.left = u;
 // u.right = v;
-//
 //      q
 //    /   \ 
 //   r     s
@@ -3031,18 +2599,14 @@ const bottomRightValue = (root) => {
 //   u
 //  /
 // v
-//
 // allTreePaths(q); // ->
 // [ 
 //   [ 'q', 'r', 't', 'u', 'v' ], 
 //   [ 'q', 's' ] 
 // ] 
-//
 // test_03:
 // const z = new Node('z');
-//
 //      z
-//
 // console.log(allTreePaths(z)); // -> 
 // [
 //   ['z']
@@ -3076,26 +2640,22 @@ const allTreePaths = (root) => {
 // const d = new Node("d");
 // const e = new Node("e");
 // const f = new Node("f");
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //      a
 //    /   \
 //   b     c
 //  / \     \
 // d   e     f
-//
 // treeLevels(a); // ->
 // [
 //   ['a'],
 //   ['b', 'c'],
 //   ['d', 'e', 'f']
 // ]
-//
 // test_01:
 // const a = new Node("a");
 // const b = new Node("b");
@@ -3106,7 +2666,6 @@ const allTreePaths = (root) => {
 // const g = new Node("g");
 // const h = new Node("h");
 // const i = new Node("i");
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
@@ -3115,7 +2674,6 @@ const allTreePaths = (root) => {
 // e.left = g;
 // e.right = h;
 // f.left = i;
-//
 //         a
 //      /    \
 //     b      c
@@ -3123,7 +2681,6 @@ const allTreePaths = (root) => {
 //  d    e      f
 //      / \    /
 //     g  h   i
-//
 // treeLevels(a); // ->
 // [
 //   ['a'],
@@ -3131,7 +2688,6 @@ const allTreePaths = (root) => {
 //   ['d', 'e', 'f'],
 //   ['g', 'h', 'i']
 // ]
-//
 // test_02:
 // const q = new Node("q");
 // const r = new Node("r");
@@ -3139,13 +2695,11 @@ const allTreePaths = (root) => {
 // const t = new Node("t");
 // const u = new Node("u");
 // const v = new Node("v");
-//
 // q.left = r;
 // q.right = s;
 // r.right = t;
 // t.left = u;
 // u.right = v;
-//
 //      q
 //    /   \
 //   r     s
@@ -3155,7 +2709,6 @@ const allTreePaths = (root) => {
 //   u
 //  /
 // v
-//
 // treeLevels(q); //->
 // [
 //   ['q'],
@@ -3164,8 +2717,6 @@ const allTreePaths = (root) => {
 //   ['u'],
 //   ['v']
 // ]
-//
-//
 // test_03:
 // treeLevels(null); // -> []
 
@@ -3222,21 +2773,17 @@ const treeLevels = (root, levelsArr = [], level = 0) => {
 // const d = new Node(4);
 // const e = new Node(-2);
 // const f = new Node(1);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //       3
 //    /    \
 //   11     4
 //  / \      \
 // 4   -2     1
-//
 // levelAverages(a); // -> [ 3, 7.5, 1 ] 
-//
 // test_01:
 // const a = new Node(5);
 // const b = new Node(11);
@@ -3245,14 +2792,12 @@ const treeLevels = (root, levelsArr = [], level = 0) => {
 // const e = new Node(15);
 // const f = new Node(1);
 // const g = new Node(3);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // e.left = f;
 // e.right = g;
-//
 //        5
 //     /    \
 //    11    54
@@ -3260,9 +2805,7 @@ const treeLevels = (root, levelsArr = [], level = 0) => {
 // 20   15
 //      / \
 //     1  3
-//
 // levelAverages(a); // -> [ 5, 32.5, 17.5, 2 ] 
-//
 // test_02:
 // const a = new Node(-1);
 // const b = new Node(-6);
@@ -3272,7 +2815,6 @@ const treeLevels = (root, levelsArr = [], level = 0) => {
 // const f = new Node(45);
 // const g = new Node(-1);
 // const h = new Node(-2);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
@@ -3280,7 +2822,6 @@ const treeLevels = (root, levelsArr = [], level = 0) => {
 // c.right = f;
 // e.left = g;
 // f.right = h;
-//
 //        -1
 //      /   \
 //    -6    -5
@@ -3288,9 +2829,7 @@ const treeLevels = (root, levelsArr = [], level = 0) => {
 // -3   0     45
 //     /       \
 //    -1       -2
-//
 // levelAverages(a); // -> [ -1, -5.5, 14, -1.5 ]
-//
 // test_03:
 // const q = new Node(13);
 // const r = new Node(4);
@@ -3298,13 +2837,11 @@ const treeLevels = (root, levelsArr = [], level = 0) => {
 // const t = new Node(9);
 // const u = new Node(2);
 // const v = new Node(42);
-//
 // q.left = r;
 // q.right = s;
 // r.right = t;
 // t.left = u;
 // u.right = v;
-//
 //        13
 //      /   \
 //     4     2
@@ -3314,9 +2851,7 @@ const treeLevels = (root, levelsArr = [], level = 0) => {
 //     2
 //    /
 //   42
-//
 // levelAverages(q); // -> [ 13, 3, 9, 2, 42 ]
-//
 // test_04:
 // levelAverages(null); // -> [ ]
 
@@ -3371,21 +2906,17 @@ const levelAverages = (root, levelsArr = [], level = 0) => {
 // const d = new Node("d");
 // const e = new Node("e");
 // const f = new Node("f");
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // c.right = f;
-//
 //      a
 //    /   \
 //   b     c
 //  / \     \
 // d   e     f
-//
 // leafList(a); // -> [ 'd', 'e', 'f' ] 
-//
 // test_01:
 // const a = new Node("a");
 // const b = new Node("b");
@@ -3395,7 +2926,6 @@ const levelAverages = (root, levelsArr = [], level = 0) => {
 // const f = new Node("f");
 // const g = new Node("g");
 // const h = new Node("h");
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
@@ -3403,7 +2933,6 @@ const levelAverages = (root, levelsArr = [], level = 0) => {
 // c.right = f;
 // e.left = g;
 // f.right = h;
-//
 //      a
 //    /   \
 //   b     c
@@ -3411,9 +2940,7 @@ const levelAverages = (root, levelsArr = [], level = 0) => {
 // d   e     f
 //    /       \
 //   g         h
-//
 // leafList(a); // -> [ 'd', 'g', 'h' ]
-//
 // test_02:
 // const a = new Node(5);
 // const b = new Node(11);
@@ -3422,14 +2949,12 @@ const levelAverages = (root, levelsArr = [], level = 0) => {
 // const e = new Node(15);
 // const f = new Node(1);
 // const g = new Node(3);
-//
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
 // e.left = f;
 // e.right = g;
-//
 //        5
 //     /    \
 //    11    54
@@ -3437,16 +2962,11 @@ const levelAverages = (root, levelsArr = [], level = 0) => {
 // 20   15
 //      / \
 //     1  3
-//
 // leafList(a); // -> [ 20, 1, 3, 54 ]
-//
 // test_03:
 // const x = new Node('x');
-//
 //      x
-//
 // leafList(x); // -> [ 'x' ]
-//
 // test_04:
 // leafList(null); // -> [ ]
 
@@ -3477,9 +2997,7 @@ const leafList = (root, leaves = []) => {
 //   j: ['i'],
 //   k: []
 // };
-//
 // hasPath(graph, 'f', 'k'); // true
-//
 // test_01:
 // const graph = {
 //   f: ['g', 'i'],
@@ -3489,9 +3007,7 @@ const leafList = (root, leaves = []) => {
 //   j: ['i'],
 //   k: []
 // };
-//
 // hasPath(graph, 'f', 'j'); // false
-//
 // test_02:
 // const graph = {
 //   f: ['g', 'i'],
@@ -3501,9 +3017,7 @@ const leafList = (root, leaves = []) => {
 //   j: ['i'],
 //   k: []
 // };
-//
 // hasPath(graph, 'i', 'h'); // true
-//
 // test_03:
 // const graph = {
 //   v: ['x', 'w'],
@@ -3512,9 +3026,7 @@ const leafList = (root, leaves = []) => {
 //   y: ['z'],
 //   z: [],  
 // };
-//
 // hasPath(graph, 'v', 'w'); // true
-//
 // test_04:
 // const graph = {
 //   v: ['x', 'w'],
@@ -3523,7 +3035,6 @@ const leafList = (root, leaves = []) => {
 //   y: ['z'],
 //   z: [],  
 // };
-//
 // hasPath(graph, 'v', 'z'); // false
 
 // ========================= Breadth First =========================
@@ -3566,9 +3077,7 @@ const hasPath = (graph, src, dst) => {
 //   ['k', 'l'],
 //   ['o', 'n']
 // ];
-//
 // undirectedPath(edges, 'j', 'm'); // -> true
-//
 // test_01:
 // const edges = [
 //   ['i', 'j'],
@@ -3577,9 +3086,7 @@ const hasPath = (graph, src, dst) => {
 //   ['k', 'l'],
 //   ['o', 'n']
 // ];
-//
 // undirectedPath(edges, 'm', 'j'); // -> true
-//
 // test_02:
 // const edges = [
 //   ['i', 'j'],
@@ -3588,9 +3095,7 @@ const hasPath = (graph, src, dst) => {
 //   ['k', 'l'],
 //   ['o', 'n']
 // ];
-//
 // undirectedPath(edges, 'l', 'j'); // -> true
-//
 // test_03:
 // const edges = [
 //   ['i', 'j'],
@@ -3599,7 +3104,6 @@ const hasPath = (graph, src, dst) => {
 //   ['k', 'l'],
 //   ['o', 'n']
 // ];
-//
 // undirectedPath(edges, 'k', 'o'); // -> false
 // test_04:
 // const edges = [
@@ -3609,9 +3113,7 @@ const hasPath = (graph, src, dst) => {
 //   ['k', 'l'],
 //   ['o', 'n']
 // ];
-//
 // undirectedPath(edges, 'i', 'o'); // -> false
-//
 // test_05:
 // const edges = [
 //   ['b', 'a'],
@@ -3622,9 +3124,7 @@ const hasPath = (graph, src, dst) => {
 //   ['q', 'u'],
 //   ['q', 't'],
 // ];
-//
 // undirectedPath(edges, 'a', 'b'); // -> true
-//
 // test_06:
 // const edges = [
 //   ['b', 'a'],
@@ -3635,9 +3135,7 @@ const hasPath = (graph, src, dst) => {
 //   ['q', 'u'],
 //   ['q', 't'],
 // ];
-//
 // undirectedPath(edges, 'a', 'c'); // -> true
-//
 // test_07:
 // const edges = [
 //   ['b', 'a'],
@@ -3648,9 +3146,7 @@ const hasPath = (graph, src, dst) => {
 //   ['q', 'u'],
 //   ['q', 't'],
 // ];
-//
 // undirectedPath(edges, 'r', 't'); // -> true
-//
 // test_08:
 // const edges = [
 //   ['b', 'a'],
@@ -3661,7 +3157,6 @@ const hasPath = (graph, src, dst) => {
 //   ['q', 'u'],
 //   ['q', 't'],
 // ];
-//
 // undirectedPath(edges, 'r', 'b'); // -> false
 
 // ========================= Depth First =========================
@@ -3715,7 +3210,6 @@ const validPath = (graph, nodeA, nodeB, visited = new Set()) => {
 //   3: [2, 4],
 //   4: [3, 2]
 // }); // -> 2
-//
 // test_01:
 // connectedComponentsCount({
 //   1: [2],
@@ -3725,7 +3219,6 @@ const validPath = (graph, nodeA, nodeB, visited = new Set()) => {
 //   7: [6, 8],
 //   8: [9, 7, 2]
 // }); // -> 1
-//
 // test_02:
 // connectedComponentsCount({
 //   3: [],
@@ -3737,10 +3230,8 @@ const validPath = (graph, nodeA, nodeB, visited = new Set()) => {
 //   1: [2],
 //   2: [1]
 // }); // -> 3
-//
 // test_03:
 // connectedComponentsCount({}); // -> 0
-//
 // test_04:
 // connectedComponentsCount({
 //   0: [4,7],
@@ -3793,7 +3284,6 @@ const exploreComponent = (graph, node, visited) => {
 //   3: ['2', '4'],
 //   4: ['3', '2']
 // }); // -> 4
-//
 // test_01:
 // largestComponent({
 //   1: ['2'],
@@ -3803,7 +3293,6 @@ const exploreComponent = (graph, node, visited) => {
 //   7: ['6', '8'],
 //   8: ['9', '7', '2']
 // }); // -> 6
-//
 // test_02:
 // largestComponent({
 //   3: [],
@@ -3815,10 +3304,8 @@ const exploreComponent = (graph, node, visited) => {
 //   1: ['2'],
 //   2: ['1']
 // }); // -> 5
-//
 // test_03:
 // largestComponent({}); // -> 0
-//
 // test_04:
 // largestComponent({
 //   0: ['4','7'],
@@ -3872,9 +3359,7 @@ const exploreComponent = (graph, node, visited, size = 0) => {
 //   ['z', 'v'],
 //   ['w', 'v']
 // ];
-//
 // shortestPath(edges, 'w', 'z'); // -> 2
-//
 // test_01:
 // const edges = [
 //   ['w', 'x'],
@@ -3883,9 +3368,7 @@ const exploreComponent = (graph, node, visited, size = 0) => {
 //   ['z', 'v'],
 //   ['w', 'v']
 // ];
-//
 // shortestPath(edges, 'y', 'x'); // -> 1
-//
 // test_02:
 // const edges = [
 //   ['a', 'c'],
@@ -3896,9 +3379,7 @@ const exploreComponent = (graph, node, visited, size = 0) => {
 //   ['e', 'd'],
 //   ['g', 'f']
 // ];
-//
 // shortestPath(edges, 'a', 'e'); // -> 3
-//
 // test_03:
 // const edges = [
 //   ['a', 'c'],
@@ -3909,9 +3390,7 @@ const exploreComponent = (graph, node, visited, size = 0) => {
 //   ['e', 'd'],
 //   ['g', 'f']
 // ];
-//
 // shortestPath(edges, 'e', 'c'); // -> 2
-//
 // test_04:
 // const edges = [
 //   ['a', 'c'],
@@ -3922,9 +3401,7 @@ const exploreComponent = (graph, node, visited, size = 0) => {
 //   ['e', 'd'],
 //   ['g', 'f']
 // ];
-//
 // shortestPath(edges, 'b', 'g'); // -> -1
-//
 // test_05:
 // const edges = [
 //   ['c', 'n'],
@@ -3933,9 +3410,7 @@ const exploreComponent = (graph, node, visited, size = 0) => {
 //   ['c', 'w'],
 //   ['w', 'e'],
 // ];
-//
 // shortestPath(edges, 'w', 'e'); // -> 1
-//
 // test_06:
 // const edges = [
 //   ['c', 'n'],
@@ -3944,9 +3419,7 @@ const exploreComponent = (graph, node, visited, size = 0) => {
 //   ['c', 'w'],
 //   ['w', 'e'],
 // ];
-//
 // shortestPath(edges, 'n', 'e'); // -> 2
-//
 // test_07:
 // const edges = [
 //   ['m', 'n'],
@@ -3957,7 +3430,6 @@ const exploreComponent = (graph, node, visited, size = 0) => {
 //   ['r', 'q'],
 //   ['r', 's']
 // ];
-//
 // shortestPath(edges, 'm', 's'); // -> 6
 
 // ========================= Breadth First =========================
@@ -4015,9 +3487,7 @@ const buildGraph = (edges) => {
 //   ['L', 'W', 'W', 'L', 'L'],
 //   ['L', 'L', 'W', 'W', 'W'],
 // ];
-//
 // islandCount(grid); // -> 3
-//
 // test_01:
 // const grid = [
 //   ['L', 'W', 'W', 'L', 'W'],
@@ -4026,25 +3496,20 @@ const buildGraph = (edges) => {
 //   ['W', 'W', 'W', 'W', 'W'],
 //   ['W', 'W', 'L', 'L', 'L'],
 // ];
-//
 // islandCount(grid); // -> 4
-//
 // test_02:
 // const grid = [
 //   ['L', 'L', 'L'],
 //   ['L', 'L', 'L'],
 //   ['L', 'L', 'L'],
 // ];
-//
 // islandCount(grid); // -> 1
-//
 // test_03:
 // const grid = [
 //   ['W', 'W'],
 //   ['W', 'W'],
 //   ['W', 'W'],
 // ];
-//
 // islandCount(grid); // -> 0
 
 // ========================= Breadth First =========================
@@ -4133,7 +3598,6 @@ const exploreLand = (grid, r, c, visited) => {
 // W represents water and L represents land. The function should return the size
 // of the smallest island. An island is a vertically or horizontally connected 
 // region of land.
-//
 // You may assume that the grid contains at least one island.
 //
 // test_00:
@@ -4145,9 +3609,7 @@ const exploreLand = (grid, r, c, visited) => {
 //   ['L', 'W', 'W', 'L', 'L'],
 //   ['L', 'L', 'W', 'W', 'W'],
 // ];
-//
 // minimumIsland(grid); // -> 2
-//
 // test_01:
 // const grid = [
 //   ['L', 'W', 'W', 'L', 'W'],
@@ -4156,18 +3618,14 @@ const exploreLand = (grid, r, c, visited) => {
 //   ['W', 'W', 'W', 'W', 'W'],
 //   ['W', 'W', 'L', 'L', 'L'],
 // ];
-//
 // minimumIsland(grid); // -> 1
-//
 // test_02:
 // const grid = [
 //   ['L', 'L', 'L'],
 //   ['L', 'L', 'L'],
 //   ['L', 'L', 'L'],
 // ];
-//
 // minimumIsland(grid); // -> 9
-//
 // test_03:
 // const grid = [
 //   ['W', 'W'],
@@ -4175,7 +3633,6 @@ const exploreLand = (grid, r, c, visited) => {
 //   ['W', 'W'],
 //   ['W', 'L']
 // ];
-//
 // minimumIsland(grid); // -> 1
 
 // ========================= Depth First =========================
@@ -4227,6 +3684,7 @@ const landSize = (grid, r, c, visited) => {
 // down, left, or right, but cannot pass through walls (X). If there is no 
 // possible path to a carrot, then return -1.
 // 
+//
 // test_00:
 // const grid = [
 //   ['O', 'O', 'O', 'O', 'O'],
@@ -4238,7 +3696,6 @@ const landSize = (grid, r, c, visited) => {
 // ];
 // 
 // closestCarrot(grid, 1, 2); // -> 4
-//
 // test_01:
 // const grid = [
 //   ['O', 'O', 'O', 'O', 'O'],
@@ -4250,7 +3707,6 @@ const landSize = (grid, r, c, visited) => {
 // ];
 // 
 // closestCarrot(grid, 0, 0); // -> 5
-//
 // test_02:
 // const grid = [
 //   ['O', 'O', 'X', 'X', 'X'],
@@ -4264,7 +3720,6 @@ const landSize = (grid, r, c, visited) => {
 // ];
 // 
 // closestCarrot(grid, 3, 4); // -> 9
-//
 // test_03:
 // const grid = [
 //   ['O', 'O', 'X', 'O', 'O'],
@@ -4273,7 +3728,6 @@ const landSize = (grid, r, c, visited) => {
 // ];
 // 
 // closestCarrot(grid, 1, 4); // -> 2
-//
 // test_04:
 // const grid = [
 //   ['O', 'O', 'X', 'O', 'O'],
@@ -4324,9 +3778,7 @@ const closestCarrot = (grid, startRow, startCol) => {
 //   b: ['c'],
 //   c: []
 // };
-//
 // longestPath(graph); // -> 2
-//
 // test_01:
 // const graph = {
 //   a: ['c', 'b'],
@@ -4338,9 +3790,7 @@ const closestCarrot = (grid, startRow, startCol) => {
 //   t: ['u'],
 //   u: []
 // };
-//
 // longestPath(graph); // -> 4
-//
 // test_02:
 // const graph = {
 //   h: ['i', 'j', 'k'],
@@ -4351,9 +3801,7 @@ const closestCarrot = (grid, startRow, startCol) => {
 //   x: ['y'],
 //   y: []
 // };
-//
 // longestPath(graph); // -> 2
-//
 // test_03:
 // const graph = {
 //   a: ['b'],
@@ -4364,7 +3812,6 @@ const closestCarrot = (grid, startRow, startCol) => {
 //   g: ['h'],
 //   h: []
 // };
-//
 // longestPath(graph); // -> 3
 
 // ========================= Depth First =========================
@@ -4397,10 +3844,8 @@ const pathLength = (graph, start) => {
 // before course B. Return the minimum number of semesters required to complete
 // all n courses. There is no limit on how many courses you can take in a single
 // semester, as long the prerequisites of a course are satisfied before taking it.
-//
 // Note that given prerequisite [A, B], you cannot take course A and course B
 // concurrently in the same semester. You must take A in some semester before B.
-//
 // You can assume that it is possible to eventually complete all courses.
 //
 // test_00:
@@ -4412,7 +3857,6 @@ const pathLength = (graph, start) => {
 //   [0, 5],
 // ];
 // semestersRequired(numCourses, prereqs); // -> 3
-//
 // test_01:
 // const numCourses = 7;
 // const prereqs = [
@@ -4424,7 +3868,6 @@ const pathLength = (graph, start) => {
 //   [5, 6],
 // ];
 // semestersRequired(numCourses, prereqs); // -> 5
-//
 // test_02:
 // const numCourses = 5;
 // const prereqs = [
@@ -4434,12 +3877,10 @@ const pathLength = (graph, start) => {
 //   [3, 2],
 // ];
 // semestersRequired(numCourses, prereqs); // -> 2
-//
 // test_03:
 // const numCourses = 12;
 // const prereqs = [];
 // semestersRequired(numCourses, prereqs); // -> 1
-//
 // test_04:
 // const numCourses = 3;
 // const prereqs = [
@@ -4448,7 +3889,6 @@ const pathLength = (graph, start) => {
 //   [1, 2],
 // ];
 // semestersRequired(numCourses, prereqs); // -> 3
-//
 // test_05:
 // const numCourses = 6;
 // const prereqs = [
@@ -4515,7 +3955,6 @@ const semesters = (graph, course) => {
 //   ["W", "W", "W", "W", "W"],
 // ];
 // bestBridge(grid); // -> 1
-//
 // test_01:
 // const grid = [
 //   ["W", "W", "W", "W", "W"],
@@ -4526,7 +3965,6 @@ const semesters = (graph, course) => {
 //   ["W", "W", "W", "W", "W"],
 // ];
 // bestBridge(grid); // -> 2
-//
 // test_02:
 // const grid = [
 //   ["W", "W", "W", "W", "W"],
@@ -4534,7 +3972,6 @@ const semesters = (graph, course) => {
 //   ["L", "W", "W", "W", "W"],
 // ];
 // bestBridge(grid); // -> 3
-//
 // test_03:
 // const grid = [
 //   ["W", "W", "W", "W", "W", "W", "W", "W"],
@@ -4549,7 +3986,6 @@ const semesters = (graph, course) => {
 //   ["W", "W", "W", "W", "W", "W", "W", "W"],
 // ];
 // bestBridge(grid); // -> 3
-//
 // test_04:
 // const grid = [
 //   ["L", "L", "L", "L", "L", "L", "L", "L"],
@@ -4566,7 +4002,6 @@ const semesters = (graph, course) => {
 //   ["L", "L", "L", "L", "L", "L", "L", "L"],
 // ];
 // bestBridge(grid); // -> 2
-//
 // test_05:
 // const grid = [
 //   ["W", "L", "W", "W", "W", "W", "W", "W"],
@@ -4737,7 +4172,6 @@ const traverseIsland = (grid, row, col, visited) => {
 //   b: ["c"],
 //   c: ["a"],
 // }); // -> true
-//
 // test_01:
 // hasCycle({
 //   a: ["b", "c"],
@@ -4745,7 +4179,6 @@ const traverseIsland = (grid, row, col, visited) => {
 //   c: ["d"],
 //   d: [],
 // }); // -> false
-//
 // test_02:
 // hasCycle({
 //   a: ["b", "c"],
@@ -4754,7 +4187,6 @@ const traverseIsland = (grid, row, col, visited) => {
 //   e: ["f"],
 //   f: ["e"],
 // }); // -> true
-//
 // test_03:
 // hasCycle({
 //   q: ["r", "s"],
@@ -4766,7 +4198,6 @@ const traverseIsland = (grid, row, col, visited) => {
 //   w: [],
 //   x: ["w"],
 // }); // -> false
-//
 // test_04:
 // hasCycle({
 //   a: ["b"],
@@ -4808,6 +4239,7 @@ const inCycle = (graph, node, visited, visiting = new Set()) => {
 // B. The function should return a boolean indicating whether or not it is
 // possible to complete all courses.
 // 
+//
 // test_00:
 // const numCourses = 6;
 // const prereqs = [
@@ -4818,7 +4250,6 @@ const inCycle = (graph, node, visited, visiting = new Set()) => {
 //   [4, 5],
 // ];
 // prereqsPossible(numCourses, prereqs); // -> true
-//
 // test_01:
 // const numCourses = 6;
 // const prereqs = [
@@ -4830,7 +4261,6 @@ const inCycle = (graph, node, visited, visiting = new Set()) => {
 //   [3, 0],
 // ];
 // prereqsPossible(numCourses, prereqs); // -> false
-//
 // test_02:
 // const numCourses = 5;
 // const prereqs = [
@@ -4840,7 +4270,6 @@ const inCycle = (graph, node, visited, visiting = new Set()) => {
 //   [0, 4],
 // ];
 // prereqsPossible(numCourses, prereqs); // -> true
-//
 // test_03:
 // const numCourses = 6;
 // const prereqs = [
@@ -4852,7 +4281,6 @@ const inCycle = (graph, node, visited, visiting = new Set()) => {
 //   [3, 5],
 // ];
 // prereqsPossible(numCourses, prereqs); // -> false
-//
 // test_04:
 // const numCourses = 8;
 // const prereqs = [
@@ -4864,7 +4292,6 @@ const inCycle = (graph, node, visited, visiting = new Set()) => {
 //   [4, 3],
 // ];
 // prereqsPossible(numCourses, prereqs); // -> true
-//
 // test_05:
 // const numCourses = 8;
 // const prereqs = [
@@ -4877,7 +4304,6 @@ const inCycle = (graph, node, visited, visiting = new Set()) => {
 //   [4, 3],
 // ];
 // prereqsPossible(numCourses, prereqs); // -> false
-//
 // test_06:
 // const numCourses = 42;
 // const prereqs = [[6, 36]];
@@ -4932,6 +4358,7 @@ const inCycle = (graph, visited, course, visiting = new Set()) => {
 // To generate further numbers of the sequence, calculate the sum of previous two numbers.
 // Solve this recursively.
 // 
+//
 // test_00:
 // fib(0); // -> 0
 // test_01:
@@ -5286,10 +4713,8 @@ const maxPathSum = (grid, r = 0, c = 0, memo = {}) => {
 // argument. The function should return the maximum sum of non-adjacent elements
 // in the array. There is no limit on how many elements can be taken into the sum
 // as long as they are not adjacent.
-//
 // For example, given:
 // [2, 4, 5, 12, 7]
-//
 // The maximum non-adjacent sum is 16, because 4 + 12. 
 // 4 and 12 are not adjacent in the array.
 //
@@ -5351,7 +4776,6 @@ const nonAdjacentSum = (nums, i = 0, memo = {}) => {
 // Write a function, summingSquares, that takes a target number as an argument.
 // The function should return the minimum number of perfect squares that sum to
 // the target. A perfect square is a number of the form (i*i) where i >= 1.
-//
 // For example: 1, 4, 9, 16 are perfect squares, but 8 is not perfect square.
 // Given 12:
 // summingSquares(12) -> 3
@@ -5398,7 +4822,6 @@ const summingSquares = (n, memo = {}) => {
 // Write a function, countingChange, that takes in an amount and an array of
 // coins. The function should return the number of different ways it is possible
 // to make change for the given amount using the coins.
-//
 // You may reuse a coin as many times as necessary.
 // For example,
 // countingChange(4, [1,2,3]) -> 4
@@ -5446,7 +4869,6 @@ const countingChange = (amount, coins, i = 0, memo = {}) => {
 // return a boolean indicating whether or not it is possible reach the last
 // position of the array. When situated at some position of the array, you may
 // take a maximum number of steps based on the number at that position.
-//
 // For example, given:
 //     idx =  0  1  2  3  4  5
 // numbers = [2, 4, 2, 0, 0, 1]
@@ -5832,7 +5254,6 @@ const stringMultiply = (stack) => {
 // Write a function, nestingScore, that takes in a string of brackets as an
 // argument. The function should return the score of the string according to the
 // following rules:
-//
 // [] is worth 1 point
 // XY is worth m + n points where X, Y are substrings of well-formed brackets and m, n are their respective scores
 // [S] is worth 2 * k points where S is a substring of well-formed brackets and k is the score of that substring
@@ -6542,7 +5963,6 @@ const linkedListCycle = (head) => {
 // ancestor of the two values in the tree.
 // You may assume that the tree values are unique and the tree is non-empty.
 // Note that a node may be considered an ancestor of itself.
-//
 // Example Tree:
 // const a = new Node('a');
 // const b = new Node('b');
@@ -6951,12 +6371,10 @@ const leftyNodes = (root) => {
 // list of an undirected graph. The function should return a boolean indicating
 // whether or not it is possible to color nodes of the graph using two colors in
 // such a way that adjacent nodes are always different colors.
-//
 // For example, given this graph:
 // x-y-z
 // It is possible to color the nodes by using red for x and z, 
 // then use blue for y. So the answer is true.
-//
 // For example, given this graph:
 //     q
 //    / \
@@ -7157,12 +6575,10 @@ const setTeams = (graph, teams, player, whichTeam) => {
 // a pair of cities. The function should return a boolean indicating whether or
 // not there exists a unique route for every pair of cities. A route is a
 // sequence of roads that does not visit a city more than once.
-//
 // Cities will be numbered 0 to n - 1.
 // You can assume that all roads are two-way roads. This means if there is a
 // road between A and B, then you can use that road to go from A to B or go from
 // B to A.
-//
 // For example, given these roads:
 // 0 --- 1
 // | \
@@ -7171,7 +6587,6 @@ const setTeams = (graph, teams, player, whichTeam) => {
 // 2    3
 // There is a unique route for between every pair of cities.
 // So the answer is true.
-//
 // For example, given these roads:
 // 0 --- 1
 // | \
@@ -7319,7 +6734,6 @@ const maxIncreasingSubseq = (numbers, i = 0, lastNum = -Infinity, memo = {}) => 
 // on which position they are planted. Your bosses are picky, they tell you to
 // never plant two of the same flower type right next to each other. What is the
 // minimum cost we need to plant a flower in each position of the garden?
-//
 // Write a function, positioningPlants, that takes in a 2D array with dimensions
 // n * m. Each row of the array represents the costs of the flower types at that
 // position. This means that costs[i][j] represents the cost of planting flower
@@ -7432,14 +6846,12 @@ const positioningPlants = (costs, pos = 0, type = null, memo = {}) => {
 // you move out of bounds if you could take at most k moves. A single move is
 // moving one space up, down, left, or right. During a path you may revisit a
 // position.
-//
 // For example:
 // Given m, n, k, r, c:
 // 3, 4, 2, 0, 0
 // This input asks us to count the numbers of ways
 // to move out of bounds in a 3 by 4 grid, starting at
 // position (0, 0) if we could take at most 2 moves.
-//
 // The answer is 4 because of these 4 distinct ways:
 //  1. left
 //  2. up
@@ -7583,7 +6995,6 @@ const merge = (left, right) => {
 // an argument. Each interval is an array containing a pair of numbers
 // representing a start and end time. Your function should combine overlapping
 // intervals and return an array containing the combined intervals.
-//
 // For example:
 // Given two intervals:
 // [1, 4] and [3, 7]
@@ -7748,7 +7159,6 @@ const binarySearch = (numbers, target) => {
 // subtree are smaller than the node's value and all values in a node's right
 // subtree are greater than or equal to the node's value.
 // Your solution should have a best case runtime of O(log(n)).
-//
 // tree a
 // const a = new Node(12);
 // const b = new Node(5);
@@ -8268,7 +7678,6 @@ const buildTreeInPre = (
 // as an argument. The function should return true if the first word should
 // appear before the second word if lexically-ordered according to the given
 // alphabet order. If the second word should appear first, then return false.
-//
 // Note that the alphabet string may be any arbitrary string.
 // Intuitively, Lexical Order is like "dictionary" order:
 // You can assume that all characters are lowercase a-z.
@@ -8468,7 +7877,6 @@ const topologicalOrder = (graph) => {
 // The keypad on the safe has digits 0-9. You can assume that the hints will
 // generate exactly one working combination and that a digit can occur zero or
 // one time in the answer.
-//
 // Write a function, safeCracking, that takes in an array of hints as an argument
 // and determines the combination that will unlock the safe. The function should
 // return a string representing the combination.
