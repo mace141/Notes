@@ -2886,50 +2886,50 @@ def leaf_list(root, values = []):
 #
 # test_00:
 # graph = {
-#   f: ['g', 'i'],
-#   g: ['h'],
-#   h: [],
-#   i: ['g', 'k'],
-#   j: ['i'],
-#   k: []
+#   'f': ['g', 'i'],
+#   'g': ['h'],
+#   'h': [],
+#   'i': ['g', 'k'],
+#   'j': ['i'],
+#   'k': []
 # }
 # has_path(graph, 'f', 'k') # true
 # test_01:
 # graph = {
-#   f: ['g', 'i'],
-#   g: ['h'],
-#   h: [],
-#   i: ['g', 'k'],
-#   j: ['i'],
-#   k: []
+#   'f': ['g', 'i'],
+#   'g': ['h'],
+#   'h': [],
+#   'i': ['g', 'k'],
+#   'j': ['i'],
+#   'k': []
 # }
 # has_path(graph, 'f', 'j') # false
 # test_02:
 # graph = {
-#   f: ['g', 'i'],
-#   g: ['h'],
-#   h: [],
-#   i: ['g', 'k'],
-#   j: ['i'],
-#   k: []
+#   'f': ['g', 'i'],
+#   'g': ['h'],
+#   'h': [],
+#   'i': ['g', 'k'],
+#   'j': ['i'],
+#   'k': []
 # }
 # has_path(graph, 'i', 'h') # true
 # test_03:
 # graph = {
-#   v: ['x', 'w'],
-#   w: [],
-#   x: [],
-#   y: ['z'],
-#   z: [],  
+#   'v': ['x', 'w'],
+#   'w': [],
+#   'x': [],
+#   'y': ['z'],
+#   'z': [],  
 # }
 # has_path(graph, 'v', 'w') # true
 # test_04:
 # graph = {
-#   v: ['x', 'w'],
-#   w: [],
-#   x: [],
-#   y: ['z'],
-#   z: [],  
+#   'v': ['x', 'w'],
+#   'w': [],
+#   'x': [],
+#   'y': ['z'],
+#   'z': [],  
 # }
 # has_path(graph, 'v', 'z') # false
 
@@ -3557,43 +3557,43 @@ def closest_carrot(grid, row, col):
 #
 # test_00:
 # graph = {
-#   a: ['c', 'b'],
-#   b: ['c'],
-#   c: []
+#   'a': ['c', 'b'],
+#   'b': ['c'],
+#   'c': []
 # }
 # longest_path(graph) # -> 2
 # test_01:
 # graph = {
-#   a: ['c', 'b'],
-#   b: ['c'],
-#   c: [],
-#   q: ['r'],
-#   r: ['s', 'u', 't'],
-#   s: ['t'],
-#   t: ['u'],
-#   u: []
+#   'a': ['c', 'b'],
+#   'b': ['c'],
+#   'c': [],
+#   'q': ['r'],
+#   'r': ['s', 'u', 't'],
+#   's': ['t'],
+#   't': ['u'],
+#   'u': []
 # }
 # longest_path(graph) # -> 4
 # test_02:
 # graph = {
-#   h: ['i', 'j', 'k'],
-#   g: ['h'],
-#   i: [],
-#   j: [],
-#   k: [],
-#   x: ['y'],
-#   y: []
+#   'h': ['i', 'j', 'k'],
+#   'g': ['h'],
+#   'i': [],
+#   'j': [],
+#   'k': [],
+#   'x': ['y'],
+#   'y': []
 # }
 # longest_path(graph) # -> 2
 # test_03:
 # graph = {
-#   a: ['b'],
-#   b: ['c'],
-#   c: [],
-#   e: ['f'],
-#   f: ['g'],
-#   g: ['h'],
-#   h: []
+#   'a': ['b'],
+#   'b': ['c'],
+#   'c': [],
+#   'e': ['f'],
+#   'f': ['g'],
+#   'g': ['h'],
+#   'h': []
 # }
 # longest_path(graph) # -> 3
 
@@ -3840,25 +3840,25 @@ def in_bounds(grid, delta, row, col):
   return [[new_row, new_col], valid_row and valid_col]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #49 has cycle ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, hasCycle, that takes in an object representing the adjacency
+# Write a function, has_cycle, that takes in an object representing the adjacency
 # list of a directed graph. The function should return a boolean indicating 
 # whether or not the graph contains a cycle.
 #
 # test_00:
-# hasCycle({
+# has_cycle({
 #   a: ["b"],
 #   b: ["c"],
 #   c: ["a"],
 # }) # -> true
 # test_01:
-# hasCycle({
+# has_cycle({
 #   a: ["b", "c"],
 #   b: ["c"],
 #   c: ["d"],
 #   d: [],
 # }) # -> false
 # test_02:
-# hasCycle({
+# has_cycle({
 #   a: ["b", "c"],
 #   b: [],
 #   c: [],
@@ -3866,7 +3866,7 @@ def in_bounds(grid, delta, row, col):
 #   f: ["e"],
 # }) # -> true
 # test_03:
-# hasCycle({
+# has_cycle({
 #   q: ["r", "s"],
 #   r: ["t", "u"],
 #   s: [],
@@ -3877,13 +3877,36 @@ def in_bounds(grid, delta, row, col):
 #   x: ["w"],
 # }) # -> false
 # test_04:
-# hasCycle({
+# has_cycle({
 #   a: ["b"],
 #   b: ["c"],
 #   c: ["a"],
 #   g: [],
 # }) # -> true
 
+# ========================= White-gray-black (DFS) =========================
+# Time: O(e), Space: O(n)
+def has_cycle(graph):
+  visited = set()
+  for node in graph:
+    if in_cycle(graph, node, visited, set()):
+      return True
+  return False
+
+def in_cycle(graph, node, visited, visiting):
+  if node in visited:
+    return False
+  if node in visiting:
+    return True
+
+  visiting.add(node)
+  for neighbor in graph[node]:
+    if in_cycle(graph, neighbor, visited, visiting):
+      return True
+  visiting.remove(node)
+  visited.add(node)
+  
+  return False
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #50 prereqs possible ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, prereqsPossible, that takes in a number of courses (n) and
@@ -3892,7 +3915,6 @@ def in_bounds(grid, delta, row, col):
 # B. The function should return a boolean indicating whether or not it is
 # possible to complete all courses.
 # 
-#
 # test_00:
 # numCourses = 6
 # prereqs = [
