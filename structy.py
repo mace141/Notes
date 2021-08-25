@@ -5,17 +5,17 @@
 # You can assume that the list is non-empty.
 #
 # test_00:
-# max_value([4, 7, 2, 8, 10, 9]); # -> 10
+# max_value([4, 7, 2, 8, 10, 9]) # -> 10
 # test_01:
-# max_value([10, 5, 40, 40.3]); # -> 40.3
+# max_value([10, 5, 40, 40.3]) # -> 40.3
 # test_02:
-# max_value([-5, -2, -1, -11]); # -> -1
+# max_value([-5, -2, -1, -11]) # -> -1
 # test_03:
-# max_value([42]); # -> 42
+# max_value([42]) # -> 42
 # test_04:
-# max_value([1000, 8]); # -> 1000
+# max_value([1000, 8]) # -> 1000
 # test_05:
-# max_value([1000, 8, 9000]); # -> 9000
+# max_value([1000, 8, 9000]) # -> 9000
 
 def max_value(nums):
   max = float('-inf')
@@ -35,29 +35,29 @@ def max_value(nums):
 # You can assume that the input number is a positive integer.
 #
 # test_00:
-# is_prime(2); # -> true
+# is_prime(2) # -> true
 # test_01:
-# is_prime(3); # -> true
+# is_prime(3) # -> true
 # test_02:
-# is_prime(4); # -> false
+# is_prime(4) # -> false
 # test_03:
-# is_prime(5); # -> true
+# is_prime(5) # -> true
 # test_04:
-# is_prime(6); # -> false
+# is_prime(6) # -> false
 # test_05:
-# is_prime(7); # -> true
+# is_prime(7) # -> true
 # test_06:
-# is_prime(8); # -> false
+# is_prime(8) # -> false
 # test_07:
-# is_prime(25); # -> false
+# is_prime(25) # -> false
 # test_08:
-# is_prime(31); # -> true
+# is_prime(31) # -> true
 # test_09:
-# is_prime(2017); # -> true
+# is_prime(2017) # -> true
 # test_10:
-# is_prime(2048); # -> false
+# is_prime(2048) # -> false
 # test_11:
-# is_prime(1); # -> false
+# is_prime(1) # -> false
 
 from math import floor, sqrt
 
@@ -83,13 +83,13 @@ def is_prime(n):
 # the input string is well-formed according to the previously mentioned pattern.
 #
 # test_00:
-# uncompress("2c3a1t"); # -> 'ccaaat'
+# uncompress("2c3a1t") # -> 'ccaaat'
 # test_01:
-# uncompress("4s2b"); # -> 'ssssbb'
+# uncompress("4s2b") # -> 'ssssbb'
 # test_02:
-# uncompress("2p1o5p"); # -> 'ppoppppp'
+# uncompress("2p1o5p") # -> 'ppoppppp'
 # test_03:
-# uncompress("3n12e2z"); # -> 'nnneeeeeeeeeeeezz'
+# uncompress("3n12e2z") # -> 'nnneeeeeeeeeeeezz'
 
 def uncompress(str):
   nums = '1234567890'
@@ -117,13 +117,13 @@ def uncompress(str):
 # You can assume that the input only contains alphabetic characters.
 #
 # test_00:
-# compress('ccaaatsss'); # -> '2c3at3s'
+# compress('ccaaatsss') # -> '2c3at3s'
 # test_01:
-# compress('ssssbbz'); # -> '4s2bz'
+# compress('ssssbbz') # -> '4s2bz'
 # test_02:
-# compress('ppoppppp'); # -> '2po5p'
+# compress('ppoppppp') # -> '2po5p'
 # test_03:
-# compress('nnneeeeeeeeeeeezz'); # -> '3n12e2z'
+# compress('nnneeeeeeeeeeeezz') # -> '3n12e2z'
 
 def compress(s):
   result = ''
@@ -147,17 +147,17 @@ def compress(s):
 # order.
 #
 # test_00:
-# anagrams('restful', 'fluster'); # -> true
+# anagrams('restful', 'fluster') # -> true
 # test_01:
-# anagrams('cats', 'tocs'); # -> false
+# anagrams('cats', 'tocs') # -> false
 # test_02:
-# anagrams('monkeyswrite', 'newyorktimes'); # -> true
+# anagrams('monkeyswrite', 'newyorktimes') # -> true
 # test_03:
-# anagrams('paper', 'reapa'); # -> false
+# anagrams('paper', 'reapa') # -> false
 # test_04:
-# anagrams('elbow', 'below'); # -> true
+# anagrams('elbow', 'below') # -> true
 # test_05:
-# anagrams('tax', 'taxi'); # -> false
+# anagrams('tax', 'taxi') # -> false
 
 # ========================= My Solution =========================
 def anagrams(s1, s2):
@@ -209,17 +209,17 @@ def anagrams(s1, s2):
 # You can assume that the input string is non-empty.
 #
 # test_00:
-# most_frequent_char('bookeeper'); # -> 'e'
+# most_frequent_char('bookeeper') # -> 'e'
 # test_01:
-# most_frequent_char('david'); # -> 'd'
+# most_frequent_char('david') # -> 'd'
 # test_02:
-# most_frequent_char('abby'); # -> 'b'
+# most_frequent_char('abby') # -> 'b'
 # test_03:
-# most_frequent_char('mississippi'); # -> 'i'
+# most_frequent_char('mississippi') # -> 'i'
 # test_04:
-# most_frequent_char('potato'); # -> 'o'
+# most_frequent_char('potato') # -> 'o'
 # test_05:
-# most_frequent_char('eleventennine'); # -> 'e'
+# most_frequent_char('eleventennine') # -> 'e'
 
 from collections import Counter
 
@@ -304,11 +304,11 @@ def pair_product(numbers, target_product):
 # test_03:
 # intersection([0,1,2], [10,11]) # -> []
 # test_04:
-# a = [];
-# b = [];
-# for (let i = 0; i < 50000; i += 1) {
-#   a.push(i);
-#   b.push(i);
+# a = []
+# b = []
+# for (let i = 0 i < 50000 i += 1) {
+#   a.push(i)
+#   b.push(i)
 # }
 # intersection(a, b) # -> [0,1,2,3,..., 49999]
 
@@ -335,19 +335,19 @@ def intersection(a, b):
 # 5s are at the end of the list.
 #
 # test_00
-# five_sort([12, 5, 1, 5, 12, 7]);
+# five_sort([12, 5, 1, 5, 12, 7])
 # -> [12, 7, 1, 12, 5, 5] 
 # test_01
-# five_sort([5, 2, 5, 6, 5, 1, 10, 2, 5, 5]);
+# five_sort([5, 2, 5, 6, 5, 1, 10, 2, 5, 5])
 # -> [2, 2, 10, 6, 1, 5, 5, 5, 5, 5] 
 # test_02
-# five_sort([5, 5, 5, 1, 1, 1, 4]);
+# five_sort([5, 5, 5, 1, 1, 1, 4])
 # -> [4, 1, 1, 1, 5, 5, 5] 
 # test_03
-# five_sort([5, 5, 6, 5, 5, 5, 5]);
+# five_sort([5, 5, 6, 5, 5, 5, 5])
 # -> [6, 5, 5, 5, 5, 5, 5] 
 # test_04
-# five_sort([5, 1, 2, 5, 5, 3, 2, 5, 1, 5, 5, 5, 4, 5]);
+# five_sort([5, 1, 2, 5, 5, 3, 2, 5, 1, 5, 5, 5, 4, 5])
 # -> [4, 1, 2, 1, 2, 3, 5, 5, 5, 5, 5, 5, 5, 5] 
 
 def five_sort(nums):
@@ -369,27 +369,27 @@ def five_sort(nums):
 # the nodes in the linked list.
 #
 # test_00:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# a.next = b;
-# b.next = c;
-# c.next = d;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# a.next = b
+# b.next = c
+# c.next = d
 # a -> b -> c -> d
-# linked_list_values(a); # -> [ 'a', 'b', 'c', 'd' ]
+# linked_list_values(a) # -> [ 'a', 'b', 'c', 'd' ]
 # test_01:
-# x = new Node("x");
-# y = new Node("y");
-# x.next = y;
+# x = new Node("x")
+# y = new Node("y")
+# x.next = y
 # x -> y
-# linked_list_values(x); # -> [ 'x', 'y' ]
+# linked_list_values(x) # -> [ 'x', 'y' ]
 # test_02:
-# q = new Node("q");
+# q = new Node("q")
 # q
-# linked_list_values(q); # -> [ 'q' ]
+# linked_list_values(q) # -> [ 'q' ]
 # test_03:
-# linked_list_values(None); # -> [ ]
+# linked_list_values(None) # -> [ ]
 
 def linked_list_values(head):
   result = []
@@ -405,29 +405,29 @@ def linked_list_values(head):
 # in the linked list.
 #
 # test_00:
-# a = new Node(2);
-# b = new Node(8);
-# c = new Node(3);
-# d = new Node(-1);
-# e = new Node(7);
-# a.next = b;
-# b.next = c;
-# c.next = d;
-# d.next = e;
+# a = new Node(2)
+# b = new Node(8)
+# c = new Node(3)
+# d = new Node(-1)
+# e = new Node(7)
+# a.next = b
+# b.next = c
+# c.next = d
+# d.next = e
 # 2 -> 8 -> 3 -> -1 -> 7
-# sum_list(a); # 19
+# sum_list(a) # 19
 # test_01:
-# x = new Node(38);
-# y = new Node(4);
-# x.next = y;
+# x = new Node(38)
+# y = new Node(4)
+# x.next = y
 # 38 -> 4
-# sum_list(x); # 42
+# sum_list(x) # 42
 # test_02:
-# z = new Node(100);
+# z = new Node(100)
 # 100
-# sum_list(z); # 100
+# sum_list(z) # 100
 # test_03:
-# sum_list(None); # 0
+# sum_list(None) # 0
 
 # ========================= Iterative =========================
 # Time: O(n), Space: O(1)
@@ -452,49 +452,49 @@ def sum_list(head):
 # the linked list contains the target.
 #
 # test_00:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# a.next = b;
-# b.next = c;
-# c.next = d;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# a.next = b
+# b.next = c
+# c.next = d
 # a -> b -> c -> d
-# linked_list_find(a, "c"); # true
+# linked_list_find(a, "c") # true
 # test_01:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# a.next = b;
-# b.next = c;
-# c.next = d;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# a.next = b
+# b.next = c
+# c.next = d
 # a -> b -> c -> d
-# linked_list_find(a, "d"); # true
+# linked_list_find(a, "d") # true
 # test_02:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# a.next = b;
-# b.next = c;
-# c.next = d;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# a.next = b
+# b.next = c
+# c.next = d
 # a -> b -> c -> d
-# linked_list_find(a, "q"); # false
+# linked_list_find(a, "q") # false
 # test_03:
-# node_1 = new Node("jason");
-# node2 = new Node("leneli");
-# node_1.next = node2;
+# node_1 = new Node("jason")
+# node2 = new Node("leneli")
+# node_1.next = node2
 # jason -> leneli
-# linked_list_find(node_1, "jason"); # true
+# linked_list_find(node_1, "jason") # true
 # test_04:
-# node_1 = new Node(42);
+# node_1 = new Node(42)
 # 42
-# linked_list_find(node_1, 42); # true
+# linked_list_find(node_1, 42) # true
 # test_05:
-# node_1 = new Node(42);
+# node_1 = new Node(42)
 # 42
-# linked_list_find(node_1, 100); # false
+# linked_list_find(node_1, 100) # false
 
 # ========================= Iterative =========================
 # Time: O(n), Space: O(1)
@@ -520,47 +520,47 @@ def linked_list_find(head, target):
 # If there is no node at the given index, then return None.
 #
 # test_00:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# a.next = b;
-# b.next = c;
-# c.next = d;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# a.next = b
+# b.next = c
+# c.next = d
 # a -> b -> c -> d
-# get_node_value(a, 2); # 'c'
+# get_node_value(a, 2) # 'c'
 # test_01:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# a.next = b;
-# b.next = c;
-# c.next = d;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# a.next = b
+# b.next = c
+# c.next = d
 # a -> b -> c -> d
-# get_node_value(a, 3); # 'd'
+# get_node_value(a, 3) # 'd'
 # test_02:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# a.next = b;
-# b.next = c;
-# c.next = d;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# a.next = b
+# b.next = c
+# c.next = d
 # a -> b -> c -> d
-# get_node_value(a, 7); # None
+# get_node_value(a, 7) # None
 # test_03:
-# node_1 = new Node("banana");
-# node2 = new Node("mango");
-# node_1.next = node2;
+# node_1 = new Node("banana")
+# node2 = new Node("mango")
+# node_1.next = node2
 # banana -> mango
-# get_node_value(node_1, 0); # 'banana'
+# get_node_value(node_1, 0) # 'banana'
 # test_04:
-# node_1 = new Node("banana");
-# node2 = new Node("mango");
-# node_1.next = node2;
+# node_1 = new Node("banana")
+# node2 = new Node("mango")
+# node_1.next = node2
 # banana -> mango
-# get_node_value(node_1, 1); # 'mango'
+# get_node_value(node_1, 1) # 'mango'
 
 # ========================= Iterative =========================
 # Time: O(n), Space: O(1)
@@ -589,29 +589,29 @@ def get_node_value(head, index):
 # list in-place and return the new head of the reversed linked list.
 #
 # test_00:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# a.next = b;
-# b.next = c;
-# c.next = d;
-# d.next = e;
-# e.next = f;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# a.next = b
+# b.next = c
+# c.next = d
+# d.next = e
+# e.next = f
 # a -> b -> c -> d -> e -> f
-# reverse_list(a); # f -> e -> d -> c -> b -> a
+# reverse_list(a) # f -> e -> d -> c -> b -> a
 # test_01:
-# x = new Node("x");
-# y = new Node("y");
-# x.next = y;
+# x = new Node("x")
+# y = new Node("y")
+# x.next = y
 # x -> y
-# reverse_list(x); # y -> x
+# reverse_list(x) # y -> x
 # test_02:
-# p = new Node("p");
+# p = new Node("p")
 # p
-# reverse_list(p); # p
+# reverse_list(p) # p
 
 # ========================= Iterative =========================
 # Time: O(n), Space: O(1)
@@ -644,77 +644,77 @@ def reverse_list(head, prev = None):
 # You may assume that both input lists are non-empty.
 #
 # test_00:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# a.next = b;
-# b.next = c;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# a.next = b
+# b.next = c
 # a -> b -> c
-# x = new Node("x");
-# y = new Node("y");
-# z = new Node("z");
-# x.next = y;
-# y.next = z;
+# x = new Node("x")
+# y = new Node("y")
+# z = new Node("z")
+# x.next = y
+# y.next = z
 # x -> y -> z
-# zipper_lists(a, x);
+# zipper_lists(a, x)
 # a -> x -> b -> y -> c -> z
 # test_01:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# a.next = b;
-# b.next = c;
-# c.next = d;
-# d.next = e;
-# e.next = f;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# a.next = b
+# b.next = c
+# c.next = d
+# d.next = e
+# e.next = f
 # a -> b -> c -> d -> e -> f
-# x = new Node("x");
-# y = new Node("y");
-# z = new Node("z");
-# x.next = y;
-# y.next = z;
+# x = new Node("x")
+# y = new Node("y")
+# z = new Node("z")
+# x.next = y
+# y.next = z
 # x -> y -> z
-# zipper_lists(a, x);
+# zipper_lists(a, x)
 # a -> x -> b -> y -> c -> z -> d -> e -> f
 # test_02:
-# s = new Node("s");
-# t = new Node("t");
-# s.next = t;
+# s = new Node("s")
+# t = new Node("t")
+# s.next = t
 # s -> t
-# one = new Node(1);
-# two = new Node(2);
-# three = new Node(3);
-# four = new Node(4);
-# one.next = two;
-# two.next = three;
-# three.next = four;
+# one = new Node(1)
+# two = new Node(2)
+# three = new Node(3)
+# four = new Node(4)
+# one.next = two
+# two.next = three
+# three.next = four
 # 1 -> 2 -> 3 -> 4
-# zipper_lists(s, one);
+# zipper_lists(s, one)
 # s -> 1 -> t -> 2 -> 3 -> 4
 # test_03:
-# w = new Node("w");
+# w = new Node("w")
 # w
-# one = new Node(1);
-# two = new Node(2);
-# three = new Node(3);
-# one.next = two;
-# two.next = three;
+# one = new Node(1)
+# two = new Node(2)
+# three = new Node(3)
+# one.next = two
+# two.next = three
 # 1 -> 2 -> 3 
-# zipper_lists(w, one);
+# zipper_lists(w, one)
 # w -> 1 -> 2 -> 3
 # test_04:
-# one = new Node(1);
-# two = new Node(2);
-# three = new Node(3);
-# one.next = two;
-# two.next = three;
+# one = new Node(1)
+# two = new Node(2)
+# three = new Node(3)
+# one.next = two
+# two.next = three
 # 1 -> 2 -> 3 
-# w = new Node("w");
+# w = new Node("w")
 # w
-# zipper_lists(one, w);
+# zipper_lists(one, w)
 # 1 -> w -> 2 -> 3
 
 # ========================= Iterative =========================
@@ -766,59 +766,59 @@ def zipper_lists(head_1, head_2):
 # sorted numbers.
 #
 # test_00:
-# a = new Node(5);
-# b = new Node(7);
-# c = new Node(10);
-# d = new Node(12);
-# e = new Node(20);
-# f = new Node(28);
-# a.next = b;
-# b.next = c;
-# c.next = d;
-# d.next = e;
-# e.next = f;
+# a = new Node(5)
+# b = new Node(7)
+# c = new Node(10)
+# d = new Node(12)
+# e = new Node(20)
+# f = new Node(28)
+# a.next = b
+# b.next = c
+# c.next = d
+# d.next = e
+# e.next = f
 # 5 -> 7 -> 10 -> 12 -> 20 -> 28
-# q = new Node(6);
-# r = new Node(8);
-# s = new Node(9);
-# t = new Node(25);
-# q.next = r;
-# r.next = s;
-# s.next = t;
+# q = new Node(6)
+# r = new Node(8)
+# s = new Node(9)
+# t = new Node(25)
+# q.next = r
+# r.next = s
+# s.next = t
 # 6 -> 8 -> 9 -> 25
-# merge_lists(a, q);
+# merge_lists(a, q)
 # 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 12 -> 20 -> 25 -> 28 
 # test_01:
-# a = new Node(5);
-# b = new Node(7);
-# c = new Node(10);
-# d = new Node(12);
-# e = new Node(20);
-# f = new Node(28);
-# a.next = b;
-# b.next = c;
-# c.next = d;
-# d.next = e;
-# e.next = f;
+# a = new Node(5)
+# b = new Node(7)
+# c = new Node(10)
+# d = new Node(12)
+# e = new Node(20)
+# f = new Node(28)
+# a.next = b
+# b.next = c
+# c.next = d
+# d.next = e
+# e.next = f
 # 5 -> 7 -> 10 -> 12 -> 20 -> 28
-# q = new Node(1);
-# r = new Node(8);
-# s = new Node(9);
-# t = new Node(10);
-# q.next = r;
-# r.next = s;
-# s.next = t;
+# q = new Node(1)
+# r = new Node(8)
+# s = new Node(9)
+# t = new Node(10)
+# q.next = r
+# r.next = s
+# s.next = t
 # 1 -> 8 -> 9 -> 10
-# merge_lists(a, q);
+# merge_lists(a, q)
 # 1 -> 5 -> 7 -> 8 -> 9 -> 10 -> 10 -> 12 -> 20 -> 28 
 # test_02:
-# h = new Node(30);
+# h = new Node(30)
 # 30
-# p = new Node(15);
-# q = new Node(67);
-# p.next = q;
+# p = new Node(15)
+# q = new Node(67)
+# p.next = q
 # 15 -> 67
-# merge_lists(h, p);
+# merge_lists(h, p)
 # 15 -> 30 -> 67
 
 # ========================= Iterative =========================
@@ -871,49 +871,49 @@ def merge_lists(head_1, head_2):
 # You may assume that the input list is non-empty.
 #
 # test_00:
-# a = new Node(7);
-# b = new Node(7);
-# c = new Node(7);
-# a.next = b;
-# b.next = c;
+# a = new Node(7)
+# b = new Node(7)
+# c = new Node(7)
+# a.next = b
+# b.next = c
 # 7 -> 7 -> 7
-# is_univalue_list(a); # true
+# is_univalue_list(a) # true
 # test_01:
-# a = new Node(7);
-# b = new Node(7);
-# c = new Node(4);
-# a.next = b;
-# b.next = c;
+# a = new Node(7)
+# b = new Node(7)
+# c = new Node(4)
+# a.next = b
+# b.next = c
 # 7 -> 7 -> 4
-# is_univalue_list(a); # false
+# is_univalue_list(a) # false
 # test_02:
-# u = new Node(2);
-# v = new Node(2);
-# w = new Node(2);
-# x = new Node(2);
-# y = new Node(2);
-# u.next = v;
-# v.next = w;
-# w.next = x;
-# x.next = y;
+# u = new Node(2)
+# v = new Node(2)
+# w = new Node(2)
+# x = new Node(2)
+# y = new Node(2)
+# u.next = v
+# v.next = w
+# w.next = x
+# x.next = y
 # 2 -> 2 -> 2 -> 2 -> 2
-# is_univalue_list(u); # true
+# is_univalue_list(u) # true
 # test_03:
-# u = new Node(2);
-# v = new Node(2);
-# w = new Node(3);
-# x = new Node(3);
-# y = new Node(2);
-# u.next = v;
-# v.next = w;
-# w.next = x;
-# x.next = y;
+# u = new Node(2)
+# v = new Node(2)
+# w = new Node(3)
+# x = new Node(3)
+# y = new Node(2)
+# u.next = v
+# v.next = w
+# w.next = x
+# x.next = y
 # 2 -> 2 -> 3 -> 3 -> 2
-# is_univalue_list(u); # false
+# is_univalue_list(u) # false
 # test_04:
-# z = new Node('z');
+# z = new Node('z')
 # z
-# is_univalue_list(z); # true
+# is_univalue_list(z) # true
 
 # ========================= Iterative =========================
 # Time: O(n), Space: O(1)
@@ -942,59 +942,59 @@ def is_univalue_list(head, prev = None):
 # streak of the same value within the list.
 # 
 # test_00:
-# a = new Node(5);
-# b = new Node(5);
-# c = new Node(7);
-# d = new Node(7);
-# e = new Node(7);
-# f = new Node(6);
-# a.next = b;
-# b.next = c;
-# c.next = d;
-# d.next = e;
-# e.next = f;
+# a = new Node(5)
+# b = new Node(5)
+# c = new Node(7)
+# d = new Node(7)
+# e = new Node(7)
+# f = new Node(6)
+# a.next = b
+# b.next = c
+# c.next = d
+# d.next = e
+# e.next = f
 # 5 -> 5 -> 7 -> 7 -> 7 -> 6
-# longest_streak(a); # 3
+# longest_streak(a) # 3
 # test_01:
-# a = new Node(3);
-# b = new Node(3);
-# c = new Node(3);
-# d = new Node(3);
-# e = new Node(9);
-# f = new Node(9);
-# a.next = b;
-# b.next = c;
-# c.next = d;
-# d.next = e;
-# e.next = f;
+# a = new Node(3)
+# b = new Node(3)
+# c = new Node(3)
+# d = new Node(3)
+# e = new Node(9)
+# f = new Node(9)
+# a.next = b
+# b.next = c
+# c.next = d
+# d.next = e
+# e.next = f
 # 3 -> 3 -> 3 -> 3 -> 9 -> 9
-# longest_streak(a); # 4
+# longest_streak(a) # 4
 # test_02:
-# a = new Node(9);
-# b = new Node(9);
-# c = new Node(1);
-# d = new Node(9);
-# e = new Node(9);
-# f = new Node(9);
-# a.next = b;
-# b.next = c;
-# c.next = d;
-# d.next = e;
-# e.next = f;
+# a = new Node(9)
+# b = new Node(9)
+# c = new Node(1)
+# d = new Node(9)
+# e = new Node(9)
+# f = new Node(9)
+# a.next = b
+# b.next = c
+# c.next = d
+# d.next = e
+# e.next = f
 # 9 -> 9 -> 1 -> 9 -> 9 -> 9
-# longest_streak(a); # 3
+# longest_streak(a) # 3
 # test_03:
-# a = new Node(5);
-# b = new Node(5);
-# a.next = b;
+# a = new Node(5)
+# b = new Node(5)
+# a.next = b
 # 5 -> 5
-# longest_streak(a); # 2
+# longest_streak(a) # 2
 # test_04:
-# a = new Node(4);
+# a = new Node(4)
 # 4
-# longest_streak(a); # 1
+# longest_streak(a) # 1
 # test_05:
-# longest_streak(None); # 0
+# longest_streak(None) # 0
 
 # ========================= Iterative =========================
 # Time: O(n), Space: O(1)
@@ -1024,53 +1024,53 @@ def longest_streak(head):
 # You may assume that the input list is non-empty.
 #
 # test_00:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# a.next = b;
-# b.next = c;
-# c.next = d;
-# d.next = e;
-# e.next = f;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# a.next = b
+# b.next = c
+# c.next = d
+# d.next = e
+# e.next = f
 # a -> b -> c -> d -> e -> f
-# remove_node(a, "c");
+# remove_node(a, "c")
 # a -> b -> d -> e -> f
 # test_01:
-# x = new Node("x");
-# y = new Node("y");
-# z = new Node("z");
-# x.next = y;
-# y.next = z;
+# x = new Node("x")
+# y = new Node("y")
+# z = new Node("z")
+# x.next = y
+# y.next = z
 # x -> y -> z
-# remove_node(x, "z");
+# remove_node(x, "z")
 # x -> y
 # test_02:
-# q = new Node("q");
-# r = new Node("r");
-# s = new Node("s");
-# q.next = r;
-# r.next = s;
+# q = new Node("q")
+# r = new Node("r")
+# s = new Node("s")
+# q.next = r
+# r.next = s
 # q -> r -> s
-# remove_node(q, "q");
+# remove_node(q, "q")
 # r -> s
 # test_03:
-# node_1 = new Node("h");
-# node2 = new Node("i");
-# node3 = new Node("j");
-# node4 = new Node("i");
-# node_1.next = node2;
-# node2.next = node3;
-# node3.next = node4;
+# node_1 = new Node("h")
+# node2 = new Node("i")
+# node3 = new Node("j")
+# node4 = new Node("i")
+# node_1.next = node2
+# node2.next = node3
+# node3.next = node4
 # h -> i -> j -> i
-# remove_node(node_1, "i");
+# remove_node(node_1, "i")
 # h -> j -> i
 # test_04:
-# t = new Node("t");
+# t = new Node("t")
 # t
-# remove_node(t, "t");
+# remove_node(t, "t")
 # None
 
 # ========================= Iterative =========================
@@ -1111,44 +1111,44 @@ def remove_node(head, target_val):
 # than the length of the input list.
 #
 # test_00:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# a.next = b;
-# b.next = c;
-# c.next = d;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# a.next = b
+# b.next = c
+# c.next = d
 # a -> b -> c -> d
-# insert_node(a, 'x', 2);
+# insert_node(a, 'x', 2)
 # a -> b -> x -> c -> d
 # test_01:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# a.next = b;
-# b.next = c;
-# c.next = d;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# a.next = b
+# b.next = c
+# c.next = d
 # a -> b -> c -> d
-# insert_node(a, 'v', 3);
+# insert_node(a, 'v', 3)
 # a -> b -> c -> v -> d
 # test_02:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# a.next = b;
-# b.next = c;
-# c.next = d;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# a.next = b
+# b.next = c
+# c.next = d
 # a -> b -> c -> d
-# insert_node(a, 'm', 4);
+# insert_node(a, 'm', 4)
 # a -> b -> c -> d -> m
 # test_03:
-# a = new Node("a");
-# b = new Node("b");
-# a.next = b;
+# a = new Node("a")
+# b = new Node("b")
+# a.next = b
 # a -> b
-# insert_node(a, 'z', 0);
+# insert_node(a, 'z', 0)
 # z -> a -> b 
 
 # ========================= Iterative =========================
@@ -1210,16 +1210,16 @@ def insert_node(head, value, index, count = 0):
 # the linked list.
 #
 # test_00:
-# create_linked_list(["h", "e", "y"]);
+# create_linked_list(["h", "e", "y"])
 # h -> e -> y
 # test_01:
-# create_linked_list([1, 7, 1, 8]);
+# create_linked_list([1, 7, 1, 8])
 # 1 -> 7 -> 1 -> 8
 # test_02:
-# create_linked_list(["a"]);
+# create_linked_list(["a"])
 # a
 # test_03:
-# create_linked_list([]);
+# create_linked_list([])
 # None
 
 # ========================= Iterative =========================
@@ -1259,7 +1259,7 @@ def create_linked_list(values, i = 0):
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #23 add lists ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, addLists, that takes in the head of two linked lists, each 
 # representing a number. The nodes of the linked lists contain digits as values. 
-# The nodes in the input lists are reversed; this means that the least significant 
+# The nodes in the input lists are reversed this means that the least significant 
 # digit of the number is the head. The function should return the head of a new 
 # linked listed representing the sum of the input lists. The output list should 
 # have it's digits reversed as well.
@@ -1283,83 +1283,83 @@ def create_linked_list(values, i = 0):
 # + 354
 # -----
 #   975
-# a1 = new Node(1);
-# a2 = new Node(2);
-# a3 = new Node(6);
-# a1.next = a2;
-# a2.next = a3;
+# a1 = new Node(1)
+# a2 = new Node(2)
+# a3 = new Node(6)
+# a1.next = a2
+# a2.next = a3
 # 1 -> 2 -> 6
-# b1 = new Node(4);
-# b2 = new Node(5);
-# b3 = new Node(3);
-# b1.next = b2;
-# b2.next = b3;
+# b1 = new Node(4)
+# b2 = new Node(5)
+# b3 = new Node(3)
+# b1.next = b2
+# b2.next = b3
 # 4 -> 5 -> 3
-# addLists(a1, b1);
+# addLists(a1, b1)
 # 5 -> 7 -> 9
 # test_01:
 #  7541
 # +  32
 # -----
 #  7573
-# a1 = new Node(1);
-# a2 = new Node(4);
-# a3 = new Node(5);
-# a4 = new Node(7);
-# a1.next = a2;
-# a2.next = a3;
-# a3.next = a4;
+# a1 = new Node(1)
+# a2 = new Node(4)
+# a3 = new Node(5)
+# a4 = new Node(7)
+# a1.next = a2
+# a2.next = a3
+# a3.next = a4
 # 1 -> 4 -> 5 -> 7
-# b1 = new Node(2);
-# b2 = new Node(3);
-# b1.next = b2;
+# b1 = new Node(2)
+# b2 = new Node(3)
+# b1.next = b2
 # 2 -> 3 
-# addLists(a1, b1);
+# addLists(a1, b1)
 # 3 -> 7 -> 5 -> 7
 # test_02:
 #   39
 # + 47
 # ----
 #   86
-# a1 = new Node(9);
-# a2 = new Node(3);
-# a1.next = a2;
+# a1 = new Node(9)
+# a2 = new Node(3)
+# a1.next = a2
 # 9 -> 3
-# b1 = new Node(7);
-# b2 = new Node(4);
-# b1.next = b2;
+# b1 = new Node(7)
+# b2 = new Node(4)
+# b1.next = b2
 # 7 -> 4
-# addLists(a1, b1);
+# addLists(a1, b1)
 # 6 -> 8
 # test_03:
 #   89
 # + 47
 # ----
 #  136
-# a1 = new Node(9);
-# a2 = new Node(8);
-# a1.next = a2;
+# a1 = new Node(9)
+# a2 = new Node(8)
+# a1.next = a2
 # 9 -> 8
-# b1 = new Node(7);
-# b2 = new Node(4);
-# b1.next = b2;
+# b1 = new Node(7)
+# b2 = new Node(4)
+# b1.next = b2
 # 7 -> 4
-# addLists(a1, b1);
+# addLists(a1, b1)
 # 6 -> 3 -> 1
 # test_04:
 #   999
 #  +  6
 #  ----
 #  1005
-# a1 = new Node(9);
-# a2 = new Node(9);
-# a3 = new Node(9);
-# a1.next = a2;
-# a2.next = a3;
+# a1 = new Node(9)
+# a2 = new Node(9)
+# a3 = new Node(9)
+# a1.next = a2
+# a2.next = a3
 # 9 -> 9 -> 9
-# b1 = new Node(6);
+# b1 = new Node(6)
 # 6
-# addLists(a1, b1);
+# addLists(a1, b1)
 # 5 -> 0 -> 0 -> 1
 
 # ========================= Iterative =========================
@@ -1411,38 +1411,38 @@ def add_lists(head_1, head_2, carry = 0):
 # depth-first order.
 #
 # test_00:
-# a = new Node('a');
-# b = new Node('b');
-# c = new Node('c');
-# d = new Node('d');
-# e = new Node('e');
-# f = new Node('f');
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node('a')
+# b = new Node('b')
+# c = new Node('c')
+# d = new Node('d')
+# e = new Node('e')
+# f = new Node('f')
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-# depth_first_values(a); 
+# depth_first_values(a) 
 #    -> ['a', 'b', 'd', 'e', 'c', 'f']
 # test_01:
-# a = new Node('a');
-# b = new Node('b');
-# c = new Node('c');
-# d = new Node('d');
-# e = new Node('e');
-# f = new Node('f');
-# g = new Node('g');
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
+# a = new Node('a')
+# b = new Node('b')
+# c = new Node('c')
+# d = new Node('d')
+# e = new Node('e')
+# f = new Node('f')
+# g = new Node('g')
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
 #      a
 #    /   \
 #   b     c
@@ -1450,23 +1450,23 @@ def add_lists(head_1, head_2, carry = 0):
 # d   e     f
 #    /
 #   g
-# depth_first_values(a); 
+# depth_first_values(a) 
 #    -> ['a', 'b', 'd', 'e', 'g', 'c', 'f']
 # test_02:
-# a = new Node('a');
+# a = new Node('a')
 #      a
-# depth_first_values(a); 
+# depth_first_values(a) 
 #    -> ['a']
 # test_03:
-# a = new Node('a');
-# b = new Node('b');
-# c = new Node('c');
-# d = new Node('d');
-# e = new Node('e');
-# a.right = b;
-# b.left = c;
-# c.right = d;
-# d.right = e;
+# a = new Node('a')
+# b = new Node('b')
+# c = new Node('c')
+# d = new Node('d')
+# e = new Node('e')
+# a.right = b
+# b.left = c
+# c.right = d
+# d.right = e
 #      a
 #       \
 #        b
@@ -1476,10 +1476,10 @@ def add_lists(head_1, head_2, carry = 0):
 #        d
 #         \
 #          e
-# depth_first_values(a); 
+# depth_first_values(a) 
 #    -> ['a', 'b', 'c', 'd', 'e']
 # test_04:
-# howHigh(None); 
+# howHigh(None) 
 #    -> []
 
 # ========================= Iterative =========================
@@ -1515,40 +1515,40 @@ def depth_first_values(root):
 # breadth-first order.
 #
 # test_00:
-# a = new Node('a');
-# b = new Node('b');
-# c = new Node('c');
-# d = new Node('d');
-# e = new Node('e');
-# f = new Node('f');
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node('a')
+# b = new Node('b')
+# c = new Node('c')
+# d = new Node('d')
+# e = new Node('e')
+# f = new Node('f')
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-# breadth_first_values(a); 
+# breadth_first_values(a) 
 #    -> ['a', 'b', 'c', 'd', 'e', 'f']
 # test_01:
-# a = new Node('a');
-# b = new Node('b');
-# c = new Node('c');
-# d = new Node('d');
-# e = new Node('e');
-# f = new Node('f');
-# g = new Node('g');
-# h = new Node('h');
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# f.right = h;
+# a = new Node('a')
+# b = new Node('b')
+# c = new Node('c')
+# d = new Node('d')
+# e = new Node('e')
+# f = new Node('f')
+# g = new Node('g')
+# h = new Node('h')
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# f.right = h
 #      a
 #    /   \
 #   b     c
@@ -1556,25 +1556,25 @@ def depth_first_values(root):
 # d   e     f
 #    /       \
 #   g         h
-# breadth_first_values(a); 
+# breadth_first_values(a) 
 #   -> ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 # test_02:
-# a = new Node('a');
+# a = new Node('a')
 #      a
-# breadth_first_values(a); 
+# breadth_first_values(a) 
 #    -> ['a']
 # test_03:
-# a = new Node('a');
-# b = new Node('b');
-# c = new Node('c');
-# d = new Node('d');
-# e = new Node('e');
-# x = new Node('x');
-# a.right = b;
-# b.left = c;
-# c.left = x;
-# c.right = d;
-# d.right = e;
+# a = new Node('a')
+# b = new Node('b')
+# c = new Node('c')
+# d = new Node('d')
+# e = new Node('e')
+# x = new Node('x')
+# a.right = b
+# b.left = c
+# c.left = x
+# c.right = d
+# d.right = e
 #      a
 #       \
 #        b
@@ -1584,10 +1584,10 @@ def depth_first_values(root):
 #   x    d
 #         \
 #          e
-# breadth_first_values(a); 
+# breadth_first_values(a) 
 #    -> ['a', 'b', 'c', 'x', 'd', 'e']
 # test_04:
-# howHigh(None); 
+# howHigh(None) 
 #    -> []
 
 # ========================= Breadth First =========================
@@ -1615,75 +1615,75 @@ def breadth_first_values(root):
 # not the value is contained in the tree.
 #
 # test_00:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-# tree_includes(a, "e"); # -> true
+# tree_includes(a, "e") # -> true
 # test_01:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-# tree_includes(a, "a"); # -> true
+# tree_includes(a, "a") # -> true
 # test_02:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-# tree_includes(a, "n"); # -> false
+# tree_includes(a, "n") # -> false
 # test_03:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# g = new Node("g");
-# h = new Node("h");
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# f.right = h;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# g = new Node("g")
+# h = new Node("h")
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# f.right = h
 #      a
 #    /   \
 #   b     c
@@ -1691,23 +1691,23 @@ def breadth_first_values(root):
 # d   e     f
 #    /       \
 #   g         h
-# tree_includes(a, "f"); # -> true
+# tree_includes(a, "f") # -> true
 # test_04:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# g = new Node("g");
-# h = new Node("h");
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# f.right = h;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# g = new Node("g")
+# h = new Node("h")
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# f.right = h
 #      a
 #    /   \
 #   b     c
@@ -1715,9 +1715,9 @@ def breadth_first_values(root):
 # d   e     f
 #    /       \
 #   g         h
-# tree_includes(a, "p"); # -> false
+# tree_includes(a, "p") # -> false
 # test_05:
-# tree_includes(None, "b"); # -> false
+# tree_includes(None, "b") # -> false
 
 # ========================= Breadth First =========================
 # Time: O(n), Space: O(n)
@@ -1757,39 +1757,39 @@ def tree_includes(root, target):
 # in the tree.
 #
 # test_00:
-# a = new Node(3);
-# b = new Node(11);
-# c = new Node(4);
-# d = new Node(4);
-# e = new Node(-2);
-# f = new Node(1);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node(3)
+# b = new Node(11)
+# c = new Node(4)
+# d = new Node(4)
+# e = new Node(-2)
+# f = new Node(1)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #       3
 #    /    \
 #   11     4
 #  / \      \
 # 4   -2     1
-# treeSum(a); # -> 21
+# treeSum(a) # -> 21
 # test_01:
-# a = new Node(1);
-# b = new Node(6);
-# c = new Node(0);
-# d = new Node(3);
-# e = new Node(-6);
-# f = new Node(2);
-# g = new Node(2);
-# h = new Node(2);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# f.right = h;
+# a = new Node(1)
+# b = new Node(6)
+# c = new Node(0)
+# d = new Node(3)
+# e = new Node(-6)
+# f = new Node(2)
+# g = new Node(2)
+# h = new Node(2)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# f.right = h
 #      1
 #    /   \
 #   6     0
@@ -1797,9 +1797,9 @@ def tree_includes(root, target):
 # 3   -6    2
 #    /       \
 #   2         2
-# treeSum(a); # -> 10
+# treeSum(a) # -> 10
 # test_02:
-# treeSum(None); # -> 0
+# treeSum(None) # -> 0
 
 # ========================= Breadth First =========================
 # Time: O(n), Space: O(n)
@@ -1833,57 +1833,57 @@ def tree_sum(root):
 # You may assume that the input tree is non-empty.
 #
 # test_00:
-# a = new Node(3);
-# b = new Node(11);
-# c = new Node(4);
-# d = new Node(4);
-# e = new Node(-2);
-# f = new Node(1);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node(3)
+# b = new Node(11)
+# c = new Node(4)
+# d = new Node(4)
+# e = new Node(-2)
+# f = new Node(1)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #       3
 #    /    \
 #   11     4
 #  / \      \
 # 4   -2     1
-# treeMinValue(a); # -> -2
+# treeMinValue(a) # -> -2
 # test_01:
-# a = new Node(5);
-# b = new Node(11);
-# c = new Node(3);
-# d = new Node(4);
-# e = new Node(14);
-# f = new Node(12);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node(5)
+# b = new Node(11)
+# c = new Node(3)
+# d = new Node(4)
+# e = new Node(14)
+# f = new Node(12)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #       5
 #    /    \
 #   11     3
 #  / \      \
 # 4   15     12
-# treeMinValue(a); # -> 3
+# treeMinValue(a) # -> 3
 # test_02:
-# a = new Node(-1);
-# b = new Node(-6);
-# c = new Node(-5);
-# d = new Node(-3);
-# e = new Node(-4);
-# f = new Node(-13);
-# g = new Node(-2);
-# h = new Node(-2);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# f.right = h;
+# a = new Node(-1)
+# b = new Node(-6)
+# c = new Node(-5)
+# d = new Node(-3)
+# e = new Node(-4)
+# f = new Node(-13)
+# g = new Node(-2)
+# h = new Node(-2)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# f.right = h
 #        -1
 #      /   \
 #    -6    -5
@@ -1891,11 +1891,11 @@ def tree_sum(root):
 # -3   -4   -13
 #     /       \
 #    -2       -2
-# tree_min_value(a); # -> -13
+# tree_min_value(a) # -> -13
 # test_03:
-# a = new Node(42);
+# a = new Node(42)
 #        42
-# tree_min_value(a); # -> 42
+# tree_min_value(a) # -> 42
 
 # ========================= Depth First =========================
 # Time: O(n), Space: O(n)
@@ -1914,37 +1914,37 @@ def tree_min_value(root):
 # You may assume that the input tree is non-empty.
 #
 # test_00:
-# a = new Node(3);
-# b = new Node(11);
-# c = new Node(4);
-# d = new Node(4);
-# e = new Node(-2);
-# f = new Node(1);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node(3)
+# b = new Node(11)
+# c = new Node(4)
+# d = new Node(4)
+# e = new Node(-2)
+# f = new Node(1)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #      3
 #    /   \
 #   11    4
 #  / \     \
 # 4   -2    1
-# max_path_sum(a); # -> 18
+# max_path_sum(a) # -> 18
 # test_01:
-# a = new Node(5);
-# b = new Node(11);
-# c = new Node(54);
-# d = new Node(20);
-# e = new Node(15);
-# f = new Node(1);
-# g = new Node(3);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# e.left = f;
-# e.right = g;
+# a = new Node(5)
+# b = new Node(11)
+# c = new Node(54)
+# d = new Node(20)
+# e = new Node(15)
+# f = new Node(1)
+# g = new Node(3)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# e.left = f
+# e.right = g
 #       5
 #     /   \
 #    11   54
@@ -1952,23 +1952,23 @@ def tree_min_value(root):
 # 20   15
 #      / \
 #     1  3
-# max_path_sum(a); # -> 59
+# max_path_sum(a) # -> 59
 # test_02:
-# a = new Node(-1);
-# b = new Node(-6);
-# c = new Node(-5);
-# d = new Node(-3);
-# e = new Node(0);
-# f = new Node(-13);
-# g = new Node(-1);
-# h = new Node(-2);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# f.right = h;
+# a = new Node(-1)
+# b = new Node(-6)
+# c = new Node(-5)
+# d = new Node(-3)
+# e = new Node(0)
+# f = new Node(-13)
+# g = new Node(-1)
+# h = new Node(-2)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# f.right = h
 #        -1
 #      /   \
 #    -6    -5
@@ -1976,11 +1976,11 @@ def tree_min_value(root):
 # -3   0    -13
 #     /       \
 #    -1       -2
-# max_path_sum(a); # -> -8
+# max_path_sum(a) # -> -8
 # test_03:
-# a = new Node(42);
+# a = new Node(42)
 #        42
-# max_path_sum(a); # -> 42
+# max_path_sum(a) # -> 42
 
 # ========================= Depth First =========================
 # Time: O(n), Space: O(n)
@@ -2001,57 +2001,57 @@ def max_path_sum(root):
 # You may assume that the tree contains unique values.
 #
 # test_00:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-# path_finder(a, 'e'); # -> [ 'a', 'b', 'e' ]
+# path_finder(a, 'e') # -> [ 'a', 'b', 'e' ]
 # test_01:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-# path_finder(a, 'p'); # -> None
+# path_finder(a, 'p') # -> None
 # test_02:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# g = new Node("g");
-# h = new Node("h");
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# f.right = h;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# g = new Node("g")
+# h = new Node("h")
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# f.right = h
 #      a
 #    /   \
 #   b     c
@@ -2059,23 +2059,23 @@ def max_path_sum(root):
 # d   e     f
 #    /       \
 #   g         h
-# path_finder(a, "c"); # -> ['a', 'c']
+# path_finder(a, "c") # -> ['a', 'c']
 # test_03:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# g = new Node("g");
-# h = new Node("h");
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# f.right = h;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# g = new Node("g")
+# h = new Node("h")
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# f.right = h
 #      a
 #    /   \
 #   b     c
@@ -2083,19 +2083,19 @@ def max_path_sum(root):
 # d   e     f
 #    /       \
 #   g         h
-# path_finder(a, "h"); # -> ['a', 'c', 'f', 'h']
+# path_finder(a, "h") # -> ['a', 'c', 'f', 'h']
 # test_04:
-# x = new Node("x");
+# x = new Node("x")
 #      x
-# path_finder(x, "x"); # -> ['x']
+# path_finder(x, "x") # -> ['x']
 # test_05:
-# path_finder(None, "x"); # -> None
+# path_finder(None, "x") # -> None
 # test_06:
-# root = new Node(0);
-# let curr = root;
-# for (let i = 1; i <= 6000; i += 1) {
-#   curr.right = new Node(i);
-#   curr = curr.right;
+# root = new Node(0)
+# let curr = root
+# for (let i = 1 i <= 6000 i += 1) {
+#   curr.right = new Node(i)
+#   curr = curr.right
 # }
 #      0
 #       \
@@ -2110,7 +2110,7 @@ def max_path_sum(root):
 #              5999
 #                \
 #                6000
-# path_finder(root, 3451); # -> [0, 1, 2, 3, ..., 3450, 3451]
+# path_finder(root, 3451) # -> [0, 1, 2, 3, ..., 3450, 3451]
 
 # ========================= Depth First =========================
 # Time: O(n), Space: O(n)
@@ -2144,57 +2144,57 @@ def _path_finder(root, target):
 # occurs in the tree.
 #
 # test_00:
-# a = new Node(12);
-# b = new Node(6);
-# c = new Node(6);
-# d = new Node(4);
-# e = new Node(6);
-# f = new Node(12);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node(12)
+# b = new Node(6)
+# c = new Node(6)
+# d = new Node(4)
+# e = new Node(6)
+# f = new Node(12)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #     12
 #    /  \
 #   6    6
 #  / \    \
 # 4   6    12
-# tree_value_count(a,  6); # -> 3
+# tree_value_count(a,  6) # -> 3
 # test_01:
-# a = new Node(12);
-# b = new Node(6);
-# c = new Node(6);
-# d = new Node(4);
-# e = new Node(6);
-# f = new Node(12);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node(12)
+# b = new Node(6)
+# c = new Node(6)
+# d = new Node(4)
+# e = new Node(6)
+# f = new Node(12)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #     12
 #    /  \
 #   6    6
 #  / \    \
 # 4   6    12
-# tree_value_count(a,  12); # -> 2
+# tree_value_count(a,  12) # -> 2
 # test_02:
-# a = new Node(7);
-# b = new Node(5);
-# c = new Node(1);
-# d = new Node(1);
-# e = new Node(8);
-# f = new Node(7);
-# g = new Node(1);
-# h = new Node(1);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# f.right = h;
+# a = new Node(7)
+# b = new Node(5)
+# c = new Node(1)
+# d = new Node(1)
+# e = new Node(8)
+# f = new Node(7)
+# g = new Node(1)
+# h = new Node(1)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# f.right = h
 #      7
 #    /   \
 #   5     1
@@ -2202,23 +2202,23 @@ def _path_finder(root, target):
 # 1   8     7
 #    /       \
 #   1         1
-# tree_value_count(a, 1); # -> 4
+# tree_value_count(a, 1) # -> 4
 # test_03:
-# a = new Node(7);
-# b = new Node(5);
-# c = new Node(1);
-# d = new Node(1);
-# e = new Node(8);
-# f = new Node(7);
-# g = new Node(1);
-# h = new Node(1);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# f.right = h;
+# a = new Node(7)
+# b = new Node(5)
+# c = new Node(1)
+# d = new Node(1)
+# e = new Node(8)
+# f = new Node(7)
+# g = new Node(1)
+# h = new Node(1)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# f.right = h
 #      7
 #    /   \
 #   5     1
@@ -2226,9 +2226,9 @@ def _path_finder(root, target):
 # 1   8     7
 #    /       \
 #   1         1
-# tree_value_count(a, 9); # -> 0
+# tree_value_count(a, 9) # -> 0
 # test_04:
-# tree_value_count(None, 42); # -> 0
+# tree_value_count(None, 42) # -> 0
 
 # ========================= Depth First =========================
 # Time: O(n), Space: O(n)
@@ -2250,36 +2250,36 @@ def tree_value_count(root, target):
 # If the tree is empty, return -1.
 #
 # test_00:
-# a = new Node('a');
-# b = new Node('b');
-# c = new Node('c');
-# d = new Node('d');
-# e = new Node('e');
-# f = new Node('f');
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node('a')
+# b = new Node('b')
+# c = new Node('c')
+# d = new Node('d')
+# e = new Node('e')
+# f = new Node('f')
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-# how_high(a); # -> 2
+# how_high(a) # -> 2
 # test_01:
-# a = new Node('a');
-# b = new Node('b');
-# c = new Node('c');
-# d = new Node('d');
-# e = new Node('e');
-# f = new Node('f');
-# g = new Node('g');
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node('a')
+# b = new Node('b')
+# c = new Node('c')
+# d = new Node('d')
+# e = new Node('e')
+# f = new Node('f')
+# g = new Node('g')
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 # e.left = g
 #      a
 #    /   \
@@ -2288,19 +2288,19 @@ def tree_value_count(root, target):
 # d   e     f
 #    /
 #   g
-# how_high(a); # -> 3
+# how_high(a) # -> 3
 # test_02:
-# a = new Node('a');
-# c = new Node('c');
-# a.right = c;
+# a = new Node('a')
+# c = new Node('c')
+# a.right = c
 #      a
 #       \
 #        c
-# how_high(a); # -> 1
+# how_high(a) # -> 1
 # test_03:
-# a = new Node('a');
+# a = new Node('a')
 #      a
-# how_high(a); # -> 0
+# how_high(a) # -> 0
 
 # ========================= Depth First =========================
 # Time: O(n), Space: O(n)
@@ -2319,39 +2319,39 @@ def how_high(root, i = 0):
 # You may assume that the input tree is non-empty.
 #
 # test_00:
-# a = new Node(3);
-# b = new Node(11);
-# c = new Node(10);
-# d = new Node(4);
-# e = new Node(-2);
-# f = new Node(1);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node(3)
+# b = new Node(11)
+# c = new Node(10)
+# d = new Node(4)
+# e = new Node(-2)
+# f = new Node(1)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #       3
 #    /    \
 #   11     10
 #  / \      \
 # 4   -2     1
-# bottom_right_value(a); # -> 1
+# bottom_right_value(a) # -> 1
 # test_01:
-# a = new Node(-1);
-# b = new Node(-6);
-# c = new Node(-5);
-# d = new Node(-3);
-# e = new Node(-4);
-# f = new Node(-13);
-# g = new Node(-2);
-# h = new Node(6);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# e.right = h;
+# a = new Node(-1)
+# b = new Node(-6)
+# c = new Node(-5)
+# d = new Node(-3)
+# e = new Node(-4)
+# f = new Node(-13)
+# g = new Node(-2)
+# h = new Node(6)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# e.right = h
 #        -1
 #      /   \
 #    -6    -5
@@ -2359,25 +2359,25 @@ def how_high(root, i = 0):
 # -3   -4   -13
 #     / \       
 #    -2  6
-# bottom_right_value(a); # -> 6
+# bottom_right_value(a) # -> 6
 # test_02:
-# a = new Node(-1);
-# b = new Node(-6);
-# c = new Node(-5);
-# d = new Node(-3);
-# e = new Node(-4);
-# f = new Node(-13);
-# g = new Node(-2);
-# h = new Node(6);
-# i = new Node(7);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# e.right = h;
-# f.left = i;
+# a = new Node(-1)
+# b = new Node(-6)
+# c = new Node(-5)
+# d = new Node(-3)
+# e = new Node(-4)
+# f = new Node(-13)
+# g = new Node(-2)
+# h = new Node(6)
+# i = new Node(7)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# e.right = h
+# f.left = i
 #        -1
 #      /   \
 #    -6    -5
@@ -2385,19 +2385,19 @@ def how_high(root, i = 0):
 # -3   -4   -13
 #     / \    /   
 #    -2  6  7 
-# bottom_right_value(a); # -> 7
+# bottom_right_value(a) # -> 7
 # test_03
-# a = new Node('a');
-# b = new Node('b');
-# c = new Node('c');
-# d = new Node('d');
-# e = new Node('e');
-# f = new Node('f');
-# a.left = b;
-# a.right = c;
-# b.right = d;
-# d.left = e;
-# e.right = f;
+# a = new Node('a')
+# b = new Node('b')
+# c = new Node('c')
+# d = new Node('d')
+# e = new Node('e')
+# f = new Node('f')
+# a.left = b
+# a.right = c
+# b.right = d
+# d.left = e
+# e.right = f
 #      a
 #    /   \ 
 #   b     c
@@ -2408,11 +2408,11 @@ def how_high(root, i = 0):
 #  /
 # f
 #       
-# bottom_right_value(a); # -> 'f'
+# bottom_right_value(a) # -> 'f'
 # test_04
-# a = new Node(42);
+# a = new Node(42)
 #      42
-# bottom_right_value(a); # -> 42
+# bottom_right_value(a) # -> 42
 
 # ========================= Breadth First =========================
 # Time: O(n), Space: O(1)
@@ -2439,46 +2439,46 @@ def bottom_right_value(root):
 # You may assume that the input tree is non-empty.
 #
 # test_00:
-# a = new Node('a');
-# b = new Node('b');
-# c = new Node('c');
-# d = new Node('d');
-# e = new Node('e');
-# f = new Node('f');
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node('a')
+# b = new Node('b')
+# c = new Node('c')
+# d = new Node('d')
+# e = new Node('e')
+# f = new Node('f')
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-# all_tree_paths(a); # ->
+# all_tree_paths(a) # ->
 # [ 
 #   [ 'a', 'b', 'd' ], 
 #   [ 'a', 'b', 'e' ], 
 #   [ 'a', 'c', 'f' ] 
 # ] 
 # test_01:
-# a = new Node('a');
-# b = new Node('b');
-# c = new Node('c');
-# d = new Node('d');
-# e = new Node('e');
-# f = new Node('f');
-# g = new Node('g');
-# h = new Node('h');
-# i = new Node('i');
-# a.l#eft = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# e.right = h;
-# f.left = i;
+# a = new Node('a')
+# b = new Node('b')
+# c = new Node('c')
+# d = new Node('d')
+# e = new Node('e')
+# f = new Node('f')
+# g = new Node('g')
+# h = new Node('h')
+# i = new Node('i')
+# a.l#eft = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# e.right = h
+# f.left = i
 #         a
 #      /    \
 #     b      c
@@ -2486,7 +2486,7 @@ def bottom_right_value(root):
 #  d    e      f
 #      / \    /   
 #     g  h   i 
-# all_tree_paths(a); # ->
+# all_tree_paths(a) # ->
 # [ 
 #   [ 'a', 'b', 'd' ], 
 #   [ 'a', 'b', 'e', 'g' ], 
@@ -2494,17 +2494,17 @@ def bottom_right_value(root):
 #   [ 'a', 'c', 'f', 'i' ] 
 # ] 
 # test_02:
-# q = new Node('q');
-# r = new Node('r');
-# s = new Node('s');
-# t = new Node('t');
-# u = new Node('u');
-# v = new Node('v');
-# q.left = r;
-# q.right = s;
-# r.right = t;
-# t.left = u;
-# u.right = v;
+# q = new Node('q')
+# r = new Node('r')
+# s = new Node('s')
+# t = new Node('t')
+# u = new Node('u')
+# v = new Node('v')
+# q.left = r
+# q.right = s
+# r.right = t
+# t.left = u
+# u.right = v
 #      q
 #    /   \ 
 #   r     s
@@ -2514,15 +2514,15 @@ def bottom_right_value(root):
 #   u
 #  /
 # v
-# all_tree_paths(q); # ->
+# all_tree_paths(q) # ->
 # [ 
 #   [ 'q', 'r', 't', 'u', 'v' ], 
 #   [ 'q', 's' ] 
 # ] 
 # test_03:
-# z = new Node('z');
+# z = new Node('z')
 #      z
-# all_tree_paths(z); # -> 
+# all_tree_paths(z) # -> 
 # [
 #   ['z']
 # ]
@@ -2554,46 +2554,46 @@ def all_tree_paths(root):
 # level of the tree.
 #
 # test_00:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-# tree_levels(a); # ->
+# tree_levels(a) # ->
 # [
 #   ['a'],
 #   ['b', 'c'],
 #   ['d', 'e', 'f']
 # ]
 # test_01:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# g = new Node("g");
-# h = new Node("h");
-# i = new Node("i");
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# e.right = h;
-# f.left = i;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# g = new Node("g")
+# h = new Node("h")
+# i = new Node("i")
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# e.right = h
+# f.left = i
 #         a
 #      /    \
 #     b      c
@@ -2601,7 +2601,7 @@ def all_tree_paths(root):
 #  d    e      f
 #      / \    /
 #     g  h   i
-# tree_levels(a); # ->
+# tree_levels(a) # ->
 # [
 #   ['a'],
 #   ['b', 'c'],
@@ -2609,17 +2609,17 @@ def all_tree_paths(root):
 #   ['g', 'h', 'i']
 # ]
 # test_02:
-# q = new Node("q");
-# r = new Node("r");
-# s = new Node("s");
-# t = new Node("t");
-# u = new Node("u");
-# v = new Node("v");
-# q.left = r;
-# q.right = s;
-# r.right = t;
-# t.left = u;
-# u.right = v;
+# q = new Node("q")
+# r = new Node("r")
+# s = new Node("s")
+# t = new Node("t")
+# u = new Node("u")
+# v = new Node("v")
+# q.left = r
+# q.right = s
+# r.right = t
+# t.left = u
+# u.right = v
 #      q
 #    /   \
 #   r     s
@@ -2629,7 +2629,7 @@ def all_tree_paths(root):
 #   u
 #  /
 # v
-# tree_levels(q); #->
+# tree_levels(q) #->
 # [
 #   ['q'],
 #   ['r', 's'],
@@ -2638,7 +2638,7 @@ def all_tree_paths(root):
 #   ['v']
 # ]
 # test_03:
-# tree_levels(None); # -> []
+# tree_levels(None) # -> []
 
 # ========================= Breadth First =========================
 # Time: O(n), Space: O(n)
@@ -2671,37 +2671,37 @@ def tree_levels(root):
 # average value of each level.
 #
 # test_00:
-# a = new Node(3);
-# b = new Node(11);
-# c = new Node(4);
-# d = new Node(4);
-# e = new Node(-2);
-# f = new Node(1);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node(3)
+# b = new Node(11)
+# c = new Node(4)
+# d = new Node(4)
+# e = new Node(-2)
+# f = new Node(1)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #       3
 #    /    \
 #   11     4
 #  / \      \
 # 4   -2     1
-# level_averages(a); # -> [ 3, 7.5, 1 ] 
+# level_averages(a) # -> [ 3, 7.5, 1 ] 
 # test_01:
-# a = new Node(5);
-# b = new Node(11);
-# c = new Node(54);
-# d = new Node(20);
-# e = new Node(15);
-# f = new Node(1);
-# g = new Node(3);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# e.left = f;
-# e.right = g;
+# a = new Node(5)
+# b = new Node(11)
+# c = new Node(54)
+# d = new Node(20)
+# e = new Node(15)
+# f = new Node(1)
+# g = new Node(3)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# e.left = f
+# e.right = g
 #        5
 #     /    \
 #    11    54
@@ -2709,23 +2709,23 @@ def tree_levels(root):
 # 20   15
 #      / \
 #     1  3
-# level_averages(a); # -> [ 5, 32.5, 17.5, 2 ] 
+# level_averages(a) # -> [ 5, 32.5, 17.5, 2 ] 
 # test_02:
-# a = new Node(-1);
-# b = new Node(-6);
-# c = new Node(-5);
-# d = new Node(-3);
-# e = new Node(0);
-# f = new Node(45);
-# g = new Node(-1);
-# h = new Node(-2);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# f.right = h;
+# a = new Node(-1)
+# b = new Node(-6)
+# c = new Node(-5)
+# d = new Node(-3)
+# e = new Node(0)
+# f = new Node(45)
+# g = new Node(-1)
+# h = new Node(-2)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# f.right = h
 #        -1
 #      /   \
 #    -6    -5
@@ -2733,19 +2733,19 @@ def tree_levels(root):
 # -3   0     45
 #     /       \
 #    -1       -2
-# level_averages(a); # -> [ -1, -5.5, 14, -1.5 ]
+# level_averages(a) # -> [ -1, -5.5, 14, -1.5 ]
 # test_03:
-# q = new Node(13);
-# r = new Node(4);
-# s = new Node(2);
-# t = new Node(9);
-# u = new Node(2);
-# v = new Node(42);
-# q.left = r;
-# q.right = s;
-# r.right = t;
-# t.left = u;
-# u.right = v;
+# q = new Node(13)
+# r = new Node(4)
+# s = new Node(2)
+# t = new Node(9)
+# u = new Node(2)
+# v = new Node(42)
+# q.left = r
+# q.right = s
+# r.right = t
+# t.left = u
+# u.right = v
 #        13
 #      /   \
 #     4     2
@@ -2755,9 +2755,9 @@ def tree_levels(root):
 #     2
 #    /
 #   42
-# level_averages(q); # -> [ 13, 3, 9, 2, 42 ]
+# level_averages(q) # -> [ 13, 3, 9, 2, 42 ]
 # test_04:
-# level_averages(None); # -> [ ]
+# level_averages(None) # -> [ ]
 
 # ========================= Breadth First =========================
 # Time: O(n), Space: O(n)
@@ -2800,39 +2800,39 @@ def tree_levels(root):
 # returns an list containing the values of all leaf nodes in left-to-right order.
 #
 # test_00:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
 #      a
 #    /   \
 #   b     c
 #  / \     \
 # d   e     f
-# leaf_list(a); # -> [ 'd', 'e', 'f' ] 
+# leaf_list(a) # -> [ 'd', 'e', 'f' ] 
 # test_01:
-# a = new Node("a");
-# b = new Node("b");
-# c = new Node("c");
-# d = new Node("d");
-# e = new Node("e");
-# f = new Node("f");
-# g = new Node("g");
-# h = new Node("h");
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# c.right = f;
-# e.left = g;
-# f.right = h;
+# a = new Node("a")
+# b = new Node("b")
+# c = new Node("c")
+# d = new Node("d")
+# e = new Node("e")
+# f = new Node("f")
+# g = new Node("g")
+# h = new Node("h")
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+# e.left = g
+# f.right = h
 #      a
 #    /   \
 #   b     c
@@ -2840,21 +2840,21 @@ def tree_levels(root):
 # d   e     f
 #    /       \
 #   g         h
-# leaf_list(a); # -> [ 'd', 'g', 'h' ]
+# leaf_list(a) # -> [ 'd', 'g', 'h' ]
 # test_02:
-# a = new Node(5);
-# b = new Node(11);
-# c = new Node(54);
-# d = new Node(20);
-# e = new Node(15);
-# f = new Node(1);
-# g = new Node(3);
-# a.left = b;
-# a.right = c;
-# b.left = d;
-# b.right = e;
-# e.left = f;
-# e.right = g;
+# a = new Node(5)
+# b = new Node(11)
+# c = new Node(54)
+# d = new Node(20)
+# e = new Node(15)
+# f = new Node(1)
+# g = new Node(3)
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# e.left = f
+# e.right = g
 #        5
 #     /    \
 #    11    54
@@ -2862,13 +2862,13 @@ def tree_levels(root):
 # 20   15
 #      / \
 #     1  3
-# leaf_list(a); # -> [ 20, 1, 3, 54 ]
+# leaf_list(a) # -> [ 20, 1, 3, 54 ]
 # test_03:
-# x = new Node('x');
+# x = new Node('x')
 #      x
-# leaf_list(x); # -> [ 'x' ]
+# leaf_list(x) # -> [ 'x' ]
 # test_04:
-# leaf_list(None); # -> [ ]
+# leaf_list(None) # -> [ ]
 
 # ========================= Depth First =========================
 # Time: O(n), Space: O(n)
@@ -2898,8 +2898,8 @@ def leaf_list(root, values = []):
 #   i: ['g', 'k'],
 #   j: ['i'],
 #   k: []
-# };
-# has_path(graph, 'f', 'k'); # true
+# }
+# has_path(graph, 'f', 'k') # true
 # test_01:
 # graph = {
 #   f: ['g', 'i'],
@@ -2908,8 +2908,8 @@ def leaf_list(root, values = []):
 #   i: ['g', 'k'],
 #   j: ['i'],
 #   k: []
-# };
-# has_path(graph, 'f', 'j'); # false
+# }
+# has_path(graph, 'f', 'j') # false
 # test_02:
 # graph = {
 #   f: ['g', 'i'],
@@ -2918,8 +2918,8 @@ def leaf_list(root, values = []):
 #   i: ['g', 'k'],
 #   j: ['i'],
 #   k: []
-# };
-# has_path(graph, 'i', 'h'); # true
+# }
+# has_path(graph, 'i', 'h') # true
 # test_03:
 # graph = {
 #   v: ['x', 'w'],
@@ -2927,8 +2927,8 @@ def leaf_list(root, values = []):
 #   x: [],
 #   y: ['z'],
 #   z: [],  
-# };
-# has_path(graph, 'v', 'w'); # true
+# }
+# has_path(graph, 'v', 'w') # true
 # test_04:
 # graph = {
 #   v: ['x', 'w'],
@@ -2936,8 +2936,8 @@ def leaf_list(root, values = []):
 #   x: [],
 #   y: ['z'],
 #   z: [],  
-# };
-# has_path(graph, 'v', 'z'); # false
+# }
+# has_path(graph, 'v', 'z') # false
 
 # ========================= Depth First =========================
 # Time: O(e), Space: O(n)
@@ -2963,8 +2963,8 @@ def has_path(graph, src, dst):
 #   ['m', 'k'],
 #   ['k', 'l'],
 #   ['o', 'n']
-# ];
-# undirected_path(edges, 'j', 'm'); # -> true
+# ]
+# undirected_path(edges, 'j', 'm') # -> true
 # test_01:
 # edges = [
 #   ['i', 'j'],
@@ -2972,8 +2972,8 @@ def has_path(graph, src, dst):
 #   ['m', 'k'],
 #   ['k', 'l'],
 #   ['o', 'n']
-# ];
-# undirected_path(edges, 'm', 'j'); # -> true
+# ]
+# undirected_path(edges, 'm', 'j') # -> true
 # test_02:
 # edges = [
 #   ['i', 'j'],
@@ -2981,8 +2981,8 @@ def has_path(graph, src, dst):
 #   ['m', 'k'],
 #   ['k', 'l'],
 #   ['o', 'n']
-# ];
-# undirected_path(edges, 'l', 'j'); # -> true
+# ]
+# undirected_path(edges, 'l', 'j') # -> true
 # test_03:
 # edges = [
 #   ['i', 'j'],
@@ -2990,8 +2990,8 @@ def has_path(graph, src, dst):
 #   ['m', 'k'],
 #   ['k', 'l'],
 #   ['o', 'n']
-# ];
-# undirected_path(edges, 'k', 'o'); # -> false
+# ]
+# undirected_path(edges, 'k', 'o') # -> false
 # test_04:
 # edges = [
 #   ['i', 'j'],
@@ -2999,8 +2999,8 @@ def has_path(graph, src, dst):
 #   ['m', 'k'],
 #   ['k', 'l'],
 #   ['o', 'n']
-# ];
-# undirected_path(edges, 'i', 'o'); # -> false
+# ]
+# undirected_path(edges, 'i', 'o') # -> false
 # test_05:
 # edges = [
 #   ['b', 'a'],
@@ -3010,8 +3010,8 @@ def has_path(graph, src, dst):
 #   ['q', 's'],
 #   ['q', 'u'],
 #   ['q', 't'],
-# ];
-# undirected_path(edges, 'a', 'b'); # -> true
+# ]
+# undirected_path(edges, 'a', 'b') # -> true
 # test_06:
 # edges = [
 #   ['b', 'a'],
@@ -3021,8 +3021,8 @@ def has_path(graph, src, dst):
 #   ['q', 's'],
 #   ['q', 'u'],
 #   ['q', 't'],
-# ];
-# undirected_path(edges, 'a', 'c'); # -> true
+# ]
+# undirected_path(edges, 'a', 'c') # -> true
 # test_07:
 # edges = [
 #   ['b', 'a'],
@@ -3032,8 +3032,8 @@ def has_path(graph, src, dst):
 #   ['q', 's'],
 #   ['q', 'u'],
 #   ['q', 't'],
-# ];
-# undirected_path(edges, 'r', 't'); # -> true
+# ]
+# undirected_path(edges, 'r', 't') # -> true
 # test_08:
 # edges = [
 #   ['b', 'a'],
@@ -3043,8 +3043,8 @@ def has_path(graph, src, dst):
 #   ['q', 's'],
 #   ['q', 'u'],
 #   ['q', 't'],
-# ];
-# undirected_path(edges, 'r', 'b'); # -> false
+# ]
+# undirected_path(edges, 'r', 'b') # -> false
 
 # ========================= Depth First =========================
 # Time: O(e), Space: O(n)
@@ -3089,7 +3089,7 @@ def build_graph(edges):
 #   2: [3, 4],
 #   3: [2, 4],
 #   4: [3, 2]
-# }); # -> 2
+# }) # -> 2
 # test_01:
 # connected_components_count({
 #   1: [2],
@@ -3098,7 +3098,7 @@ def build_graph(edges):
 #   9: [8],
 #   7: [6, 8],
 #   8: [9, 7, 2]
-# }); # -> 1
+# }) # -> 1
 # test_02:
 # connected_components_count({
 #   3: [],
@@ -3109,9 +3109,9 @@ def build_graph(edges):
 #   5: [6],
 #   1: [2],
 #   2: [1]
-# }); # -> 3
+# }) # -> 3
 # test_03:
-# connected_components_count({}); # -> 0
+# connected_components_count({}) # -> 0
 # test_04:
 # connected_components_count({
 #   0: [4,7],
@@ -3122,7 +3122,7 @@ def build_graph(edges):
 #   6: [3],
 #   7: [0],
 #   8: []
-# }); # -> 5
+# }) # -> 5
 
 # ========================= Depth First =========================
 # Time: O(e), Space: O(n)
@@ -3158,7 +3158,7 @@ def traverse(graph, node, visited):
 #   2: ['3', '4'],
 #   3: ['2', '4'],
 #   4: ['3', '2']
-# }); # -> 4
+# }) # -> 4
 # test_01:
 # largest_component({
 #   1: ['2'],
@@ -3167,7 +3167,7 @@ def traverse(graph, node, visited):
 #   9: ['8'],
 #   7: ['6', '8'],
 #   8: ['9', '7', '2']
-# }); # -> 6
+# }) # -> 6
 # test_02:
 # largest_component({
 #   3: [],
@@ -3178,9 +3178,9 @@ def traverse(graph, node, visited):
 #   5: ['6'],
 #   1: ['2'],
 #   2: ['1']
-# }); # -> 5
+# }) # -> 5
 # test_03:
-# largest_component({}); # -> 0
+# largest_component({}) # -> 0
 # test_04:
 # largest_component({
 #   0: ['4','7'],
@@ -3191,7 +3191,7 @@ def traverse(graph, node, visited):
 #   6: ['3'],
 #   7: ['0'],
 #   8: []
-# }); # -> 3
+# }) # -> 3
 
 # ========================= Depth First =========================
 # Time: O(e), Space: O(n)
@@ -3230,8 +3230,8 @@ def component_size(graph, node, visited):
 #   ['z', 'y'],
 #   ['z', 'v'],
 #   ['w', 'v']
-# ];
-# shortest_path(edges, 'w', 'z'); # -> 2
+# ]
+# shortest_path(edges, 'w', 'z') # -> 2
 # test_01:
 # edges = [
 #   ['w', 'x'],
@@ -3239,8 +3239,8 @@ def component_size(graph, node, visited):
 #   ['z', 'y'],
 #   ['z', 'v'],
 #   ['w', 'v']
-# ];
-# shortest_path(edges, 'y', 'x'); # -> 1
+# ]
+# shortest_path(edges, 'y', 'x') # -> 1
 # test_02:
 # edges = [
 #   ['a', 'c'],
@@ -3250,8 +3250,8 @@ def component_size(graph, node, visited):
 #   ['b', 'd'],
 #   ['e', 'd'],
 #   ['g', 'f']
-# ];
-# shortest_path(edges, 'a', 'e'); # -> 3
+# ]
+# shortest_path(edges, 'a', 'e') # -> 3
 # test_03:
 # edges = [
 #   ['a', 'c'],
@@ -3261,8 +3261,8 @@ def component_size(graph, node, visited):
 #   ['b', 'd'],
 #   ['e', 'd'],
 #   ['g', 'f']
-# ];
-# shortest_path(edges, 'e', 'c'); # -> 2
+# ]
+# shortest_path(edges, 'e', 'c') # -> 2
 # test_04:
 # edges = [
 #   ['a', 'c'],
@@ -3272,8 +3272,8 @@ def component_size(graph, node, visited):
 #   ['b', 'd'],
 #   ['e', 'd'],
 #   ['g', 'f']
-# ];
-# shortest_path(edges, 'b', 'g'); # -> -1
+# ]
+# shortest_path(edges, 'b', 'g') # -> -1
 # test_05:
 # edges = [
 #   ['c', 'n'],
@@ -3281,8 +3281,8 @@ def component_size(graph, node, visited):
 #   ['c', 's'],
 #   ['c', 'w'],
 #   ['w', 'e'],
-# ];
-# shortest_path(edges, 'w', 'e'); # -> 1
+# ]
+# shortest_path(edges, 'w', 'e') # -> 1
 # test_06:
 # edges = [
 #   ['c', 'n'],
@@ -3290,8 +3290,8 @@ def component_size(graph, node, visited):
 #   ['c', 's'],
 #   ['c', 'w'],
 #   ['w', 'e'],
-# ];
-# shortest_path(edges, 'n', 'e'); # -> 2
+# ]
+# shortest_path(edges, 'n', 'e') # -> 2
 # test_07:
 # edges = [
 #   ['m', 'n'],
@@ -3301,8 +3301,8 @@ def component_size(graph, node, visited):
 #   ['t', 'o'],
 #   ['r', 'q'],
 #   ['r', 's']
-# ];
-# shortest_path(edges, 'm', 's'); # -> 6
+# ]
+# shortest_path(edges, 'm', 's') # -> 6
 
 # ========================= Depth First =========================
 # Time: O(e), Space: O(e)
@@ -3349,8 +3349,8 @@ def build_graph(edges):
 #   ['W', 'W', 'L', 'L', 'W'],
 #   ['L', 'W', 'W', 'L', 'L'],
 #   ['L', 'L', 'W', 'W', 'W'],
-# ];
-# island_count(grid); # -> 3
+# ]
+# island_count(grid) # -> 3
 # test_01:
 # grid = [
 #   ['L', 'W', 'W', 'L', 'W'],
@@ -3358,22 +3358,22 @@ def build_graph(edges):
 #   ['W', 'L', 'W', 'L', 'W'],
 #   ['W', 'W', 'W', 'W', 'W'],
 #   ['W', 'W', 'L', 'L', 'L'],
-# ];
-# island_count(grid); # -> 4
+# ]
+# island_count(grid) # -> 4
 # test_02:
 # grid = [
 #   ['L', 'L', 'L'],
 #   ['L', 'L', 'L'],
 #   ['L', 'L', 'L'],
-# ];
-# island_count(grid); # -> 1
+# ]
+# island_count(grid) # -> 1
 # test_03:
 # grid = [
 #   ['W', 'W'],
 #   ['W', 'W'],
 #   ['W', 'W'],
-# ];
-# island_count(grid); # -> 0
+# ]
+# island_count(grid) # -> 0
 
 # ========================= Depth First =========================
 # Time: O(rc), Space: O(rc)
@@ -3417,8 +3417,8 @@ def traverse_land(grid, r, c, visited):
 #   ['W', 'W', 'L', 'L', 'W'],
 #   ['L', 'W', 'W', 'L', 'L'],
 #   ['L', 'L', 'W', 'W', 'W'],
-# ];
-# minimum_island(grid); # -> 2
+# ]
+# minimum_island(grid) # -> 2
 # test_01:
 # grid = [
 #   ['L', 'W', 'W', 'L', 'W'],
@@ -3426,23 +3426,23 @@ def traverse_land(grid, r, c, visited):
 #   ['W', 'L', 'W', 'L', 'W'],
 #   ['W', 'W', 'W', 'W', 'W'],
 #   ['W', 'W', 'L', 'L', 'L'],
-# ];
-# minimum_island(grid); # -> 1
+# ]
+# minimum_island(grid) # -> 1
 # test_02:
 # grid = [
 #   ['L', 'L', 'L'],
 #   ['L', 'L', 'L'],
 #   ['L', 'L', 'L'],
-# ];
-# minimum_island(grid); # -> 9
+# ]
+# minimum_island(grid) # -> 9
 # test_03:
 # grid = [
 #   ['W', 'W'],
 #   ['L', 'L'],
 #   ['W', 'W'],
 #   ['W', 'L']
-# ];
-# minimum_island(grid); # -> 1
+# ]
+# minimum_island(grid) # -> 1
 
 # ========================= Depth First =========================
 # Time: O(rc), Space: O(rc)
@@ -3473,7 +3473,7 @@ def land_size(grid, r, c, visited):
   return size
   
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #45 closest carrot ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, closestCarrot, that takes in a grid, a starting row, and a 
+# Write a function, closest_carrot, that takes in a grid, a starting row, and a 
 # starting column. In the grid, 'X's are walls, 'O's are open spaces, and 'C's 
 # are carrots. The function should return a number representing the length of 
 # the shortest path from the starting position to a carrot. You may move up, 
@@ -3488,8 +3488,8 @@ def land_size(grid, r, c, visited):
 #   ['O', 'X', 'C', 'O', 'O'],
 #   ['O', 'X', 'X', 'O', 'O'],
 #   ['C', 'O', 'O', 'O', 'O'],
-# ];
-# closestCarrot(grid, 1, 2); # -> 4
+# ]
+# closest_carrot(grid, 1, 2) # -> 4
 # test_01:
 # grid = [
 #   ['O', 'O', 'O', 'O', 'O'],
@@ -3498,8 +3498,8 @@ def land_size(grid, r, c, visited):
 #   ['O', 'X', 'C', 'O', 'O'],
 #   ['O', 'X', 'X', 'O', 'O'],
 #   ['C', 'O', 'O', 'O', 'O'],
-# ];
-# closestCarrot(grid, 0, 0); # -> 5
+# ]
+# closest_carrot(grid, 0, 0) # -> 5
 # test_02:
 # grid = [
 #   ['O', 'O', 'X', 'X', 'X'],
@@ -3510,40 +3510,63 @@ def land_size(grid, r, c, visited):
 #   ['O', 'O', 'O', 'O', 'O'],
 #   ['O', 'O', 'C', 'O', 'O'],
 #   ['O', 'O', 'O', 'O', 'O'],
-# ];
-# closestCarrot(grid, 3, 4); # -> 9
+# ]
+# closest_carrot(grid, 3, 4) # -> 9
 # test_03:
 # grid = [
 #   ['O', 'O', 'X', 'O', 'O'],
 #   ['O', 'X', 'X', 'X', 'O'],
 #   ['O', 'X', 'C', 'C', 'O'],
-# ];
+# ]
 # 
-# closestCarrot(grid, 1, 4); # -> 2
+# closest_carrot(grid, 1, 4) # -> 2
 # test_04:
 # grid = [
 #   ['O', 'O', 'X', 'O', 'O'],
 #   ['O', 'X', 'X', 'X', 'O'],
 #   ['O', 'X', 'C', 'C', 'O'],
-# ];
-# closestCarrot(grid, 2, 0); # -> -1
+# ]
+# closest_carrot(grid, 2, 0) # -> -1
 
+# ========================= Breadth First =========================
+# Time: O(rc), Space: O(rc)
+from collections import deque
+
+def closest_carrot(grid, row, col):
+  visited = set()
+  deltas = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+  queue = deque([[row, col, 0]])
+  while queue:
+    r, c, dst = queue.popleft()
+    visited.add((r, c))
+    if grid[r][c] == 'C':
+      return dst
+    for delta in deltas:
+      delta_y, delta_x = delta
+      new_row = r + delta_y
+      new_col = c + delta_x
+      valid_row = new_row >= 0 and new_row < len(grid)
+      valid_col = new_col >= 0 and new_col < len(grid[0])
+      valid_pos = valid_row and valid_col
+      visited_pos = (new_row, new_col) in visited
+      if valid_pos and grid[new_row][new_col] != 'X' and not visited_pos:
+        queue.append([new_row, new_col, dst + 1])
+
+  return -1
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #46 longest path ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, longestPath, that takes in an adjacency list for a directed
 # acyclic graph. The function should return the length of the longest path 
 # within the graph. A path may start and end at any two nodes. The length of a
 # path is considered the number of edges in the path, not the number of nodes.
-
+#
 # test_00:
 # graph = {
 #   a: ['c', 'b'],
 #   b: ['c'],
 #   c: []
-# };
-#
-# longestPath(graph); # -> 2
-#
+# }
+# longestPath(graph) # -> 2
 # test_01:
 # graph = {
 #   a: ['c', 'b'],
@@ -3554,10 +3577,8 @@ def land_size(grid, r, c, visited):
 #   s: ['t'],
 #   t: ['u'],
 #   u: []
-# };
-#
-# longestPath(graph); # -> 4
-#
+# }
+# longestPath(graph) # -> 4
 # test_02:
 # graph = {
 #   h: ['i', 'j', 'k'],
@@ -3567,10 +3588,8 @@ def land_size(grid, r, c, visited):
 #   k: [],
 #   x: ['y'],
 #   y: []
-# };
-#
-# longestPath(graph); # -> 2
-#
+# }
+# longestPath(graph) # -> 2
 # test_03:
 # graph = {
 #   a: ['b'],
@@ -3580,9 +3599,8 @@ def land_size(grid, r, c, visited):
 #   f: ['g'],
 #   g: ['h'],
 #   h: []
-# };
-#
-# longestPath(graph); # -> 3
+# }
+# longestPath(graph) # -> 3
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #47 semesters required ]]]]]]]]]]]]]]]]]]]]]]]]] 
@@ -3599,17 +3617,17 @@ def land_size(grid, r, c, visited):
 # You can assume that it is possible to eventually complete all courses.
 #
 # test_00:
-# numCourses = 6;
+# numCourses = 6
 # prereqs = [
 #   [1, 2],
 #   [2, 4],
 #   [3, 5],
 #   [0, 5],
-# ];
-# semestersRequired(numCourses, prereqs); # -> 3
+# ]
+# semestersRequired(numCourses, prereqs) # -> 3
 #
 # test_01:
-# numCourses = 7;
+# numCourses = 7
 # prereqs = [
 #   [4, 3],
 #   [3, 2],
@@ -3617,43 +3635,43 @@ def land_size(grid, r, c, visited):
 #   [1, 0],
 #   [5, 2],
 #   [5, 6],
-# ];
-# semestersRequired(numCourses, prereqs); # -> 5
+# ]
+# semestersRequired(numCourses, prereqs) # -> 5
 #
 # test_02:
-# numCourses = 5;
+# numCourses = 5
 # prereqs = [
 #   [1, 0],
 #   [3, 4],
 #   [1, 2],
 #   [3, 2],
-# ];
-# semestersRequired(numCourses, prereqs); # -> 2
+# ]
+# semestersRequired(numCourses, prereqs) # -> 2
 #
 # test_03:
-# numCourses = 12;
-# prereqs = [];
-# semestersRequired(numCourses, prereqs); # -> 1
+# numCourses = 12
+# prereqs = []
+# semestersRequired(numCourses, prereqs) # -> 1
 #
 # test_04:
-# numCourses = 3;
+# numCourses = 3
 # prereqs = [
 #   [0, 2],
 #   [0, 1],
 #   [1, 2],
-# ];
-# semestersRequired(numCourses, prereqs); # -> 3
+# ]
+# semestersRequired(numCourses, prereqs) # -> 3
 #
 # test_05:
-# numCourses = 6;
+# numCourses = 6
 # prereqs = [
 #   [3, 4],
 #   [3, 0],
 #   [3, 1],
 #   [3, 2],
 #   [3, 5],
-# ];
-# semestersRequired(numCourses, prereqs); # -> 2
+# ]
+# semestersRequired(numCourses, prereqs) # -> 2
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #48 best bridge ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -3671,8 +3689,8 @@ def land_size(grid, r, c, visited):
 #   ["W", "L", "W", "W", "W"],
 #   ["W", "W", "W", "W", "W"],
 #   ["W", "W", "W", "W", "W"],
-# ];
-# bestBridge(grid); # -> 1
+# ]
+# bestBridge(grid) # -> 1
 #
 # test_01:
 # grid = [
@@ -3682,16 +3700,16 @@ def land_size(grid, r, c, visited):
 #   ["W", "L", "W", "W", "L"],
 #   ["W", "W", "W", "L", "L"],
 #   ["W", "W", "W", "W", "W"],
-# ];
-# bestBridge(grid); # -> 2
+# ]
+# bestBridge(grid) # -> 2
 #
 # test_02:
 # grid = [
 #   ["W", "W", "W", "W", "W"],
 #   ["W", "W", "W", "L", "W"],
 #   ["L", "W", "W", "W", "W"],
-# ];
-# bestBridge(grid); # -> 3
+# ]
+# bestBridge(grid) # -> 3
 #
 # test_03:
 # grid = [
@@ -3705,8 +3723,8 @@ def land_size(grid, r, c, visited):
 #   ["L", "W", "W", "W", "W", "L", "L", "L"],
 #   ["L", "L", "L", "W", "W", "W", "W", "W"],
 #   ["W", "W", "W", "W", "W", "W", "W", "W"],
-# ];
-# bestBridge(grid); # -> 3
+# ]
+# bestBridge(grid) # -> 3
 #
 # test_04:
 # grid = [
@@ -3722,8 +3740,8 @@ def land_size(grid, r, c, visited):
 #   ["L", "W", "W", "W", "W", "W", "W", "L"],
 #   ["L", "W", "W", "W", "W", "W", "W", "L"],
 #   ["L", "L", "L", "L", "L", "L", "L", "L"],
-# ];
-# bestBridge(grid); # -> 2
+# ]
+# bestBridge(grid) # -> 2
 #
 # test_05:
 # grid = [
@@ -3735,8 +3753,8 @@ def land_size(grid, r, c, visited):
 #   ["W", "W", "W", "W", "W", "W", "L", "W"],
 #   ["W", "W", "W", "W", "W", "W", "L", "L"],
 #   ["W", "W", "W", "W", "W", "W", "W", "L"],
-# ];
-# bestBridge(grid); # -> 8
+# ]
+# bestBridge(grid) # -> 8
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #49 has cycle ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -3749,7 +3767,7 @@ def land_size(grid, r, c, visited):
 #   a: ["b"],
 #   b: ["c"],
 #   c: ["a"],
-# }); # -> true
+# }) # -> true
 #
 # test_01:
 # hasCycle({
@@ -3757,7 +3775,7 @@ def land_size(grid, r, c, visited):
 #   b: ["c"],
 #   c: ["d"],
 #   d: [],
-# }); # -> false
+# }) # -> false
 #
 # test_02:
 # hasCycle({
@@ -3766,7 +3784,7 @@ def land_size(grid, r, c, visited):
 #   c: [],
 #   e: ["f"],
 #   f: ["e"],
-# }); # -> true
+# }) # -> true
 #
 # test_03:
 # hasCycle({
@@ -3778,7 +3796,7 @@ def land_size(grid, r, c, visited):
 #   v: ["w"],
 #   w: [],
 #   x: ["w"],
-# }); # -> false
+# }) # -> false
 #
 # test_04:
 # hasCycle({
@@ -3786,7 +3804,7 @@ def land_size(grid, r, c, visited):
 #   b: ["c"],
 #   c: ["a"],
 #   g: [],
-# }); # -> true
+# }) # -> true
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #50 prereqs possible ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -3797,18 +3815,18 @@ def land_size(grid, r, c, visited):
 # possible to complete all courses.
 # 
 # test_00:
-# numCourses = 6;
+# numCourses = 6
 # prereqs = [
 #   [0, 1],
 #   [2, 3],
 #   [0, 2],
 #   [1, 3],
 #   [4, 5],
-# ];
-# prereqsPossible(numCourses, prereqs); # -> true
+# ]
+# prereqsPossible(numCourses, prereqs) # -> true
 #
 # test_01:
-# numCourses = 6;
+# numCourses = 6
 # prereqs = [
 #   [0, 1],
 #   [2, 3],
@@ -3816,21 +3834,21 @@ def land_size(grid, r, c, visited):
 #   [1, 3],
 #   [4, 5],
 #   [3, 0],
-# ];
-# prereqsPossible(numCourses, prereqs); # -> false
+# ]
+# prereqsPossible(numCourses, prereqs) # -> false
 #
 # test_02:
-# numCourses = 5;
+# numCourses = 5
 # prereqs = [
 #   [2, 4],
 #   [1, 0],
 #   [0, 2],
 #   [0, 4],
-# ];
-# prereqsPossible(numCourses, prereqs); # -> true
+# ]
+# prereqsPossible(numCourses, prereqs) # -> true
 #
 # test_03:
-# numCourses = 6;
+# numCourses = 6
 # prereqs = [
 #   [2, 4],
 #   [1, 0],
@@ -3838,11 +3856,11 @@ def land_size(grid, r, c, visited):
 #   [0, 4],
 #   [5, 3],
 #   [3, 5],
-# ];
-# prereqsPossible(numCourses, prereqs); # -> false
+# ]
+# prereqsPossible(numCourses, prereqs) # -> false
 #
 # test_04:
-# numCourses = 8;
+# numCourses = 8
 # prereqs = [
 #   [1, 0],
 #   [0, 6],
@@ -3850,11 +3868,11 @@ def land_size(grid, r, c, visited):
 #   [0, 5],
 #   [3, 7],
 #   [4, 3],
-# ];
-# prereqsPossible(numCourses, prereqs); # -> true
+# ]
+# prereqsPossible(numCourses, prereqs) # -> true
 #
 # test_05:
-# numCourses = 8;
+# numCourses = 8
 # prereqs = [
 #   [1, 0],
 #   [0, 6],
@@ -3863,13 +3881,13 @@ def land_size(grid, r, c, visited):
 #   [3, 7],
 #   [7, 4],
 #   [4, 3],
-# ];
-# prereqsPossible(numCourses, prereqs); # -> false
+# ]
+# prereqsPossible(numCourses, prereqs) # -> false
 #
 # test_06:
-# numCourses = 42;
-# prereqs = [[6, 36]];
-# prereqsPossible(numCourses, prereqs); # -> true
+# numCourses = 42
+# prereqs = [[6, 36]]
+# prereqsPossible(numCourses, prereqs) # -> true
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #51 fib ]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -3881,21 +3899,21 @@ def land_size(grid, r, c, visited):
 # Solve this recursively.
 # 
 # test_00:
-# fib(0); # -> 0
+# fib(0) # -> 0
 # test_01:
-# fib(1); # -> 1
+# fib(1) # -> 1
 # test_02:
-# fib(2); # -> 1
+# fib(2) # -> 1
 # test_03:
-# fib(3); # -> 2
+# fib(3) # -> 2
 # test_04:
-# fib(4); # -> 3
+# fib(4) # -> 3
 # test_05:
-# fib(5); # -> 5
+# fib(5) # -> 5
 # test_06:
-# fib(35); # -> 9227465
+# fib(35) # -> 9227465
 # test_07:
-# fib(46); # -> 1836311903
+# fib(46) # -> 1836311903
 
 # ========================= Memoization =========================
 # Time: O(n), Space: O(n)
@@ -3931,21 +3949,21 @@ def fib(n):
 # Solve this recursively.
 #
 # test_00:
-# tribonacci(0); # -> 0
+# tribonacci(0) # -> 0
 # test_01:
-# tribonacci(1); # -> 0
+# tribonacci(1) # -> 0
 # test_02:
-# tribonacci(2); # -> 1
+# tribonacci(2) # -> 1
 # test_03:
-# tribonacci(5); # -> 4
+# tribonacci(5) # -> 4
 # test_04:
-# tribonacci(7); # -> 13
+# tribonacci(7) # -> 13
 # test_05:
-# tribonacci(14); # -> 927
+# tribonacci(14) # -> 927
 # test_06:
-# tribonacci(20); # -> 35890
+# tribonacci(20) # -> 35890
 # test_07:
-# tribonacci(37); # -> 1132436852
+# tribonacci(37) # -> 1132436852
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #53 sum possible ]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -3956,23 +3974,23 @@ def fib(n):
 # You may assume that the target amount is non-negative.
 #
 # test_00:
-# sumPossible(8, [5, 12, 4]); # -> true, 4 + 4
+# sumPossible(8, [5, 12, 4]) # -> true, 4 + 4
 # test_01:
-# sumPossible(15, [6, 2, 10, 19]); # -> false
+# sumPossible(15, [6, 2, 10, 19]) # -> false
 # test_02:
-# sumPossible(13, [6, 2, 1]); # -> true
+# sumPossible(13, [6, 2, 1]) # -> true
 # test_03:
-# sumPossible(103, [6, 20, 1]); # -> true
+# sumPossible(103, [6, 20, 1]) # -> true
 # test_04:
-# sumPossible(12, []); # -> false
+# sumPossible(12, []) # -> false
 # test_05:
-# sumPossible(12, [12]); # -> true
+# sumPossible(12, [12]) # -> true
 # test_06:
-# sumPossible(0, []); # -> true
+# sumPossible(0, []) # -> true
 # test_07:
-# sumPossible(271, [10, 8, 265, 24]); # -> false
+# sumPossible(271, [10, 8, 265, 24]) # -> false
 # test_08:
-# sumPossible(2017, [4, 2, 10]); # -> false
+# sumPossible(2017, [4, 2, 10]) # -> false
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #54 min change ]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -3982,23 +4000,23 @@ def fib(n):
 # If it is not possible to create the amount, then return -1.
 #
 # test_00:
-# minChange(8, [1, 5, 4, 12]); # -> 2, because 4+4 is the minimum coins possible
+# minChange(8, [1, 5, 4, 12]) # -> 2, because 4+4 is the minimum coins possible
 # test_01:
-# minChange(13, [1, 9, 5, 14, 30]); # -> 5
+# minChange(13, [1, 9, 5, 14, 30]) # -> 5
 # test_02:
-# minChange(23, [2, 5, 7]); # -> 4
+# minChange(23, [2, 5, 7]) # -> 4
 # test_03:
-# minChange(102, [1, 5, 10, 25]); # -> 6
+# minChange(102, [1, 5, 10, 25]) # -> 6
 # test_04:
-# minChange(200, [1, 5, 10, 25]); # -> 8
+# minChange(200, [1, 5, 10, 25]) # -> 8
 # test_05:
-# minChange(2017, [4, 2, 10]); # -1
+# minChange(2017, [4, 2, 10]) # -1
 # test_06:
-# minChange(271, [10, 8, 265, 24]); # -1
+# minChange(271, [10, 8, 265, 24]) # -1
 # test_07:
-# minChange(0, [4, 2, 10]); # 0
+# minChange(0, [4, 2, 10]) # 0
 # test_08:
-# minChange(0, [])); # 0
+# minChange(0, [])) # 0
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #55 count paths ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -4012,29 +4030,29 @@ def fib(n):
 # grid = [
 #   ["O", "O"],
 #   ["O", "O"],
-# ];
-# countPaths(grid); # -> 2
+# ]
+# countPaths(grid) # -> 2
 # test_01:
 # grid = [
 #   ["O", "O", "X"],
 #   ["O", "O", "O"],
 #   ["O", "O", "O"],
-# ];
-# countPaths(grid); # -> 5
+# ]
+# countPaths(grid) # -> 5
 # test_02:
 # grid = [
 #   ["O", "O", "O"],
 #   ["O", "O", "X"],
 #   ["O", "O", "O"],
-# ];
-# countPaths(grid); # -> 3
+# ]
+# countPaths(grid) # -> 3
 # test_03:
 # grid = [
 #   ["O", "O", "O"],
 #   ["O", "X", "X"],
 #   ["O", "O", "O"],
-# ];
-# countPaths(grid); # -> 1
+# ]
+# countPaths(grid) # -> 1
 # test_04:
 # grid = [
 #   ["O", "O", "X", "O", "O", "O"],
@@ -4042,8 +4060,8 @@ def fib(n):
 #   ["X", "O", "X", "O", "O", "O"],
 #   ["X", "X", "X", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "O"],
-# ];
-# countPaths(grid); # -> 0
+# ]
+# countPaths(grid) # -> 0
 # test_05:
 # grid = [
 #   ["O", "O", "X", "O", "O", "O"],
@@ -4051,8 +4069,8 @@ def fib(n):
 #   ["X", "O", "O", "O", "O", "O"],
 #   ["X", "X", "X", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "O"],
-# ];
-# countPaths(grid); # -> 42
+# ]
+# countPaths(grid) # -> 42
 # test_06:
 # grid = [
 #   ["O", "O", "X", "O", "O", "O"],
@@ -4060,8 +4078,8 @@ def fib(n):
 #   ["X", "O", "O", "O", "O", "O"],
 #   ["X", "X", "X", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "X"],
-# ];
-# countPaths(grid); # -> 0
+# ]
+# countPaths(grid) # -> 0
 # test_07:
 # grid = [
 #   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
@@ -4079,8 +4097,8 @@ def fib(n):
 #   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
-# ];
-# countPaths(grid); # -> 40116600
+# ]
+# countPaths(grid) # -> 40116600
 # test_08:
 # grid = [
 #   ["O", "O", "X", "X", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O", "O"],
@@ -4098,8 +4116,8 @@ def fib(n):
 #   ["O", "O", "O", "O", "X", "X", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O"],
-# ];
-# countPaths(grid); # -> 3190434
+# ]
+# countPaths(grid) # -> 3190434
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #56 max path sum ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -4113,22 +4131,22 @@ def fib(n):
 #   [1, 3, 12],
 #   [5, 1, 1],
 #   [3, 6, 1],
-# ];
-# maxPathSum(grid); # -> 18
+# ]
+# maxPathSum(grid) # -> 18
 # test_01:
 # grid = [
 #   [1, 2, 8, 1],
 #   [3, 1, 12, 10],
 #   [4, 0, 6, 3],
-# ];
-# maxPathSum(grid); # -> 36
+# ]
+# maxPathSum(grid) # -> 36
 # test_02:
 # grid = [
 #   [1, 2, 8, 1],
 #   [3, 10, 12, 10],
 #   [4, 0, 6, 3],
-# ];
-# maxPathSum(grid); # -> 39
+# ]
+# maxPathSum(grid) # -> 39
 # test_03:
 # grid = [
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -4146,8 +4164,8 @@ def fib(n):
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-# ];
-# maxPathSum(grid); # -> 27
+# ]
+# maxPathSum(grid) # -> 27
 # test_04:
 # grid = [
 #   [1, 1, 3, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1],
@@ -4165,8 +4183,8 @@ def fib(n):
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 8, 1, 1, 1],
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-# ];
-# maxPathSum(grid); # -> 56
+# ]
+# maxPathSum(grid) # -> 56
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #57 non adjacent sum ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -4182,22 +4200,22 @@ def fib(n):
 # 4 and 12 are not adjacent in the list.
 #
 # test_00:
-# nums = [2, 4, 5, 12, 7];
-# nonAdjacentSum(nums); # -> 16
+# nums = [2, 4, 5, 12, 7]
+# nonAdjacentSum(nums) # -> 16
 # test_01:
-# nums = [7, 5, 5, 12];
-# nonAdjacentSum(nums); # -> 19
+# nums = [7, 5, 5, 12]
+# nonAdjacentSum(nums) # -> 19
 # test_02:
-# nums = [7, 5, 5, 12, 17, 29];
-# nonAdjacentSum(nums); # -> 48
+# nums = [7, 5, 5, 12, 17, 29]
+# nonAdjacentSum(nums) # -> 48
 # test_03:
 # nums = [
 #   72, 62, 10,  6, 20, 19, 42,
 #   46, 24, 78, 30, 41, 75, 38,
 #   23, 28, 66, 55, 12, 17, 9,
 #   12, 3, 1, 19, 30, 50, 20
-# ];
-# nonAdjacentSum(nums); # -> 488
+# ]
+# nonAdjacentSum(nums) # -> 488
 # test_04:
 # nums = [
 #   72, 62, 10,  6, 20, 19, 42, 46, 24, 78,
@@ -4207,8 +4225,8 @@ def fib(n):
 #   30, 41, 75, 38, 23, 28, 66, 55, 12, 17,
 #   72, 62, 10,  6, 20, 19, 42, 46, 24, 78,
 #   42
-# ];
-# nonAdjacentSum(nums); # -> 1465
+# ]
+# nonAdjacentSum(nums) # -> 1465
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #58 summing squares ]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -4223,21 +4241,21 @@ def fib(n):
 # Another way to make 12 is 9 + 1 + 1 + 1, but that requires four perfect squares.
 #
 # test_00:
-# summingSquares(8); # -> 2
+# summingSquares(8) # -> 2
 # test_01:
-# summingSquares(9); # -> 1
+# summingSquares(9) # -> 1
 # test_02:
-# summingSquares(12); # -> 3
+# summingSquares(12) # -> 3
 # test_03:
-# summingSquares(1); # -> 1
+# summingSquares(1) # -> 1
 # test_04:
-# summingSquares(31); # -> 4
+# summingSquares(31) # -> 4
 # test_05:
-# summingSquares(50); # -> 2
+# summingSquares(50) # -> 2
 # test_06:
-# summingSquares(68); # -> 2
+# summingSquares(68) # -> 2
 # test_07:
-# summingSquares(87); # -> 4
+# summingSquares(87) # -> 4
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #59 counting change ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -4255,19 +4273,19 @@ def fib(n):
 # 4. 2 + 2
 #
 # test_00:
-# countingChange(4, [1, 2, 3]); # -> 4
+# countingChange(4, [1, 2, 3]) # -> 4
 # test_01:
-# countingChange(8, [1, 2, 3]); # -> 10
+# countingChange(8, [1, 2, 3]) # -> 10
 # test_02:
-# countingChange(24, [5, 7, 3]); # -> 5
+# countingChange(24, [5, 7, 3]) # -> 5
 # test_03:
-# countingChange(13, [2, 6, 12, 10]); # -> 0
+# countingChange(13, [2, 6, 12, 10]) # -> 0
 # test_04:
-# countingChange(512, [1, 5, 10, 25]); # -> 20119
+# countingChange(512, [1, 5, 10, 25]) # -> 20119
 # test_05:
-# countingChange(1000, [1, 5, 10, 25]); # -> 142511
+# countingChange(1000, [1, 5, 10, 25]) # -> 142511
 # test_06:
-# countingChange(240, [1, 2, 3, 4, 5, 6, 7, 8, 9]); # -> 1525987916
+# countingChange(240, [1, 2, 3, 4, 5, 6, 7, 8, 9]) # -> 1525987916
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #60 list stepper ]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -4286,19 +4304,19 @@ def fib(n):
 # Then take 4 steps forward to the end at idx 5.
 #
 # test_00:
-# listStepper([2, 4, 2, 0, 0, 1]); # -> true
+# listStepper([2, 4, 2, 0, 0, 1]) # -> true
 # test_01:
-# listStepper([2, 3, 2, 0, 0, 1]); # -> false
+# listStepper([2, 3, 2, 0, 0, 1]) # -> false
 # test_02:
-# listStepper([3, 1, 3, 1, 0, 1]); # -> true
+# listStepper([3, 1, 3, 1, 0, 1]) # -> true
 # test_03:
-# listStepper([4, 1, 5, 1, 1, 1, 0, 4]); # -> true
+# listStepper([4, 1, 5, 1, 1, 1, 0, 4]) # -> true
 # test_04:
-# listStepper([4, 1, 2, 1, 1, 1, 0, 4]); # -> false
+# listStepper([4, 1, 2, 1, 1, 1, 0, 4]) # -> false
 # test_05:
-# listStepper([1, 1, 1, 1, 1, 0]); # -> true
+# listStepper([1, 1, 1, 1, 1, 0]) # -> true
 # test_06:
-# listStepper([1, 1, 1, 1, 0, 0]); # -> false
+# listStepper([1, 1, 1, 1, 0, 0]) # -> false
 # test_07:
 # listStepper([ 
 #   31, 30, 29, 28, 27,
@@ -4307,7 +4325,7 @@ def fib(n):
 #   16, 15, 14, 13, 12,
 #   11, 10, 9, 8, 7, 6,
 #   5, 3, 2, 1, 0, 0, 0
-# ]); # -> false
+# ]) # -> false
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #61 max palin subsequence ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -4318,21 +4336,21 @@ def fib(n):
 # string, while maintaining the relative order of characters.
 #
 # test_00:
-# max_palin_subsequence("luwxult"); # -> 5
+# max_palin_subsequence("luwxult") # -> 5
 # test_01:
-# max_palin_subsequence("xyzaxxzy"); # -> 6
+# max_palin_subsequence("xyzaxxzy") # -> 6
 # test_02:
-# max_palin_subsequence("lol"); # -> 3
+# max_palin_subsequence("lol") # -> 3
 # test_03:
-# max_palin_subsequence("boabcdefop"); # -> 3
+# max_palin_subsequence("boabcdefop") # -> 3
 # test_04:
-# max_palin_subsequence("z"); # -> 1
+# max_palin_subsequence("z") # -> 1
 # test_05:
-# max_palin_subsequence("chartreusepugvicefree"); # -> 7
+# max_palin_subsequence("chartreusepugvicefree") # -> 7
 # test_06:
-# max_palin_subsequence("qwueoiuahsdjnweuueueunasdnmnqweuzqwerty"); # -> 15
+# max_palin_subsequence("qwueoiuahsdjnweuueueunasdnmnqweuzqwerty") # -> 15
 # test_07:
-# max_palin_subsequence("enamelpinportlandtildecoldpressedironyflannelsemioticsedisonbulbfashionaxe"); # -> 31
+# max_palin_subsequence("enamelpinportlandtildecoldpressedironyflannelsemioticsedisonbulbfashionaxe") # -> 31
 
 def max_palin_subsequence(string, memo = {}):
   return _helper(string, 0, len(string), memo)
@@ -4365,18 +4383,18 @@ def _helper(string, i, j, memo):
 # string, while maintaining the relative order of characters.
 #
 # test_00:
-# overlapSubsequence("dogs", "daogt"); # -> 3
+# overlapSubsequence("dogs", "daogt") # -> 3
 # test_01:
-# overlapSubsequence("xcyats", "criaotsi"); # -> 4
+# overlapSubsequence("xcyats", "criaotsi") # -> 4
 # test_02:
-# overlapSubsequence("xfeqortsver", "feeeuavoeqr"); # -> 5
+# overlapSubsequence("xfeqortsver", "feeeuavoeqr") # -> 5
 # test_03:
-# overlapSubsequence("kinfolklivemustache", "bespokekinfolksnackwave"); # -> 11
+# overlapSubsequence("kinfolklivemustache", "bespokekinfolksnackwave") # -> 11
 # test_04:
 # overlapSubsequence(
 #   "mumblecorebeardleggingsauthenticunicorn",
 #   "succulentspughumblemeditationlocavore"
-# ); # -> 15
+# ) # -> 15
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #63 can concat ]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -4386,19 +4404,19 @@ def _helper(string, i, j, memo):
 # You may reuse words of the list as many times as needed.
 #
 # test_00:
-# canConcat("oneisnone", ["one", "none", "is"]); # -> true
+# canConcat("oneisnone", ["one", "none", "is"]) # -> true
 # test_01:
-# canConcat("oneisnone", ["on", "e", "is"]); # -> false
+# canConcat("oneisnone", ["on", "e", "is"]) # -> false
 # test_02:
-# canConcat("oneisnone", ["on", "e", "is", "n"]); # -> true
+# canConcat("oneisnone", ["on", "e", "is", "n"]) # -> true
 # test_03:
-# canConcat("foodisgood", ["is", "g", "ood", "f"]); # -> true
+# canConcat("foodisgood", ["is", "g", "ood", "f"]) # -> true
 # test_04:
-# canConcat("santahat", ["santah", "hat"]); # -> false
+# canConcat("santahat", ["santah", "hat"]) # -> false
 # test_05:
-# canConcat("santahat", ["santah", "san", "hat", "tahat"]); # -> true
+# canConcat("santahat", ["santah", "san", "hat", "tahat"]) # -> true
 # test_06:
-# canConcat("rrrrrrrrrrrrrrrrrrrrrrrrrrx", ["r", "rr", "rrr", "rrrr", "rrrrr", "rrrrrr"]); # -> false
+# canConcat("rrrrrrrrrrrrrrrrrrrrrrrrrrx", ["r", "rr", "rrr", "rrrr", "rrrrr", "rrrrrr"]) # -> false
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #64 quickest concat ]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -4408,21 +4426,21 @@ def _helper(string, i, j, memo):
 # You may use words of the list as many times as needed.
 #
 # test_00:
-# quickestConcat('caution', ['ca', 'ion', 'caut', 'ut']); # -> 2
+# quickestConcat('caution', ['ca', 'ion', 'caut', 'ut']) # -> 2
 # test_01:
-# quickestConcat('caution', ['ion', 'caut', 'caution']); # -> 1
+# quickestConcat('caution', ['ion', 'caut', 'caution']) # -> 1
 # test_02:
-# quickestConcat('respondorreact', ['re', 'or', 'spond', 'act', 'respond']); # -> 4
+# quickestConcat('respondorreact', ['re', 'or', 'spond', 'act', 'respond']) # -> 4
 # test_03:
-# quickestConcat('simchacindy', ['sim', 'simcha', 'acindy', 'ch']); # -> 3
+# quickestConcat('simchacindy', ['sim', 'simcha', 'acindy', 'ch']) # -> 3
 # test_04:
-# quickestConcat('simchacindy', ['sim', 'simcha', 'acindy']); # -> -1
+# quickestConcat('simchacindy', ['sim', 'simcha', 'acindy']) # -> -1
 # test_05:
-# quickestConcat('uuuuuu', ['u', 'uu', 'uuu', 'uuuu']); # -> 2
+# quickestConcat('uuuuuu', ['u', 'uu', 'uuu', 'uuuu']) # -> 2
 # test_06:
-# quickestConcat('rongbetty', ['wrong', 'bet']); # -> -1
+# quickestConcat('rongbetty', ['wrong', 'bet']) # -> -1
 # test_07:
-# quickestConcat('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu', ['u', 'uu', 'uuu', 'uuuu', 'uuuuu']); # -> 7
+# quickestConcat('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu', ['u', 'uu', 'uuu', 'uuuu', 'uuuuu']) # -> 7
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #65 paired parentheses ]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -4432,21 +4450,21 @@ def _helper(string, i, j, memo):
 # You may assume the string contains only alphabetic characters, '(', or ')'.
 #
 # test_00:
-# pairedParentheses("(david)((abby))"); # -> true
+# pairedParentheses("(david)((abby))") # -> true
 # test_01:
-# pairedParentheses("()rose(jeff"); # -> false
+# pairedParentheses("()rose(jeff") # -> false
 # test_02:
-# pairedParentheses(")("); # -> false
+# pairedParentheses(")(") # -> false
 # test_03:
-# pairedParentheses("()"); # -> true
+# pairedParentheses("()") # -> true
 # test_04:
-# pairedParentheses("(((potato())))"); # -> true
+# pairedParentheses("(((potato())))") # -> true
 # test_05:
-# pairedParentheses("(())(water)()"); # -> true
+# pairedParentheses("(())(water)()") # -> true
 # test_06:
-# pairedParentheses("(())(water()()"); # -> false
+# pairedParentheses("(())(water()()") # -> false
 # test_07:
-# pairedParentheses(""); # -> true
+# pairedParentheses("") # -> true
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #66 befitting brackets ]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -4456,21 +4474,21 @@ def _helper(string, i, j, memo):
 # You may assume the string contains only characters: ( ) [ ] { }
 #
 # test_00:
-# befittingBrackets('(){}[](())'); # -> true
+# befittingBrackets('(){}[](())') # -> true
 # test_01:
-# befittingBrackets('({[]})'); # -> true
+# befittingBrackets('({[]})') # -> true
 # test_02:
-# befittingBrackets('[][}'); # -> false
+# befittingBrackets('[][}') # -> false
 # test_03:
-# befittingBrackets('{[]}({}'); # -> false
+# befittingBrackets('{[]}({}') # -> false
 # test_04:
-# befittingBrackets('[]{}(}[]'); # -> false
+# befittingBrackets('[]{}(}[]') # -> false
 # test_05:
-# befittingBrackets('[]{}()[]'); # -> true
+# befittingBrackets('[]{}()[]') # -> true
 # test_06:
-# befittingBrackets(']{}'); # -> false
+# befittingBrackets(']{}') # -> false
 # test_07:
-# befittingBrackets(''); # -> true
+# befittingBrackets('') # -> true
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #67 decompress braces ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -4484,28 +4502,28 @@ def _helper(string, i, j, memo):
 # contain alphabetic characters.
 #
 # test_00:
-# decompressBraces("2{q}3{tu}v"); 
+# decompressBraces("2{q}3{tu}v") 
 # -> qqtututuv 
 # test_01:
-# decompressBraces("ch3{ao}"); 
+# decompressBraces("ch3{ao}") 
 # -> chaoaoao
 # test_02:
-# decompressBraces("2{y3{o}}s"); 
+# decompressBraces("2{y3{o}}s") 
 # -> yoooyooos
 # test_03:
-# decompressBraces("z3{a2{xy}b}"); 
+# decompressBraces("z3{a2{xy}b}") 
 # -> zaxyxybaxyxybaxyxyb 
 # test_04:
-# decompressBraces("2{3{r4{e}r}io}"); 
+# decompressBraces("2{3{r4{e}r}io}") 
 # -> reeeerreeeerreeeerioreeeerreeeerreeeerio 
 # test_05:
-# decompressBraces("go3{spinn2{ing}s}"); 
+# decompressBraces("go3{spinn2{ing}s}") 
 # -> gospinningingsspinningingsspinningings 
 # test_06:
-# decompressBraces("2{l2{if}azu}l"); 
+# decompressBraces("2{l2{if}azu}l") 
 # -> lififazulififazul 
 # test_07:
-# decompressBraces("3{al4{ec}2{icia}}"); 
+# decompressBraces("3{al4{ec}2{icia}}") 
 # -> alececececiciaiciaalececececiciaiciaalececececiciaicia 
 
 
@@ -4520,21 +4538,21 @@ def _helper(string, i, j, memo):
 # You may assume that the input only contains well-formed square brackets.
 #
 # test_00:
-# nestingScore("[]"); # -> 1
+# nestingScore("[]") # -> 1
 # test_01:
-# nestingScore("[][][]"); # -> 3
+# nestingScore("[][][]") # -> 3
 # test_02:
-# nestingScore("[[]]"); # -> 2
+# nestingScore("[[]]") # -> 2
 # test_03:
-# nestingScore("[[][]]"); # -> 4
+# nestingScore("[[][]]") # -> 4
 # test_04:
-# nestingScore("[[][][]]"); # -> 6
+# nestingScore("[[][][]]") # -> 6
 # test_05:
-# nestingScore("[[][]][]"); # -> 5
+# nestingScore("[[][]][]") # -> 5
 # test_06:
-# nestingScore("[][[][]][[]]"); # -> 7
+# nestingScore("[][[][]][[]]") # -> 7
 # test_07:
-# nestingScore("[[[[[[[][]]]]]]][]"); # -> 129
+# nestingScore("[[[[[[[][]]]]]]][]") # -> 129
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #69 subsets ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -4545,7 +4563,7 @@ def _helper(string, i, j, memo):
 # You may assume that the input list contains unique elements.
 #
 # test_00:
-# subsets(['a', 'b']); # ->
+# subsets(['a', 'b']) # ->
 # [ 
 #   [], 
 #   [ 'b' ], 
@@ -4553,7 +4571,7 @@ def _helper(string, i, j, memo):
 #   [ 'a', 'b' ] 
 # ]
 # test_01:
-# subsets(['a', 'b', 'c']); # ->
+# subsets(['a', 'b', 'c']) # ->
 # [
 #   [],
 #   [ 'c' ],
@@ -4565,18 +4583,18 @@ def _helper(string, i, j, memo):
 #   [ 'a', 'b', 'c' ]
 # ]
 # test_02:
-# subsets(['x']); # ->
+# subsets(['x']) # ->
 # [ 
 #   [], 
 #   [ 'x' ] 
 # ]
 # test_03:
-# subsets([]); # ->
+# subsets([]) # ->
 # [ 
 #   []
 # ]
 # test_04:
-# subsets(['q', 'r', 's', 't']); # ->
+# subsets(['q', 'r', 's', 't']) # ->
 # [
 #   [],
 #   [ 't' ],
@@ -4605,7 +4623,7 @@ def _helper(string, i, j, memo):
 # You may assume that the input list contains unique elements.
 #
 # test_00:
-# permutations(['a', 'b', 'c']); # -> 
+# permutations(['a', 'b', 'c']) # -> 
 # [ 
 #   [ 'a', 'b', 'c' ], 
 #   [ 'b', 'a', 'c' ], 
@@ -4615,13 +4633,13 @@ def _helper(string, i, j, memo):
 #   [ 'c', 'b', 'a' ] 
 # ] 
 # test_01:
-# permutations(['red', 'blue']); # ->
+# permutations(['red', 'blue']) # ->
 # [ 
 #   [ 'red', 'blue' ], 
 #   [ 'blue', 'red' ] 
 # ]
 # test_02:
-# permutations([8, 2, 1, 4]); # ->
+# permutations([8, 2, 1, 4]) # ->
 # [ 
 #   [ 8, 2, 1, 4 ], [ 2, 8, 1, 4 ], 
 #   [ 2, 1, 8, 4 ], [ 2, 1, 4, 8 ], 
@@ -4637,7 +4655,7 @@ def _helper(string, i, j, memo):
 #   [ 4, 1, 8, 2 ], [ 4, 1, 2, 8 ] 
 # ] 
 # test_03:
-# permutations([]); # ->
+# permutations([]) # ->
 # [
 #  [ ]
 # ]
@@ -4651,14 +4669,14 @@ def _helper(string, i, j, memo):
 # You may assume that the input list contains unique elements and 1 <= k <= len(items).
 #
 # test_00:
-# createCombinations(["a", "b", "c"], 2); # ->
+# createCombinations(["a", "b", "c"], 2) # ->
 # [
 #   [ 'a', 'b' ],
 #   [ 'a', 'c' ],
 #   [ 'b', 'c' ]
 # ]
 # test_01:
-# createCombinations(["q", "r", "s", "t"], 2); # ->
+# createCombinations(["q", "r", "s", "t"], 2) # ->
 # [
 #   [ 'q', 'r' ],
 #   [ 'q', 's' ],
@@ -4668,7 +4686,7 @@ def _helper(string, i, j, memo):
 #   [ 's', 't' ]
 # ]
 # test_02:
-# createCombinations(['q', 'r', 's', 't'], 3)); # ->
+# createCombinations(['q', 'r', 's', 't'], 3)) # ->
 # [
 #   [ 'q', 'r', 's' ],
 #   [ 'q', 'r', 't' ],
@@ -4676,7 +4694,7 @@ def _helper(string, i, j, memo):
 #   [ 'r', 's', 't' ]
 # ]
 # test_03:
-# createCombinations([1, 28, 94], 3); # ->
+# createCombinations([1, 28, 94], 3) # ->
 # [
 #   [ 1, 28, 94 ]
 # ]
@@ -4690,19 +4708,19 @@ def _helper(string, i, j, memo):
 # For example, the possibilities for 'x(mn)yz' are 'xmyz', 'xnyz'.
 #
 # test_00:
-# parentheticalPossibilities('x(mn)yz'); # -> 
+# parentheticalPossibilities('x(mn)yz') # -> 
 # [ 'xmyz', 'xnyz' ]
 # test_01:
-# parentheticalPossibilities("(qr)ab(stu)c"); # ->
+# parentheticalPossibilities("(qr)ab(stu)c") # ->
 # [ 'qabsc', 'qabtc', 'qabuc', 'rabsc', 'rabtc', 'rabuc' ]
 # test_02:
-# parentheticalPossibilities("taco"); # ->
+# parentheticalPossibilities("taco") # ->
 # ['taco']
 # test_03:
-# parentheticalPossibilities(""); # ->
+# parentheticalPossibilities("") # ->
 # ['']
 # test_04:
-# parentheticalPossibilities("(etc)(blvd)(cat)"); # ->
+# parentheticalPossibilities("(etc)(blvd)(cat)") # ->
 # [
 #  'ebc', 'eba', 'ebt', 'elc', 'ela',
 #  'elt', 'evc', 'eva', 'evt', 'edc',
@@ -4725,12 +4743,12 @@ def _helper(string, i, j, memo):
 # all of them.
 #
 # test_00:
-# sentence = "follow the yellow brick road";
+# sentence = "follow the yellow brick road"
 # synonyms = {
 #   follow: ["chase", "pursue"],
 #   yellow: ["gold", "amber", "lemon"],
-# };
-# substituteSynonyms(sentence, synonyms);
+# }
+# substituteSynonyms(sentence, synonyms)
 # [
 #   'chase the gold brick road',
 #   'chase the amber brick road',
@@ -4740,12 +4758,12 @@ def _helper(string, i, j, memo):
 #   'pursue the lemon brick road'
 # ]
 # test_01:
-# sentence = "I think it's gonna be a long long time";
+# sentence = "I think it's gonna be a long long time"
 # synonyms = {
 #   think: ["believe", "reckon"],
 #   long: ["lengthy", "prolonged"],
-# };
-# substituteSynonyms(sentence, synonyms);
+# }
+# substituteSynonyms(sentence, synonyms)
 # [
 #   "I believe it's gonna be a lengthy lengthy time",
 #   "I believe it's gonna be a lengthy prolonged time",
@@ -4757,13 +4775,13 @@ def _helper(string, i, j, memo):
 #   "I reckon it's gonna be a prolonged prolonged time"
 # ]
 # test_02:
-# sentence = "palms sweaty knees weak arms heavy";
+# sentence = "palms sweaty knees weak arms heavy"
 # synonyms = {
 #   palms: ["hands", "fists"],
 #   heavy: ["weighty", "hefty", "burdensome"],
 #   weak: ["fragile", "feeble", "frail", "sickly"],
-# };
-# substituteSynonyms(sentence, synonyms);
+# }
+# substituteSynonyms(sentence, synonyms)
 # [
 #   'hands sweaty knees fragile arms weighty',
 #   'hands sweaty knees fragile arms hefty',
@@ -4799,65 +4817,65 @@ def _helper(string, i, j, memo):
 # same both forwards and backwards.
 #
 # test_00:
-# a = new Node(3);
-# b = new Node(2);
-# c = new Node(7);
-# d = new Node(7);
-# e = new Node(2);
-# f = new Node(3);
-# a.next = b;
-# b.next = c;
-# c.next = d;
-# d.next = e;
-# e.next = f;
+# a = new Node(3)
+# b = new Node(2)
+# c = new Node(7)
+# d = new Node(7)
+# e = new Node(2)
+# f = new Node(3)
+# a.next = b
+# b.next = c
+# c.next = d
+# d.next = e
+# e.next = f
 # 3 -> 2 -> 7 -> 7 -> 2 -> 3
-# linkedPalindrome(a); # true
+# linkedPalindrome(a) # true
 # test_01:
-# a = new Node(3);
-# b = new Node(2);
-# c = new Node(4);
-# a.next = b;
-# b.next = c;
+# a = new Node(3)
+# b = new Node(2)
+# c = new Node(4)
+# a.next = b
+# b.next = c
 # 3 -> 2 -> 4
-# linkedPalindrome(a); # false
+# linkedPalindrome(a) # false
 # test_02:
-# a = new Node(3);
-# b = new Node(2);
-# c = new Node(3);
-# a.next = b;
-# b.next = c;
+# a = new Node(3)
+# b = new Node(2)
+# c = new Node(3)
+# a.next = b
+# b.next = c
 # 3 -> 2 -> 3
-# linkedPalindrome(a); # true
+# linkedPalindrome(a) # true
 # test_03:
-# a = new Node(0);
-# b = new Node(1);
-# c = new Node(0);
-# d = new Node(1);
-# e = new Node(0);
-# a.next = b;
-# b.next = c;
-# c.next = d;
-# d.next = e;
+# a = new Node(0)
+# b = new Node(1)
+# c = new Node(0)
+# d = new Node(1)
+# e = new Node(0)
+# a.next = b
+# b.next = c
+# c.next = d
+# d.next = e
 # 0 -> 1 -> 0 -> 1 -> 0
-# linkedPalindrome(a); # true
+# linkedPalindrome(a) # true
 # test_04:
-# a = new Node(0);
-# b = new Node(1);
-# c = new Node(0);
-# d = new Node(1);
-# e = new Node(1);
-# a.next = b;
-# b.next = c;
-# c.next = d;
-# d.next = e;
+# a = new Node(0)
+# b = new Node(1)
+# c = new Node(0)
+# d = new Node(1)
+# e = new Node(1)
+# a.next = b
+# b.next = c
+# c.next = d
+# d.next = e
 # 0 -> 1 -> 0 -> 1 -> 1
-# linkedPalindrome(a); # false
+# linkedPalindrome(a) # false
 # test_05:
-# a = new Node(5);
+# a = new Node(5)
 # 5
-# linkedPalindrome(a); # true
+# linkedPalindrome(a) # true
 # test_06:
-# linkedPalindrome(None); # true
+# linkedPalindrome(None) # true
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #75 middle value ]]]]]]]]]]]]]]]]]]]]]]]]] 
@@ -4868,46 +4886,46 @@ def _helper(string, i, j, memo):
 # You may assume that the input list is non-empty.
 #
 # test_00:
-# a = new Node('a');
-# b = new Node('b');
-# c = new Node('c');
-# d = new Node('d');
-# e = new Node('e');
-# a.next = b;
-# b.next = c;
-# c.next = d;
-# d.next = e;
+# a = new Node('a')
+# b = new Node('b')
+# c = new Node('c')
+# d = new Node('d')
+# e = new Node('e')
+# a.next = b
+# b.next = c
+# c.next = d
+# d.next = e
 # a -> b -> c -> d -> e
-# middleValue(a); # c
+# middleValue(a) # c
 # test_01:
-# a = new Node('a');
-# b = new Node('b');
-# c = new Node('c');
-# d = new Node('d');
-# e = new Node('e');
-# f = new Node('f');
-# a.next = b;
-# b.next = c;
-# c.next = d;
-# d.next = e;
-# e.next = f;
+# a = new Node('a')
+# b = new Node('b')
+# c = new Node('c')
+# d = new Node('d')
+# e = new Node('e')
+# f = new Node('f')
+# a.next = b
+# b.next = c
+# c.next = d
+# d.next = e
+# e.next = f
 # a -> b -> c -> d -> e -> f
-# middleValue(a); # d
+# middleValue(a) # d
 # test_02:
-# x = new Node('x');
-# y = new Node('y');
-# z = new Node('z');
-# x.next = y;
-# y.next = z;
+# x = new Node('x')
+# y = new Node('y')
+# z = new Node('z')
+# x.next = y
+# y.next = z
 # x -> y -> z
-# middleValue(x); # y
+# middleValue(x) # y
 # test_03:
-# x = new Node('x');
-# y = new Node('y');
-# x.next = y;
+# x = new Node('x')
+# y = new Node('y')
+# x.next = y
 # x -> y 
-# middleValue(x); # y
+# middleValue(x) # y
 # test_04:
-# q = new Node('q');
+# q = new Node('q')
 # q
-# middleValue(q); # q
+# middleValue(q) # q
