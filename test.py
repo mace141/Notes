@@ -1,53 +1,71 @@
-def longest_path(graph):
-  longest = float('-inf')
-  for node in graph:
-    length = traverse(graph, node)
-    longest = length if longest < length else longest
-  return longest
+def semesters_required(num_courses, prereqs):
+  graph = build_graph(num_courses, prereqs)
+  semesters = 1
+  for course in graph:
+    length = longest_path(graph, course)
+    semesters = length if length > semesters else semesters
+  return semesters
 
-def traverse(graph, node):
-  if not graph[node]:
-    return 0
+def build_graph(num_courses, prereqs):
+  graph = {}
+  for num in range(num_courses):
+    graph[num] = []
+  for pair in prereqs:
+    prereq, course = pair
+    graph[prereq].append(course)
+  return graph
+
+def longest_path(graph, course):
+  if not graph[course]:
+    return 1
   max = 0
-  for neighbor in graph[node]:
-    length = traverse(graph, neighbor)
-    max = max if max > length else length
+  for next_course in graph[course]:
+    length = longest_path(graph, next_course)
+    max = length if length > max else max
   return 1 + max
 
-graph = {
-  'a': ['c', 'b'],
-  'b': ['c'],
-  'c': []
-}
-print(longest_path(graph)) # -> 2
-graph = {
-  'a': ['c', 'b'],
-  'b': ['c'],
-  'c': [],
-  'q': ['r'],
-  'r': ['s', 'u', 't'],
-  's': ['t'],
-  't': ['u'],
-  'u': []
-}
-print(longest_path(graph)) # -> 4
-graph = {
-  'h': ['i', 'j', 'k'],
-  'g': ['h'],
-  'i': [],
-  'j': [],
-  'k': [],
-  'x': ['y'],
-  'y': []
-}
-print(longest_path(graph)) # -> 2
-graph = {
-  'a': ['b'],
-  'b': ['c'],
-  'c': [],
-  'e': ['f'],
-  'f': ['g'],
-  'g': ['h'],
-  'h': []
-}
-print(longest_path(graph)) # -> 3
+num_courses = 6
+prereqs = [
+  [1, 2],
+  [2, 4],
+  [3, 5],
+  [0, 5],
+]
+print(semesters_required(num_courses, prereqs)) # -> 3
+num_courses = 7
+prereqs = [
+  [4, 3],
+  [3, 2],
+  [2, 1],
+  [1, 0],
+  [5, 2],
+  [5, 6],
+]
+print(semesters_required(num_courses, prereqs)) # -> 5
+num_courses = 5
+prereqs = [
+  [1, 0],
+  [3, 4],
+  [1, 2],
+  [3, 2],
+]
+print(semesters_required(num_courses, prereqs)) # -> 2
+num_courses = 12
+prereqs = []
+print(semesters_required(num_courses, prereqs)) # -> 1
+num_courses = 3
+prereqs = [
+  [0, 2],
+  [0, 1],
+  [1, 2],
+]
+print(semesters_required(num_courses, prereqs)) # -> 3
+num_courses = 6
+prereqs = [
+  [3, 4],
+  [3, 0],
+  [3, 1],
+  [3, 2],
+  [3, 5],
+]
+print(semesters_required(num_courses, prereqs)) # -> 2

@@ -3597,6 +3597,8 @@ def closest_carrot(grid, row, col):
 # }
 # longest_path(graph) # -> 3
 
+# ========================= Depth First =========================
+# Time: O(n), Space: O(n)
 def longest_path(graph):
   longest = float('-inf')
   for node in graph:
@@ -3614,7 +3616,7 @@ def traverse(graph, node):
   return 1 + max
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #47 semesters required ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, semestersRequired, that takes in a number of courses (n) and
+# Write a function, semesters_required, that takes in a number of courses (n) and
 # a list of prerequisites as arguments. Courses have ids ranging from 0 through
 # n - 1. A single prerequisite of [A, B] means that course A must be taken 
 # before course B. Return the minimum number of semesters required to complete
@@ -3625,16 +3627,16 @@ def traverse(graph, node):
 # You can assume that it is possible to eventually complete all courses.
 #
 # test_00:
-# numCourses = 6
+# num_courses = 6
 # prereqs = [
 #   [1, 2],
 #   [2, 4],
 #   [3, 5],
 #   [0, 5],
 # ]
-# semestersRequired(numCourses, prereqs) # -> 3
+# semesters_required(num_courses, prereqs) # -> 3
 # test_01:
-# numCourses = 7
+# num_courses = 7
 # prereqs = [
 #   [4, 3],
 #   [3, 2],
@@ -3643,30 +3645,30 @@ def traverse(graph, node):
 #   [5, 2],
 #   [5, 6],
 # ]
-# semestersRequired(numCourses, prereqs) # -> 5
+# semesters_required(num_courses, prereqs) # -> 5
 # test_02:
-# numCourses = 5
+# num_courses = 5
 # prereqs = [
 #   [1, 0],
 #   [3, 4],
 #   [1, 2],
 #   [3, 2],
 # ]
-# semestersRequired(numCourses, prereqs) # -> 2
+# semesters_required(num_courses, prereqs) # -> 2
 # test_03:
-# numCourses = 12
+# num_courses = 12
 # prereqs = []
-# semestersRequired(numCourses, prereqs) # -> 1
+# semesters_required(num_courses, prereqs) # -> 1
 # test_04:
-# numCourses = 3
+# num_courses = 3
 # prereqs = [
 #   [0, 2],
 #   [0, 1],
 #   [1, 2],
 # ]
-# semestersRequired(numCourses, prereqs) # -> 3
+# semesters_required(num_courses, prereqs) # -> 3
 # test_05:
-# numCourses = 6
+# num_courses = 6
 # prereqs = [
 #   [3, 4],
 #   [3, 0],
@@ -3674,8 +3676,35 @@ def traverse(graph, node):
 #   [3, 2],
 #   [3, 5],
 # ]
-# semestersRequired(numCourses, prereqs) # -> 2
+# semesters_required(num_courses, prereqs) # -> 2
 
+# ========================= Depth First =========================
+# Time: O(n), Space: O(n)
+def semesters_required(num_courses, prereqs):
+  graph = build_graph(num_courses, prereqs)
+  semesters = 1
+  for course in graph:
+    length = longest_education(graph, course)
+    semesters = length if length > semesters else semesters
+  return semesters
+
+def build_graph(num_courses, prereqs):
+  graph = {}
+  for num in range(num_courses):
+    graph[num] = []
+  for pair in prereqs:
+    prereq, course = pair
+    graph[prereq].append(course)
+  return graph
+
+def longest_education(graph, course):
+  if not graph[course]:
+    return 1
+  max = 0
+  for next_course in graph[course]:
+    length = longest_education(graph, next_course)
+    max = length if length > max else max
+  return max
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #48 best bridge ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, bestBridge, that takes in a grid as an argument. The grid 
