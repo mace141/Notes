@@ -3908,15 +3908,15 @@ def in_cycle(graph, node, visited, visiting):
   
   return False
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #50 prereqs possible ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, prereqsPossible, that takes in a number of courses (n) and
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #50 prereqs possible ]]]]]]]]]]]]]]]]]]]]]]]]]
+# Write a function, prereqs_possible, that takes in a number of courses (n) and
 # prerequisites as arguments. Courses have ids ranging from 0 through n - 1. A
 # single prerequisite of [A, B] means that course A must be taken before course
 # B. The function should return a boolean indicating whether or not it is
 # possible to complete all courses.
 # 
 # test_00:
-# numCourses = 6
+# num_courses = 6
 # prereqs = [
 #   [0, 1],
 #   [2, 3],
@@ -3924,9 +3924,9 @@ def in_cycle(graph, node, visited, visiting):
 #   [1, 3],
 #   [4, 5],
 # ]
-# prereqsPossible(numCourses, prereqs) # -> true
+# prereqs_possible(num_courses, prereqs) # -> true
 # test_01:
-# numCourses = 6
+# num_courses = 6
 # prereqs = [
 #   [0, 1],
 #   [2, 3],
@@ -3935,18 +3935,18 @@ def in_cycle(graph, node, visited, visiting):
 #   [4, 5],
 #   [3, 0],
 # ]
-# prereqsPossible(numCourses, prereqs) # -> false
+# prereqs_possible(num_courses, prereqs) # -> false
 # test_02:
-# numCourses = 5
+# num_courses = 5
 # prereqs = [
 #   [2, 4],
 #   [1, 0],
 #   [0, 2],
 #   [0, 4],
 # ]
-# prereqsPossible(numCourses, prereqs) # -> true
+# prereqs_possible(num_courses, prereqs) # -> true
 # test_03:
-# numCourses = 6
+# num_courses = 6
 # prereqs = [
 #   [2, 4],
 #   [1, 0],
@@ -3955,9 +3955,9 @@ def in_cycle(graph, node, visited, visiting):
 #   [5, 3],
 #   [3, 5],
 # ]
-# prereqsPossible(numCourses, prereqs) # -> false
+# prereqs_possible(num_courses, prereqs) # -> false
 # test_04:
-# numCourses = 8
+# num_courses = 8
 # prereqs = [
 #   [1, 0],
 #   [0, 6],
@@ -3966,9 +3966,9 @@ def in_cycle(graph, node, visited, visiting):
 #   [3, 7],
 #   [4, 3],
 # ]
-# prereqsPossible(numCourses, prereqs) # -> true
+# prereqs_possible(num_courses, prereqs) # -> true
 # test_05:
-# numCourses = 8
+# num_courses = 8
 # prereqs = [
 #   [1, 0],
 #   [0, 6],
@@ -3978,12 +3978,45 @@ def in_cycle(graph, node, visited, visiting):
 #   [7, 4],
 #   [4, 3],
 # ]
-# prereqsPossible(numCourses, prereqs) # -> false
+# prereqs_possible(num_courses, prereqs) # -> false
 # test_06:
-# numCourses = 42
+# num_courses = 42
 # prereqs = [[6, 36]]
-# prereqsPossible(numCourses, prereqs) # -> true
+# prereqs_possible(num_courses, prereqs) # -> true
 
+# ========================= White-gray-black (DFS) =========================
+# Time: O(e), Space: O(n)
+def prereqs_possible(num_courses, prereqs):
+  graph = build_graph(num_courses, prereqs)
+  visited = set()
+  for course in graph:
+    if in_cycle(graph, course, visited, set()):
+      return False 
+  return True
+
+def build_graph(num_courses, prereqs):
+  graph = {}
+  for num in range(num_courses):
+    graph[num] = []
+  for pair in prereqs:
+    pre, post = pair
+    graph[pre].append(post)
+  return graph
+
+def in_cycle(graph, node, visited, visiting):
+  if node in visited:
+    return False
+  if node in visiting:
+    return True
+
+  visiting.add(node)
+  for neighbor in graph[node]:
+    if in_cycle(graph, neighbor, visited, visiting):
+      return True
+  visiting.remove(node)
+  visited.add(node)
+
+  return False
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #51 fib ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function fib that takes in a number argument, n, and returns the n-th
@@ -3992,7 +4025,6 @@ def in_cycle(graph, node, visited, visiting):
 # The 1-st number of the sequence is 1.
 # To generate further numbers of the sequence, calculate the sum of previous two numbers.
 # Solve this recursively.
-# 
 #
 # test_00:
 # fib(0) # -> 0
@@ -4061,6 +4093,16 @@ def fib(n):
 # test_07:
 # tribonacci(37) # -> 1132436852
 
+def tribonacci(n, memo = {}):
+  if n in memo:
+    return memo[n]
+  if n == 0 or n == 1:
+    return 0
+  if n == 2:
+    return 1
+
+  memo[n] = tribonacci(n - 1, memo) + tribonacci(n - 2, memo) + tribonacci(n - 3, memo)
+  return memo[n]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #53 sum possible ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function sumPossible that takes in an amount and an list of positive

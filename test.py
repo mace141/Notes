@@ -1,56 +1,19 @@
-def has_cycle(graph):
-  visited = set()
-  for node in graph:
-    if in_cycle(graph, node, visited, set()):
-      return True
-  return False
+def tribonacci(n, memo = {}):
+  if n in memo:
+    return memo[n]
+  if n == 0 or n == 1:
+    return 0
+  if n == 2:
+    return 1
 
-def in_cycle(graph, node, visited, visiting):
-  if node in visited:
-    return False
-  if node in visiting:
-    return True
+  memo[n] = tribonacci(n - 1, memo) + tribonacci(n - 2, memo) + tribonacci(n - 3, memo)
+  return memo[n]
 
-  visiting.add(node)
-  for neighbor in graph[node]:
-    if in_cycle(graph, neighbor, visited, visiting):
-      return True
-  visiting.remove(node)
-  visited.add(node)
-  
-  return False
-
-print(has_cycle({
-  'a': ["b"],
-  'b': ["c"],
-  'c': ["a"],
-})) # -> true
-print(has_cycle({
-  'a': ["b", "c"],
-  'b': ["c"],
-  'c': ["d"],
-  'd': [],
-})) # -> false
-print(has_cycle({
-  'a': ["b", "c"],
-  'b': [],
-  'c': [],
-  'e': ["f"],
-  'f': ["e"],
-})) # -> true
-print(has_cycle({
-  'q': ["r", "s"],
-  'r': ["t", "u"],
-  's': [],
-  't': [],
-  'u': [],
-  'v': ["w"],
-  'w': [],
-  'x': ["w"],
-})) # -> false
-print(has_cycle({
-  'a': ["b"],
-  'b': ["c"],
-  'c': ["a"],
-  'g': [],
-})) # -> true
+print(tribonacci(0)) # -> 0
+print(tribonacci(1)) # -> 0
+print(tribonacci(2)) # -> 1
+print(tribonacci(5)) # -> 4
+print(tribonacci(7)) # -> 13
+print(tribonacci(14)) # -> 927
+print(tribonacci(20)) # -> 35890
+print(tribonacci(37)) # -> 1132436852
