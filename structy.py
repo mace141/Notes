@@ -4105,31 +4105,46 @@ def tribonacci(n, memo = {}):
   return memo[n]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #53 sum possible ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function sumPossible that takes in an amount and an list of positive
+# Write a function sum_possible that takes in an amount and an list of positive
 # numbers. The function should return a boolean indicating whether or not it is
 # possible to create the amount by summing numbers of the list. You may reuse
 # numbers of the list as many times as necessary.
 # You may assume that the target amount is non-negative.
 #
 # test_00:
-# sumPossible(8, [5, 12, 4]) # -> true, 4 + 4
+# sum_possible(8, [5, 12, 4]) # -> true, 4 + 4
 # test_01:
-# sumPossible(15, [6, 2, 10, 19]) # -> false
+# sum_possible(15, [6, 2, 10, 19]) # -> false
 # test_02:
-# sumPossible(13, [6, 2, 1]) # -> true
+# sum_possible(13, [6, 2, 1]) # -> true
 # test_03:
-# sumPossible(103, [6, 20, 1]) # -> true
+# sum_possible(103, [6, 20, 1]) # -> true
 # test_04:
-# sumPossible(12, []) # -> false
+# sum_possible(12, []) # -> false
 # test_05:
-# sumPossible(12, [12]) # -> true
+# sum_possible(12, [12]) # -> true
 # test_06:
-# sumPossible(0, []) # -> true
+# sum_possible(0, []) # -> true
 # test_07:
-# sumPossible(271, [10, 8, 265, 24]) # -> false
+# sum_possible(271, [10, 8, 265, 24]) # -> false
 # test_08:
-# sumPossible(2017, [4, 2, 10]) # -> false
+# sum_possible(2017, [4, 2, 10]) # -> false
 
+def sum_possible(amount, numbers):
+  return _sum_possible(amount, numbers, {})
+
+def _sum_possible(amount, numbers, memo):
+  if amount in memo:
+    return memo[amount]
+  if amount == 0:
+    return True
+
+  memo[amount] = False
+  for num in numbers:
+    if num <= amount and _sum_possible(amount - num, numbers, memo):
+      memo[amount] = True 
+      return True
+  return memo[amount]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #54 min change ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function minChange that takes in an amount and an list of coins. The
