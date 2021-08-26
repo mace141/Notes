@@ -2682,7 +2682,7 @@ accent = Sedan.new
 # Properties of a Hash function: 
     # One-way: input cannot be predicted from the output
     # Deterministic: output will always be the same for the same object
-    # Uniformly distributed: 
+    # Uniformly distributed: outputs will rarely be the same with different inputs
     # Sensitivity: similar objects cannot have similar hashes
 
 # common hashing functions: cityhash, CRC32, murmurhash (used by Ruby)
