@@ -1,11 +1,11 @@
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Binary Trees ]]]]]]]]]]]]]]]]]]]]]]]]]
 
 # Definition
-  # A tree is a graph that does not contain any cycles
-  # A binary tree is a tree where nodes have at most 2 children
-    # An empty graph
-    # A single node
-    # A linked list
+    # A tree is a graph that does not contain any cycles
+    # A binary tree is a tree where nodes have at most 2 children
+        # An empty graph
+        # A single node
+        # A linked list
 
 class BiTreeNode
   def initialize(val)
@@ -50,3 +50,22 @@ def post_order(root, values = [])
 
   values
 end
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Binary Search Trees ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Definition
+#     Given any node, the values of the left subtree must be less than the given 
+#       node's value and the values of the right subtree must be greater than or
+#       equal to the given node's value
+
+# Balanced BST 
+#     A BST with minimal height, where left and right subtrees differ in height
+#       by at most 1
+#     Left and right subtrees are balanced
+#     Will have a time complexity of O(log(n))
+#         An unbalanced BST will have a time complexity of O(log(n))
+
+# Complete BST 
+#     A BST where every node has 2 children except the leaf nodes
+
+# An in order traversal will return the values in increasing order
