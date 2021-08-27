@@ -3474,7 +3474,6 @@ def land_size(grid, r, c, visited):
 # down, left, or right, but cannot pass through walls (X). If there is no 
 # possible path to a carrot, then return -1.
 # 
-#
 # test_00:
 # grid = [
 #   ['O', 'O', 'O', 'O', 'O'],
@@ -3513,7 +3512,6 @@ def land_size(grid, r, c, visited):
 #   ['O', 'X', 'X', 'X', 'O'],
 #   ['O', 'X', 'C', 'C', 'O'],
 # ]
-# 
 # closest_carrot(grid, 1, 4) # -> 2
 # test_04:
 # grid = [
