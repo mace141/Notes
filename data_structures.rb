@@ -101,3 +101,14 @@ def is_balanced(root)
   height_diff = (get_height(root.left) - get_height(root.right)).abs
   return height_diff <= 1 && is_balanced(root.left) && is_balanced(root.right)
 end
+
+# ========================= LeetCode 108 =========================
+
+def sorted_array_to_bst(nums)
+  return nil if nums.length == 0
+  middle = nums.length / 2
+  root = TreeNode.new(nums[middle])
+  root.left = sorted_array_to_bst(nums.take(middle))
+  root.right = sorted_array_to_bst(nums.drop(middle + 1))
+  return root
+end
