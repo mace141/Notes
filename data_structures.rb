@@ -61,7 +61,7 @@ end
 # Balanced BST 
 #     A BST with minimal height, where left and right subtrees differ in height
 #       by at most 1
-#     Left and right subtrees are balanced
+#     All left and right subtrees are balanced
 #     Will have a time complexity of O(log(n))
 #         An unbalanced BST will have a time complexity of O(log(n))
 
@@ -69,3 +69,35 @@ end
 #     A BST where every node has 2 children except the leaf nodes
 
 # An in order traversal will return the values in increasing order
+
+# ========================= LeetCode 110 =========================
+
+def get_height(root)
+  return 0 if !root 
+
+  left = get_height(root.left)
+  return -1 if left == -1
+
+  right = get_height(root.right)
+  if right == -1 || (left - right).abs > 1
+      return -1
+  end
+
+  return 1 + [left, right].max
+end
+
+def is_balanced(root)
+  return true if !root
+  return get_height(root) != -1
+end
+
+def get_height(root)
+  return 0 if !root 
+  return 1 + [get_height(root.left), get_height(root.right)].max
+end
+
+def is_balanced(root)
+  return true if !root
+  height_diff = (get_height(root.left) - get_height(root.right)).abs
+  return height_diff <= 1 && is_balanced(root.left) && is_balanced(root.right)
+end
