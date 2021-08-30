@@ -68,3 +68,20 @@ def sorted_array_to_bst(nums)
   root.right = sorted_array_to_bst(nums.drop(middle + 1))
   return root
 end
+
+# ========================= LeetCode 1464 =========================
+
+def max_product(nums)
+  max = -1.0/0
+  n = max
+  m = max
+  for num in nums
+      if num >  n
+          m = n
+          n = num
+      elsif num > m
+          m = num
+      end
+  end
+  return (n - 1) * (m - 1)
+end
