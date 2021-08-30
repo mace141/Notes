@@ -25,3 +25,46 @@ p revrot("1234", 0)
 p revrot("", 0)
 p revrot("1234", 5)
 p revrot("733049910872815764", 5)
+
+# ========================= LeetCode 110 =========================
+
+def get_height(root)
+  return 0 if !root 
+
+  left = get_height(root.left)
+  return -1 if left == -1
+
+  right = get_height(root.right)
+  if right == -1 || (left - right).abs > 1
+      return -1
+  end
+
+  return 1 + [left, right].max
+end
+
+def is_balanced(root)
+  return true if !root
+  return get_height(root) != -1
+end
+
+def get_height(root)
+  return 0 if !root 
+  return 1 + [get_height(root.left), get_height(root.right)].max
+end
+
+def is_balanced(root)
+  return true if !root
+  height_diff = (get_height(root.left) - get_height(root.right)).abs
+  return height_diff <= 1 && is_balanced(root.left) && is_balanced(root.right)
+end
+
+# ========================= LeetCode 108 =========================
+
+def sorted_array_to_bst(nums)
+  return nil if nums.length == 0
+  middle = nums.length / 2
+  root = TreeNode.new(nums[middle])
+  root.left = sorted_array_to_bst(nums.take(middle))
+  root.right = sorted_array_to_bst(nums.drop(middle + 1))
+  return root
+end
