@@ -4185,12 +4185,12 @@ def _min_change(num, coins, memo):
       count = 1 + _min_change(num - c, coins, memo)
       if count < min:
         min = count
-        
+
   memo[num] = min
   return memo[num]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #55 count paths ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, countPaths, that takes in a grid as an argument. In the grid,
+# Write a function, count_paths, that takes in a grid as an argument. In the grid,
 # 'X' represents walls and 'O' represents open spaces. You may only move down or
 # to the right and cannot pass through walls. The function should return the
 # number of ways possible to travel from the top-left corner of the grid to the
@@ -4201,28 +4201,28 @@ def _min_change(num, coins, memo):
 #   ["O", "O"],
 #   ["O", "O"],
 # ]
-# countPaths(grid) # -> 2
+# count_paths(grid) # -> 2
 # test_01:
 # grid = [
 #   ["O", "O", "X"],
 #   ["O", "O", "O"],
 #   ["O", "O", "O"],
 # ]
-# countPaths(grid) # -> 5
+# count_paths(grid) # -> 5
 # test_02:
 # grid = [
 #   ["O", "O", "O"],
 #   ["O", "O", "X"],
 #   ["O", "O", "O"],
 # ]
-# countPaths(grid) # -> 3
+# count_paths(grid) # -> 3
 # test_03:
 # grid = [
 #   ["O", "O", "O"],
 #   ["O", "X", "X"],
 #   ["O", "O", "O"],
 # ]
-# countPaths(grid) # -> 1
+# count_paths(grid) # -> 1
 # test_04:
 # grid = [
 #   ["O", "O", "X", "O", "O", "O"],
@@ -4231,7 +4231,7 @@ def _min_change(num, coins, memo):
 #   ["X", "X", "X", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "O"],
 # ]
-# countPaths(grid) # -> 0
+# count_paths(grid) # -> 0
 # test_05:
 # grid = [
 #   ["O", "O", "X", "O", "O", "O"],
@@ -4240,7 +4240,7 @@ def _min_change(num, coins, memo):
 #   ["X", "X", "X", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "O"],
 # ]
-# countPaths(grid) # -> 42
+# count_paths(grid) # -> 42
 # test_06:
 # grid = [
 #   ["O", "O", "X", "O", "O", "O"],
@@ -4249,7 +4249,7 @@ def _min_change(num, coins, memo):
 #   ["X", "X", "X", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "X"],
 # ]
-# countPaths(grid) # -> 0
+# count_paths(grid) # -> 0
 # test_07:
 # grid = [
 #   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
@@ -4268,7 +4268,7 @@ def _min_change(num, coins, memo):
 #   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
 # ]
-# countPaths(grid) # -> 40116600
+# count_paths(grid) # -> 40116600
 # test_08:
 # grid = [
 #   ["O", "O", "X", "X", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O", "O"],
@@ -4287,7 +4287,25 @@ def _min_change(num, coins, memo):
 #   ["O", "O", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O"],
 #   ["O", "O", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O"],
 # ]
-# countPaths(grid) # -> 3190434
+# count_paths(grid) # -> 3190434
+
+def count_paths(grid):
+  return _count_paths(grid, 0, 0, {})
+
+def _count_paths(grid, r, c, memo):
+  if (r, c) in memo:
+    return memo[(r, c)]
+  if r == len(grid) or c == len(grid[0]) or grid[r][c] == 'X':
+    return 0
+  if r == len(grid) - 1 and c == len(grid[0]) - 1:
+    return 1
+  
+  count = 0
+  count += _count_paths(grid, r + 1, c, memo)
+  count += _count_paths(grid, r, c + 1, memo)
+  
+  memo[(r, c)] = count
+  return memo[(r, c)] 
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #56 max path sum ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -4517,8 +4535,8 @@ def _min_change(num, coins, memo):
 # test_07:
 # max_palin_subsequence("enamelpinportlandtildecoldpressedironyflannelsemioticsedisonbulbfashionaxe") # -> 31
 
-def max_palin_subsequence(string, memo = {}):
-  return _helper(string, 0, len(string), memo)
+def max_palin_subsequence(string):
+  return _helper(string, 0, len(string), {})
 
 def _helper(string, i, j, memo):
   key = (i, j)

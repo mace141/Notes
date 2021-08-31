@@ -1,28 +1,100 @@
-def min_change(num, coins):
-  min = _min_change(num, coins, {})
-  return -1 if min == float('inf') else min
+def count_paths(grid):
+  return _count_paths(grid, 0, 0, {})
 
-def _min_change(num, coins, memo):
-  if num in memo:
-    return memo[num]
-  if num == 0:
+def _count_paths(grid, r, c, memo):
+  if (r, c) in memo:
+    return memo[(r, c)]
+  if r == len(grid) or c == len(grid[0]) or grid[r][c] == 'X':
     return 0
+  if r == len(grid) - 1 and c == len(grid[0]) - 1:
+    return 1
+  
+  count = 0
+  count += _count_paths(grid, r + 1, c, memo)
+  count += _count_paths(grid, r, c + 1, memo)
+  memo[(r, c)] = count
+  return memo[(r, c)] 
 
-  min = float('inf')
-  for c in coins:
-    if c <= num:
-      count = 1 + _min_change(num - c, coins, memo)
-      if count < min:
-        min = count
-  memo[num] = min
-  return memo[num]
-
-print(min_change(8, [1, 5, 4, 12])) # -> 2, because 4+4 is the minimum coins possible
-print(min_change(13, [1, 9, 5, 14, 30])) # -> 5
-print(min_change(23, [2, 5, 7])) # -> 4
-print(min_change(102, [1, 5, 10, 25])) # -> 6
-print(min_change(200, [1, 5, 10, 25])) # -> 8
-print(min_change(2017, [4, 2, 10])) # -1
-print(min_change(271, [10, 8, 265, 24])) # -1
-print(min_change(0, [4, 2, 10])) # 0
-print(min_change(0, [])) # 0
+grid = [
+  ["O", "O"],
+  ["O", "O"],
+]
+print(count_paths(grid)) # -> 2
+grid = [
+  ["O", "O", "X"],
+  ["O", "O", "O"],
+  ["O", "O", "O"],
+]
+print(count_paths(grid)) # -> 5
+grid = [
+  ["O", "O", "O"],
+  ["O", "O", "X"],
+  ["O", "O", "O"],
+]
+print(count_paths(grid)) # -> 3
+grid = [
+  ["O", "O", "O"],
+  ["O", "X", "X"],
+  ["O", "O", "O"],
+]
+print(count_paths(grid)) # -> 1
+grid = [
+  ["O", "O", "X", "O", "O", "O"],
+  ["O", "O", "X", "O", "O", "O"],
+  ["X", "O", "X", "O", "O", "O"],
+  ["X", "X", "X", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O"],
+]
+print(count_paths(grid)) # -> 0
+grid = [
+  ["O", "O", "X", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "X"],
+  ["X", "O", "O", "O", "O", "O"],
+  ["X", "X", "X", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O"],
+]
+print(count_paths(grid)) # -> 42
+grid = [
+  ["O", "O", "X", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "X"],
+  ["X", "O", "O", "O", "O", "O"],
+  ["X", "X", "X", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "X"],
+]
+print(count_paths(grid)) # -> 0
+grid = [
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+]
+print(count_paths(grid)) # -> 40116600
+grid = [
+  ["O", "O", "X", "X", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "X", "X", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "X", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O", "O"],
+  ["X", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O", "O"],
+  ["X", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "X", "X", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O", "X", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O"],
+  ["X", "X", "X", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "X", "X", "O", "O", "O", "O", "X", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "X", "X", "O", "O", "O", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O"],
+  ["O", "O", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "O", "O"],
+]
+print(count_paths(grid)) # -> 3190434
