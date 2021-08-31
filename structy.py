@@ -4189,7 +4189,7 @@ def _min_change(num, coins, memo):
   memo[num] = min
   return memo[num]
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #55 count paths ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #55 count paths ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, count_paths, that takes in a grid as an argument. In the grid,
 # 'X' represents walls and 'O' represents open spaces. You may only move down or
 # to the right and cannot pass through walls. The function should return the
@@ -4303,13 +4303,12 @@ def _count_paths(grid, r, c, memo):
   count = 0
   count += _count_paths(grid, r + 1, c, memo)
   count += _count_paths(grid, r, c + 1, memo)
-  
+
   memo[(r, c)] = count
   return memo[(r, c)] 
 
-
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #56 max path sum ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, maxPathSum, that takes in a grid as an argument. The
+# Write a function, max_path_sum, that takes in a grid as an argument. The
 # function should return the maximum sum possible by traveling a path from the
 # top-left corner to the bottom-right corner. You may only travel through the
 # grid by moving down or right.
@@ -4320,21 +4319,21 @@ def _count_paths(grid, r, c, memo):
 #   [5, 1, 1],
 #   [3, 6, 1],
 # ]
-# maxPathSum(grid) # -> 18
+# max_path_sum(grid) # -> 18
 # test_01:
 # grid = [
 #   [1, 2, 8, 1],
 #   [3, 1, 12, 10],
 #   [4, 0, 6, 3],
 # ]
-# maxPathSum(grid) # -> 36
+# max_path_sum(grid) # -> 36
 # test_02:
 # grid = [
 #   [1, 2, 8, 1],
 #   [3, 10, 12, 10],
 #   [4, 0, 6, 3],
 # ]
-# maxPathSum(grid) # -> 39
+# max_path_sum(grid) # -> 39
 # test_03:
 # grid = [
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -4353,7 +4352,7 @@ def _count_paths(grid, r, c, memo):
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 # ]
-# maxPathSum(grid) # -> 27
+# max_path_sum(grid) # -> 27
 # test_04:
 # grid = [
 #   [1, 1, 3, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1],
@@ -4372,8 +4371,25 @@ def _count_paths(grid, r, c, memo):
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 #   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 # ]
-# maxPathSum(grid) # -> 56
+# max_path_sum(grid) # -> 56
 
+def max_path_sum(grid):
+  return _max_path_sum(grid, 0, 0, {})
+  
+def _max_path_sum(grid, r, c, memo):
+  if (r, c) in memo:
+    return memo[(r, c)]
+  if r == len(grid) or c == len(grid[0]):
+    return 0
+
+  sum = grid[r][c]
+  sum += max(
+    _max_path_sum(grid, r + 1, c, memo),
+    _max_path_sum(grid, r, c + 1, memo)
+  )
+
+  memo[(r, c)] = sum
+  return sum
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #57 non adjacent sum ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, nonAdjacentSum, that takes in an list of numbers as an
