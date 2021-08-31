@@ -4307,7 +4307,7 @@ def _count_paths(grid, r, c, memo):
   memo[(r, c)] = count
   return memo[(r, c)] 
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #56 max path sum ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #56 max path sum ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, max_path_sum, that takes in a grid as an argument. The
 # function should return the maximum sum possible by traveling a path from the
 # top-left corner to the bottom-right corner. You may only travel through the
@@ -4391,8 +4391,8 @@ def _max_path_sum(grid, r, c, memo):
   memo[(r, c)] = sum
   return sum
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #57 non adjacent sum ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, nonAdjacentSum, that takes in an list of numbers as an
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #57 non adjacent sum ]]]]]]]]]]]]]]]]]]]]]]]]]
+# Write a function, non_adjacent_sum, that takes in an list of numbers as an
 # argument. The function should return the maximum sum of non-adjacent elements
 # in the list. There is no limit on how many elements can be taken into the sum
 # as long as they are not adjacent.
@@ -4403,13 +4403,13 @@ def _max_path_sum(grid, r, c, memo):
 #
 # test_00:
 # nums = [2, 4, 5, 12, 7]
-# nonAdjacentSum(nums) # -> 16
+# non_adjacent_sum(nums) # -> 16
 # test_01:
 # nums = [7, 5, 5, 12]
-# nonAdjacentSum(nums) # -> 19
+# non_adjacent_sum(nums) # -> 19
 # test_02:
 # nums = [7, 5, 5, 12, 17, 29]
-# nonAdjacentSum(nums) # -> 48
+# non_adjacent_sum(nums) # -> 48
 # test_03:
 # nums = [
 #   72, 62, 10,  6, 20, 19, 42,
@@ -4417,7 +4417,7 @@ def _max_path_sum(grid, r, c, memo):
 #   23, 28, 66, 55, 12, 17, 9,
 #   12, 3, 1, 19, 30, 50, 20
 # ]
-# nonAdjacentSum(nums) # -> 488
+# non_adjacent_sum(nums) # -> 488
 # test_04:
 # nums = [
 #   72, 62, 10,  6, 20, 19, 42, 46, 24, 78,
@@ -4428,8 +4428,23 @@ def _max_path_sum(grid, r, c, memo):
 #   72, 62, 10,  6, 20, 19, 42, 46, 24, 78,
 #   42
 # ]
-# nonAdjacentSum(nums) # -> 1465
+# non_adjacent_sum(nums) # -> 1465
 
+def non_adjacent_sum(nums):
+  return _non_adjacent_sum(nums, 0, {})
+
+def _non_adjacent_sum(nums, i, memo):
+  if i in memo:
+    return memo[i]
+  if i >= len(nums):
+    return 0
+
+  sum = max(
+    nums[i] + _non_adjacent_sum(nums, i + 2, memo),
+    _non_adjacent_sum(nums, i + 1, memo)
+  )
+  memo[i] = sum
+  return sum
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #58 summing squares ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, summingSquares, that takes a target number as an argument.
