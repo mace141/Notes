@@ -112,3 +112,72 @@ def sorted_array_to_bst(nums)
   root.right = sorted_array_to_bst(nums.drop(middle + 1))
   return root
 end
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Max Heap ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+class MaxHeap
+  attr_accessor :array
+  def initialize
+    @array = [nil]
+  end
+  
+  def get_parent(i)
+    i / 2 
+  end
+  
+  def insert(n)
+    self.array << n
+    self.sift_up(self.array.length - 1)
+  end
+  
+  def sift_up(i)
+    return if i = 1
+    arr = self.array
+    parent_idx = self.get_parent(i)
+    parent = arr[parent_idx]
+    current = arr[i]
+    if parent < current
+        arr[parent_idx], arr[i] = arr[i], arr[parent_idx]
+        self.sift_up(parent_idx)
+    end
+  end
+  
+  def get_max
+    return nil if self.array.length == 1
+    return self.array.pop if self.array.length == 2
+    
+    max = self.array[1]
+    self.array[1] = self.array.pop
+    self.sift_down(1)
+    return max
+  end
+  
+  def sift_down(i)
+    arr = self.array
+    left_idx = i * 2
+    right_idx = i * 2 + 1
+    left_child = arr[left_idx]
+    right_child = arr[right_idx]
+    
+    left_child = -1.0/0 if left_child.nil?
+    right_child = -1.0/0 if right_child.nil?
+    
+    return if arr[i] > left_child && arr[i] > right_child
+    
+    swap_idx = left_child < right_child ? right_idx : left_idx
+    arr[i], arr[swap_idx] = arr[swap_idx], arr[i]
+    self.sift_down(swap_idx)
+  end
+end
+
+arr = Array.new(10) { rand(0..20) }
+p arr
+max = MaxHeap.new
+for n in arr
+  max.insert(n)
+end
+p max.array
+p max.get_max
+p max.get_max
+p max.get_max
+p max.get_max
