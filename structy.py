@@ -4447,32 +4447,50 @@ def _non_adjacent_sum(nums, i, memo):
   return sum
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #58 summing squares ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, summingSquares, that takes a target number as an argument.
+# Write a function, summing_squares, that takes a target number as an argument.
 # The function should return the minimum number of perfect squares that sum to
 # the target. A perfect square is a number of the form (i*i) where i >= 1.
 # For example: 1, 4, 9, 16 are perfect squares, but 8 is not perfect square.
 # Given 12:
-# summingSquares(12) -> 3
+# summing_squares(12) -> 3
 # The minimum squares required for 12 is three, by doing 4 + 4 + 4.
 # Another way to make 12 is 9 + 1 + 1 + 1, but that requires four perfect squares.
 #
 # test_00:
-# summingSquares(8) # -> 2
+# summing_squares(8) # -> 2
 # test_01:
-# summingSquares(9) # -> 1
+# summing_squares(9) # -> 1
 # test_02:
-# summingSquares(12) # -> 3
+# summing_squares(12) # -> 3
 # test_03:
-# summingSquares(1) # -> 1
+# summing_squares(1) # -> 1
 # test_04:
-# summingSquares(31) # -> 4
+# summing_squares(31) # -> 4
 # test_05:
-# summingSquares(50) # -> 2
+# summing_squares(50) # -> 2
 # test_06:
-# summingSquares(68) # -> 2
+# summing_squares(68) # -> 2
 # test_07:
-# summingSquares(87) # -> 4
+# summing_squares(87) # -> 4
 
+def summing_squares(num):
+  return _summing_squares(num, {})
+
+def _summing_squares(num, memo):
+  if num in memo:
+    return memo[num]
+  if num == 0:
+    return 0
+  if num == 1:
+    return 1
+
+  min = float('inf')
+  for x in range(num / 2, 0, -1):
+    if x**2 <= num:
+      count = 1 + _summing_squares(num - x**2, memo)
+      min = count if count < min else min 
+  memo[num] = min
+  return min
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #59 counting change ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, countingChange, that takes in an amount and an list of

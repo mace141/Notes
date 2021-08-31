@@ -1,39 +1,27 @@
-def non_adjacent_sum(nums):
-  return _non_adjacent_sum(nums, 0, {})
+def summing_squares(num):
+  return _summing_squares(num, {})
 
-def _non_adjacent_sum(nums, i, memo):
-  if i in memo:
-    return memo[i]
-  if i >= len(nums):
+def _summing_squares(num, memo):
+  if num in memo:
+    return memo[num]
+  if num == 0:
     return 0
+  if num == 1:
+    return 1
 
-  sum = max(
-    nums[i] + _non_adjacent_sum(nums, i + 2, memo),
-    _non_adjacent_sum(nums, i + 1, memo)
-  )
-  memo[i] = sum
-  return sum
+  min = float('inf')
+  for x in range(num / 2, 0, -1):
+    if x**2 <= num:
+      count = 1 + _summing_squares(num - x**2, memo)
+      min = count if count < min else min 
+  memo[num] = min
+  return min
 
-nums = [2, 4, 5, 12, 7]
-print(non_adjacent_sum(nums)) # -> 16
-nums = [7, 5, 5, 12]
-print(non_adjacent_sum(nums)) # -> 19
-nums = [7, 5, 5, 12, 17, 29]
-print(non_adjacent_sum(nums)) # -> 48
-nums = [
-  72, 62, 10,  6, 20, 19, 42,
-  46, 24, 78, 30, 41, 75, 38,
-  23, 28, 66, 55, 12, 17, 9,
-  12, 3, 1, 19, 30, 50, 20
-]
-print(non_adjacent_sum(nums)) # -> 488
-nums = [
-  72, 62, 10,  6, 20, 19, 42, 46, 24, 78,
-  30, 41, 75, 38, 23, 28, 66, 55, 12, 17,
-  83, 80, 56, 68,  6, 22, 56, 96, 77, 98,
-  61, 20,  0, 76, 53, 74,  8, 22, 92, 37,
-  30, 41, 75, 38, 23, 28, 66, 55, 12, 17,
-  72, 62, 10,  6, 20, 19, 42, 46, 24, 78,
-  42
-]
-print(non_adjacent_sum(nums)) # -> 1465
+print(summing_squares(8)) # -> 2
+print(summing_squares(9)) # -> 1
+print(summing_squares(12)) # -> 3
+print(summing_squares(1)) # -> 1
+print(summing_squares(31)) # -> 4
+print(summing_squares(50)) # -> 2
+print(summing_squares(68)) # -> 2
+print(summing_squares(87)) # -> 4
