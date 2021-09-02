@@ -4128,6 +4128,8 @@ def tribonacci(n, memo = {}):
 # test_08:
 # sum_possible(2017, [4, 2, 10]) # -> false
 
+# ========================= Memoization =========================
+# Time: O(a*n), Space: O(a)
 def sum_possible(amount, numbers):
   return _sum_possible(amount, numbers, {})
 
@@ -4169,6 +4171,8 @@ def _sum_possible(amount, numbers, memo):
 # test_08:
 # min_change(0, []) # 0
 
+# ========================= Memoization =========================
+# Time: O(a*c), Space: O(a)
 def min_change(num, coins):
   min = _min_change(num, coins, {})
   return -1 if min == float('inf') else min
@@ -4289,6 +4293,8 @@ def _min_change(num, coins, memo):
 # ]
 # count_paths(grid) # -> 3190434
 
+# ========================= Memoization =========================
+# Time: O(r*c), Space: O(r*c)
 def count_paths(grid):
   return _count_paths(grid, 0, 0, {})
 
@@ -4373,6 +4379,8 @@ def _count_paths(grid, r, c, memo):
 # ]
 # max_path_sum(grid) # -> 56
 
+# ========================= Memoization =========================
+# Time: O(r*c), Space: O(r*c)
 def max_path_sum(grid):
   return _max_path_sum(grid, 0, 0, {})
   
@@ -4430,6 +4438,8 @@ def _max_path_sum(grid, r, c, memo):
 # ]
 # non_adjacent_sum(nums) # -> 1465
 
+# ========================= Memoization =========================
+# Time: O(n), Space: O(n)
 def non_adjacent_sum(nums):
   return _non_adjacent_sum(nums, 0, {})
 
@@ -4473,32 +4483,31 @@ def _non_adjacent_sum(nums, i, memo):
 # test_07:
 # summing_squares(87) # -> 4
 
-def summing_squares(num):
-  return _summing_squares(num, {})
+# ========================= Memoization =========================
+# Time: O(n*sqrt(n)), Space: O(n)
+import math
 
-def _summing_squares(num, memo):
+def summing_squares(num, memo = {}):
   if num in memo:
     return memo[num]
   if num == 0:
     return 0
-  if num == 1:
-    return 1
 
   min = float('inf')
-  for x in range(num / 2, 0, -1):
-    if x**2 <= num:
-      count = 1 + _summing_squares(num - x**2, memo)
-      min = count if count < min else min 
+  for x in range(math.floor(math.sqrt(num)), 0 ,-1):
+    square = x**2
+    count = 1 + summing_squares(num - square, memo)
+    min = count if count < min else min 
   memo[num] = min
   return min
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #59 counting change ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, countingChange, that takes in an amount and an list of
+# Write a function, counting_change, that takes in an amount and an list of
 # coins. The function should return the number of different ways it is possible
 # to make change for the given amount using the coins.
 # You may reuse a coin as many times as necessary.
 # For example,
-# countingChange(4, [1,2,3]) -> 4
+# counting_change(4, [1,2,3]) -> 4
 # There are four different ways to make an amount of 4:
 # 1. 1 + 1 + 1 + 1
 # 2. 1 + 1 + 2
@@ -4506,20 +4515,40 @@ def _summing_squares(num, memo):
 # 4. 2 + 2
 #
 # test_00:
-# countingChange(4, [1, 2, 3]) # -> 4
+# counting_change(4, [1, 2, 3]) # -> 4
 # test_01:
-# countingChange(8, [1, 2, 3]) # -> 10
+# counting_change(8, [1, 2, 3]) # -> 10
 # test_02:
-# countingChange(24, [5, 7, 3]) # -> 5
+# counting_change(24, [5, 7, 3]) # -> 5
 # test_03:
-# countingChange(13, [2, 6, 12, 10]) # -> 0
+# counting_change(13, [2, 6, 12, 10]) # -> 0
 # test_04:
-# countingChange(512, [1, 5, 10, 25]) # -> 20119
+# counting_change(512, [1, 5, 10, 25]) # -> 20119
 # test_05:
-# countingChange(1000, [1, 5, 10, 25]) # -> 142511
+# counting_change(1000, [1, 5, 10, 25]) # -> 142511
 # test_06:
-# countingChange(240, [1, 2, 3, 4, 5, 6, 7, 8, 9]) # -> 1525987916
+# counting_change(240, [1, 2, 3, 4, 5, 6, 7, 8, 9]) # -> 1525987916
 
+# ========================= Memoization =========================
+# Time: O(a*c), Space: O(a*c)
+def counting_change(amount, coins):
+  return _counting_change(amount, coins, 0, {})
+
+def _counting_change(amount, coins, i, memo):
+  if (amount, i) in memo:
+    return memo[(amount, i)]
+  if amount == 0:
+    return 1
+  if i == len(coins):
+    return 0
+  
+  coin = coins[i]
+  count = 0
+  for qty in range(1, (amount // coin) + 1):
+    remainder = amount - qty * coin
+    count += _counting_change(remainder, coins, i + 1, memo)
+  memo[(amount, i)] = count
+  return count
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #60 list stepper ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, listStepper, that takes in an list of numbers as an

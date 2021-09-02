@@ -1,27 +1,23 @@
-def summing_squares(num):
-  return _summing_squares(num, {})
+def counting_change(num, coins):
+  return _counting_change(num, coins, {})
 
-def _summing_squares(num, memo):
+def _counting_change(num, coins, memo):
   if num in memo:
     return memo[num]
   if num == 0:
-    return 0
-  if num == 1:
     return 1
+  
+  count = 0
+  for c in coins:
+    if c <= num:
+      count += _counting_change(num - c, coins, memo)
+  memo[num] = count
+  return count
 
-  min = float('inf')
-  for x in range(num / 2, 0, -1):
-    if x**2 <= num:
-      count = 1 + _summing_squares(num - x**2, memo)
-      min = count if count < min else min 
-  memo[num] = min
-  return min
-
-print(summing_squares(8)) # -> 2
-print(summing_squares(9)) # -> 1
-print(summing_squares(12)) # -> 3
-print(summing_squares(1)) # -> 1
-print(summing_squares(31)) # -> 4
-print(summing_squares(50)) # -> 2
-print(summing_squares(68)) # -> 2
-print(summing_squares(87)) # -> 4
+print(counting_change(4, [1, 2, 3])) # -> 4
+print(counting_change(8, [1, 2, 3])) # -> 10
+print(counting_change(24, [5, 7, 3])) # -> 5
+print(counting_change(13, [2, 6, 12, 10])) # -> 0
+print(counting_change(512, [1, 5, 10, 25])) # -> 20119
+print(counting_change(1000, [1, 5, 10, 25])) # -> 142511
+print(counting_change(240, [1, 2, 3, 4, 5, 6, 7, 8, 9])) # -> 1525987916
