@@ -4633,6 +4633,8 @@ def _array_stepper(numbers, i, memo):
 # test_07:
 # max_palin_subsequence("enamelpinportlandtildecoldpressedironyflannelsemioticsedisonbulbfashionaxe") # -> 31
 
+# ========================= Memoization =========================
+# Time: O(n^2), Space: O(n^2)
 def max_palin_subsequence(string):
   return _helper(string, 0, len(string), {})
 
@@ -4655,28 +4657,47 @@ def _helper(string, i, j, memo):
     )
   
   return memo[key]
-  
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #62 overlap subsequence ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, overlapSubsequence, that takes in two strings as arguments.
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #62 overlap subsequence ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+# Write a function, overlap_subsequence, that takes in two strings as arguments.
 # The function should return the length of the longest overlapping subsequence.
 # A subsequence of a string can be created by deleting any characters of the
 # string, while maintaining the relative order of characters.
 #
 # test_00:
-# overlapSubsequence("dogs", "daogt") # -> 3
+# overlap_subsequence("dogs", "daogt") # -> 3
 # test_01:
-# overlapSubsequence("xcyats", "criaotsi") # -> 4
+# overlap_subsequence("xcyats", "criaotsi") # -> 4
 # test_02:
-# overlapSubsequence("xfeqortsver", "feeeuavoeqr") # -> 5
+# overlap_subsequence("xfeqortsver", "feeeuavoeqr") # -> 5
 # test_03:
-# overlapSubsequence("kinfolklivemustache", "bespokekinfolksnackwave") # -> 11
+# overlap_subsequence("kinfolklivemustache", "bespokekinfolksnackwave") # -> 11
 # test_04:
-# overlapSubsequence(
+# overlap_subsequence(
 #   "mumblecorebeardleggingsauthenticunicorn",
 #   "succulentspughumblemeditationlocavore"
 # ) # -> 15
 
+# ========================= Memoization =========================
+# Time: O(nm), Space: O(nm)
+def overlap_subsequence(string_1, string_2):
+  return _helper(string_1, string_2, 0, 0, {})
+
+def _helper(string_1, string_2, i, j, memo):
+  key = (i, j)
+  if key in memo:
+    return memo[key]
+  if i == len(string_1) or j == len(string_2):
+    return 0
+  
+  if string_1[i] == string_2[j]:
+    memo[key] = 1 + _helper(string_1, string_2, i + 1, j + 1, memo)
+  else:
+    memo[key] = max(
+      _helper(string_1, string_2, i + 1, j, memo),
+      _helper(string_1, string_2, i, j + 1, memo)
+    )
+  return memo[key]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #63 can concat ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, canConcat, that takes in a string and an list of words as
