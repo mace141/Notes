@@ -4550,8 +4550,8 @@ def _counting_change(amount, coins, i, memo):
   memo[(amount, i)] = count
   return count
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #60 list stepper ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, listStepper, that takes in an list of numbers as an
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #60 array stepper ]]]]]]]]]]]]]]]]]]]]]]]]]
+# Write a function, array_stepper, that takes in an list of numbers as an
 # argument. You start at the first position of the list. The function should
 # return a boolean indicating whether or not it is possible reach the last
 # position of the list. When situated at some position of the list, you may
@@ -4565,21 +4565,21 @@ def _counting_change(amount, coins, i, memo):
 # Then take 4 steps forward to the end at idx 5.
 #
 # test_00:
-# listStepper([2, 4, 2, 0, 0, 1]) # -> true
+# array_stepper([2, 4, 2, 0, 0, 1]) # -> true
 # test_01:
-# listStepper([2, 3, 2, 0, 0, 1]) # -> false
+# array_stepper([2, 3, 2, 0, 0, 1]) # -> false
 # test_02:
-# listStepper([3, 1, 3, 1, 0, 1]) # -> true
+# array_stepper([3, 1, 3, 1, 0, 1]) # -> true
 # test_03:
-# listStepper([4, 1, 5, 1, 1, 1, 0, 4]) # -> true
+# array_stepper([4, 1, 5, 1, 1, 1, 0, 4]) # -> true
 # test_04:
-# listStepper([4, 1, 2, 1, 1, 1, 0, 4]) # -> false
+# array_stepper([4, 1, 2, 1, 1, 1, 0, 4]) # -> false
 # test_05:
-# listStepper([1, 1, 1, 1, 1, 0]) # -> true
+# array_stepper([1, 1, 1, 1, 1, 0]) # -> true
 # test_06:
-# listStepper([1, 1, 1, 1, 0, 0]) # -> false
+# array_stepper([1, 1, 1, 1, 0, 0]) # -> false
 # test_07:
-# listStepper([ 
+# array_stepper([ 
 #   31, 30, 29, 28, 27,
 #   26, 25, 24, 23, 22,
 #   21, 20, 19, 18, 17,
@@ -4587,6 +4587,26 @@ def _counting_change(amount, coins, i, memo):
 #   11, 10, 9, 8, 7, 6,
 #   5, 3, 2, 1, 0, 0, 0
 # ]) # -> false
+
+# ========================= Memoization =========================
+# Time: O(n^2), Space: O(n)
+def array_stepper(numbers):
+  return _array_stepper(numbers, 0, {})
+
+def _array_stepper(numbers, i, memo):
+  if i in memo:
+    return memo[i]
+  if i >= len(numbers) - 1:
+    return True
+  if numbers[i] == 0:
+    return False
+  
+  for x in range(1, numbers[i] + 1):
+    if _array_stepper(numbers, i + x, memo):
+      memo[i] = True
+      return True
+  memo[i] = False
+  return False
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #61 max palin subsequence ]]]]]]]]]]]]]]]]]]]]]]]]] !I
