@@ -4783,52 +4783,70 @@ def _quickest_concat(s, words, memo):
   return memo[s]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #65 paired parentheses ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, pairedParentheses, that takes in a string as an argument.
+# Write a function, paired_parentheses, that takes in a string as an argument.
 # The function should return a boolean indicating whether or not the string has
 # well-formed parentheses.
 # You may assume the string contains only alphabetic characters, '(', or ')'.
 #
 # test_00:
-# pairedParentheses("(david)((abby))") # -> true
+# paired_parentheses("(david)((abby))") # -> true
 # test_01:
-# pairedParentheses("()rose(jeff") # -> false
+# paired_parentheses("()rose(jeff") # -> false
 # test_02:
-# pairedParentheses(")(") # -> false
+# paired_parentheses(")(") # -> false
 # test_03:
-# pairedParentheses("()") # -> true
+# paired_parentheses("()") # -> true
 # test_04:
-# pairedParentheses("(((potato())))") # -> true
+# paired_parentheses("(((potato())))") # -> true
 # test_05:
-# pairedParentheses("(())(water)()") # -> true
+# paired_parentheses("(())(water)()") # -> true
 # test_06:
-# pairedParentheses("(())(water()()") # -> false
+# paired_parentheses("(())(water()()") # -> false
 # test_07:
-# pairedParentheses("") # -> true
+# paired_parentheses("") # -> true
+
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #66 befitting brackets ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, befittingBrackets, that takes in a string as an argument.
+# Write a function, befitting_brackets, that takes in a string as an argument.
 # The function should return a boolean indicating whether or not the string
 # contains correctly matched brackets.
 # You may assume the string contains only characters: ( ) [ ] { }
 #
 # test_00:
-# befittingBrackets('(){}[](())') # -> true
+# befitting_brackets('(){}[](())') # -> true
 # test_01:
-# befittingBrackets('({[]})') # -> true
+# befitting_brackets('({[]})') # -> true
 # test_02:
-# befittingBrackets('[][}') # -> false
+# befitting_brackets('[][}') # -> false
 # test_03:
-# befittingBrackets('{[]}({}') # -> false
+# befitting_brackets('{[]}({}') # -> false
 # test_04:
-# befittingBrackets('[]{}(}[]') # -> false
+# befitting_brackets('[]{}(}[]') # -> false
 # test_05:
-# befittingBrackets('[]{}()[]') # -> true
+# befitting_brackets('[]{}()[]') # -> true
 # test_06:
-# befittingBrackets(']{}') # -> false
+# befitting_brackets(']{}') # -> false
 # test_07:
-# befittingBrackets('') # -> true
+# befitting_brackets('') # -> true
 
+def befitting_brackets(s):
+  match = {
+    ')': '(',
+    ']': '[',
+    '}': '{'
+  }
+  open = set(['(', '[', '{'])
+  stack = []
+  for char in s:
+    if char in open:
+      stack.append(char)
+    elif char in match:
+      if len(stack) > 0 and stack[-1] == match[char]:
+        stack.pop()
+      else:
+        return False
+  return len(stack) == 0
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #67 decompress braces ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, decompressBraces, that takes in a compressed string as an
