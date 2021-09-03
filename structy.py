@@ -4700,49 +4700,67 @@ def _helper(string_1, string_2, i, j, memo):
   return memo[key]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #63 can concat ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, canConcat, that takes in a string and an list of words as
+# Write a function, can_concat, that takes in a string and an list of words as
 # arguments. The function should return boolean indicating whether or not it is
 # possible to concatenate words of the list together to form the string.
 # You may reuse words of the list as many times as needed.
 #
 # test_00:
-# canConcat("oneisnone", ["one", "none", "is"]) # -> true
+# can_concat("oneisnone", ["one", "none", "is"]) # -> true
 # test_01:
-# canConcat("oneisnone", ["on", "e", "is"]) # -> false
+# can_concat("oneisnone", ["on", "e", "is"]) # -> false
 # test_02:
-# canConcat("oneisnone", ["on", "e", "is", "n"]) # -> true
+# can_concat("oneisnone", ["on", "e", "is", "n"]) # -> true
 # test_03:
-# canConcat("foodisgood", ["is", "g", "ood", "f"]) # -> true
+# can_concat("foodisgood", ["is", "g", "ood", "f"]) # -> true
 # test_04:
-# canConcat("santahat", ["santah", "hat"]) # -> false
+# can_concat("santahat", ["santah", "hat"]) # -> false
 # test_05:
-# canConcat("santahat", ["santah", "san", "hat", "tahat"]) # -> true
+# can_concat("santahat", ["santah", "san", "hat", "tahat"]) # -> true
 # test_06:
-# canConcat("rrrrrrrrrrrrrrrrrrrrrrrrrrx", ["r", "rr", "rrr", "rrrr", "rrrrr", "rrrrrr"]) # -> false
+# can_concat("rrrrrrrrrrrrrrrrrrrrrrrrrrx", ["r", "rr", "rrr", "rrrr", "rrrrr", "rrrrrr"]) # -> false
+
+# ========================= Memoization =========================
+# Time: ~O(sw), Space: O(s)
+def can_concat(s, words):
+  return _helper(s, words, {})
+
+def _helper(s, words, memo):
+  if s in memo:
+    return memo[s]
+  if len(s) == 0:
+    return True
+  
+  for word in words:
+    if s.startswith(word) and _helper(s[len(word):], words):
+      memo[s] = True
+      return True
+  memo[s] = False
+  return False
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #64 quickest concat ]]]]]]]]]]]]]]]]]]]]]]]]]
-# Write a function, quickestConcat, that takes in a string and an list of words
+# Write a function, quickest_concat, that takes in a string and an list of words
 # as arguments. The function should return the minimum number of words needed to
 # build the string by concatenating the words.
 # You may use words of the list as many times as needed.
 #
 # test_00:
-# quickestConcat('caution', ['ca', 'ion', 'caut', 'ut']) # -> 2
+# quickest_concat('caution', ['ca', 'ion', 'caut', 'ut']) # -> 2
 # test_01:
-# quickestConcat('caution', ['ion', 'caut', 'caution']) # -> 1
+# quickest_concat('caution', ['ion', 'caut', 'caution']) # -> 1
 # test_02:
-# quickestConcat('respondorreact', ['re', 'or', 'spond', 'act', 'respond']) # -> 4
+# quickest_concat('respondorreact', ['re', 'or', 'spond', 'act', 'respond']) # -> 4
 # test_03:
-# quickestConcat('simchacindy', ['sim', 'simcha', 'acindy', 'ch']) # -> 3
+# quickest_concat('simchacindy', ['sim', 'simcha', 'acindy', 'ch']) # -> 3
 # test_04:
-# quickestConcat('simchacindy', ['sim', 'simcha', 'acindy']) # -> -1
+# quickest_concat('simchacindy', ['sim', 'simcha', 'acindy']) # -> -1
 # test_05:
-# quickestConcat('uuuuuu', ['u', 'uu', 'uuu', 'uuuu']) # -> 2
+# quickest_concat('uuuuuu', ['u', 'uu', 'uuu', 'uuuu']) # -> 2
 # test_06:
-# quickestConcat('rongbetty', ['wrong', 'bet']) # -> -1
+# quickest_concat('rongbetty', ['wrong', 'bet']) # -> -1
 # test_07:
-# quickestConcat('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu', ['u', 'uu', 'uuu', 'uuuu', 'uuuuu']) # -> 7
+# quickest_concat('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu', ['u', 'uu', 'uuu', 'uuuu', 'uuuuu']) # -> 7
 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #65 paired parentheses ]]]]]]]]]]]]]]]]]]]]]]]]]
