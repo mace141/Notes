@@ -4762,6 +4762,25 @@ def _helper(s, words, memo):
 # test_07:
 # quickest_concat('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu', ['u', 'uu', 'uuu', 'uuuu', 'uuuuu']) # -> 7
 
+# ========================= Memoization =========================
+# Time: ~O(sw), Space: O(s)
+def quickest_concat(s, words):
+  num = _quickest_concat(s, words, {})
+  return num if num != float('inf') else -1
+
+def _quickest_concat(s, words, memo):
+  if s in memo: 
+    return memo[s]
+  if len(s) == 0:
+    return 0
+  
+  min_words = float('inf')
+  for w in words:
+    if s.startswith(w):
+      count = 1 + _quickest_concat(s[len(w):], words, memo)
+      min_words = min(min_words, count)
+  memo[s] = min_words
+  return memo[s]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #65 paired parentheses ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, pairedParentheses, that takes in a string as an argument.
