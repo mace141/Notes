@@ -4805,7 +4805,17 @@ def _quickest_concat(s, words, memo):
 # test_07:
 # paired_parentheses("") # -> true
 
-
+def paired_parentheses(s):
+  count = 0
+  for char in s:
+    if char == '(':
+      count += 1
+    elif char == ')':
+      if count > 0:
+        count -= 1
+      else:
+        return False
+  return count == 0
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #66 befitting brackets ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, befitting_brackets, that takes in a string as an argument.
