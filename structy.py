@@ -4914,7 +4914,7 @@ def decompress_braces(string):
   return ''.join(stack)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #68 nesting score ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, nestingScore, that takes in a string of brackets as an
+# Write a function, nesting_score, that takes in a string of brackets as an
 # argument. The function should return the score of the string according to the
 # following rules:
 # [] is worth 1 point
@@ -4923,22 +4923,36 @@ def decompress_braces(string):
 # You may assume that the input only contains well-formed square brackets.
 #
 # test_00:
-# nestingScore("[]") # -> 1
+# nesting_score("[]") # -> 1
 # test_01:
-# nestingScore("[][][]") # -> 3
+# nesting_score("[][][]") # -> 3
 # test_02:
-# nestingScore("[[]]") # -> 2
+# nesting_score("[[]]") # -> 2
 # test_03:
-# nestingScore("[[][]]") # -> 4
+# nesting_score("[[][]]") # -> 4
 # test_04:
-# nestingScore("[[][][]]") # -> 6
+# nesting_score("[[][][]]") # -> 6
 # test_05:
-# nestingScore("[[][]][]") # -> 5
+# nesting_score("[[][]][]") # -> 5
 # test_06:
-# nestingScore("[][[][]][[]]") # -> 7
+# nesting_score("[][[][]][[]]") # -> 7
 # test_07:
-# nestingScore("[[[[[[[][]]]]]]][]") # -> 129
+# nesting_score("[[[[[[[][]]]]]]][]") # -> 129
 
+# ========================= Using a stack =========================
+# Time: O(s), Space: O(s)
+def nesting_score(string):
+  stack = [0]
+  for char in string:
+    if char == ']':
+      popped = stack.pop()
+      if popped == 0:
+        stack[-1] += 1
+      else: 
+        stack[-1] = popped * 2
+    else:
+      stack.append(0)
+  return stack[0]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #69 subsets ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, subsets, that takes in an list an argument. The function
