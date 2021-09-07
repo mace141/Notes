@@ -5021,7 +5021,6 @@ def subsets(elements):
 
   first = elements[0]
   subs_without_first = subsets(elements[1:])
-
   subs_with_first = []
   for sub in subs_without_first:
     subs_with_first.append([first, *sub])
@@ -5073,6 +5072,19 @@ def subsets(elements):
 #  [ ]
 # ]
 
+# ========================= Recursive =========================
+# Time: O(n!), Space: O(n!)
+def permutations(items):
+  if len(items) == 0:
+    return [[]]
+
+  first = items[0]
+  full_perm = []
+  old_perm = permutations(items[1:])
+  for perm in old_perm:
+    for i in range(len(perm) + 1):
+      full_perm.append(perm[:i] + [first] + perm[i:])
+  return full_perm
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #71 create combinations ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, createCombinations, that takes in an list and a length as
