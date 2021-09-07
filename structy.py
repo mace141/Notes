@@ -4859,7 +4859,7 @@ def befitting_brackets(s):
   return len(stack) == 0
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #67 decompress braces ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, decompressBraces, that takes in a compressed string as an
+# Write a function, decompress_braces, that takes in a compressed string as an
 # argument. The function should return the string decompressed.
 # The compression format of the input string is 'n{subString}', where the
 # subString within braces should be repeated n times.
@@ -4869,30 +4869,49 @@ def befitting_brackets(s):
 # contain alphabetic characters.
 #
 # test_00:
-# decompressBraces("2{q}3{tu}v") 
+# decompress_braces("2{q}3{tu}v") 
 # -> qqtututuv 
 # test_01:
-# decompressBraces("ch3{ao}") 
+# decompress_braces("ch3{ao}") 
 # -> chaoaoao
 # test_02:
-# decompressBraces("2{y3{o}}s") 
+# decompress_braces("2{y3{o}}s") 
 # -> yoooyooos
 # test_03:
-# decompressBraces("z3{a2{xy}b}") 
+# decompress_braces("z3{a2{xy}b}") 
 # -> zaxyxybaxyxybaxyxyb 
 # test_04:
-# decompressBraces("2{3{r4{e}r}io}") 
+# decompress_braces("2{3{r4{e}r}io}") 
 # -> reeeerreeeerreeeerioreeeerreeeerreeeerio 
 # test_05:
-# decompressBraces("go3{spinn2{ing}s}") 
+# decompress_braces("go3{spinn2{ing}s}") 
 # -> gospinningingsspinningingsspinningings 
 # test_06:
-# decompressBraces("2{l2{if}azu}l") 
+# decompress_braces("2{l2{if}azu}l") 
 # -> lififazulififazul 
 # test_07:
-# decompressBraces("3{al4{ec}2{icia}}") 
+# decompress_braces("3{al4{ec}2{icia}}") 
 # -> alececececiciaiciaalececececiciaiciaalececececiciaicia 
 
+# ========================= Using a stack =========================
+# m: number of brace pairs, s: length of string
+# Time: O(9^m * s), Space: O(9^m * s)
+def decompress_braces(string):
+  nums = '123456789'
+  stack = []
+  for char in string:
+    if char in nums:
+      stack.append(int(char))
+    else:
+      if char == '}':
+        substr = ''
+        while isinstance(stack[-1], str):
+          substr = stack.pop() + substr
+        num = stack.pop()
+        stack.append(substr * num)
+      elif char != '{':
+        stack.append(char)
+  return ''.join(stack)
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #68 nesting score ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, nestingScore, that takes in a string of brackets as an
