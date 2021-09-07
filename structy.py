@@ -5013,6 +5013,20 @@ def nesting_score(string):
 #   [ 'q', 'r', 's', 't' ]
 # ]
 
+# ========================= Recursive =========================
+# Time: O(2^n), Space: O(2^n)
+def subsets(elements):
+  if len(elements) == 0:
+    return [[]]
+
+  first = elements[0]
+  subs_without_first = subsets(elements[1:])
+
+  subs_with_first = []
+  for sub in subs_without_first:
+    subs_with_first.append([first, *sub])
+  
+  return subs_with_first + subs_without_first
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #70 permutations ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, permutations, that takes in an list an argument. The
