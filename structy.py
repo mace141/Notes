@@ -5177,6 +5177,28 @@ def create_combinations(items, k):
 #  'cdt'
 # ]
 
+# ========================= Recursive =========================
+# n: length of longest substring, m: number of parenthetical pairs
+# Time: O(n^m), Space: O(n^m)
+def parenthetical_possibilities(s):
+  if len(s) == 0:
+    return ['']
+  
+  remaining, chars = get_options(s)
+  options = parenthetical_possibilities(remaining)
+  possibilities = []
+  for char in chars:
+    possibilities += [char + suffix for suffix in options]
+  return possibilities
+
+def get_options(s):
+  if s[0] == '(':
+    idx = s.index(')')
+    chars = s[1:idx]
+    remaining = s[idx + 1:]
+    return (remaining, chars)
+  else:
+    return (s[1:], s[0])
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #73 substituting synonyms ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, substitutingSynonyms, that takes in a sentence and an object
