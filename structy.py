@@ -5992,6 +5992,29 @@ def traverse(root, values, level):
 #   "s": ["r", "q"]
 # }) # -> False
 
+# ========================= Depth First =========================
+# Time: O(n^2), Space: O(n)
+def can_color(graph):
+  colors = {}
+
+  for node in graph:
+    if node not in colors:
+      if not colorable(graph, node, True, colors):
+        return False 
+
+  return True
+
+def colorable(graph, node, red, colors):
+  if node in colors:
+    return colors[node] == red
+  
+  colors[node] = red
+  for neighbor in graph[node]:
+    if not colorable(graph, neighbor, (not red), colors):
+      return False
+
+  return True
+
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #83 max increasing subseq ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, max_increasing_subseq, that takes in a list of numbers as an 
 # argument. The function should return the length of the longest subsequence of 
