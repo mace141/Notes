@@ -5200,8 +5200,8 @@ def get_options(s):
   else:
     return (s[1:], s[0])
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #73 substituting synonyms ]]]]]]]]]]]]]]]]]]]]]]]]] !I
-# Write a function, substitutingSynonyms, that takes in a sentence and an object
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #73 substitute synonyms ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+# Write a function, substitute_synonyms, that takes in a sentence and an object
 # as arguments. The object contains words as keys whose values are lists
 # containing synonyms. The function should return an list containing all
 # possible sentences that can be formed by substituting words of the sentence
@@ -5215,7 +5215,7 @@ def get_options(s):
 #   follow: ["chase", "pursue"],
 #   yellow: ["gold", "amber", "lemon"],
 # }
-# substituteSynonyms(sentence, synonyms)
+# substitute_synonyms(sentence, synonyms)
 # [
 #   'chase the gold brick road',
 #   'chase the amber brick road',
@@ -5230,7 +5230,7 @@ def get_options(s):
 #   think: ["believe", "reckon"],
 #   long: ["lengthy", "prolonged"],
 # }
-# substituteSynonyms(sentence, synonyms)
+# substitute_synonyms(sentence, synonyms)
 # [
 #   "I believe it's gonna be a lengthy lengthy time",
 #   "I believe it's gonna be a lengthy prolonged time",
@@ -5248,7 +5248,7 @@ def get_options(s):
 #   heavy: ["weighty", "hefty", "burdensome"],
 #   weak: ["fragile", "feeble", "frail", "sickly"],
 # }
-# substituteSynonyms(sentence, synonyms)
+# substitute_synonyms(sentence, synonyms)
 # [
 #   'hands sweaty knees fragile arms weighty',
 #   'hands sweaty knees fragile arms hefty',
@@ -5276,6 +5276,54 @@ def get_options(s):
 #   'fists sweaty knees sickly arms burdensome'
 # ]
 
+# ========================= Recursive =========================
+# n: num words in string, m: max num of synonyms for a word
+# Time: O(m^n), Space: O(m^n)
+def substitute_synonyms(sentence, synonyms):
+  substitutions = _substitute_synonyms(sentence.split(' '), synonyms)
+  return substitutions
+
+def _substitute_synonyms(words, synonyms):
+  if len(words) == 0:
+    return ['']
+
+  replacements = [words[0]]
+  if words[0] in synonyms:
+    replacements = synonyms[words[0]]
+  
+  substitutions = _substitute_synonyms(words[1:], synonyms)
+  result = []
+  for word in replacements:
+    for sub in substitutions:
+      if sub != '':
+        result.append(word + ' ' + sub)
+      else:
+        result.append(word)
+
+  return result
+
+# ========================= Alvin's Solution =========================
+def substitute_synonyms(sentence, synonyms):
+  words = sentence.split(' ')
+  subarrays = generate(words, synonyms)
+  return [ ' '.join(subarray) for subarray in subarrays ]
+
+def generate(words, synonyms):
+  if len(words) == 0:
+    return [[]]
+  
+  first_word = words[0]
+  remaining_words = words[1:]
+  
+  subarrays = generate(remaining_words, synonyms)
+  
+  if first_word in synonyms:
+    result = []
+    for synonym in synonyms[first_word]:
+      result += [ [synonym, *subarray] for subarray in subarrays ]
+    return result
+  else:
+    return [ [first_word, *subarray] for subarray in subarrays ] 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #74 linked palindrome ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, linkedPalindrome, that takes in the head of a linked list
