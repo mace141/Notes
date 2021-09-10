@@ -6015,6 +6015,112 @@ def colorable(graph, node, red, colors):
 
   return True
 
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #81 tolerant teams ]]]]]]]]]]]]]]]]]]]]]]]]] 
+# Write a function, tolerant_teams, that takes in a list of rivalries as an 
+# argument. A rivalry is a pair of people who should not be placed on the same 
+# team. The function should return a boolean indicating whether or not it is 
+# possible to separate people into two teams, without rivals being on the same 
+# team. The two teams formed do not have to be the same size.
+#
+# test_00:
+# tolerant_teams([
+#   ('philip', 'seb'),
+#   ('raj', 'nader')
+# ]) # -> True
+# test_01:
+# tolerant_teams([
+#   ('philip', 'seb'),
+#   ('raj', 'nader'),
+#   ('raj', 'philip'),
+#   ('seb', 'raj')
+# ]) # -> False
+# test_02:
+# tolerant_teams([
+#   ('cindy', 'anj'),
+#   ('alex', 'matt'),
+#   ('alex', 'cindy'),
+#   ('anj', 'matt'),
+#   ('brando', 'matt')
+# ]) # -> True
+# test_03:
+# tolerant_teams([
+#   ('alex', 'anj'),
+#   ('alex', 'matt'),
+#   ('alex', 'cindy'),
+#   ('anj', 'matt'),
+#   ('brando', 'matt')
+# ]) # -> False
+# test_04:
+# tolerant_teams([
+#   ('alan', 'jj'),
+#   ('betty', 'richard'),
+#   ('jj', 'simcha'),
+#   ('richard', 'christine')
+# ]) # -> True
+# test_05:
+# tolerant_teams([
+#   ('alan', 'jj'),
+#   ('betty', 'richard'),
+#   ('jj', 'simcha'),
+#   ('richard', 'christine')
+# ]) # -> True
+# test_06:
+# tolerant_teams([
+#   ('alan', 'jj'),
+#   ('jj', 'richard'),
+#   ('betty', 'richard'),
+#   ('jj', 'simcha'),
+#   ('richard', 'christine')
+# ]) # -> True
+# test_07:
+# tolerant_teams([
+#   ('alan', 'jj'),
+#   ('betty', 'richard'),
+#   ('betty', 'christine'),
+#   ('jj', 'simcha'),
+#   ('richard', 'christine')
+# ]) # -> False
+
+# ========================= Depth First =========================
+# Time: O(n^2), Space: O(n)
+def tolerant_teams(rivalries):
+  graph = build_graph(rivalries)
+
+  tolerance = {}
+  for node in graph:
+    if node not in tolerance:
+      if not tolerable(graph, node, tolerance, True):
+        return False
+  
+  return True
+
+def build_graph(rivalries):
+  graph = {}
+
+  for rivalry in rivalries:
+    rival1, rival2 = rivalry
+
+    if rival1 not in graph:
+      graph[rival1] = []
+    if rival2 not in graph:
+      graph[rival2] = []
+
+    graph[rival1].append(rival2)
+    graph[rival2].append(rival1)
+  
+  return graph
+
+def tolerable(graph, node, tolerance, team):
+  if node in tolerance:
+    return tolerance[node] == team
+  
+  tolerance[node] = team 
+  for neighbor in graph[node]:
+    if not tolerable(graph, neighbor, tolerance, not team):
+      return False 
+
+  return True
+
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #83 max increasing subseq ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, max_increasing_subseq, that takes in a list of numbers as an 
 # argument. The function should return the length of the longest subsequence of 
