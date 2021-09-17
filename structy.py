@@ -5453,7 +5453,26 @@ def linked_palindrome(head):
 # q
 # middle_value(q) # q
 
+# ========================= List =========================
+# Time: O(n), Space: O(n)
+def middle_value(head):
+  values = []
+  current = head 
+  while current is not None:
+    values.append(current)
+    current = current.next
+  middle = len(values) // 2
+  return values[middle]
 
+# ========================= Two Pointers =========================
+# Time: O(n), Space: O(1)
+def middle_value(head):
+  slow = head 
+  fast = head 
+  while fast is not None and fast.next is not None:
+    slow = slow.next
+    fast = fast.next.next
+  return slow.val
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #83 max increasing subseq ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, max_increasing_subseq, that takes in a list of numbers as an 
