@@ -5326,7 +5326,7 @@ def generate(words, synonyms):
     return [ [first_word, *subarray] for subarray in subarrays ] 
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #74 linked palindrome ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, linkedPalindrome, that takes in the head of a linked list
+# Write a function, linked_palindrome, that takes in the head of a linked list
 # as an argument. The function should return a boolean indicating whether or
 # not the linked list is a palindrome. A palindrome is a sequence that is the
 # same both forwards and backwards.
@@ -5344,7 +5344,7 @@ def generate(words, synonyms):
 # d.next = e
 # e.next = f
 # 3 -> 2 -> 7 -> 7 -> 2 -> 3
-# linkedPalindrome(a) # true
+# linked_palindrome(a) # true
 # test_01:
 # a = new Node(3)
 # b = new Node(2)
@@ -5352,7 +5352,7 @@ def generate(words, synonyms):
 # a.next = b
 # b.next = c
 # 3 -> 2 -> 4
-# linkedPalindrome(a) # false
+# linked_palindrome(a) # false
 # test_02:
 # a = new Node(3)
 # b = new Node(2)
@@ -5360,7 +5360,7 @@ def generate(words, synonyms):
 # a.next = b
 # b.next = c
 # 3 -> 2 -> 3
-# linkedPalindrome(a) # true
+# linked_palindrome(a) # true
 # test_03:
 # a = new Node(0)
 # b = new Node(1)
@@ -5372,7 +5372,7 @@ def generate(words, synonyms):
 # c.next = d
 # d.next = e
 # 0 -> 1 -> 0 -> 1 -> 0
-# linkedPalindrome(a) # true
+# linked_palindrome(a) # true
 # test_04:
 # a = new Node(0)
 # b = new Node(1)
@@ -5384,17 +5384,25 @@ def generate(words, synonyms):
 # c.next = d
 # d.next = e
 # 0 -> 1 -> 0 -> 1 -> 1
-# linkedPalindrome(a) # false
+# linked_palindrome(a) # false
 # test_05:
 # a = new Node(5)
 # 5
-# linkedPalindrome(a) # true
+# linked_palindrome(a) # true
 # test_06:
-# linkedPalindrome(None) # true
+# linked_palindrome(None) # true
 
+# Time: O(n), Space: O(n)
+def linked_palindrome(head):
+  values = []
+  current = head 
+  while current is not None:
+    values.append(current.val)
+    current = current.next
+  return values == values[::-1]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #75 middle value ]]]]]]]]]]]]]]]]]]]]]]]]] 
-# Write a function, middleValue, that takes in the head of a linked list as an
+# Write a function, middle_value, that takes in the head of a linked list as an
 # argument. The function should return the value of the middle node in the
 # linked list. If the linked list has an even number of nodes, then return the
 # value of the second middle node.
@@ -5411,7 +5419,7 @@ def generate(words, synonyms):
 # c.next = d
 # d.next = e
 # a -> b -> c -> d -> e
-# middleValue(a) # c
+# middle_value(a) # c
 # test_01:
 # a = new Node('a')
 # b = new Node('b')
@@ -5425,7 +5433,7 @@ def generate(words, synonyms):
 # d.next = e
 # e.next = f
 # a -> b -> c -> d -> e -> f
-# middleValue(a) # d
+# middle_value(a) # d
 # test_02:
 # x = new Node('x')
 # y = new Node('y')
@@ -5433,17 +5441,19 @@ def generate(words, synonyms):
 # x.next = y
 # y.next = z
 # x -> y -> z
-# middleValue(x) # y
+# middle_value(x) # y
 # test_03:
 # x = new Node('x')
 # y = new Node('y')
 # x.next = y
 # x -> y 
-# middleValue(x) # y
+# middle_value(x) # y
 # test_04:
 # q = new Node('q')
 # q
-# middleValue(q) # q
+# middle_value(q) # q
+
+
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #83 max increasing subseq ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, max_increasing_subseq, that takes in a list of numbers as an 
