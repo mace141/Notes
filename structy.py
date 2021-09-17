@@ -5401,7 +5401,7 @@ def linked_palindrome(head):
     current = current.next
   return values == values[::-1]
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #75 middle value ]]]]]]]]]]]]]]]]]]]]]]]]] 
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #75 middle value ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, middle_value, that takes in the head of a linked list as an
 # argument. The function should return the value of the middle node in the
 # linked list. If the linked list has an even number of nodes, then return the
@@ -5474,7 +5474,7 @@ def middle_value(head):
     fast = fast.next.next
   return slow.val
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #76 linked list cycle ]]]]]]]]]]]]]]]]]]]]]]]]] 
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #76 linked list cycle ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, linked_list_cycle, that takes in the head of a linked list 
 # as an argument. The function should return a boolean indicating whether or not 
 # the linked list contains a cycle.
@@ -5793,8 +5793,8 @@ def flip_tree(root):
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #79 lefty nodes ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, lefty_nodes, that takes in the root of a binary tree. The
-# function should return an array containing the left-most value on every level
-# of the tree. The array must be ordered in a top-down fashion where the root
+# function should return an list containing the left-most value on every level
+# of the tree. The list must be ordered in a top-down fashion where the root
 # is the first element.
 #
 # test_00
@@ -5911,6 +5911,87 @@ def lefty_nodes(root):
       queue.append((node.right, level + 1))
   return leftys
 
+# ========================= Depth First =========================
+# Time: O(n), Space: O(n)
+def lefty_nodes(root):
+  values = []
+  traverse(root, values, 0)
+  return values
+
+def traverse(root, values, level):
+  if root is None:
+    return 
+  
+  if len(values) == level:
+    values.append(root.val)
+
+  traverse(root.left, values, level + 1)
+  traverse(root.right, values, level + 1)
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #80 can color ]]]]]]]]]]]]]]]]]]]]]]]]] 
+# Write a function, can_color, that takes in a dictionary representing the 
+# adjacency list of an undirected graph. The function should return a boolean 
+# indicating whether or not it is possible to color nodes of the graph using two 
+# colors in such a way that adjacent nodes are always different colors.
+# For example, given this graph:
+# x-y-z
+# It is possible to color the nodes by using red for x and z, 
+# then use blue for y. So the answer is True.
+# For example, given this graph:
+#     q
+#    / \
+#   s - r
+# It is not possible to color the nodes without making two 
+# adjacent nodes the same color. So the answer is False.
+
+# test_00:
+# can_color({
+#   "x": ["y"],
+#   "y": ["x","z"],
+#   "z": ["y"]
+# }) # -> True
+# test_01:
+# can_color({
+#   "q": ["r", "s"],
+#   "r": ["q", "s"],
+#   "s": ["r", "q"]
+# }) # -> False
+# test_02:
+# can_color({
+#   "a": ["b", "c", "d"],
+#   "b": ["a"],
+#   "c": ["a"],
+#   "d": ["a"],
+# }) # -> True
+# test_03:
+# can_color({
+#   "a": ["b", "c", "d"],
+#   "b": ["a"],
+#   "c": ["a", "d"],
+#   "d": ["a", "c"],
+# }) # -> False
+# test_04:
+# can_color({
+#   "h": ["i", "k"],
+#   "i": ["h", "j"],
+#   "j": ["i", "k"],
+#   "k": ["h", "j"],
+# }) # -> True
+# test_05:
+# can_color({
+#   "z": []
+# }) # -> True
+# test_06:
+# can_color({
+#   "h": ["i", "k"],
+#   "i": ["h", "j"],
+#   "j": ["i", "k"],
+#   "k": ["h", "j"],
+#   "q": ["r", "s"],
+#   "r": ["q", "s"],
+#   "s": ["r", "q"]
+# }) # -> False
+
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #83 max increasing subseq ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, max_increasing_subseq, that takes in a list of numbers as an 
 # argument. The function should return the length of the longest subsequence of 
@@ -5974,7 +6055,7 @@ def _max_increasing_subseq(numbers, i, lastNum, memo):
 # Write a function, binary_search, that takes in a sorted list of numbers and a 
 # target. The function should return the index where the target can be found 
 # within the list. If the target is not found in the list, then return -1.
-# You may assume that the input array contains unique numbers sorted in 
+# You may assume that the input list contains unique numbers sorted in 
 # increasing order.
 # Your function must implement the binary search algorithm.
 #
