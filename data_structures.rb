@@ -119,8 +119,9 @@ end
 #   balanced and complete. Binary heaps are commonly used as priority queues. 
 
 # Time complexity:
-#     Insertion: O(n * log(n))
-#     Extraction: O(n * log(n))
+#     Insertion: O(log(n))
+#     Extraction: O(log(n))
+#     Heapify: O(n * log(n))
 
 # ========================= Max Heap =========================
 
