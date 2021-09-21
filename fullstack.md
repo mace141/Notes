@@ -2,13 +2,13 @@
 
 Database --- Model --- Controller --- Router --- View
 
-# Router
+## Router
 
 When HTTP Requests are sent to a Rails Server, they first make contact with the 
 ROUTER. Which sends the request to the appropriate CONTROLLER based on the METHOD
 & PATH. The ROUTER also tells the CONTROLLER which ACTION to execute. 
 
-## Request/Response
+### Request/Response
 
 HTTP Request goes from CLIENT to SERVER
 * Mandatory components
@@ -22,7 +22,7 @@ HTTP Response goes from SERVER to CLIENT
 * status (200 OK, 300 Redirect, 400 Client error, 500 Server error)
 * body - main response
 
-## RESTful Routes
+### RESTful Routes
 
 REST: Representational State Transfer
 
@@ -36,12 +36,15 @@ REST: Representational State Transfer
 | PATCH or PUT |    /photos/:id   | update |            update a specific photo           |
 |    DELETE    |    /photos/:id   | delete |            delete a specific photo           |
 
-# Controllers
+## Controllers
 
 The Router instantiates an *instance of a controller* and invokes an action on that
-controller. Controllers handle the communication between the Views and the Models. 
+controller. Controllers handle the communication between the Views and the Models
+by sending commands to the model and contructing the server's HTTP Response. 
 
-## Parameters
+Controller < ApplicationController < ActionController::Base
+
+### Parameters
 
 Parameters can come from THREE places:
 1. Query string
@@ -52,10 +55,22 @@ Parameters can come from THREE places:
   * localhost:3000/users/141
     * params = { action: show, controller: users, id: 141 }
 
-### Strong Parameters
+#### Strong Parameters
 
 Rails params has built in methods to filter a request's parameters
 * require()
 * permit()
+* [and more](https://api.rubyonrails.org/classes/ActionController/Parameters.html)
 
 params.require(:users).permit(:fname, :lname)
+
+## Models
+
+ActiveRecord handles the Model portion of the MVC framework. It uses Object
+Relational Mapping to translate rows retrieved from the database to objects. 
+
+### Validations 
+
+ActiveRecord allows us to validate models before they get persisted to the database. 
+Model validations are run when you invoke #save or #update on the model. If the 
+validation fails, then the SQL INSERT or UPDATE operations won't be performed. 

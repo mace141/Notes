@@ -50,15 +50,15 @@
 # REST: Representational State Transfer
     # convention for routes syntax
 
-   HTTP Verb   |        Path       |   action   | used for
----------------|-------------------|------------|----------------------------------------------
-GET	           | /photos	         |   index	  | display a list of all photos
-GET	           | /photos/new	     |   new	    | return an HTML form for creating a new photo
-POST	         | /photos	         |   create	  | upload and create a new photo
-GET	           | /photos/:id	     |   show	    | display a specific photo
-GET	           | /photos/:id/edit  |   edit	    | return an HTML form for editing a photo
-PATCH or PUT   | /photos/:id	     |   update	  | update a specific photo
-DELETE	       | /photos/:id	     |   destroy  | delete a specific photo
+|   HTTP Verb  |       path       | action |                    utility                   |
+|:------------:|:----------------:|:------:|:--------------------------------------------:|
+|      GET     |      /photos     |  index |         display a list of all photos         |
+|      GET     |    /photos/new   |   new  | return an HTML form for creating a new photo |
+|     POST     |      /photos     | create |         upload and create a new photo        |
+|      GET     |    /photos/:id   |  show  |           display a specific photo           |
+|      GET     | /photos/:id/edit |  edit  |    return an HTML form for editing a photo   |
+| PATCH or PUT |    /photos/:id   | update |            update a specific photo           |
+|    DELETE    |    /photos/:id   | delete |            delete a specific photo           |
 
 # Rails allows us to create all these routes using this method
     # resources :superheroes, only: [:index, :show, :create, :update, :destroy]
@@ -227,15 +227,15 @@ DELETE      -> Destroy
 
 # RESTful routes:
 
- HTTP Verb   |        Path       |   action   |         used for
----------------|-------------------|------------|----------------------------------------------
-GET	           | /photos	       | index	    | display a list of all photos
-GET	           | /photos/new	   | new	    | return an HTML form for creating a new photo
-POST	       | /photos	       | create	    | upload and create a new photo
-GET	           | /photos/:id	   | show	    | display a specific photo
-GET	           | /photos/:id/edit  | edit	    | return an HTML form for editing a photo
-PATCH or PUT   | /photos/:id	   | update	    | update a specific photo
-DELETE	       | /photos/:id	   | destroy    | delete a specific photo
+|   HTTP Verb  |       path       | action |                    utility                   |
+|:------------:|:----------------:|:------:|:--------------------------------------------:|
+|      GET     |      /photos     |  index |         display a list of all photos         |
+|      GET     |    /photos/new   |   new  | return an HTML form for creating a new photo |
+|     POST     |      /photos     | create |         upload and create a new photo        |
+|      GET     |    /photos/:id   |  show  |           display a specific photo           |
+|      GET     | /photos/:id/edit |  edit  |    return an HTML form for editing a photo   |
+| PATCH or PUT |    /photos/:id   | update |            update a specific photo           |
+|    DELETE    |    /photos/:id   | delete |            delete a specific photo           |
 =end
 # ========================= Setting Up Routes =========================
 
