@@ -69,8 +69,58 @@ params.require(:users).permit(:fname, :lname)
 ActiveRecord handles the Model portion of the MVC framework. It uses Object
 Relational Mapping to translate rows retrieved from the database to objects. 
 
+Model < ApplicationRecord < ActiveRecord::Base
+
 ### Validations 
 
 ActiveRecord allows us to validate models before they get persisted to the database. 
 Model validations are run when you invoke #save or #update on the model. If the 
 validation fails, then the SQL INSERT or UPDATE operations won't be performed. 
+
+### Associations
+
+An association is a connection between two Active Record models. For example, a
+user might have many posts, which has many comments. In that case, we would 
+write the associations like so:
+
+``` ruby
+class User < ApplicationRecord 
+  has_many :posts,
+    # class_name: :Post,
+    # foreign_key: :user_id,
+    # primary_key: :id
+
+  has_many :comments,
+    # class_name: :Comment,
+    # foreign_key: :commenter_id,
+    # primary_key: :id
+end
+
+class Post < ApplicationRecord 
+  belongs_to :user,
+    # class_name: :User,
+    # foreign_key: :user_id,
+    # primary_key: :id
+
+  has_many :comments,
+    # class_name: :Comment,
+    # foreign_key: :post_id,
+    # primary_key: :id
+  
+  has_many :commenters,
+    through: :comments,
+    source: :user
+end
+
+class Comment < ApplicationRecord
+  belongs_to :user,
+    # class_name: :User,
+    # foreign_key: :user_id,
+    # primary_key: :id
+
+  belongs_to :post,
+    # class_name: :Post,
+    # foreign_key: :post_id,
+    # primary_key: :id
+end
+```
