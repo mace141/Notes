@@ -9,6 +9,21 @@ When HTTP Requests are sent to a Rails server, they first make contact with the
 the **METHOD** & **PATH**. The **ROUTER** also tells the **CONTROLLER** which 
 **ACTION** to execute. 
 
+``` ruby
+Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: 'static_pages#root'
+  get '/custom/route', to: 'controller#action'
+
+  namespace :api, defaults: { format: :json } do 
+    resources :users, only: [:index, :create, :show, :update]
+    resources :posts, except: [:edit, :new]
+
+    resource :session, only: [:create, :destroy]
+  end
+end
+```
+
 ### Request/Response
 
 HTTP Request goes from **CLIENT** to **SERVER**

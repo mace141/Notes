@@ -1,11 +1,11 @@
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Binary Trees ]]]]]]]]]]]]]]]]]]]]]]]]]
 
 # Definition
-    # A tree is a graph that does not contain any cycles
-    # A binary tree is a tree where nodes have at most 2 children
-        # An empty graph
-        # A single node
-        # A linked list
+#   A tree is a graph that does not contain any cycles
+#   A binary tree is a tree where nodes have at most 2 children
+#     An empty graph
+#     A single node
+#     A linked list
 
 class BiTreeNode
   def initialize(val)
