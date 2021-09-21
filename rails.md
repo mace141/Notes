@@ -1,26 +1,25 @@
 # Rails Overview
 
-Database --- Model --- Controller --- Router --- View
-
 ![MVC Model](./MVC_model.png)
 
 ## Router
 
-When HTTP Requests are sent to a Rails Server, they first make contact with the 
-ROUTER. Which sends the request to the appropriate CONTROLLER based on the METHOD
-& PATH. The ROUTER also tells the CONTROLLER which ACTION to execute. 
+When HTTP Requests are sent to a Rails server, they first make contact with the 
+**ROUTER**. Which sends the request to the appropriate **CONTROLLER** based on 
+the **METHOD** & **PATH**. The **ROUTER** also tells the **CONTROLLER** which 
+**ACTION** to execute. 
 
 ### Request/Response
 
-HTTP Request goes from CLIENT to SERVER
+HTTP Request goes from **CLIENT** to **SERVER**
 * Mandatory components
   * method (GET, PUT, PATCH, POST, DELETE)
   * path (/users/1/posts/)
 * Optional components
   * query (?loc=NY&name=daniel)
-  * body - additional data which can come from a form. cannot be part of a GET request
+  * body - additional data which can come from a form. **cannot** be part of a GET request
 
-HTTP Response goes from SERVER to CLIENT
+HTTP Response goes from **SERVER** to **CLIENT**
 * status (200 OK, 300 Redirect, 400 Client error, 500 Server error)
 * body - main response
 
@@ -126,3 +125,19 @@ class Comment < ApplicationRecord
     # primary_key: :id
 end
 ```
+
+## PostgreSQL
+
+* PostgreSQL is a relational database management system. 
+* Relational databases store data in the form of tables and rows. 
+* Relational databases are vertically scalable; you can increase the load on a 
+single server by adding more CPU, RAM, or SSD capacity. 
+* Follows ACID properties
+  * A: atomic
+    * All or nothing transactions
+  * C: consistent
+    * All data will follow defined rules before and after transactions
+  * I: isolated
+    * Transactions are guaranteed to be independent of each other
+  * D: durable
+    * Data will persist after a transaction even if the system crashes
