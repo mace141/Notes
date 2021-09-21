@@ -2,6 +2,8 @@
 
 Database --- Model --- Controller --- Router --- View
 
+![MVC Model](./MVC_model.png)
+
 ## Router
 
 When HTTP Requests are sent to a Rails Server, they first make contact with the 
