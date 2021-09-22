@@ -6437,6 +6437,7 @@ def _breaking_boundaries(m, n, k, r, c, memo):
   memo[(r, c)] = count
   return count
 
+<<<<<<< HEAD
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #86 merge sort ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, merge_sort, that takes in a list of numbers as an argument. 
 # The function should return return a new list containing elements of the 
@@ -6518,6 +6519,8 @@ def merge(left, right):
 
   return res
 
+=======
+>>>>>>> b43a71eccb03173a7667c0da69d140bb72764249
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #88 binary search ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, binary_search, that takes in a sorted list of numbers and a 
 # target. The function should return the index where the target can be found 
