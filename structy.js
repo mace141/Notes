@@ -8058,7 +8058,9 @@ const buildGraph = (pairs) => {
 // stringSearch(grid, 'sssssssh'); // -> false
 
 // ========================= Depth First =========================
-// Time: O(3^(r*c)), Space: O(r*c)
+// r: num rows, c: num cols, s: length of string
+// Time: O(s^(rc)), Space: O(rc) 
+// Alvin says the time complexity is O(3^(rc)), but I disagree
 const stringSearch = (grid, s) => {
   const visited = new Set();
   for (let row = 0; row < grid.length; row++) {

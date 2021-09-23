@@ -7363,6 +7363,9 @@ def topological_order(graph):
 #   (8, 4),
 # ]) # -> '38429'
 
+# ========================= Kahn's Algorithm =========================
+# n: num nodes, e: num edges
+# Time: O(n + e), Space: O(n)
 def safe_cracking(hints):
   graph = build_graph(hints)
   num_parents = {}
@@ -7396,3 +7399,118 @@ def build_graph(edges):
     graph[num_1].append(num_2)
 
   return graph
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #98 string search  ]]]]]]]]]]]]]]]]]]]]]]]]]
+# Write a function, string_search, that takes in a grid of letters and a string 
+# as arguments. The function should return a boolean indicating whether or not 
+# the string can be found in the grid as a path by connecting horizontal or 
+# vertical positions. The path can begin at any position, but you cannot reuse a 
+# position more than once in the path.
+# You can assume that all letters are lowercase and alphabetic.
+#
+# test_00:
+# grid = [
+#   ['e', 'y', 'h', 'i', 'j'],
+#   ['q', 'x', 'e', 'r', 'p'],
+#   ['r', 'o', 'l', 'l', 'n'],
+#   ['p', 'r', 'x', 'o', 'h'],
+#   ['a', 'a', 'm', 'c', 'm']
+# ]
+# string_search(grid, 'hello') # -> True
+# test_01:
+# grid = [
+#   ['e', 'y', 'h', 'i', 'j'],
+#   ['q', 'x', 'e', 'r', 'p'],
+#   ['r', 'o', 'l', 'l', 'n'],
+#   ['p', 'r', 'x', 'o', 'h'],
+#   ['a', 'a', 'm', 'c', 'm']
+# ]
+# string_search(grid, 'proxy') # -> True
+# test_02:
+# grid = [
+#   ['e', 'y', 'h', 'i', 'j'],
+#   ['q', 'x', 'e', 'r', 'p'],
+#   ['r', 'o', 'l', 'l', 'n'],
+#   ['p', 'r', 'x', 'o', 'h'],
+#   ['a', 'a', 'm', 'c', 'm']
+# ]
+# string_search(grid, 'rolling') # -> False
+# test_03:
+# grid = [
+#   ['e', 'y', 'h', 'i', 'j'],
+#   ['q', 'x', 'e', 'r', 'p'],
+#   ['r', 'o', 'l', 'l', 'n'],
+#   ['p', 'r', 'x', 'o', 'h'],
+#   ['a', 'a', 'm', 'z', 'm']
+# ]
+# string_search(grid, 'zoo') # -> False
+# test_04:
+# grid = [
+#   ['q', 'w', 'h', 'i', 'j'],
+#   ['q', 'e', 'r', 'o', 'p'],
+#   ['h', 'y', 't', 'x', 'z'],
+#   ['k', 'o', 'm', 'o', 'p']
+# ]
+# string_search(grid, 'qwerty') # -> True
+# test_05:
+# grid = [ 
+#   [ 'f', 'd', 'i', 'e', 'l', 'u', 'j', 't', 'q', 'v', 'o', 'p' ], 
+#   [ 'o', 'p', 'b', 'e', 'm', 'w', 'm', 'l', 'h', 'j', 's', 'v' ], 
+#   [ 'g', 'b', 's', 'm', 'i', 'w', 'w', 'h', 'l', 'm', 'l', 'n' ], 
+#   [ 'a', 'l', 's', 'k', 'p', 'c', 't', 'u', 'v', 'b', 'c', 'm' ], 
+#   [ 'm', 't', 'c', 'k', 'e', 'n', 'r', 'b', 'a', 'z', 'l', 'c' ], 
+#   [ 'q', 'm', 'a', 'p', 'a', 'p', 'i', 'i', 'u', 't', 'z', 'z' ], 
+#   [ 'd', 'u', 'z', 'o', 'e', 'r', 'a', 't', 't', 'c', 'q', 'k' ], 
+#   [ 'f', 'u', 'z', 'g', 'c', 'i', 'k', 'v', 'o', 'f', 's', 'w' ], 
+#   [ 'p', 'h', 'u', 'i', 'k', 'c', 'v', 'v', 'h', 'q', 'v', 'i' ], 
+#   [ 'l', 'q', 'w', 'f', 'y', 'g', 'w', 'f', 'a', 'u', 'x', 'q' ] 
+# ]
+# string_search(grid, 'paprika') # -> True
+# test_06:
+# grid = [
+#     [ 's', 's', 's', 's', 's', 's', 's', 's', 's', 's', 's' ],
+#     [ 's', 's', 's', 's', 's', 's', 's', 's', 's', 's', 's' ],
+#     [ 's', 's', 's', 's', 's', 's', 's', 's', 's', 's', 's' ],
+#     [ 's', 's', 's', 's', 's', 's', 's', 's', 's', 's', 's' ],
+#     [ 's', 's', 's', 's', 's', 's', 's', 's', 's', 's', 's' ],
+#     [ 's', 's', 's', 's', 's', 's', 's', 's', 's', 's', 's' ],
+#     [ 's', 's', 's', 's', 's', 's', 's', 's', 's', 's', 's' ],
+#     [ 's', 's', 's', 's', 's', 's', 's', 's', 's', 'x', 'x' ],
+#     [ 's', 's', 's', 's', 's', 's', 's', 's', 's', 'x', 'h' ],
+# ]
+# string_search(grid, 'ssssssssssh') # -> False
+
+# ========================= Depth First =========================
+# r: num rows, c: num cols, s: length of string
+# Time: O(s^(rc)), Space: O(rc) 
+# Alvin says the time complexity is O(3^(rc)), but I disagree
+def string_search(grid, s):
+  for r in range(len(grid)):
+    for c in range(len(grid[0])):
+      if grid[r][c] == s[0] and is_string(grid, s, 1, r, c, set()):
+        return True 
+  
+  return False
+
+def is_string(grid, s, i, r, c, visited):
+  if i == len(s):
+    return True
+  if not in_bounds(grid, r, c):
+    return False
+  if (r, c) in visited:
+    return False
+    
+  visited.add((r, c))
+  deltas = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+  for dy, dx in deltas:
+    new_y, new_x = r + dy, c + dx
+    if in_bounds(grid, new_y, new_x) and grid[new_y][new_x] == s[i]:
+      if is_string(grid, s, i + 1, new_y, new_x, visited):
+        return True
+    
+  return False
+
+def in_bounds(grid, r, c):
+  if r < 0 or r == len(grid) or c < 0 or c == len(grid[0]):
+    return False
+  return True
