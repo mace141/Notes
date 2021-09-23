@@ -6868,7 +6868,7 @@ def is_sorted(nums):
       return False 
   return True
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #91 post order  ]]]]]]]]]]]]]]]]]]]]]]]]] 
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #91 post order ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, post_order, that takes in the root of a binary tree. The 
 # function should return a list containing the post-ordered values of the tree.
 # Post-order traversal is when nodes are recursively visited in the order: left 
@@ -6977,7 +6977,7 @@ def _post_order(root, values):
   _post_order(root.right)
   values.append(root.val)
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #92 build tree in post  ]]]]]]]]]]]]]]]]]]]]]]]]] 
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #92 build tree in post ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, build_tree_in_post, that takes in a list of in-ordered values 
 # and a list of post-ordered values for a binary tree. The function should build 
 # a binary tree that has the given in-order and post-order traversal structure. 
@@ -7049,7 +7049,7 @@ def build_tree_in_post(in_order, post_order):
   root.right = build_tree_in_post(right_in_order, right_post_order)
   return root
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #93 build tree in pre  ]]]]]]]]]]]]]]]]]]]]]]]]] 
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #93 build tree in pre ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, build_tree_in_pre, that takes in a list of in-ordered values 
 # and a list of pre-ordered values for a binary tree. The function should build 
 # a binary tree that has the given in-order and pre-order traversal structure. 
@@ -7134,7 +7134,7 @@ def _build_tree(in_order, pre_order, in_start, in_end, pre_start, pre_end):
   root.right = _build_tree(in_order, pre_order, right_in_start, in_end, right_pre_start, pre_end)
   return root
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #94 lexical order  ]]]]]]]]]]]]]]]]]]]]]]]]] 
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #94 lexical order ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, lexical_order, that takes in 2 words and an alphabet string 
 # as an argument. The function should return True if the first word should appear 
 # before the second word if lexically-ordered according to the given alphabet 
@@ -7185,7 +7185,7 @@ def lexical_order(word_1, word_2, alphabet):
   
   return len(word_1) <= len(word_2)
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #95 detect dictionary  ]]]]]]]]]]]]]]]]]]]]]]]]] 
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #95 detect dictionary ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, detect_dictionary, that takes in a dictionary of words and an 
 # alphabet string. The function should return a boolean indicating whether or not 
 # all words of the dictionary are lexically-ordered according to the alphabet.
@@ -7241,7 +7241,7 @@ def lexical_order(word_1, word_2, alphabet):
   
   return len(word_1) <= len(word_2)
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #96 topological order  ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #96 topological order ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, topological_order, that takes in a dictionary representing 
 # the adjacency list for a directed-acyclic graph. The function should return a 
 # list containing the topological-order of the graph.
@@ -7306,7 +7306,7 @@ def topological_order(graph):
   
   return order
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #97 safe cracking  ]]]]]]]]]]]]]]]]]]]]]]]]] !I
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #97 safe cracking ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Oh-no! You forgot the number combination that unlocks your safe. Luckily, you 
 # knew that you'd be forgetful so you previously wrote down a bunch of hints that 
 # can be used to determine the correct combination. Each hint is a pair of 
@@ -7400,7 +7400,7 @@ def build_graph(edges):
 
   return graph
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #98 string search  ]]]]]]]]]]]]]]]]]]]]]]]]]
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #98 string search ]]]]]]]]]]]]]]]]]]]]]]]]]
 # Write a function, string_search, that takes in a grid of letters and a string 
 # as arguments. The function should return a boolean indicating whether or not 
 # the string can be found in the grid as a path by connecting horizontal or 
@@ -7514,3 +7514,76 @@ def in_bounds(grid, r, c):
   if r < 0 or r == len(grid) or c < 0 or c == len(grid[0]):
     return False
   return True
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #99 token replace ]]]]]]]]]]]]]]]]]]]]]]]]]
+# Write a function, token_replace, that takes in a dictionary of tokens and a 
+# string. The function should return a new string where tokens are replaced.
+# Tokens are enclosed in a pair of '$'. You can assume that the input string is 
+# properly formatted. Tokens should be replaced from left to right in the string
+# (see test_05).
+#
+# test_00:
+# tokens = {
+#   '$LOCATION$': 'park',
+#   '$ANIMAL$': 'dog',
+# }
+# token_replace('Walk the $ANIMAL$ in the $LOCATION$!', tokens) 
+# # -> 'Walk the dog in the park!'
+# test_01:
+# tokens = {
+#   '$ADJECTIVE$': 'quick',
+#   '$VERB$': 'hopped',
+#   '$DIRECTION$': 'North'
+# }
+# token_replace('the $ADJECTIVE$ fox $VERB$ $ADJECTIVE$ly $DIRECTION$ward', tokens) 
+# # -> 'the quick fox hopped quickly Northward'
+# test_02:
+# tokens = {
+#   '$greeting$': 'hey programmer',
+# }
+# token_replace('his greeting is always $greeting$.', tokens) 
+# # -> 'his greeting is always hey programmer.'
+# test_03:
+# tokens = {
+#   '$A$': 'lions',
+#   '$B$': 'tigers',
+#   '$C$': 'bears',
+# }
+# token_replace('$A$$B$$C$, oh my.', tokens) 
+# # -> 'lionstigersbears, oh my.'
+# test_04:
+# tokens = {
+#   '$A$': 'lions',
+#   '$B$': 'tigers',
+#   '$C$': 'bears',
+# }
+# token_replace('$B$', tokens) 
+# # -> 'tigers'
+# test_05:
+# tokens = {
+#   '$second$': 'beta',
+#   '$first$': 'alpha',
+#   '$third$': 'gamma',
+# }
+# token_replace('$first$second$third$', tokens) 
+# # -> 'alphasecondgamma'
+
+# ========================= Two Pointers =========================
+# Time: O(n), Space: O(n) 
+def token_replace(s, tokens):
+  replaced = ''
+  i = 0
+  j = 0
+  while i < len(s):
+    if s[i] == '$':
+      j = i + 1
+      while s[j] != '$':
+        j += 1
+      token = s[i: j + 1]
+      replaced += tokens[token]
+      i = j
+    else:
+      replaced += s[i]
+    i += 1
+
+  return replaced
