@@ -7184,3 +7184,59 @@ def lexical_order(word_1, word_2, alphabet):
         return True
   
   return len(word_1) <= len(word_2)
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #95 detect dictionary  ]]]]]]]]]]]]]]]]]]]]]]]]] 
+# Write a function, detect_dictionary, that takes in a dictionary of words and an 
+# alphabet string. The function should return a boolean indicating whether or not 
+# all words of the dictionary are lexically-ordered according to the alphabet.
+# You can assume that all characters are lowercase a-z.
+# You can assume that the alphabet contains all 26 letters.
+#
+# test_00:
+# dictionary = ["zoo", "tick", "tack", "door"]
+# alphabet = "ghzstijbacdopnfklmeqrxyuvw"
+# detect_dictionary(dictionary, alphabet) # -> True
+# test_01:
+# dictionary = ["zoo", "tack", "tick", "door"]
+# alphabet = "ghzstijbacdopnfklmeqrxyuvw"
+# detect_dictionary(dictionary, alphabet) # -> False
+# test_02:
+# dictionary = ["zoos", "zoo", "tick", "tack", "door"]
+# alphabet = "ghzstijbacdopnfklmeqrxyuvw"
+# detect_dictionary(dictionary, alphabet) # -> False
+# test_03:
+# dictionary = ["miles", "milestone", "proper", "process", "goal"]
+# alphabet = "mnoijpqrshkltabcdefguvwzxy"
+# detect_dictionary(dictionary, alphabet) # -> True
+# test_04:
+# dictionary = ["miles", "milestone", "pint", "proper", "process", "goal"];
+# alphabet = "mnoijpqrshkltabcdefguvwzxy"
+# detect_dictionary(dictionary, alphabet) # -> True
+# test_05:
+# dictionary = ["miles", "milestone", "pint", "proper", "process","goal", "apple"];
+# alphabet = "mnoijpqrshkltabcdefguvwzxy"
+# detect_dictionary(dictionary, alphabet) # -> False
+
+# ========================= Iterative =========================
+# n: num words, k: length of longest word
+# Time: O(nk), Space: O(1)
+def detect_dictionary(dictionary, alphabet):
+  for i in range(len(dictionary) - 1):
+    if not lexical_order(dictionary[i], dictionary[i + 1], alphabet):
+      return False
+
+  return True
+
+def lexical_order(word_1, word_2, alphabet):
+  for i in range(min(len(word_1), len(word_2))):
+    char_1 = word_1[i]
+    char_2 = word_2[i]
+    if char_1 == char_2:
+      pass 
+    else:
+      if alphabet.index(char_1) > alphabet.index(char_2):
+        return False 
+      else:
+        return True
+  
+  return len(word_1) <= len(word_2)
