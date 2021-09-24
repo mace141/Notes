@@ -102,3 +102,18 @@ def max_profit(prices)
   
   return max
 end
+
+# ========================= LeetCode 152 =========================
+
+def max_product(nums)
+  max = nums[0]
+  min_so_far = nums[0]
+  max_so_far = nums[0]
+  
+  nums[1..-1].each do |num|
+      min_so_far, max_so_far = [num, min_so_far * num, max_so_far * num].minmax
+      max = [min_so_far, max_so_far, max].max
+  end
+  
+  return max
+end
