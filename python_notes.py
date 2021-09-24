@@ -73,8 +73,82 @@ print(len('hello')) # => 5
 
 # Indexing out of range will throw an error but slicing out of range will not
 
-print("Spaghetti"[15])    # => IndexError: string index out of range
+# print("Spaghetti"[15])    # => IndexError: string index out of range
 print("Spaghetti"[1:4])   # => pag
 print("Spaghetti"[4:-1])  # => hett
 print("Spaghetti"[4:4])   # => (empty string)
 
+# ========================= Functions =========================
+
+# index()
+
+print("Spaghetti".index('het'))   # => 4
+# print("Spaghetti".index('spa'))   # => ValueError: substring not found
+
+# count()
+
+print("Spaghetti".count('t'))     # => 2
+
+"""
+    Value	             Method	                Result
+s = "Hello"	        s.upper()	                "HELLO"
+s = "Hello"	        s.lower()	                "hello"
+s = "Hello"	        s.islower()	               False
+s = "hello"	        s.islower()	               True
+s = "Hello"	        s.isupper()	               False
+s = "HELLO"	        s.isupper()	               True
+s = "Hello"	        s.startswith("He")    	   True
+s = "Hello"	        s.endswith("lo")	         True
+s = "Hello World"	  s.split()	            ["Hello", "World"]
+s = "i-am-a-dog"	  s.split("-")	        ["i", "am", "a", "dog"]
+s = "--"            s.join(['a', 'b'])        'a--b'
+
+Method	      Purpose
+isalpha()	    returns True if the string consists only of letters and is not blank.
+isalnum()	    returns True if the string consists only of letters and numbers and is not blank.
+isdecimal()	  returns True if the string consists only of numeric characters and is not blank.
+isspace()	    returns True if the string consists only of spaces, tabs, and newlines and is not blank.
+istitle()	    returns True if the string consists only of words that begin with an uppercase letter followed by only lowercase letters.
+""" 
+
+# ========================= Concatenation =========================
+
+print('gold' + 'fish')    # => 'goldfish
+print('s' * 5)            # => 'sssss'
+
+# ========================= Formatting =========================
+
+first_name = 'Daniel'
+last_name = 'Wu'
+print("My name is {0} {1}".format(first_name, last_name))
+
+print(f'My name is {first_name} {last_name}')
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Boolean Data Type ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Falsey values are
+#     None or False
+#     Zero of any numeric type
+#     Any empty sequence or collections
+#         String: ''
+#         List: []
+#         Tuple: ()
+#         Dictionary: {}
+#         set()
+#         range(0)
+
+# Everything else is truthy
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Comparison Operators ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# In Python, equality operators are process from left to right before the logical
+#   operators. 
+# Then the logical operators are process in this order: not, and, or
+
+# ========================= Short-Circuit Execution =========================
+
+# Python will stop processing the right side of the logical operator if the left
+#   has a definitive True or False
+
+# False and ...
+# True or ...
