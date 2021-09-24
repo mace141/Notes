@@ -85,3 +85,20 @@ def max_product(nums)
   end
   return (n - 1) * (m - 1)
 end
+
+# ========================= LeetCode 121 =========================
+
+def max_profit(prices)
+  max = 0
+  min = 1.0/0.0
+  (0...prices.length).each do |i|
+    if prices[i] < min
+      min = prices[i]
+    end
+    if prices[i] - min > max
+      max = prices[i] - min
+    end
+  end
+  
+  return max
+end
