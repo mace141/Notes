@@ -132,3 +132,28 @@ def product_except_self(nums)
   end
   answer
 end
+
+# ========================= LeetCode 153 =========================
+
+def find_min(nums)
+  i = 0
+  j = nums.length - 1
+  if nums[i] < nums[j]
+    return nums[i]
+  end
+  while i < j
+    mid = i + (j - i) / 2
+    if nums[mid] > nums[mid + 1]
+      return nums[mid + 1]
+    end
+    if nums[mid - 1] > nums[mid]
+      return nums[mid]
+    end
+    if nums[mid] > nums[0]
+      i = mid + 1
+    else
+      j = mid - 1
+    end
+  end
+  return nums[i]
+end
