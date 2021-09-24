@@ -117,3 +117,18 @@ def max_product(nums)
   
   return max
 end
+
+# ========================= LeetCode 238 =========================
+
+def product_except_self(nums)
+  answer = [1] * nums.length
+  left = 1
+  right = 1
+  (0...nums.length).each do |i|
+      answer[i] *= left
+      answer[-1 - i] *= right
+      left *= nums[i]
+      right *= nums[-1 - i]
+  end
+  answer
+end
