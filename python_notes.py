@@ -74,7 +74,7 @@ print(len('hello')) # => 5
 # Indexing out of range will throw an error but slicing out of range will not
 
 print("Spaghetti"[15])    # => IndexError: string index out of range
-print("Spaghetti"[1:4])  # => pag
-print("Spaghetti"[4:-1])    # => hett
-print("Spaghetti"[4:4])  # => (empty string)
+print("Spaghetti"[1:4])   # => pag
+print("Spaghetti"[4:-1])  # => hett
+print("Spaghetti"[4:4])   # => (empty string)
 

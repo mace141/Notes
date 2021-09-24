@@ -157,3 +157,24 @@ def find_min(nums)
   end
   return nums[i]
 end
+
+# ========================= LeetCode 5 =========================
+
+def longest_palindrome(s)
+  max = ''
+  (0...s.length).each do |idx|
+    i = idx
+    j = idx
+    while s[i] == s[j + 1]
+      j += 1
+    end
+    while s[i] == s[j]
+      if s[i..j].length > max.length
+        max = s[i..j]
+      end
+      i -= 1
+      j += 1
+    end
+  end
+  max
+end
