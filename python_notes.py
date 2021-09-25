@@ -152,3 +152,30 @@ print(f'My name is {first_name} {last_name}')
 
 # False and ...
 # True or ...
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Identity vs. Equality ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+print (2 == 2.0)    # => True
+print (2 is 2.0)    # => False
+
+# is -> identity operator
+# == -> equality operator
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ While Statements ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+count = 0
+while count < 3:
+  if count == 2:
+    continue
+  print('in while loop')
+  count += 1
+
+# pass simply does nothing, while continue will skip to next iteration
+# break will exit the loop
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Handling Exceptions ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+try:
+  print('hello')
+except:
+  print('fail')
