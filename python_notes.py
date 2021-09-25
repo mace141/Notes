@@ -89,27 +89,25 @@ print("Spaghetti".index('het'))   # => 4
 
 print("Spaghetti".count('t'))     # => 2
 
-"""
-    Value	             Method	                Result
-s = "Hello"	        s.upper()	                "HELLO"
-s = "Hello"	        s.lower()	                "hello"
-s = "Hello"	        s.islower()	               False
-s = "hello"	        s.islower()	               True
-s = "Hello"	        s.isupper()	               False
-s = "HELLO"	        s.isupper()	               True
-s = "Hello"	        s.startswith("He")    	   True
-s = "Hello"	        s.endswith("lo")	         True
-s = "Hello World"	  s.split()	            ["Hello", "World"]
-s = "i-am-a-dog"	  s.split("-")	        ["i", "am", "a", "dog"]
-s = "--"            s.join(['a', 'b'])        'a--b'
+#     Value	             Method	                Result
+# s = "Hello"	        s.upper()	                "HELLO"
+# s = "Hello"	        s.lower()	                "hello"
+# s = "Hello"	        s.islower()	               False
+# s = "hello"	        s.islower()	               True
+# s = "Hello"	        s.isupper()	               False
+# s = "HELLO"	        s.isupper()	               True
+# s = "Hello"	        s.startswith("He")    	   True
+# s = "Hello"	        s.endswith("lo")	         True
+# s = "Hello World"	  s.split()	            ["Hello", "World"]
+# s = "i-am-a-dog"	  s.split("-")	        ["i", "am", "a", "dog"]
+# s = "--"            s.join(['a', 'b'])        'a--b'
 
-Method	      Purpose
-isalpha()	    returns True if the string consists only of letters and is not blank.
-isalnum()	    returns True if the string consists only of letters and numbers and is not blank.
-isdecimal()	  returns True if the string consists only of numeric characters and is not blank.
-isspace()	    returns True if the string consists only of spaces, tabs, and newlines and is not blank.
-istitle()	    returns True if the string consists only of words that begin with an uppercase letter followed by only lowercase letters.
-""" 
+# Method	      Purpose
+# isalpha()	    returns True if the string consists only of letters and is not blank.
+# isalnum()	    returns True if the string consists only of letters and numbers and is not blank.
+# isdecimal()	  returns True if the string consists only of numeric characters and is not blank.
+# isspace()	    returns True if the string consists only of spaces, tabs, and newlines and is not blank.
+# istitle()	    returns True if the string consists only of words that begin with an uppercase letter followed by only lowercase letters.
 
 # ========================= Concatenation =========================
 
@@ -129,7 +127,7 @@ print(f'My name is {first_name} {last_name}')
 # Falsey values are
 #     None or False
 #     Zero of any numeric type
-#     Any empty sequence or collections
+#     Any empty sequences or collections
 #         String: ''
 #         List: []
 #         Tuple: ()
@@ -164,14 +162,15 @@ print (2 is 2.0)    # => False
 # [[[[[[[[[[[[[[[[[[[[[[[[[ While Statements ]]]]]]]]]]]]]]]]]]]]]]]]]
 
 count = 0
-while count < 3:
-  if count == 2:
-    continue
-  print('in while loop')
+while True:
+  print(count)
   count += 1
+  if count < 5:
+    continue
+  break
 
-# pass simply does nothing, while continue will skip to next iteration
-# break will exit the loop
+# `pass` simply does nothing, while `continue` will skip to next iteration
+# `break` will exit the loop
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Handling Exceptions ]]]]]]]]]]]]]]]]]]]]]]]]]
 
@@ -212,3 +211,177 @@ if hasattr(a, '__len__'):
 
 # Lambda functions are anonymous functions that are meant to be one-liners
 to_upper = lambda s: s.upper()
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Formatting printing ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Python has a very powerful formatting engine for making exactly the strings you 
+# need. The format function is one way to apply these options. Like join, format 
+# is applied to strings.
+
+# Comma as thousands separator
+print('{:,}'.format(1234567890))
+# '1,234,567,890'
+
+# Date and Time
+from datetime import datetime
+d = datetime(2020, 7, 4, 12, 15, 58)
+print('{:%Y-%m-%d %H:%M:%S}'.format(d))
+# '2020-07-04 12:15:58'
+
+# Percentage
+points = 190
+total = 220
+print('Correct answers: {:.2%}'.format(points/total))
+# 'Correct answers: 86.36%'
+
+# Data Table
+width=8
+print(' decimal      hex   binary')
+print('-'*27)
+for num in range(1,16):
+    for base in 'dXb':
+        print('{0:{width}{base}}'.format(num, base=base, width=width), end=' ')
+    print()
+#  decimal      hex   binary
+# ---------------------------
+#        1        1        1
+#        2        2       10
+#        3        3       11
+#        4        4      100
+#        5        5      101
+#        6        6      110
+#        7        7      111
+#        8        8     1000
+#        9        9     1001
+#       10        A     1010
+#       11        B     1011
+#       12        C     1100
+#       13        D     1101
+#       14        E     1110
+#       15        F     1111
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ User Input ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+print("Hello World!")
+answer = input("How are you?\n")
+print("I am fine")
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Built-in Data Types ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Lists
+empty_list = []
+empty_list = list()
+
+# Tuples
+#   Are similar to lists, but they are immutable
+time_blocks = ('AM', 'PM')
+tuple('abc')    # => ('a', 'b', 'c')
+tuple([1,2,3])  # => (1, 2, 3)
+
+# Ranges
+#   An immutable list of numbers typically used for looping
+#   Can be declared with 1-3 parameters
+#       start - optional (0)
+#       end   - required
+#       step  - optional (1)
+not_empty_list = []
+for i in range(2, -5, -1):
+  not_empty_list.append(i)
+print(not_empty_list)   # => [2, 1, 0, -1, -2, -3, -4]
+
+# Dictionaries
+#   Mappable collection where a hashable key is used to reference an object
+a = {'one':1, 'two':2, 'three':3}
+b = dict(one=1, two=2, three=3)
+c = dict([('two', 2), ('one', 1), ('three', 3)])
+print(a == b == c)   # => True
+
+# Sets
+#   An unordered collection of distinct objects
+#   Sets have three common uses in Python:
+#       removing duplicates
+#       membership testing (that is, finding out if an object is included)
+#       mathematical operators: intersection, union, difference, symmetric difference
+new_set = {1, 2, 3}
+newer_set = set('abracadabra')  # => {'a', 'b', 'r', 'c', 'd'}
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Built-in Functions ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# ========================= Functions Using Iterables =========================
+
+# filter(function, iterable)
+#   Creates a new iterable of the same type where the function returns True
+
+# map(function, iterable)
+#   Creates a new iterable of the same type with the result of the function on every item
+
+# sorted(iterable, key=None, reverse=False)
+#   creates a new sorted list from the items in the iterable
+#   key: optional function which converts item to a value for comparison
+#        e.g. key=str.lower()
+#   reverse: optional boolean
+#   `key` and `reverse` parameters must be set with the name and equal sign
+
+# enumerate(iterable, start=0)
+#   starts with a sequence and converts it to a series of tuples with index and value
+#   `start` parameter must be set with the name and equal sign
+
+# zip(*iterables)
+#   creates a zip object filled with tuples that combine the items from each iterable
+#   zip will stop when the shortest iterable runs out of items
+
+# ========================= Functions Analyzing Iterables =========================
+
+# len(iterable)
+#   returns the length of the iterable
+
+# max(*args, key=None)
+#   returns the largest item
+#   key: optional function to convert an item for comparison
+#   `key` parameter must be set using its name and equal sign
+
+# min(*args, key=None)
+#   returns the smallest item
+#   key: optional function to convert an item for comparison
+#   `key` parameter must be set using its name and equal sign
+
+# sum(iterable)
+#   returns the sum
+
+# any(iterable)
+#   returns True if any items are true
+#   will return False if the iterable is empty because it didnt find any true items
+
+# all(iterable)
+#   returns True if all items are true
+#   will return True if the iterable is empty because it didnt find any false items
+
+# ========================= Dictionaries =========================
+
+# dir(dictionary)
+#   returns a list of keys in the dictionary
+
+# ========================= Sets =========================
+
+a = {1, 2, 3}
+b = {2, 4, 6}
+
+# Union
+#   The `|` operator or union(*sets) will return a new set of the combined sets
+print(a | b)        # => {1, 2, 3, 4, 6}
+
+# Intersection
+#   The `&` operator or intersection(*sets) will return a new set of items that 
+#     appear in all sets
+print(a & b)        # => {2}
+
+# Difference
+#   The `-` operator or difference(*sets) will return a new set of items that 
+#     appear in the first set but NOT the others
+print(a - b)        # => {1, 3}
+print(b - a)        # => {4, 6}
+
+# Symmetric Difference
+#   The `^` operator or symmetric_difference(*sets) will return a new set of items 
+#     that appear in EXACTLY ONE set but NOT the others
+print(a ^ b)        # => {1, 3, 4, 6}
