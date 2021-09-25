@@ -175,7 +175,40 @@ while count < 3:
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Handling Exceptions ]]]]]]]]]]]]]]]]]]]]]]]]]
 
+# The `except` block will only run if there is an issue with the `try` block
 try:
   print('hello')
 except:
   print('fail')
+
+# To catch a specific error, you can specify it with the except statement
+a = 100
+# b = "5"
+try:
+  print(a / b)
+except ZeroDivisionError:
+  pass
+except (TypeError, NameError) as e:
+  print("ERROR!", e)
+
+# To run code after successful `try` block you can use an `else` block
+# To perform cleanup regardless of success or fail, you can use a `finally` block
+def divide(x, y):
+    try:
+        result = x / y
+    except ZeroDivisionError:
+        print("Cannot divide by zero")
+    else:
+        print("Result is", result)
+    finally:
+        print("Finally...")
+
+# hasattr() can be used to check the existence of a property or method
+a = 321
+if hasattr(a, '__len__'):
+  print('hello')
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Lambda Function ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Lambda functions are anonymous functions that are meant to be one-liners
+to_upper = lambda s: s.upper()
