@@ -504,6 +504,9 @@ class AngryBird:
   def get_y(self):
     return self._y
 
+  def __repr__(self):
+    return f'<AngryBird ({self._x}, {self._y})>'
+
 # In Python, every instance method gets a reference to the object as the first 
 #   parameter
 
@@ -512,7 +515,125 @@ class AngryBird:
 #   for the iVars you know you will use. This speeds up Python's instance 
 #   initialization
 
+# When you print an instance, you'll get some Python runtime info. In order to
+#   override that, you can overwrite the __repr__ method. 
+
 bird = AngryBird()
-print(bird.get_y())
+print(bird.get_y())   # => 0
 bird.move_up_by(2)
-print(bird.get_y())
+print(bird.get_y())   # => 2
+print(bird)           # => <AngryBird (0, 2)>
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Inheritance ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Child classes will inherit methods and attributes from the Parent class
+
+class Employee:
+  def __init__(self, id):
+    self._id = id 
+
+  def slack_off(self):
+    print('employee slacking off')
+
+# Manager class inherits from the Employee class
+class Manager(Employee):
+  def __init__(self, id):
+    # super().__init__() is how you call the initializer of the parent class
+    super().__init__(id)
+    self.employees = []
+  
+  def add_direct_report(self, employee):
+    self.employees.append(employee)
+
+  def slack_off(self):
+    print('manager slacking off')
+    # super() can also be used to call the parent's methods
+    super().slack_off()
+
+daniel = Manager(141)
+daniel.slack_off()
+print(daniel._id)
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Properties ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# In Python, you can apply decorators to classes, methods, and parameters. 
+# The `property` decorator makes a method more like a readable property
+# The `setter` decorator allows you to change an instances property by assigning
+#   to the method
+
+class AngryBird:
+  __slots__ = ['_x', '_y']
+
+  def __init__(self, x=0, y=0):
+    """
+    Construct a new AngryBird with position (0, 0).
+    """
+    self._x = x
+    self._y = y
+
+  def move_up_by(self, dy):
+    self._y += dy
+
+  @property
+  def y(self):
+    return self._y
+
+  @y.setter
+  def y(self, value):
+    if value < 0:
+      value = 0
+    self._y = value
+
+  def __repr__(self):
+    return f'<AngryBird ({self._x}, {self._y})>'
+
+red_bird = AngryBird()
+red_bird.y      # `property` decorator allows us to write this instead of red_bird.get_y()
+red_bird.y = 3  # using the `setter` decorator
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Populating Lists in Python ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Using for loops
+squares = []
+for i in range(10):
+  squares.append(i**2)
+print(squares)
+
+# Using map() - will return a map object
+squares = map(lambda x: x**2, range(10))
+print(list(squares))
+
+# Using list comprehension
+squares = [i**2 for i in range(10)]
+print(squares)
+
+# ========================= List Comprehensions =========================
+
+# new_list = [expression for member in iterable]
+
+# Every list comprehension in Python includes three elements:
+#     Expression: is the member itself, a call to a method, or any returned value
+#     Member: the object in the iterable
+#     Iterable: a sequence or collection
+
+# ------------------------- Filtering -------------------------
+
+nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+evens = [i for i in nums if i % 2 == 0]
+print(evens)    # => [0, 2, 4, 6, 8]
+
+evens_or_false = [i if i % 2 == 0 else False for i in nums]
+print(evens_or_false)     # => [0, False, 2, False, 4, False, 6, False, 8, False]
+
+# ------------------------- Matrices -------------------------
+
+matrix = [[i for i in range(5)] for _ in range(6)]
+print(matrix)
+
+matrix = [
+    [0, 0, 0],
+    [1, 1, 1],
+    [2, 2, 2],
+]
+flat = [num for row in matrix for num in row]
+print(flat)     # => [0, 0, 0, 1, 1, 1, 2, 2, 2]
