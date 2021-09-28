@@ -33,3 +33,21 @@ def three_sum(nums):
       two[diff_2] = n
       j += 1
   return res
+
+# ========================= LeetCode 70 =========================
+
+def climbStairs(n):
+  return _climb_stairs(n, {})
+  
+def _climb_stairs(n, memo):
+  if n in memo:
+    return memo[n]
+  if n == 0:
+    return 1
+  if n < 0:
+    return 0
+  
+  one_step = _climb_stairs(n - 1, memo)
+  two_step = _climb_stairs(n - 2, memo)
+  memo[n] = one_step + two_step
+  return memo[n]
