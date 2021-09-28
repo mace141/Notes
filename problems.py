@@ -51,3 +51,20 @@ def _climb_stairs(n, memo):
   two_step = _climb_stairs(n - 2, memo)
   memo[n] = one_step + two_step
   return memo[n]
+
+# ========================= LeetCode 198 =========================
+
+def rob(nums):
+  return _rob(nums, 0, {})
+    
+def _rob(nums, i, memo):
+  if i in memo:
+    return memo[i]
+  if i >= len(nums):
+    return 0
+  
+  first = nums[i] + _rob(nums, i + 2, memo)
+  second = _rob(nums, i + 1, memo)
+  
+  memo[i] = max(first, second)
+  return memo[i]
