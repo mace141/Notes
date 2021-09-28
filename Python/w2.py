@@ -532,3 +532,58 @@ import os
 class Config(object):
     GREETING = 'Salutations, superior students!'
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'default-key-for-devs'
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Routing In Flask ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# ========================= Static Routes =========================
+
+# Routes are set with the `route` decorator on a function. 
+@app.route('/')
+def some_function():
+    return 'Some content'
+
+# You can decorate the same function with multiple URLs
+@app.route('/')
+@app.route('/home')
+def home():
+    return '<h1>Home</h1>'
+
+# ========================= Wildcards =========================
+
+# Wildcards are placed between `<` and `>` in the path. They are also accessible
+#   in the parameters of the function
+@app.route('/item/<id>')
+def item(id):
+    return f'<h1>Item {id}</h1>'
+
+# You can also specify the data type of the wildcard
+@app.route('/item/<int:id>')
+def item(id):
+    return f'<h1>Item {id}</h1>'
+
+# ========================= Before Request =========================
+
+# To run code before each request, use the `before_request` decorator
+@app.before_request
+def before_request_function():
+    print("before_request is running")
+
+# ========================= After Request =========================
+    
+# To run code after each request, use the `after_request` decorator
+@app.after_request
+def after_request_function():
+    print("after_request is running")
+
+# ========================= Before First Request =========================
+
+# To run code before the first request, use the `before_first_request` decorator
+#   This is great for initializing your application
+@app.before_first_request
+def before_first_function():
+    print("before_first_request happens once")
+
+# ========================= Static Assets =========================
+  
+# Flask has a built-in route `/static` that will look for a directory named 
+#   `/static` in your project where you create the Flask object
