@@ -325,3 +325,115 @@ ring.nickname = "Gollum's precious"
 print(ring.nickname)                  # Gollum's precious
 del ring.nickname                     # Oh no! The ring is gone!
 # print(ring.nickname)                  # AttributeError: 'Ring' object has no attribute '_nickname'
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ with Keyword ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+f = None
+try:
+    f = open('some_file.txt')
+    # do stuff with f like read the file
+finally:
+    if f:
+      f.close()
+
+# The `with` keyword lets us avoid writing boilerplate everywhere you want to 
+#   access some resource whose connection needs to be closed, connections like 
+#   those to files and databases
+
+with open('some_file.txt') as f:
+    # do stuff with f like read the file
+    pass
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Psycopg ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Psycopg is a package that allows connection and interaction with PostgreSQL
+
+# `pipenv install psycopg2-binary`
+#   Installs Psycopg package
+
+# ========================= Setting Up The Database =========================
+"""
+Use these SQL statements to set up the database
+    CREATE USER psycopg_test_user WITH CREATEDB PASSWORD 'password';
+    CREATE DATABASE psycopg_test_db WITH OWNER psycopg_test_user;
+
+Set up the tables 
+    CREATE TABLE owners (
+      id SERIAL PRIMARY KEY,
+      first_name VARCHAR(255) NOT NULL,
+      last_name VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NOT NULL
+    );
+
+    -- Make and model should have their own tables
+    -- Simplified for now
+    CREATE TABLE cars (
+      id SERIAL PRIMARY KEY,
+      manu_year INTEGER NOT NULL,
+      make VARCHAR(255),
+      model VARCHAR(255),
+      owner_id INTEGER NOT NULL,
+      FOREIGN KEY (owner_id) REFERENCES owners(id)
+    );
+
+    INSERT INTO owners (first_name, last_name, email)
+    VALUES
+    ('Tim', 'Petrol', 'rotary@fast.com'),
+    ('Ryan', 'Runner', '10sec@jdm.com'),
+    ('Tia', 'Petrol', 'typer@wtec.com');
+
+    INSERT INTO cars (manu_year, make, model, owner_id)
+    VALUES
+    (1993, 'Mazda', 'Rx7', 1),
+    (1995, 'Mitsubishi', 'Eclipse', 2),
+    (1994, 'Acura', 'Integra', 3);
+"""
+# ========================= Connecting to PostgreSQL with Psycopg =========================
+
+# Create a file called psycopg_demo.py with the following contents
+#   Then run `pipenv run python psycopg_demo.py`
+
+import psycopg2
+
+CONNECTION_PARAMETERS = {
+                          'dbname': 'psycopg_test_db',
+                          'user': 'psycopg_test_user',
+                          'password': 'password',
+}
+
+with psycopg2.connect(**CONNECTION_PARAMETERS) as conn:
+    print(conn.get_dsn_parameters())
+
+    # Output: {'user': 'psycopg_test_user', 'dbname': 'psycopg_test_db', ...}
+
+
+# ========================= Open a "Cursor" Perform Data Operations =========================
+
+# After connecting to the database, you can create a cursor to perform operations
+
+with psycopg2.connect(**CONNECTION_PARAMETERS) as conn:
+    with conn.cursor() as curs:
+        curs.execute("SELECT USER;")
+        result = curs.fetchone()
+        print(result) # 'psycopg_test_user'
+
+
+# ========================= Parametrized SQL Operations =========================
+
+def get_owners_cars(owner_id):
+    """
+    Fetch and return all cars in the cars table
+    :param owner_id: <int> the id of the owner who's cars to return
+    :return: <list> the results of the query
+    """
+    with psycopg2.connect(**CONNECTION_PARAMETERS) as conn:
+        with conn.cursor() as curs:
+            curs.execute("""
+                         SELECT manu_year, make, model FROM cars
+                         WHERE owner_id = %(owner_id)s
+                         """,
+                         {'owner_id': owner_id})
+            results = curs.fetchall()
+            return results
+
+print(get_owners_cars(1)) # [(1993, 'Mazda', 'Rx7')]
