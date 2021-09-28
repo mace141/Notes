@@ -437,3 +437,98 @@ def get_owners_cars(owner_id):
             return results
 
 print(get_owners_cars(1)) # [(1993, 'Mazda', 'Rx7')]
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Introduction to Flask ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# https://open.appacademy.io/learn/python-for-in-person/week-2--python-for-in-person/introduction-to-flask
+
+# Flask is a framework for building web applications. 
+
+# Benefits of Flask:
+#     No rules
+#     Easy to use
+#     Scalable
+#     Flask makes no assumptions about the database layer
+
+# In order to start a Flask app, you have to specify which file to use with the
+#   FLASK_APP environment variable
+
+# `export FLASK_APP=app.py`
+# `pipenv run flask run`
+
+# To change the environment, you use the FLASK_ENV environment variable
+# `export FLASK_ENV=development`
+
+# ========================= Configuration =========================
+
+# Every time you start your virtual environment you need to remember to set the 
+#   FLASK_APP environment variable. When you change projects, you'll need to 
+#   switch to the appropriate file name. 
+
+# One solution is create your application in app/_init.py_. Another is to use 
+#   configuration. The benefit of a configuration file is that you can set many 
+#   other environment variables as well, such as FLASK_ENV.
+
+# ------------------------- .flaskenv -------------------------
+
+# In order for Flask to access the .flaskenv file, you need to install 
+#   `python-dotenv`
+
+# `pipenv install python-dotenv~=0.13`
+
+# Create a .flaskenv file and add in the environment variables
+#     FLASK_APP=app.py
+#     FLASK_ENV=development
+
+# ------------------------- app.config -------------------------
+
+# Another approach to configuration is to use a dictionary, `config`, that comes 
+#   with Flask. You will often use both.
+
+# - - - - - - - - - - - - - Good: set values directly - - - - - - - - - - - - -
+
+from flask import Flask
+
+app = Flask(__name__)
+# Set configuration variable
+app.config["greeting"] = 'Hey there, humans!'
+
+
+@app.route('/')
+def hello():
+    # Use configuration variable
+    return f'<h1>{app.config["greeting"]}</h1>'
+
+# - - - - - - - - - - - - - Better: config class - - - - - - - - - - - - -
+
+# Create a file called config.py and make a class with a property for each 
+#   configuration variable
+class Config(object):
+    GREETING = 'Salutations, superior students!'
+
+# Import the config class in your program
+from flask import Flask
+# Load configuration class
+from config import Config
+
+app = Flask(__name__)
+# Apply configuration from class
+app.config.from_object(Config)
+
+
+@app.route('/')
+def hello():
+    # Use configuration variable
+    return f'<h1>{app.config["GREETING"]}</h1>'
+
+# - - - - - - - - - - - - - Best: environment overrides config - - - - - - - - - - - - -
+
+# Sometimes you have a value which changes from environment to environment
+
+# Use the built-in `os` package and create a class variable which tries to get
+#   the environment value or sets a default value
+import os
+
+class Config(object):
+    GREETING = 'Salutations, superior students!'
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'default-key-for-devs'
