@@ -68,3 +68,28 @@ def _rob(nums, i, memo):
   
   memo[i] = max(first, second)
   return memo[i]
+
+# ========================= LeetCode 213 =========================
+
+def rob(nums):
+  if len(nums) == 1:
+    return nums[0]
+  first = _rob(nums, 0, True, {})
+  second = _rob(nums, 1, False, {})
+  return max(first, second)
+
+def _rob(nums, i, first, memo):
+  if i in memo:
+    return memo[i]
+  if i + 1 == len(nums):
+    if first:
+      return 0
+    else:
+      return nums[i]
+  if i >= len(nums):
+    return 0
+  
+  take_1 = nums[i] + _rob(nums, i + 2, first, memo)
+  skip_1 = _rob(nums, i + 1, first, memo)
+  memo[i] = max(take_1, skip_1)
+  return memo[i]
