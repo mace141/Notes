@@ -650,3 +650,109 @@ def visits():
 def delete_visits():
     session.pop('visits', None) # delete visits
     return 'Visits deleted'
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Class and Instance Variables ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# Class variables are defined directly on the class
+from datetime import date
+
+
+class Book:
+  loan_duration = 14  # days
+
+  def __init__(self, title, series, author):
+    self._title = title
+    self._series = series
+    self._author = author
+    self._checked_out_on = None
+
+  def checkout(self, checked_out_on=date.today()):
+    """
+    Method to checkout a book.
+    """
+    self._checked_out_on = checked_out_on
+
+  def is_overdue(self):
+    """
+    Method to check if a book is overdue.
+    """
+    overdue = False
+
+    if self._checked_out_on is not None:
+      elapsed_days = (date.today() - self._checked_out_on).days
+      overdue = elapsed_days > self.loan_duration
+
+    return overdue
+
+  def __repr__(self):
+    return f"{self._title} by {self._author}"
+
+# We have to be careful when setting class variables through an instance. This 
+#   will result in shadowing or hiding of the shared class variable
+fellowship_of_the_ring = Book(
+    "The Fellowship of the Ring",
+    "The Lord of the Rings",
+    "J.R.R. Tolkien")
+grapes_of_wrath = Book(
+    "The Grapes of Wrath",
+    None,
+    "John Steinbeck")
+
+# The `loan_duration` class variable
+# can be accessed through any instance.
+print(fellowship_of_the_ring.loan_duration)  # 14
+print(grapes_of_wrath.loan_duration)  # 14
+
+# Now change the `loan_duration` class variable value
+# through the `Book` class.
+Book.loan_duration = 7
+
+# The new `loan_duration` class variable value
+# is available on each existing instance.
+print(fellowship_of_the_ring.loan_duration)  # 7
+print(grapes_of_wrath.loan_duration)  # 7
+
+# THIS CODE DOESN'T WORK LIKE YOU'D EXPECT IT TO!
+# Attempt to update the `loan_duration` class variable
+# through an instance.
+fellowship_of_the_ring.loan_duration = 3
+
+# Check to see if the `loan_duration` class variable
+# was successfully updated.
+print(fellowship_of_the_ring.loan_duration)  # 3
+print(grapes_of_wrath.loan_duration)  # 7 <-- Oh oh!
+
+# Hmm... The `loan_duration` class variable
+# is still set to `7`.
+print(Book.loan_duration)  # 7
+
+# ========================= __slots__ =========================
+
+# The __slots__ variable lets Python speed up instance initialization and prevent 
+#   attribute name collisions. It also prevents you from dynamically defining
+#   attributes and setting a class variable value through an instance. 
+
+# ========================= Class and Static Methods =========================
+
+# Class and static methods can be defined using the built-in `@classmethod` and 
+#   `@staticmethod` class decorators
+
+# Class methods must take `cls` (the entire class definition) as its first 
+#   parameter and are commonly used to create instances
+@classmethod
+def create_series(cls, series, author, *args):
+    """
+    Factory class method for creating a series of books.
+    """
+    return [cls(title, series, author) for title in args]
+
+# Static methods are similar to class methods, but dont receive the class 
+#   definition as the first parameter. They are commonly used to perform 
+#   operations on collections of instances or tasks related to the class
+@staticmethod
+def get_titles(*args):
+    """
+    Static method that accepts a variable number
+    of Book instances and returns a list of their titles.
+    """
+    return [book._title for book in args]
