@@ -587,3 +587,66 @@ def before_first_function():
   
 # Flask has a built-in route `/static` that will look for a directory named 
 #   `/static` in your project where you create the Flask object
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Routing Blueprints In Flask ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# A Blueprint is a way to organize a group of related routes
+
+# ========================= Creating and Registering =========================
+
+# To create a Blueprint, import it from Flask and call its constructor
+
+# routes/admin.py
+from flask import Blueprint
+
+bp = Blueprint('admin', __name__, url_prefix='/admin')
+# This creates a blueprint named admin
+
+# To register a blueprint, use the `register_blueprint` method of the Flask object
+import routes
+
+app = Flask(__name__)
+
+app.register_blueprint(routes.admin.bp)
+
+# ========================= Using the Blueprint =========================
+
+# In the file where you created the Blueprint, you can use the blueprint object
+#   to register individual routes
+
+# routes/admin.py
+from flask import Blueprint
+
+bp = Blueprint('admin', __name__, url_prefix='/admin')
+
+# This route is now /admin/dashboard because it uses the
+# url_prefix="/admin" from the Blueprint registration as
+# the beginning of the route and, then, adding the route
+# registered, /dashboard, to it.
+@bp.route('/dashboard', methods=('GET', 'POST'))
+def admin_dashboard():
+  pass
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Flask Sessions ]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# To store session related data, import session from flask
+from flask import Flask, session # More things, if you need them
+
+app = Flask(__name__)
+
+# other configuration of the Flask application object
+
+@app.route('/visits-counter/')
+def visits():
+    if 'visits' in session:
+        # reading and updating session data
+        session['visits'] = session.get('visits') + 1
+    else:
+        # setting session data
+        session['visits'] = 1
+    return "Total visits: {}".format(session.get('visits'))
+
+@app.route('/delete-visits/', methods=["POST"])
+def delete_visits():
+    session.pop('visits', None) # delete visits
+    return 'Visits deleted'
