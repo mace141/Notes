@@ -190,3 +190,138 @@ class TestDoubleFunction(unittest.TestCase):
     lst1 = [1, 2, 3]
     lst2 = [1, 1 + 1, 1 + 1 + 1]
     self.assertEqual(lst1, lst2)
+
+# [[[[[[[[[[[[[[[[[[[[[[[[[ Decorators ]]]]]]]]]]]]]]]]]]]]]]]]] 
+
+# A decorator is a function that takes in another function to extend its behavior
+#   and return a modified version of the inner function
+
+# ========================= Callbacks =========================
+
+# Python functions are first-class objects, meaning there are no restrictions to 
+#   how the function can be used (can use as argument)
+
+def say_hi(name):
+  print(f'Hi, {name}!')
+
+def say_good_morning(name):
+  print(f'Good morning, {name}!')
+
+def say_something_to_curtis(say_something_func):
+  return say_something_func('Curtis')
+
+say_something_to_curtis(say_hi)            # => Hi, Curtis!
+say_something_to_curtis(say_good_morning)  # => Good morning, Curtis!
+
+# ========================= Introspection =========================
+
+# Introspection is the ability to examine objects to determine its behavior or 
+#   type. You can use the `dir()` function to observe the say_hi object
+
+print(say_hi)       # <function say_hi at 0x1037a41f0>
+print(dir(say_hi))
+# ['__annotations__', '__call__', '__class__', '__closure__', '__code__', 
+# '__defaults__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', 
+# '__format__', '__ge__', '__get__', '__getattribute__', '__globals__', '__gt__', 
+# '__hash__', '__init__', '__init_subclass__', '__kwdefaults__', '__le__', 
+# '__lt__', '__module__', '__name__', '__ne__', '__new__', '__qualname__', 
+# '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', 
+# '__str__', '__subclasshook__']
+
+print(say_hi.__closure__) # None
+
+# ========================= Closures =========================
+
+# A closure is formed when an inner function has access to an outer function's
+#   arguments. `say_hi` above did not close over any arguments, but `say_from` 
+#   below closed over the `name` argument, Ryan. 
+
+def say_hi_to(name):
+  def say_from(author):
+    print(f'Hi, {name}!')
+    print(f'This is a message from {author}.')
+  return say_from
+
+say_hi_ryan_from = say_hi_to('Ryan')
+say_hi_ryan_from('Julia')             # Hi, Ryan! This is a message from Julia.
+say_hi_ryan_from('Erik')              # Hi, Ryan! This is a message from Erik.
+
+print(say_hi_ryan_from.__closure__)   # (<cell at 0x1093cf1f0: str object at 0x1094035f0>,)
+print(say_hi_ryan_from.__closure__[0].cell_contents)  # Ryan
+
+# ========================= Decorators =========================
+
+# Decorators can wrap functions to dynamically modify their behavior
+
+def message_decorator(message_func):
+  def message_wrapper(name):
+    from_statement = 'This is a message from ' + name
+    print(message_func() + from_statement)
+  return message_wrapper
+
+def say_hi():
+  return 'Hi! '
+
+def say_bye():
+  return 'Bye! '
+
+print(say_hi)             # <function say_hi at 0x10f1a9280>>
+print(say_hi.__closure__) # None
+
+say_hi = message_decorator(say_hi)
+print(say_hi)             # <function message_decorator.<locals>.message_wrapper at 0x10f1a93a0>
+print(say_hi.__closure__) # (<cell at 0x10f17b1f0: function object at 0x10f1a9280>,)
+print(say_hi.__closure__[0].cell_contents) # <function say_hi at 0x10f1a9280>
+
+# ------------------------- Syntactic Sugar -------------------------
+
+# Use the `@` symbol to prefix the name of a decorator function
+
+def message_decorator(message_func):
+  def message_wrapper(name):
+    from_statement = 'This is a message from ' + name
+    print(message_func() + from_statement)
+  return message_wrapper
+
+@message_decorator  # Replaces the need for `say_hi = message_decorator(say_hi)`
+def say_hi():
+  return 'Hi! '
+
+@message_decorator  # Replaces the need for `say_bye = message_decorator(say_bye)`
+def say_bye():
+  return 'Bye! '
+
+print(say_hi)   # <function message_decorator.<locals>.message_wrapper at 0x10d53c310>
+print(say_bye)  # <function message_decorator.<locals>.message_wrapper at 0x10d53c430>
+
+# ========================= Built-in Class Decorators =========================
+
+# Python has some built-in class decorators: `@property`, `@classmethod`, and
+#   `@staticmethod`
+
+# The `@property` decorator can also be used to define setter and deleter methods.
+#   `@method_name.setter` and `@method_name.deleter`
+
+class Ring:
+  def __init__(self):
+    self._nickname = "Shiny ring"
+
+  @property
+  def nickname(self):
+    return self._nickname
+
+  @nickname.setter
+  def nickname(self, value):
+    self._nickname = value
+
+  @nickname.deleter
+  def nickname(self):
+    del self._nickname
+    print('Oh no! The ring is gone!')
+
+ring = Ring()
+print(ring.nickname)                  # Shiny ring
+ring.nickname = "Gollum's precious"
+print(ring.nickname)                  # Gollum's precious
+del ring.nickname                     # Oh no! The ring is gone!
+# print(ring.nickname)                  # AttributeError: 'Ring' object has no attribute '_nickname'
