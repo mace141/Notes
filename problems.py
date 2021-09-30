@@ -93,3 +93,15 @@ def _rob(nums, i, first, memo):
   skip_1 = _rob(nums, i + 1, first, memo)
   memo[i] = max(take_1, skip_1)
   return memo[i]
+
+# ========================= LeetCode 55 =========================
+
+def can_jump(nums):
+  n = len(nums) - 2
+  idx = n + 1
+
+  for i in range(n, -1, -1):
+    if i + nums[i] >= idx:
+      idx = i
+
+  return idx == 0

@@ -1778,7 +1778,7 @@ const treeIncludes = (root, target) => {
 const treeIncludes = (root, target) => {
   if (root === null) return false;
   if (root.val === target) return true;
-  return treeIncludes(root.left. target) || treeIncludes(root.right. target);
+  return treeIncludes(root.left, target) || treeIncludes(root.right, target);
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[ #27 tree sum ]]]]]]]]]]]]]]]]]]]]]]]]] 
