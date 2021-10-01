@@ -109,12 +109,11 @@ def can_jump(nums):
 # ========================= LeetCode 45 =========================
 
 def jump(nums):
-    start = reach = 0
-    jumps = 0
-    
-    while reach < len(nums) - 1:
-      jumps += 1
-      furthest_jump = max(i + nums[i] for i in range(start, reach + 1))
-      start, reach = reach, furthest_jump
-    
-    return jumps
+  start = reach = jumps = 0
+  
+  while reach < len(nums) - 1:
+    furthest_jump = max(i + nums[i] for i in range(start, reach + 1))
+    start, reach = reach, furthest_jump
+    jumps += 1
+  
+  return jumps
