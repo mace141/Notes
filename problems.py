@@ -134,3 +134,13 @@ def maxArea(height):
     else:
       i += 1
   return max_area
+
+# ========================= LeetCode 121 =========================
+
+def maxProfit(prices):
+  res = 0
+  min_price = float('inf')
+  for p in prices:
+    min_price = min(min_price, p)
+    res = max(res, p - min_price)
+  return res
