@@ -330,19 +330,19 @@ del ring.nickname                     # Oh no! The ring is gone!
 
 f = None
 try:
-    f = open('some_file.txt')
-    # do stuff with f like read the file
+  f = open('some_file.txt')
+  # do stuff with f like read the file
 finally:
-    if f:
-      f.close()
+  if f:
+    f.close()
 
 # The `with` keyword lets us avoid writing boilerplate everywhere you want to 
 #   access some resource whose connection needs to be closed, connections like 
 #   those to files and databases
 
 with open('some_file.txt') as f:
-    # do stuff with f like read the file
-    pass
+  # do stuff with f like read the file
+  pass
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Psycopg ]]]]]]]]]]]]]]]]]]]]]]]]]
 
@@ -402,9 +402,9 @@ CONNECTION_PARAMETERS = {
 }
 
 with psycopg2.connect(**CONNECTION_PARAMETERS) as conn:
-    print(conn.get_dsn_parameters())
+  print(conn.get_dsn_parameters())
 
-    # Output: {'user': 'psycopg_test_user', 'dbname': 'psycopg_test_db', ...}
+  # Output: {'user': 'psycopg_test_user', 'dbname': 'psycopg_test_db', ...}
 
 
 # ========================= Open a "Cursor" Perform Data Operations =========================
@@ -412,10 +412,10 @@ with psycopg2.connect(**CONNECTION_PARAMETERS) as conn:
 # After connecting to the database, you can create a cursor to perform operations
 
 with psycopg2.connect(**CONNECTION_PARAMETERS) as conn:
-    with conn.cursor() as curs:
-        curs.execute("SELECT USER;")
-        result = curs.fetchone()
-        print(result) # 'psycopg_test_user'
+  with conn.cursor() as curs:
+    curs.execute("SELECT USER;")
+    result = curs.fetchone()
+    print(result) # 'psycopg_test_user'
 
 
 # ========================= Parametrized SQL Operations =========================
@@ -496,15 +496,15 @@ app.config["greeting"] = 'Hey there, humans!'
 
 @app.route('/')
 def hello():
-    # Use configuration variable
-    return f'<h1>{app.config["greeting"]}</h1>'
+  # Use configuration variable
+  return f'<h1>{app.config["greeting"]}</h1>'
 
 # - - - - - - - - - - - - - Better: config class - - - - - - - - - - - - -
 
 # Create a file called config.py and make a class with a property for each 
 #   configuration variable
 class Config(object):
-    GREETING = 'Salutations, superior students!'
+  GREETING = 'Salutations, superior students!'
 
 # Import the config class in your program
 from flask import Flask
@@ -518,8 +518,8 @@ app.config.from_object(Config)
 
 @app.route('/')
 def hello():
-    # Use configuration variable
-    return f'<h1>{app.config["GREETING"]}</h1>'
+  # Use configuration variable
+  return f'<h1>{app.config["GREETING"]}</h1>'
 
 # - - - - - - - - - - - - - Best: environment overrides config - - - - - - - - - - - - -
 
@@ -530,8 +530,8 @@ def hello():
 import os
 
 class Config(object):
-    GREETING = 'Salutations, superior students!'
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'default-key-for-devs'
+  GREETING = 'Salutations, superior students!'
+  SECRET_KEY = os.environ.get('SECRET_KEY') or 'default-key-for-devs'
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Routing In Flask ]]]]]]]]]]]]]]]]]]]]]]]]]
 
@@ -540,13 +540,13 @@ class Config(object):
 # Routes are set with the `route` decorator on a function. 
 @app.route('/')
 def some_function():
-    return 'Some content'
+  return 'Some content'
 
 # You can decorate the same function with multiple URLs
 @app.route('/')
 @app.route('/home')
 def home():
-    return '<h1>Home</h1>'
+  return '<h1>Home</h1>'
 
 # ========================= Wildcards =========================
 
@@ -554,26 +554,26 @@ def home():
 #   in the parameters of the function
 @app.route('/item/<id>')
 def item(id):
-    return f'<h1>Item {id}</h1>'
+  return f'<h1>Item {id}</h1>'
 
 # You can also specify the data type of the wildcard
 @app.route('/item/<int:id>')
 def item(id):
-    return f'<h1>Item {id}</h1>'
+  return f'<h1>Item {id}</h1>'
 
 # ========================= Before Request =========================
 
 # To run code before each request, use the `before_request` decorator
 @app.before_request
 def before_request_function():
-    print("before_request is running")
+  print("before_request is running")
 
 # ========================= After Request =========================
-    
+  
 # To run code after each request, use the `after_request` decorator
 @app.after_request
 def after_request_function():
-    print("after_request is running")
+  print("after_request is running")
 
 # ========================= Before First Request =========================
 
@@ -581,7 +581,7 @@ def after_request_function():
 #   This is great for initializing your application
 @app.before_first_request
 def before_first_function():
-    print("before_first_request happens once")
+  print("before_first_request happens once")
 
 # ========================= Static Assets =========================
   
@@ -638,18 +638,18 @@ app = Flask(__name__)
 
 @app.route('/visits-counter/')
 def visits():
-    if 'visits' in session:
-        # reading and updating session data
-        session['visits'] = session.get('visits') + 1
-    else:
-        # setting session data
-        session['visits'] = 1
-    return "Total visits: {}".format(session.get('visits'))
+  if 'visits' in session:
+    # reading and updating session data
+    session['visits'] = session.get('visits') + 1
+  else:
+    # setting session data
+    session['visits'] = 1
+  return "Total visits: {}".format(session.get('visits'))
 
 @app.route('/delete-visits/', methods=["POST"])
 def delete_visits():
-    session.pop('visits', None) # delete visits
-    return 'Visits deleted'
+  session.pop('visits', None) # delete visits
+  return 'Visits deleted'
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ Class and Instance Variables ]]]]]]]]]]]]]]]]]]]]]]]]]
 
@@ -690,13 +690,13 @@ class Book:
 # We have to be careful when setting class variables through an instance. This 
 #   will result in shadowing or hiding of the shared class variable
 fellowship_of_the_ring = Book(
-    "The Fellowship of the Ring",
-    "The Lord of the Rings",
-    "J.R.R. Tolkien")
+  "The Fellowship of the Ring",
+  "The Lord of the Rings",
+  "J.R.R. Tolkien")
 grapes_of_wrath = Book(
-    "The Grapes of Wrath",
-    None,
-    "John Steinbeck")
+  "The Grapes of Wrath",
+  None,
+  "John Steinbeck")
 
 # The `loan_duration` class variable
 # can be accessed through any instance.
@@ -741,18 +741,18 @@ print(Book.loan_duration)  # 7
 #   parameter and are commonly used to create instances
 @classmethod
 def create_series(cls, series, author, *args):
-    """
-    Factory class method for creating a series of books.
-    """
-    return [cls(title, series, author) for title in args]
+  """
+  Factory class method for creating a series of books.
+  """
+  return [cls(title, series, author) for title in args]
 
 # Static methods are similar to class methods, but dont receive the class 
 #   definition as the first parameter. They are commonly used to perform 
 #   operations on collections of instances or tasks related to the class
 @staticmethod
 def get_titles(*args):
-    """
-    Static method that accepts a variable number
-    of Book instances and returns a list of their titles.
-    """
-    return [book._title for book in args]
+  """
+  Static method that accepts a variable number
+  of Book instances and returns a list of their titles.
+  """
+  return [book._title for book in args]
