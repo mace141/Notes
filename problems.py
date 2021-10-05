@@ -144,3 +144,36 @@ def maxProfit(prices):
     min_price = min(min_price, p)
     res = max(res, p - min_price)
   return res
+
+# ========================= LeetCode 121 =========================
+
+def canFinish(numCourses, prerequisites):
+  graph = build_graph(numCourses, prerequisites)
+  visited = set()
+  for node in graph:
+    if inCycle(node, graph, visited, set()):
+      return False
+  return True
+        
+def build_graph(n, edges):
+  graph = {}
+  for i in range(n):
+    graph[i] = []
+  for pre, post in edges:
+    graph[pre].append(post)
+  return graph
+
+def inCycle(node, graph, visited, visiting):
+  if node in visiting:
+    return True
+  if node in visited:
+    return False
+  
+  visiting.add(node)
+  for neighbor in graph[node]:
+    if inCycle(neighbor, graph, visited, visiting):
+      return True
+  visiting.remove(node)
+  visited.add(node)
+  
+  return False
