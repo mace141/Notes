@@ -117,3 +117,20 @@ def jump(nums):
     jumps += 1
   
   return jumps
+
+# ========================= LeetCode 11 =========================
+
+def maxArea(height):
+  max_area = float('-inf')
+  i = 0
+  j = len(height) - 1
+  for w in range(j, 0, -1):
+    h1 = height[i]
+    h2 = height[j]
+    area = min(h1, h2) * w
+    max_area = max(max_area, area)
+    if h1 > h2:
+      j -= 1
+    else:
+      i += 1
+  return max_area
