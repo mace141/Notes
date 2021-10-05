@@ -177,3 +177,22 @@ def inCycle(node, graph, visited, visiting):
   visited.add(node)
   
   return False
+
+# ========================= LeetCode 128 =========================
+
+def longestConsecutive(nums):
+  num_set = set(nums)
+  streak = 0
+  
+  for n in num_set:
+    if n - 1 not in num_set:
+      current_streak = 1
+      num = n
+      
+      while num + 1 in num_set:
+        current_streak += 1
+        num += 1
+        
+      streak = max(streak, current_streak)
+  
+  return streak
