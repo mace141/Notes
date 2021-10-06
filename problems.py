@@ -183,16 +183,31 @@ def inCycle(node, graph, visited, visiting):
 def longestConsecutive(nums):
   num_set = set(nums)
   streak = 0
-  
   for n in num_set:
     if n - 1 not in num_set:
       current_streak = 1
       num = n
-      
       while num + 1 in num_set:
         current_streak += 1
         num += 1
-        
       streak = max(streak, current_streak)
   
   return streak
+
+# ========================= LeetCode 3 =========================
+
+def lengthOfLongestSubstring(s):
+  res = 0
+  i = 0
+  while i < len(s):
+    j = i
+    visited = set()
+    while j < len(s):
+      c = s[j]
+      if c in visited:
+        break
+      visited.add(c)
+      res = max(res, len(visited))
+      j += 1
+    i += 1
+  return res
