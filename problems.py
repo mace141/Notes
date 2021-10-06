@@ -211,3 +211,29 @@ def lengthOfLongestSubstring(s):
       j += 1
     i += 1
   return res
+
+# ========================= LeetCode 133 =========================
+
+class Node:
+  def __init__(self, val = 0, neighbors = None):
+    self.val = val
+    self.neighbors = neighbors if neighbors is not None else []
+
+def cloneGraph(node):
+  if not node:
+    return node
+  
+  dct = {node: Node(node.val)}
+  return _cloneGraph(node, dct)
+  
+def _cloneGraph(node, nodes):
+  if node.val in nodes:
+    return nodes[node.val]
+
+  clone = Node(node.val)
+  nodes[node.val] = clone
+  for neighbor in node.neighbors:
+    n = _cloneGraph(neighbor, nodes)
+    clone.neighbors.append(n)
+      
+  return clone
