@@ -145,7 +145,7 @@ def maxProfit(prices):
     res = max(res, p - min_price)
   return res
 
-# ========================= LeetCode 121 =========================
+# ========================= LeetCode 207 =========================
 
 def canFinish(numCourses, prerequisites):
   graph = build_graph(numCourses, prerequisites)
