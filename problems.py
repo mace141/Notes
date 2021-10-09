@@ -253,3 +253,38 @@ def set_zeroes(matrix):
       matrix[row][c] = 0
     for r in range(len(matrix)):
       matrix[r][col] = 0
+
+# ========================= LeetCode 54 =========================
+
+def spiral_order(matrix):
+  dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+  index = 0
+  res = []
+  visited = set()
+  i = 0
+  j = 0
+  m = len(matrix[0]) - 1
+  n = len(matrix) - 1
+  first_space = True
+  
+  while len(visited) < (m + 1) * (n + 1):
+    current = matrix[i][j]
+    res.append(current)
+    visited.add((i, j))
+    top_right = i == 0 and j == m
+    bot_right = i == n and j == m
+    bot_left = i == n and j == 0 and not first_space
+    
+    dy, dx = dirs[index]
+    if top_right or bot_right or bot_left or (i + dy, j + dx) in visited:
+      index += 1
+      if index == 4:
+        index = 0
+      dy, dx = dirs[index]
+    
+    new_y, new_x = i + dy, j + dx
+    first_space = False
+    i = new_y
+    j = new_x
+      
+  return res
