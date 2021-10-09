@@ -237,3 +237,19 @@ def _cloneGraph(node, nodes):
     clone.neighbors.append(n)
       
   return clone
+
+# ========================= LeetCode 73 =========================
+
+def set_zeroes(matrix):
+  indices = []
+  for i in range(len(matrix)):
+    for j in range(len(matrix[0])):
+      num = matrix[i][j]
+      if num == 0:
+        indices.append((i, j))
+  
+  for row, col in indices:
+    for c in range(len(matrix[0])):
+      matrix[row][c] = 0
+    for r in range(len(matrix)):
+      matrix[r][col] = 0
