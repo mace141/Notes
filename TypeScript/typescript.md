@@ -1,8 +1,6 @@
-# TypeScript
+# 1.[TypeScript for JS Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
 
-## 1.[TypeScript for JS Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
-
-### Types by Inference
+## Types by Inference
 
 TypeScript will infer a variable's type by looking at the variable's value.
 
@@ -12,7 +10,7 @@ let helloWorld: string;
 // both are defining the string type to helloWorld
 ```
 
-### Defining Types
+## Defining Types
 
 There are two syntaxes for building types: `interface` and `type`
 
@@ -67,7 +65,7 @@ statement doesn't need to be compiled into JavaScript
 declare const user: User;
 ```
 
-#### Types
+### Types
 
 JavaScript has a small set of primitive types: 
 `boolean`
@@ -84,11 +82,11 @@ TypeScript adds a few more types to this list:
 `unknown` - ensure someone using this type declares what the type is
 `void` - a function that returns `undefined`
 
-### Complex Types
+## Complex Types
 
 You can declare complex types by combining simple ones using unions or generics
 
-#### Unions
+### Unions
 
 Unions allow you to declare multiple types or values
 
@@ -99,7 +97,7 @@ type LockStates = "locked" | "unlocked";
 type PositiveOddNumbersUnderTen = 1 | 3 | 5 | 7 | 9;
 ```
 
-#### Generics
+### Generics
 
 Generics provide variables to types. They are commonly used with arrays to declare 
 the array's contents
@@ -110,7 +108,7 @@ type NumberArray = Array<number>;
 type ObjectWithNameArray = Array<{ name: string }>;
 ```
 
-### Structural Type System
+## Structural Type System
 
 TypeScript checks values to see if it matches the expected shape of the value. 
 
@@ -163,3 +161,18 @@ class VirtualPoint {
 const newVPoint = new VirtualPoint(13, 56);
 logPoint(newVPoint); // logs "13, 56"
 ```
+
+# 2. [The Basics](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
+
+## `tsc`, the TypeScript Compiler
+
+After installing TypeScript, you can check a TypeScript file's types and compile
+it into a JavaScript file. To do so, you run `tsc filename.ts` in your terminal.
+If there are no errors, it will create a JavaScript file. If there are errors, 
+they will be visible in the terminal. 
+
+## Erased Types & Downleveling
+
+The compiled JavaScript will not have type annotations and will be in ES3 by 
+default. You can specify the version by running the compiler with `--target es2015`. 
+For example, `tsc --target es2015 hello.ts`.
