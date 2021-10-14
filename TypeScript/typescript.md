@@ -21,10 +21,10 @@ You should prefer `interface` over `type` except for specific features
 You can explicitly define an object's type using an `interface` declaration
 
 ``` typescript
-const user = {
-  name: 'Daniel',
-  id: 141,
-};
+interface User {
+  name: string;
+  id: number;
+}
 ```
 
 You can also use an `interface` declaration with a class 
