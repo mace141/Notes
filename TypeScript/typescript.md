@@ -1,6 +1,8 @@
-# [TypeScript for JS Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
+# TypeScript
 
-## Types by Inference
+## 1.[TypeScript for JS Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
+
+### Types by Inference
 
 TypeScript will infer a variable's type by looking at the variable's value.
 
@@ -10,7 +12,7 @@ let helloWorld: string;
 // both are defining the string type to helloWorld
 ```
 
-## Defining Types
+### Defining Types
 
 There are two syntaxes for building types: `interface` and `type`
 
@@ -65,7 +67,7 @@ statement doesn't need to be compiled into JavaScript
 declare const user: User;
 ```
 
-### Types
+#### Types
 
 JavaScript has a small set of primitive types: 
 `boolean`
@@ -82,11 +84,11 @@ TypeScript adds a few more types to this list:
 `unknown` - ensure someone using this type declares what the type is
 `void` - a function that returns `undefined`
 
-## Complex Types
+### Complex Types
 
 You can declare complex types by combining simple ones using unions or generics
 
-### Unions
+#### Unions
 
 Unions allow you to declare multiple types or values
 
@@ -97,7 +99,7 @@ type LockStates = "locked" | "unlocked";
 type PositiveOddNumbersUnderTen = 1 | 3 | 5 | 7 | 9;
 ```
 
-### Generics
+#### Generics
 
 Generics provide variables to types. They are commonly used with arrays to declare 
 the array's contents
@@ -108,7 +110,7 @@ type NumberArray = Array<number>;
 type ObjectWithNameArray = Array<{ name: string }>;
 ```
 
-## Structural Type System
+### Structural Type System
 
 TypeScript checks values to see if it matches the expected shape of the value. 
 
