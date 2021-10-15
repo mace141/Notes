@@ -176,3 +176,33 @@ they will be visible in the terminal.
 The compiled JavaScript will not have type annotations and will be in ES3 by 
 default. You can specify the version by running the compiler with `--target es2015`. 
 For example, `tsc --target es2015 hello.ts`.
+
+## Strictness
+
+TypeScript allows you to vary the level of strictness by turning on flags. 
+Turning on the strict flag in the CLI or `"strict": true` in tsconfig.json will
+toggle them all on. The two most important ones are `noImplicitAny` and 
+`strictNullChecks`
+
+noImplicitAny - variables whose type is inferred as `any` will be issued an error
+
+strictNullChecks - makes handling `null` and `undefined` more explicit
+
+# 3. [Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
+
+## Primitive Types
+
+`string` - string values like `"Hello, world"`
+`number` - numbers like `141`. There is no `int` or `float`, everything is a `number`
+`boolean` - for `true` and `false`
+
+## Arrays
+
+To specify an array like `[1, 2, 3]`, you can use the syntax `number[]` or 
+`Array<number>`
+
+## `any`
+
+TypeScript's `any` is used when you don't want a value to cause typechecking errors.
+When a value's type is `any` you can do anything JavaScript can do with it. 
+
