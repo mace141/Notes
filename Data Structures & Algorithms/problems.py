@@ -329,3 +329,19 @@ def search(board, r, c, word, i, visited):
     visited.remove((r, c))
 
   return False
+
+# ========================= LeetCode 57 =========================
+
+def insert(intervals, new_interval):
+  new_start, new_end = new_interval
+  left, right = [], []
+  for itvl in intervals:
+    start, end = itvl
+    if end < new_start:
+      left.append(itvl)
+    elif new_end < start:
+      right.append(itvl)
+    else:
+      new_start = min(start, new_start)
+      new_end = max(end, new_end)
+  return left + [[new_start, new_end]] + right
