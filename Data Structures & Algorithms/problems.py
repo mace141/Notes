@@ -345,3 +345,16 @@ def insert(intervals, new_interval):
       new_start = min(start, new_start)
       new_end = max(end, new_end)
   return left + [[new_start, new_end]] + right
+
+# ========================= LeetCode 56 =========================
+
+def merge(intervals):
+  intervals.sort()
+  res = []
+  for i in range(len(intervals)):
+    start, end = intervals[i]
+    if not res or res[-1][1] < start:
+      res.append(intervals[i])
+    else:
+      res[-1][1] = max(res[-1][1], end)
+  return res
