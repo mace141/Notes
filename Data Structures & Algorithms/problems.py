@@ -358,3 +358,15 @@ def merge(intervals):
     else:
       res[-1][1] = max(res[-1][1], end)
   return res
+
+# ========================= LeetCode 453 =========================
+
+def eraseOverlapIntervals(intervals):
+  last = float('-inf')
+  res = 0
+  for itvl in sorted(intervals, key=lambda i: i[1]):
+    if itvl[0] >= last:
+      last = itvl[1]
+    else:
+      res += 1
+  return res
