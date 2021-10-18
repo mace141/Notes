@@ -370,3 +370,34 @@ def eraseOverlapIntervals(intervals):
     else:
       res += 1
   return res
+
+# Codewars https://www.codewars.com/kata/52742f58faf5485cae000b9a/train/python
+
+def format_duration(seconds):
+  if seconds == 0:
+    return 'now'
+  
+  time = {
+    'second': 1,
+    'minute': 60,
+    'hour': 60 * 60,
+    'day': 24 * 60 * 60,
+    'year': 365 * 24 * 60 * 60
+  }
+  time_lst = ['year', 'day', 'hour', 'minute', 'second']
+  
+  res_lst = []
+  for t in time_lst:
+    if seconds >= time[t]:
+      n = seconds // time[t]
+      s = str(n) + f' {t}' + ('s' if n > 1 else '')
+      res_lst.append(s)
+      seconds %= time[t]
+  res = ''
+  for i, s in enumerate(res_lst):
+    res += s
+    if i < len(res_lst) - 2:
+      res += ', '
+    elif i == len(res_lst) - 2:
+      res += ' and '
+  return res
