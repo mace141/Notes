@@ -578,3 +578,16 @@ def reverse(x):
   if n < -2**31 or n > 2**31 - 1:
     return 0
   return n if p else -n
+
+# ========================= LeetCode 88 =========================
+
+def merge_sorted_array(nums1, m, nums2, n):
+  while m > 0 and n > 0:
+    if nums2[n - 1] >= nums1[m - 1]:
+      nums1[m + n - 1] = nums2[n - 1]
+      n -= 1
+    else:
+      nums1[m + n - 1] = nums1[m - 1]
+      m -= 1
+  if n:
+    nums1[:n] = nums2[:n]
