@@ -401,3 +401,14 @@ def format_duration(seconds):
     elif i == len(res_lst) - 2:
       res += ' and '
   return res
+
+# ========================= LeetCode 724 =========================
+
+def pivotIndex(nums):
+  S = sum(nums)
+  left = 0
+  for i, n in enumerate(nums):
+    if left == (S - left - n):
+      return i
+    left += n
+  return -1
