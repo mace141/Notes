@@ -456,3 +456,12 @@ def removeDuplicates(nums):
       nums[i] = nums[j]
     j += 1
   return i + 1
+
+# ========================= LeetCode 122 =========================
+
+def maxProfit(prices):
+  total = 0
+  for i in range(len(prices) - 1):
+    if prices[i] < prices[i + 1]:
+      total += prices[i + 1] - prices[i]
+  return total
