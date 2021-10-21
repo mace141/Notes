@@ -412,3 +412,17 @@ def pivotIndex(nums):
       return i
     left += n
   return -1
+
+# ========================= LeetCode 416 =========================
+
+def canPartition(nums):
+  total = sum(nums)
+  if total % 2 == 1:
+    return False
+  target = total / 2
+  dp = {0}
+  for n in nums:
+    if target in dp:
+      return True
+    dp |= {n + i for i in dp}
+  return target in dp
