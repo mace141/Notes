@@ -465,3 +465,26 @@ def maxProfit(prices):
     if prices[i] < prices[i + 1]:
       total += prices[i + 1] - prices[i]
   return total
+
+# ========================= LeetCode 983 =========================
+
+def mincostTickets(days, costs):
+  passes = [1, 7, 30]
+  
+  def helper(i, memo):
+    if i in memo:
+      return memo[i]
+    if i >= len(days):
+      return 0
+    
+    low = float('inf')
+    j = i
+    for c, d in zip(costs, passes):
+      while j < len(days) and days[j] < days[i] + d:
+        j += 1
+      cost = c + helper(j, memo)
+      low = min(cost, low)
+    memo[i] = low
+    return low
+  
+  return helper(0, {})
