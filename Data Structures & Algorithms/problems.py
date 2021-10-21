@@ -426,3 +426,21 @@ def canPartition(nums):
       return True
     dp |= {n + i for i in dp}
   return target in dp
+
+# ========================= LeetCode 494 =========================
+
+def findTargetSumWays(nums, target):
+  def helper(nums, target, i, total, memo):
+    if (i, total) in memo:
+      return memo[(i, total)]
+    if target == total and i == len(nums):
+      return 1
+    if i == len(nums):
+      return 0
+    
+    count = 0
+    count += helper(nums, target, i + 1, total - nums[i], memo)
+    count += helper(nums, target, i + 1, total + nums[i], memo)
+    memo[(i, total)] = count
+    return count
+  return helper(nums, target, 0, 0, {})
