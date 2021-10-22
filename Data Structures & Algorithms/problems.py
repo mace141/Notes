@@ -507,3 +507,14 @@ def intersect(nums1, nums2):
       res.append(n)
       count[n] -= 1
   return res
+
+# ========================= LeetCode 283 =========================
+
+def move_zeroes(nums):
+  i = 0
+  j = 0
+  while j < len(nums):
+    if nums[j] != 0:
+      nums[i], nums[j] = nums[j], nums[i]
+      i += 1
+    j += 1
