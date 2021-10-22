@@ -518,3 +518,39 @@ def move_zeroes(nums):
       nums[i], nums[j] = nums[j], nums[i]
       i += 1
     j += 1
+
+# ========================= LeetCode 36 =========================
+
+def isValidSudoku(board):
+  def valid_line(board, row, col):
+    nums = set()
+    for i in range(9):
+      n = board[row][i] if col is None else board[i][col]
+      if n in nums:
+        return False
+      if n != '.':
+        nums.add(n)
+    return True
+  
+  def valid_box(board, r, c):
+    nums = set()
+    for i in range(3):
+      for j in range(3):
+        n = board[r + i][c + j]
+        if n in nums:
+          return False
+        if n != '.':
+          nums.add(n)
+    return True
+  
+  for i in range(9):
+    if not valid_line(board, i, None) or not valid_line(board, None, i):
+      return False
+  
+  box_starts = [0, 3, 6]
+  for i in box_starts:
+    for j in box_starts:
+      if not valid_box(board, i, j):
+        return False
+  
+  return True
