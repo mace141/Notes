@@ -496,3 +496,14 @@ def single_number(nums):
   for n in nums[1:]:
     x ^= n
   return x
+
+# ========================= LeetCode 350 =========================
+
+def intersect(nums1, nums2):
+  count = collections.Counter(nums1)
+  res = []
+  for n in nums2:
+    if count[n] > 0:
+      res.append(n)
+      count[n] -= 1
+  return res
