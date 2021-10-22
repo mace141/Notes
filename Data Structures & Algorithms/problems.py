@@ -591,3 +591,11 @@ def merge_sorted_array(nums1, m, nums2, n):
       m -= 1
   if n:
     nums1[:n] = nums2[:n]
+
+# ========================= LeetCode 53 =========================
+
+def max_subarray(nums):
+  for i in range(1, len(nums)):
+    if nums[i - 1] > 0:
+      nums[i] += nums[i - 1]
+  return max(nums)
