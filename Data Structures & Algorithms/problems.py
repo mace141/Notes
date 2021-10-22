@@ -488,3 +488,11 @@ def mincostTickets(days, costs):
     return low
   
   return helper(0, {})
+
+# ========================= LeetCode 136 =========================
+
+def single_number(nums):
+  x = nums[0]
+  for n in nums[1:]:
+    x ^= n
+  return x
