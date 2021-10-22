@@ -565,3 +565,16 @@ def reverse_string(s):
     i += 1
     j -= 1
 
+# ========================= LeetCode 7 =========================
+
+def reverse(x):
+  s = str(x)
+  if s[0] == '-':
+    n = int(s[:0:-1])
+    p = False
+  else:
+    n = int(s[::-1])
+    p = True
+  if n < -2**31 or n > 2**31 - 1:
+    return 0
+  return n if p else -n
