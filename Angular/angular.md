@@ -17,3 +17,38 @@ Angular is a component based frontend framework.
 
 `uppercase` can be used to format a string to uppercase
  * `<h2>{{hero.name | uppercase}} Details</h2>`
+
+## Two-Way Binding
+
+`ngModel` binds HTML and class properties two ways so that data transfers between 
+both
+`<div>
+  <label for="name">Hero name: </label>
+  <input id="name" [(ngModel)]="hero.name" placeholder="name">
+</div>`
+
+You must opt-in to the `FormsModule` in the `@NgModule` decorator to use the 
+`ngModel` directive
+
+``` typescript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+import { HeroesComponent } from './heroes/heroes.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeroesComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
