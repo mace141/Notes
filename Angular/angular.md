@@ -12,3 +12,8 @@ Angular is a component based frontend framework.
 ## Lifecycle Hooks
 
 `ngOnInit()` is useful for initialization logic
+
+## Formatting
+
+`uppercase` can be used to format a string to uppercase
+ * `<h2>{{hero.name | uppercase}} Details</h2>`
