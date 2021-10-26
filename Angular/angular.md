@@ -170,3 +170,44 @@ export class HeroesComponent implements OnInit {
   }
 }
 ```
+
+## Routing
+
+`ng generate module app-routing --flat --module=app` 
+
+This command will create a module. `--flat` flag puts the file in `src/app`. 
+`--module=app` tells the CLI to import it into `AppModule`
+
+### RouterModule
+
+src/app/app-routing.module.ts
+``` typescript 
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HeroesComponent } from './heroes/heroes.component';
+
+const routes: Routes = [
+  { path: 'heroes', component: HeroesComponent }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+```
+
+`RouterModule` and `Routes` lets the application have routing functionality. 
+`RouterModule.forRoot(routes)` will configure the router at the application's root level.
+The module must import the `RouterModule.forRoot(routes)` and export the 
+`RouterModule` to make routes accessible throughout the application. 
+
+### RouterOutlet
+
+`<router-outlet></router-outlet>` can be added to the `AppComponent` template to 
+display components that correspond to the routes
+
+### routerLink
+
+To add links and navigate through the application, you can add a `routerLink` 
+property to an `a` tag. `<a routerLink="/heroes">Heroes</a>`
