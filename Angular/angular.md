@@ -58,6 +58,10 @@ a list
 
 `<li *ngFor="let hero of heroes">`
 
+`*ngIf` is used to conditionally render HTML
+
+`<div *ngIf="selectedHero"></div>`
+
 ## Event Handlers
 
 ### Click Event
