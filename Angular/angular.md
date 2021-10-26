@@ -70,3 +70,15 @@ Angular's syntax for binding a click event is like this:
 `<li *ngFor="let hero of heroes" (click)="onSelect(hero)">`
 
 This will call the component's `onSelect(hero)` function when clicked. 
+
+## Attribute, Class, Style Binding
+
+### Syntax
+
+`<p> [attr.attribute-you-are-targeting]="expression"></p>`
+
+### Class 
+
+This will set the list item's class to `selected` if `hero === selectedHero`
+
+`<li [class.selected]="hero === selectedHero"></li>`
