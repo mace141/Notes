@@ -18,7 +18,7 @@ Angular is a component based frontend framework.
 `uppercase` can be used to format a string to uppercase
  * `<h2>{{hero.name | uppercase}} Details</h2>`
 
-## Two-Way Binding
+## Directives
 
 `ngModel` binds HTML and class properties two ways so that data transfers between 
 both
@@ -52,3 +52,8 @@ import { HeroesComponent } from './heroes/heroes.component';
 })
 export class AppModule { }
 ```
+
+`*ngFor` is Angular's repeater directive. It repeats the element for each one in
+a list
+
+`<li *ngFor="let hero of heroes">`
