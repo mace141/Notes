@@ -1,4 +1,4 @@
-# Angular
+# Angular - Tour of Heroes
 
 Angular is a component based frontend framework. 
 
