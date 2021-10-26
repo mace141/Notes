@@ -57,3 +57,12 @@ export class AppModule { }
 a list
 
 `<li *ngFor="let hero of heroes">`
+
+## Event Handlers
+
+### Click Event
+
+Angular's syntax for binding a click event is like this:
+`<li *ngFor="let hero of heroes" (click)="onSelect(hero)">`
+
+This will call the component's `onSelect(hero)` function when clicked. 
