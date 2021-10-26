@@ -82,3 +82,91 @@ This will call the component's `onSelect(hero)` function when clicked.
 This will set the list item's class to `selected` if `hero === selectedHero`
 
 `<li [class.selected]="hero === selectedHero"></li>`
+
+## Sharing data between components
+
+`@Input()` lets a parent component pass data to a child component
+
+`@Output()` lets a child component pass data to a parent component
+
+Example: 
+``` html
+<!-- Heroes component passes selectedHero to HeroDetail component as a hero property -->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+```
+``` typescript
+import { Component, OnInit, Input } from '@angular/core';
+import { Hero } from '../hero';
+
+@Component({
+  selector: 'app-hero-detail',
+  templateUrl: './hero-detail.component.html',
+  styleUrls: ['./hero-detail.component.css']
+})
+export class HeroDetailComponent implements OnInit {
+  @Input() hero?: Hero;
+  
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+```
+
+## Services
+
+Services are essentially reusable APIs that fetch data for a component.
+
+`@Injectable()` services participate in the dependency injection system, meaning
+the system will set the service as a singleton instance. 
+
+``` typescript
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { Hero } from './hero';
+import { HEROES } from './mock-heroes';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class HeroService {
+
+  constructor() { }
+
+  getHeroes(): Observable<Hero[]> {
+    const heroes = of(HEROES);
+    return heroes;
+  }
+}
+```
+``` typescript
+import { Component, OnInit } from '@angular/core';
+import { Hero } from '../hero';
+import { HeroService } from '../hero.service';
+
+@Component({
+  selector: 'app-heroes',
+  templateUrl: './heroes.component.html',
+  styleUrls: ['./heroes.component.css']
+})
+export class HeroesComponent implements OnInit {
+  heroes: Hero[] = [];
+  selectedHero?: Hero;
+
+  constructor(private heroService: HeroService) { }
+
+  ngOnInit(): void {
+    this.getHeroes();
+  }
+
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+  }
+
+  getHeroes(): void {
+    this.heroService.getHeroes()
+        .subscribe(heroes => this.heroes = heroes);
+  }
+}
+```
