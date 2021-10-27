@@ -599,3 +599,16 @@ def max_subarray(nums):
     if nums[i - 1] > 0:
       nums[i] += nums[i - 1]
   return max(nums)
+
+# HackerRank: Minimum Processing Time
+
+def minTime(processorTime, taskTime):
+  tasks = sorted(taskTime, reverse=True)
+  hi = 0
+  task = 0
+  for t in sorted(processorTime):
+    for i in range(4):
+      time = t + tasks[task]
+      hi = max(time, hi)
+      task += 1
+  return hi
