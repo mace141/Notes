@@ -612,3 +612,22 @@ def minTime(processorTime, taskTime):
       hi = max(time, hi)
       task += 1
   return hi
+
+# HackerRank: Prison Break
+
+def prison(n, m, h, v):
+  def helper(nums):
+    i = 0
+    lst = [2]
+    for idx, n in enumerate(nums):
+      if nums[idx - 1] + 1 == n:
+        lst[i] += 1
+      else: 
+        i += 1
+        lst.append(2)
+    return lst
+  
+  n = max(helper(sorted(h)))
+  m = max(helper(sorted(v)))
+  
+  return n * m
