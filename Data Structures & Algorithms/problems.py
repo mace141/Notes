@@ -669,3 +669,16 @@ def checkIfExist(arr):
       return True
     doubles.add(n)
   return False
+
+# ========================= LeetCode 941 =========================
+
+def validMountainArray(arr):
+  i = 0
+  j = len(arr) - 1
+  if j < 2:
+    return False
+  while arr[i + 1] > arr[i] and i < j - 1:
+    i += 1
+  while arr[j - 1] > arr[j] and j > 1:
+    j -= 1
+  return i == j
