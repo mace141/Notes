@@ -659,3 +659,13 @@ def removeElement(nums, val):
       nums[i], nums[j] = nums[j], nums[i]
       i += 1
   return i
+
+# ========================= LeetCode 1346 =========================
+
+def checkIfExist(arr):
+  doubles = set()
+  for n in arr:
+    if (2 * n) in doubles or (n / 2) in doubles:
+      return True
+    doubles.add(n)
+  return False
