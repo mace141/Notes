@@ -639,3 +639,13 @@ def replaceElements(arr):
   for i in range(len(arr) - 1, -1, -1):
     arr[i], hi = hi, max(hi, arr[i])
   return arr
+
+# ========================= LeetCode 905 =========================
+
+def sortArrayByParity(nums):
+  idx = 0
+  for i, n in enumerate(nums):
+    if n % 2 == 0:
+      nums[i],  nums[idx] = nums[idx], nums[i]
+      idx += 1
+  return nums
