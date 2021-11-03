@@ -631,3 +631,11 @@ def prison(n, m, h, v):
   m = max(helper(sorted(v)))
   
   return n * m
+
+# ========================= LeetCode 1299 =========================
+
+def replaceElements(arr):
+  hi = -1
+  for i in range(len(arr) - 1, -1, -1):
+    arr[i], hi = hi, max(hi, arr[i])
+  return arr
