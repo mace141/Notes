@@ -499,6 +499,8 @@ def single_number(nums):
 
 # ========================= LeetCode 350 =========================
 
+import collections
+
 def intersect(nums1, nums2):
   count = collections.Counter(nums1)
   res = []
