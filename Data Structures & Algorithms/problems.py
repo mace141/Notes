@@ -649,3 +649,13 @@ def sortArrayByParity(nums):
       nums[i],  nums[idx] = nums[idx], nums[i]
       idx += 1
   return nums
+
+# ========================= LeetCode 27 =========================
+
+def removeElement(nums, val):
+  i = 0
+  for j, n in enumerate(nums):
+    if n != val:
+      nums[i], nums[j] = nums[j], nums[i]
+      i += 1
+  return i
