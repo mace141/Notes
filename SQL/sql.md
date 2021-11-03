@@ -84,3 +84,24 @@ SELECT column, another_table_column, …
 `LEFT JOIN` keeps rows from the first table regardless of whether there is a match
 `RIGHT JOIN` keeps rows from the second table regardless of a match
 `FULL JOIN` keeps rows from both tables regardless of a match
+
+## Querying with expressions
+
+You can use expressions to transform raw data to suit your purposes with math or
+string functions. 
+
+``` SQL
+SELECT particle_speed / 2.0 AS half_particle_speed
+  FROM physics_data
+ WHERE ABS(particle_position) * 10.0 > 500;
+```
+
+The `AS` keyword is used to give column or table names an alias
+
+``` SQL
+SELECT column AS better_column_name, …
+  FROM a_long_widgets_table_name AS mywidgets
+  JOIN widget_sales
+    ON mywidgets.id = widget_sales.widget_id;
+```
+
