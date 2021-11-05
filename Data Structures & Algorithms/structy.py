@@ -366,23 +366,23 @@ def five_sort(nums):
 # the nodes in the linked list.
 #
 # test_00:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
 # a.next = b
 # b.next = c
 # c.next = d
 # a -> b -> c -> d
 # linked_list_values(a) # -> [ 'a', 'b', 'c', 'd' ]
 # test_01:
-# x = new Node("x")
-# y = new Node("y")
+# x = Node("x")
+# y = Node("y")
 # x.next = y
 # x -> y
 # linked_list_values(x) # -> [ 'x', 'y' ]
 # test_02:
-# q = new Node("q")
+# q = Node("q")
 # q
 # linked_list_values(q) # -> [ 'q' ]
 # test_03:
@@ -402,11 +402,11 @@ def linked_list_values(head):
 # in the linked list.
 #
 # test_00:
-# a = new Node(2)
-# b = new Node(8)
-# c = new Node(3)
-# d = new Node(-1)
-# e = new Node(7)
+# a = Node(2)
+# b = Node(8)
+# c = Node(3)
+# d = Node(-1)
+# e = Node(7)
 # a.next = b
 # b.next = c
 # c.next = d
@@ -414,13 +414,13 @@ def linked_list_values(head):
 # 2 -> 8 -> 3 -> -1 -> 7
 # sum_list(a) # 19
 # test_01:
-# x = new Node(38)
-# y = new Node(4)
+# x = Node(38)
+# y = Node(4)
 # x.next = y
 # 38 -> 4
 # sum_list(x) # 42
 # test_02:
-# z = new Node(100)
+# z = Node(100)
 # 100
 # sum_list(z) # 100
 # test_03:
@@ -449,47 +449,47 @@ def sum_list(head):
 # the linked list contains the target.
 #
 # test_00:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
 # a.next = b
 # b.next = c
 # c.next = d
 # a -> b -> c -> d
 # linked_list_find(a, "c") # true
 # test_01:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
 # a.next = b
 # b.next = c
 # c.next = d
 # a -> b -> c -> d
 # linked_list_find(a, "d") # true
 # test_02:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
 # a.next = b
 # b.next = c
 # c.next = d
 # a -> b -> c -> d
 # linked_list_find(a, "q") # false
 # test_03:
-# node_1 = new Node("jason")
-# node2 = new Node("leneli")
+# node_1 = Node("jason")
+# node2 = Node("leneli")
 # node_1.next = node2
 # jason -> leneli
 # linked_list_find(node_1, "jason") # true
 # test_04:
-# node_1 = new Node(42)
+# node_1 = Node(42)
 # 42
 # linked_list_find(node_1, 42) # true
 # test_05:
-# node_1 = new Node(42)
+# node_1 = Node(42)
 # 42
 # linked_list_find(node_1, 100) # false
 
@@ -517,44 +517,44 @@ def linked_list_find(head, target):
 # If there is no node at the given index, then return None.
 #
 # test_00:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
 # a.next = b
 # b.next = c
 # c.next = d
 # a -> b -> c -> d
 # get_node_value(a, 2) # 'c'
 # test_01:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
 # a.next = b
 # b.next = c
 # c.next = d
 # a -> b -> c -> d
 # get_node_value(a, 3) # 'd'
 # test_02:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
 # a.next = b
 # b.next = c
 # c.next = d
 # a -> b -> c -> d
 # get_node_value(a, 7) # None
 # test_03:
-# node_1 = new Node("banana")
-# node2 = new Node("mango")
+# node_1 = Node("banana")
+# node2 = Node("mango")
 # node_1.next = node2
 # banana -> mango
 # get_node_value(node_1, 0) # 'banana'
 # test_04:
-# node_1 = new Node("banana")
-# node2 = new Node("mango")
+# node_1 = Node("banana")
+# node2 = Node("mango")
 # node_1.next = node2
 # banana -> mango
 # get_node_value(node_1, 1) # 'mango'
@@ -586,12 +586,12 @@ def get_node_value(head, index):
 # list in-place and return the new head of the reversed linked list.
 #
 # test_00:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
 # a.next = b
 # b.next = c
 # c.next = d
@@ -600,13 +600,13 @@ def get_node_value(head, index):
 # a -> b -> c -> d -> e -> f
 # reverse_list(a) # f -> e -> d -> c -> b -> a
 # test_01:
-# x = new Node("x")
-# y = new Node("y")
+# x = Node("x")
+# y = Node("y")
 # x.next = y
 # x -> y
 # reverse_list(x) # y -> x
 # test_02:
-# p = new Node("p")
+# p = Node("p")
 # p
 # reverse_list(p) # p
 
@@ -641,50 +641,50 @@ def reverse_list(head, prev = None):
 # You may assume that both input lists are non-empty.
 #
 # test_00:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
 # a.next = b
 # b.next = c
 # a -> b -> c
-# x = new Node("x")
-# y = new Node("y")
-# z = new Node("z")
+# x = Node("x")
+# y = Node("y")
+# z = Node("z")
 # x.next = y
 # y.next = z
 # x -> y -> z
 # zipper_lists(a, x)
 # a -> x -> b -> y -> c -> z
 # test_01:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
 # a.next = b
 # b.next = c
 # c.next = d
 # d.next = e
 # e.next = f
 # a -> b -> c -> d -> e -> f
-# x = new Node("x")
-# y = new Node("y")
-# z = new Node("z")
+# x = Node("x")
+# y = Node("y")
+# z = Node("z")
 # x.next = y
 # y.next = z
 # x -> y -> z
 # zipper_lists(a, x)
 # a -> x -> b -> y -> c -> z -> d -> e -> f
 # test_02:
-# s = new Node("s")
-# t = new Node("t")
+# s = Node("s")
+# t = Node("t")
 # s.next = t
 # s -> t
-# one = new Node(1)
-# two = new Node(2)
-# three = new Node(3)
-# four = new Node(4)
+# one = Node(1)
+# two = Node(2)
+# three = Node(3)
+# four = Node(4)
 # one.next = two
 # two.next = three
 # three.next = four
@@ -692,24 +692,24 @@ def reverse_list(head, prev = None):
 # zipper_lists(s, one)
 # s -> 1 -> t -> 2 -> 3 -> 4
 # test_03:
-# w = new Node("w")
+# w = Node("w")
 # w
-# one = new Node(1)
-# two = new Node(2)
-# three = new Node(3)
+# one = Node(1)
+# two = Node(2)
+# three = Node(3)
 # one.next = two
 # two.next = three
 # 1 -> 2 -> 3 
 # zipper_lists(w, one)
 # w -> 1 -> 2 -> 3
 # test_04:
-# one = new Node(1)
-# two = new Node(2)
-# three = new Node(3)
+# one = Node(1)
+# two = Node(2)
+# three = Node(3)
 # one.next = two
 # two.next = three
 # 1 -> 2 -> 3 
-# w = new Node("w")
+# w = Node("w")
 # w
 # zipper_lists(one, w)
 # 1 -> w -> 2 -> 3
@@ -763,22 +763,22 @@ def zipper_lists(head_1, head_2):
 # sorted numbers.
 #
 # test_00:
-# a = new Node(5)
-# b = new Node(7)
-# c = new Node(10)
-# d = new Node(12)
-# e = new Node(20)
-# f = new Node(28)
+# a = Node(5)
+# b = Node(7)
+# c = Node(10)
+# d = Node(12)
+# e = Node(20)
+# f = Node(28)
 # a.next = b
 # b.next = c
 # c.next = d
 # d.next = e
 # e.next = f
 # 5 -> 7 -> 10 -> 12 -> 20 -> 28
-# q = new Node(6)
-# r = new Node(8)
-# s = new Node(9)
-# t = new Node(25)
+# q = Node(6)
+# r = Node(8)
+# s = Node(9)
+# t = Node(25)
 # q.next = r
 # r.next = s
 # s.next = t
@@ -786,22 +786,22 @@ def zipper_lists(head_1, head_2):
 # merge_lists(a, q)
 # 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 12 -> 20 -> 25 -> 28 
 # test_01:
-# a = new Node(5)
-# b = new Node(7)
-# c = new Node(10)
-# d = new Node(12)
-# e = new Node(20)
-# f = new Node(28)
+# a = Node(5)
+# b = Node(7)
+# c = Node(10)
+# d = Node(12)
+# e = Node(20)
+# f = Node(28)
 # a.next = b
 # b.next = c
 # c.next = d
 # d.next = e
 # e.next = f
 # 5 -> 7 -> 10 -> 12 -> 20 -> 28
-# q = new Node(1)
-# r = new Node(8)
-# s = new Node(9)
-# t = new Node(10)
+# q = Node(1)
+# r = Node(8)
+# s = Node(9)
+# t = Node(10)
 # q.next = r
 # r.next = s
 # s.next = t
@@ -809,10 +809,10 @@ def zipper_lists(head_1, head_2):
 # merge_lists(a, q)
 # 1 -> 5 -> 7 -> 8 -> 9 -> 10 -> 10 -> 12 -> 20 -> 28 
 # test_02:
-# h = new Node(30)
+# h = Node(30)
 # 30
-# p = new Node(15)
-# q = new Node(67)
+# p = Node(15)
+# q = Node(67)
 # p.next = q
 # 15 -> 67
 # merge_lists(h, p)
@@ -872,27 +872,27 @@ def merge_lists(head_1, head_2):
 # You may assume that the input list is non-empty.
 #
 # test_00:
-# a = new Node(7)
-# b = new Node(7)
-# c = new Node(7)
+# a = Node(7)
+# b = Node(7)
+# c = Node(7)
 # a.next = b
 # b.next = c
 # 7 -> 7 -> 7
 # is_univalue_list(a) # true
 # test_01:
-# a = new Node(7)
-# b = new Node(7)
-# c = new Node(4)
+# a = Node(7)
+# b = Node(7)
+# c = Node(4)
 # a.next = b
 # b.next = c
 # 7 -> 7 -> 4
 # is_univalue_list(a) # false
 # test_02:
-# u = new Node(2)
-# v = new Node(2)
-# w = new Node(2)
-# x = new Node(2)
-# y = new Node(2)
+# u = Node(2)
+# v = Node(2)
+# w = Node(2)
+# x = Node(2)
+# y = Node(2)
 # u.next = v
 # v.next = w
 # w.next = x
@@ -900,11 +900,11 @@ def merge_lists(head_1, head_2):
 # 2 -> 2 -> 2 -> 2 -> 2
 # is_univalue_list(u) # true
 # test_03:
-# u = new Node(2)
-# v = new Node(2)
-# w = new Node(3)
-# x = new Node(3)
-# y = new Node(2)
+# u = Node(2)
+# v = Node(2)
+# w = Node(3)
+# x = Node(3)
+# y = Node(2)
 # u.next = v
 # v.next = w
 # w.next = x
@@ -912,7 +912,7 @@ def merge_lists(head_1, head_2):
 # 2 -> 2 -> 3 -> 3 -> 2
 # is_univalue_list(u) # false
 # test_04:
-# z = new Node('z')
+# z = Node('z')
 # z
 # is_univalue_list(z) # true
 
@@ -944,12 +944,12 @@ def is_univalue_list(head, prev = None):
 # 
 #
 # test_00:
-# a = new Node(5)
-# b = new Node(5)
-# c = new Node(7)
-# d = new Node(7)
-# e = new Node(7)
-# f = new Node(6)
+# a = Node(5)
+# b = Node(5)
+# c = Node(7)
+# d = Node(7)
+# e = Node(7)
+# f = Node(6)
 # a.next = b
 # b.next = c
 # c.next = d
@@ -958,12 +958,12 @@ def is_univalue_list(head, prev = None):
 # 5 -> 5 -> 7 -> 7 -> 7 -> 6
 # longest_streak(a) # 3
 # test_01:
-# a = new Node(3)
-# b = new Node(3)
-# c = new Node(3)
-# d = new Node(3)
-# e = new Node(9)
-# f = new Node(9)
+# a = Node(3)
+# b = Node(3)
+# c = Node(3)
+# d = Node(3)
+# e = Node(9)
+# f = Node(9)
 # a.next = b
 # b.next = c
 # c.next = d
@@ -972,12 +972,12 @@ def is_univalue_list(head, prev = None):
 # 3 -> 3 -> 3 -> 3 -> 9 -> 9
 # longest_streak(a) # 4
 # test_02:
-# a = new Node(9)
-# b = new Node(9)
-# c = new Node(1)
-# d = new Node(9)
-# e = new Node(9)
-# f = new Node(9)
+# a = Node(9)
+# b = Node(9)
+# c = Node(1)
+# d = Node(9)
+# e = Node(9)
+# f = Node(9)
 # a.next = b
 # b.next = c
 # c.next = d
@@ -986,13 +986,13 @@ def is_univalue_list(head, prev = None):
 # 9 -> 9 -> 1 -> 9 -> 9 -> 9
 # longest_streak(a) # 3
 # test_03:
-# a = new Node(5)
-# b = new Node(5)
+# a = Node(5)
+# b = Node(5)
 # a.next = b
 # 5 -> 5
 # longest_streak(a) # 2
 # test_04:
-# a = new Node(4)
+# a = Node(4)
 # 4
 # longest_streak(a) # 1
 # test_05:
@@ -1026,12 +1026,12 @@ def longest_streak(head):
 # You may assume that the input list is non-empty.
 #
 # test_00:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
 # a.next = b
 # b.next = c
 # c.next = d
@@ -1041,28 +1041,28 @@ def longest_streak(head):
 # remove_node(a, "c")
 # a -> b -> d -> e -> f
 # test_01:
-# x = new Node("x")
-# y = new Node("y")
-# z = new Node("z")
+# x = Node("x")
+# y = Node("y")
+# z = Node("z")
 # x.next = y
 # y.next = z
 # x -> y -> z
 # remove_node(x, "z")
 # x -> y
 # test_02:
-# q = new Node("q")
-# r = new Node("r")
-# s = new Node("s")
+# q = Node("q")
+# r = Node("r")
+# s = Node("s")
 # q.next = r
 # r.next = s
 # q -> r -> s
 # remove_node(q, "q")
 # r -> s
 # test_03:
-# node_1 = new Node("h")
-# node2 = new Node("i")
-# node3 = new Node("j")
-# node4 = new Node("i")
+# node_1 = Node("h")
+# node2 = Node("i")
+# node3 = Node("j")
+# node4 = Node("i")
 # node_1.next = node2
 # node2.next = node3
 # node3.next = node4
@@ -1070,7 +1070,7 @@ def longest_streak(head):
 # remove_node(node_1, "i")
 # h -> j -> i
 # test_04:
-# t = new Node("t")
+# t = Node("t")
 # t
 # remove_node(t, "t")
 # None
@@ -1113,10 +1113,10 @@ def remove_node(head, target_val):
 # than the length of the input list.
 #
 # test_00:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
 # a.next = b
 # b.next = c
 # c.next = d
@@ -1124,10 +1124,10 @@ def remove_node(head, target_val):
 # insert_node(a, 'x', 2)
 # a -> b -> x -> c -> d
 # test_01:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
 # a.next = b
 # b.next = c
 # c.next = d
@@ -1135,10 +1135,10 @@ def remove_node(head, target_val):
 # insert_node(a, 'v', 3)
 # a -> b -> c -> v -> d
 # test_02:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
 # a.next = b
 # b.next = c
 # c.next = d
@@ -1146,8 +1146,8 @@ def remove_node(head, target_val):
 # insert_node(a, 'm', 4)
 # a -> b -> c -> d -> m
 # test_03:
-# a = new Node("a")
-# b = new Node("b")
+# a = Node("a")
+# b = Node("b")
 # a.next = b
 # a -> b
 # insert_node(a, 'z', 0)
@@ -1281,15 +1281,15 @@ def create_linked_list(values, i = 0):
 # + 354
 # -----
 #   975
-# a1 = new Node(1)
-# a2 = new Node(2)
-# a3 = new Node(6)
+# a1 = Node(1)
+# a2 = Node(2)
+# a3 = Node(6)
 # a1.next = a2
 # a2.next = a3
 # 1 -> 2 -> 6
-# b1 = new Node(4)
-# b2 = new Node(5)
-# b3 = new Node(3)
+# b1 = Node(4)
+# b2 = Node(5)
+# b3 = Node(3)
 # b1.next = b2
 # b2.next = b3
 # 4 -> 5 -> 3
@@ -1300,16 +1300,16 @@ def create_linked_list(values, i = 0):
 # +  32
 # -----
 #  7573
-# a1 = new Node(1)
-# a2 = new Node(4)
-# a3 = new Node(5)
-# a4 = new Node(7)
+# a1 = Node(1)
+# a2 = Node(4)
+# a3 = Node(5)
+# a4 = Node(7)
 # a1.next = a2
 # a2.next = a3
 # a3.next = a4
 # 1 -> 4 -> 5 -> 7
-# b1 = new Node(2)
-# b2 = new Node(3)
+# b1 = Node(2)
+# b2 = Node(3)
 # b1.next = b2
 # 2 -> 3 
 # addLists(a1, b1)
@@ -1319,12 +1319,12 @@ def create_linked_list(values, i = 0):
 # + 47
 # ----
 #   86
-# a1 = new Node(9)
-# a2 = new Node(3)
+# a1 = Node(9)
+# a2 = Node(3)
 # a1.next = a2
 # 9 -> 3
-# b1 = new Node(7)
-# b2 = new Node(4)
+# b1 = Node(7)
+# b2 = Node(4)
 # b1.next = b2
 # 7 -> 4
 # addLists(a1, b1)
@@ -1334,12 +1334,12 @@ def create_linked_list(values, i = 0):
 # + 47
 # ----
 #  136
-# a1 = new Node(9)
-# a2 = new Node(8)
+# a1 = Node(9)
+# a2 = Node(8)
 # a1.next = a2
 # 9 -> 8
-# b1 = new Node(7)
-# b2 = new Node(4)
+# b1 = Node(7)
+# b2 = Node(4)
 # b1.next = b2
 # 7 -> 4
 # addLists(a1, b1)
@@ -1349,13 +1349,13 @@ def create_linked_list(values, i = 0):
 #  +  6
 #  ----
 #  1005
-# a1 = new Node(9)
-# a2 = new Node(9)
-# a3 = new Node(9)
+# a1 = Node(9)
+# a2 = Node(9)
+# a3 = Node(9)
 # a1.next = a2
 # a2.next = a3
 # 9 -> 9 -> 9
-# b1 = new Node(6)
+# b1 = Node(6)
 # 6
 # addLists(a1, b1)
 # 5 -> 0 -> 0 -> 1
@@ -1402,19 +1402,18 @@ def add_lists(head_1, head_2, carry = 0):
 
   return node
 
-
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #24 depth first values ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, depth_first_values, that takes in the root of a binary tree. 
 # The function should return an list containing all values of the tree in 
 # depth-first order.
 #
 # test_00:
-# a = new Node('a')
-# b = new Node('b')
-# c = new Node('c')
-# d = new Node('d')
-# e = new Node('e')
-# f = new Node('f')
+# a = Node('a')
+# b = Node('b')
+# c = Node('c')
+# d = Node('d')
+# e = Node('e')
+# f = Node('f')
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1428,13 +1427,13 @@ def add_lists(head_1, head_2, carry = 0):
 # depth_first_values(a) 
 #    -> ['a', 'b', 'd', 'e', 'c', 'f']
 # test_01:
-# a = new Node('a')
-# b = new Node('b')
-# c = new Node('c')
-# d = new Node('d')
-# e = new Node('e')
-# f = new Node('f')
-# g = new Node('g')
+# a = Node('a')
+# b = Node('b')
+# c = Node('c')
+# d = Node('d')
+# e = Node('e')
+# f = Node('f')
+# g = Node('g')
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1451,16 +1450,16 @@ def add_lists(head_1, head_2, carry = 0):
 # depth_first_values(a) 
 #    -> ['a', 'b', 'd', 'e', 'g', 'c', 'f']
 # test_02:
-# a = new Node('a')
+# a = Node('a')
 #      a
 # depth_first_values(a) 
 #    -> ['a']
 # test_03:
-# a = new Node('a')
-# b = new Node('b')
-# c = new Node('c')
-# d = new Node('d')
-# e = new Node('e')
+# a = Node('a')
+# b = Node('b')
+# c = Node('c')
+# d = Node('d')
+# e = Node('e')
 # a.right = b
 # b.left = c
 # c.right = d
@@ -1513,12 +1512,12 @@ def depth_first_values(root):
 # breadth-first order.
 #
 # test_00:
-# a = new Node('a')
-# b = new Node('b')
-# c = new Node('c')
-# d = new Node('d')
-# e = new Node('e')
-# f = new Node('f')
+# a = Node('a')
+# b = Node('b')
+# c = Node('c')
+# d = Node('d')
+# e = Node('e')
+# f = Node('f')
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1532,14 +1531,14 @@ def depth_first_values(root):
 # breadth_first_values(a) 
 #    -> ['a', 'b', 'c', 'd', 'e', 'f']
 # test_01:
-# a = new Node('a')
-# b = new Node('b')
-# c = new Node('c')
-# d = new Node('d')
-# e = new Node('e')
-# f = new Node('f')
-# g = new Node('g')
-# h = new Node('h')
+# a = Node('a')
+# b = Node('b')
+# c = Node('c')
+# d = Node('d')
+# e = Node('e')
+# f = Node('f')
+# g = Node('g')
+# h = Node('h')
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1557,17 +1556,17 @@ def depth_first_values(root):
 # breadth_first_values(a) 
 #   -> ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 # test_02:
-# a = new Node('a')
+# a = Node('a')
 #      a
 # breadth_first_values(a) 
 #    -> ['a']
 # test_03:
-# a = new Node('a')
-# b = new Node('b')
-# c = new Node('c')
-# d = new Node('d')
-# e = new Node('e')
-# x = new Node('x')
+# a = Node('a')
+# b = Node('b')
+# c = Node('c')
+# d = Node('d')
+# e = Node('e')
+# x = Node('x')
 # a.right = b
 # b.left = c
 # c.left = x
@@ -1613,12 +1612,12 @@ def breadth_first_values(root):
 # not the value is contained in the tree.
 #
 # test_00:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1631,12 +1630,12 @@ def breadth_first_values(root):
 # d   e     f
 # tree_includes(a, "e") # -> true
 # test_01:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1649,12 +1648,12 @@ def breadth_first_values(root):
 # d   e     f
 # tree_includes(a, "a") # -> true
 # test_02:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1667,14 +1666,14 @@ def breadth_first_values(root):
 # d   e     f
 # tree_includes(a, "n") # -> false
 # test_03:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
-# g = new Node("g")
-# h = new Node("h")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
+# g = Node("g")
+# h = Node("h")
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1691,14 +1690,14 @@ def breadth_first_values(root):
 #   g         h
 # tree_includes(a, "f") # -> true
 # test_04:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
-# g = new Node("g")
-# h = new Node("h")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
+# g = Node("g")
+# h = Node("h")
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1755,12 +1754,12 @@ def tree_includes(root, target):
 # in the tree.
 #
 # test_00:
-# a = new Node(3)
-# b = new Node(11)
-# c = new Node(4)
-# d = new Node(4)
-# e = new Node(-2)
-# f = new Node(1)
+# a = Node(3)
+# b = Node(11)
+# c = Node(4)
+# d = Node(4)
+# e = Node(-2)
+# f = Node(1)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1773,14 +1772,14 @@ def tree_includes(root, target):
 # 4   -2     1
 # treeSum(a) # -> 21
 # test_01:
-# a = new Node(1)
-# b = new Node(6)
-# c = new Node(0)
-# d = new Node(3)
-# e = new Node(-6)
-# f = new Node(2)
-# g = new Node(2)
-# h = new Node(2)
+# a = Node(1)
+# b = Node(6)
+# c = Node(0)
+# d = Node(3)
+# e = Node(-6)
+# f = Node(2)
+# g = Node(2)
+# h = Node(2)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1831,12 +1830,12 @@ def tree_sum(root):
 # You may assume that the input tree is non-empty.
 #
 # test_00:
-# a = new Node(3)
-# b = new Node(11)
-# c = new Node(4)
-# d = new Node(4)
-# e = new Node(-2)
-# f = new Node(1)
+# a = Node(3)
+# b = Node(11)
+# c = Node(4)
+# d = Node(4)
+# e = Node(-2)
+# f = Node(1)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1849,12 +1848,12 @@ def tree_sum(root):
 # 4   -2     1
 # treeMinValue(a) # -> -2
 # test_01:
-# a = new Node(5)
-# b = new Node(11)
-# c = new Node(3)
-# d = new Node(4)
-# e = new Node(14)
-# f = new Node(12)
+# a = Node(5)
+# b = Node(11)
+# c = Node(3)
+# d = Node(4)
+# e = Node(14)
+# f = Node(12)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1867,14 +1866,14 @@ def tree_sum(root):
 # 4   15     12
 # treeMinValue(a) # -> 3
 # test_02:
-# a = new Node(-1)
-# b = new Node(-6)
-# c = new Node(-5)
-# d = new Node(-3)
-# e = new Node(-4)
-# f = new Node(-13)
-# g = new Node(-2)
-# h = new Node(-2)
+# a = Node(-1)
+# b = Node(-6)
+# c = Node(-5)
+# d = Node(-3)
+# e = Node(-4)
+# f = Node(-13)
+# g = Node(-2)
+# h = Node(-2)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1891,7 +1890,7 @@ def tree_sum(root):
 #    -2       -2
 # tree_min_value(a) # -> -13
 # test_03:
-# a = new Node(42)
+# a = Node(42)
 #        42
 # tree_min_value(a) # -> 42
 
@@ -1912,12 +1911,12 @@ def tree_min_value(root):
 # You may assume that the input tree is non-empty.
 #
 # test_00:
-# a = new Node(3)
-# b = new Node(11)
-# c = new Node(4)
-# d = new Node(4)
-# e = new Node(-2)
-# f = new Node(1)
+# a = Node(3)
+# b = Node(11)
+# c = Node(4)
+# d = Node(4)
+# e = Node(-2)
+# f = Node(1)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1930,13 +1929,13 @@ def tree_min_value(root):
 # 4   -2    1
 # max_path_sum(a) # -> 18
 # test_01:
-# a = new Node(5)
-# b = new Node(11)
-# c = new Node(54)
-# d = new Node(20)
-# e = new Node(15)
-# f = new Node(1)
-# g = new Node(3)
+# a = Node(5)
+# b = Node(11)
+# c = Node(54)
+# d = Node(20)
+# e = Node(15)
+# f = Node(1)
+# g = Node(3)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1952,14 +1951,14 @@ def tree_min_value(root):
 #     1  3
 # max_path_sum(a) # -> 59
 # test_02:
-# a = new Node(-1)
-# b = new Node(-6)
-# c = new Node(-5)
-# d = new Node(-3)
-# e = new Node(0)
-# f = new Node(-13)
-# g = new Node(-1)
-# h = new Node(-2)
+# a = Node(-1)
+# b = Node(-6)
+# c = Node(-5)
+# d = Node(-3)
+# e = Node(0)
+# f = Node(-13)
+# g = Node(-1)
+# h = Node(-2)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -1976,7 +1975,7 @@ def tree_min_value(root):
 #    -1       -2
 # max_path_sum(a) # -> -8
 # test_03:
-# a = new Node(42)
+# a = Node(42)
 #        42
 # max_path_sum(a) # -> 42
 
@@ -1999,12 +1998,12 @@ def max_path_sum(root):
 # You may assume that the tree contains unique values.
 #
 # test_00:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2017,12 +2016,12 @@ def max_path_sum(root):
 # d   e     f
 # path_finder(a, 'e') # -> [ 'a', 'b', 'e' ]
 # test_01:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2035,14 +2034,14 @@ def max_path_sum(root):
 # d   e     f
 # path_finder(a, 'p') # -> None
 # test_02:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
-# g = new Node("g")
-# h = new Node("h")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
+# g = Node("g")
+# h = Node("h")
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2059,14 +2058,14 @@ def max_path_sum(root):
 #   g         h
 # path_finder(a, "c") # -> ['a', 'c']
 # test_03:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
-# g = new Node("g")
-# h = new Node("h")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
+# g = Node("g")
+# h = Node("h")
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2083,16 +2082,16 @@ def max_path_sum(root):
 #   g         h
 # path_finder(a, "h") # -> ['a', 'c', 'f', 'h']
 # test_04:
-# x = new Node("x")
+# x = Node("x")
 #      x
 # path_finder(x, "x") # -> ['x']
 # test_05:
 # path_finder(None, "x") # -> None
 # test_06:
-# root = new Node(0)
+# root = Node(0)
 # let curr = root
 # for (let i = 1 i <= 6000 i += 1) {
-#   curr.right = new Node(i)
+#   curr.right = Node(i)
 #   curr = curr.right
 # }
 #      0
@@ -2142,12 +2141,12 @@ def _path_finder(root, target):
 # occurs in the tree.
 #
 # test_00:
-# a = new Node(12)
-# b = new Node(6)
-# c = new Node(6)
-# d = new Node(4)
-# e = new Node(6)
-# f = new Node(12)
+# a = Node(12)
+# b = Node(6)
+# c = Node(6)
+# d = Node(4)
+# e = Node(6)
+# f = Node(12)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2160,12 +2159,12 @@ def _path_finder(root, target):
 # 4   6    12
 # tree_value_count(a,  6) # -> 3
 # test_01:
-# a = new Node(12)
-# b = new Node(6)
-# c = new Node(6)
-# d = new Node(4)
-# e = new Node(6)
-# f = new Node(12)
+# a = Node(12)
+# b = Node(6)
+# c = Node(6)
+# d = Node(4)
+# e = Node(6)
+# f = Node(12)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2178,14 +2177,14 @@ def _path_finder(root, target):
 # 4   6    12
 # tree_value_count(a,  12) # -> 2
 # test_02:
-# a = new Node(7)
-# b = new Node(5)
-# c = new Node(1)
-# d = new Node(1)
-# e = new Node(8)
-# f = new Node(7)
-# g = new Node(1)
-# h = new Node(1)
+# a = Node(7)
+# b = Node(5)
+# c = Node(1)
+# d = Node(1)
+# e = Node(8)
+# f = Node(7)
+# g = Node(1)
+# h = Node(1)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2202,14 +2201,14 @@ def _path_finder(root, target):
 #   1         1
 # tree_value_count(a, 1) # -> 4
 # test_03:
-# a = new Node(7)
-# b = new Node(5)
-# c = new Node(1)
-# d = new Node(1)
-# e = new Node(8)
-# f = new Node(7)
-# g = new Node(1)
-# h = new Node(1)
+# a = Node(7)
+# b = Node(5)
+# c = Node(1)
+# d = Node(1)
+# e = Node(8)
+# f = Node(7)
+# g = Node(1)
+# h = Node(1)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2248,12 +2247,12 @@ def tree_value_count(root, target):
 # If the tree is empty, return -1.
 #
 # test_00:
-# a = new Node('a')
-# b = new Node('b')
-# c = new Node('c')
-# d = new Node('d')
-# e = new Node('e')
-# f = new Node('f')
+# a = Node('a')
+# b = Node('b')
+# c = Node('c')
+# d = Node('d')
+# e = Node('e')
+# f = Node('f')
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2266,13 +2265,13 @@ def tree_value_count(root, target):
 # d   e     f
 # how_high(a) # -> 2
 # test_01:
-# a = new Node('a')
-# b = new Node('b')
-# c = new Node('c')
-# d = new Node('d')
-# e = new Node('e')
-# f = new Node('f')
-# g = new Node('g')
+# a = Node('a')
+# b = Node('b')
+# c = Node('c')
+# d = Node('d')
+# e = Node('e')
+# f = Node('f')
+# g = Node('g')
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2288,15 +2287,15 @@ def tree_value_count(root, target):
 #   g
 # how_high(a) # -> 3
 # test_02:
-# a = new Node('a')
-# c = new Node('c')
+# a = Node('a')
+# c = Node('c')
 # a.right = c
 #      a
 #       \
 #        c
 # how_high(a) # -> 1
 # test_03:
-# a = new Node('a')
+# a = Node('a')
 #      a
 # how_high(a) # -> 0
 
@@ -2317,12 +2316,12 @@ def how_high(root, i = 0):
 # You may assume that the input tree is non-empty.
 #
 # test_00:
-# a = new Node(3)
-# b = new Node(11)
-# c = new Node(10)
-# d = new Node(4)
-# e = new Node(-2)
-# f = new Node(1)
+# a = Node(3)
+# b = Node(11)
+# c = Node(10)
+# d = Node(4)
+# e = Node(-2)
+# f = Node(1)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2335,14 +2334,14 @@ def how_high(root, i = 0):
 # 4   -2     1
 # bottom_right_value(a) # -> 1
 # test_01:
-# a = new Node(-1)
-# b = new Node(-6)
-# c = new Node(-5)
-# d = new Node(-3)
-# e = new Node(-4)
-# f = new Node(-13)
-# g = new Node(-2)
-# h = new Node(6)
+# a = Node(-1)
+# b = Node(-6)
+# c = Node(-5)
+# d = Node(-3)
+# e = Node(-4)
+# f = Node(-13)
+# g = Node(-2)
+# h = Node(6)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2359,15 +2358,15 @@ def how_high(root, i = 0):
 #    -2  6
 # bottom_right_value(a) # -> 6
 # test_02:
-# a = new Node(-1)
-# b = new Node(-6)
-# c = new Node(-5)
-# d = new Node(-3)
-# e = new Node(-4)
-# f = new Node(-13)
-# g = new Node(-2)
-# h = new Node(6)
-# i = new Node(7)
+# a = Node(-1)
+# b = Node(-6)
+# c = Node(-5)
+# d = Node(-3)
+# e = Node(-4)
+# f = Node(-13)
+# g = Node(-2)
+# h = Node(6)
+# i = Node(7)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2385,12 +2384,12 @@ def how_high(root, i = 0):
 #    -2  6  7 
 # bottom_right_value(a) # -> 7
 # test_03
-# a = new Node('a')
-# b = new Node('b')
-# c = new Node('c')
-# d = new Node('d')
-# e = new Node('e')
-# f = new Node('f')
+# a = Node('a')
+# b = Node('b')
+# c = Node('c')
+# d = Node('d')
+# e = Node('e')
+# f = Node('f')
 # a.left = b
 # a.right = c
 # b.right = d
@@ -2408,7 +2407,7 @@ def how_high(root, i = 0):
 #       
 # bottom_right_value(a) # -> 'f'
 # test_04
-# a = new Node(42)
+# a = Node(42)
 #      42
 # bottom_right_value(a) # -> 42
 
@@ -2437,12 +2436,12 @@ def bottom_right_value(root):
 # You may assume that the input tree is non-empty.
 #
 # test_00:
-# a = new Node('a')
-# b = new Node('b')
-# c = new Node('c')
-# d = new Node('d')
-# e = new Node('e')
-# f = new Node('f')
+# a = Node('a')
+# b = Node('b')
+# c = Node('c')
+# d = Node('d')
+# e = Node('e')
+# f = Node('f')
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2460,15 +2459,15 @@ def bottom_right_value(root):
 #   [ 'a', 'c', 'f' ] 
 # ] 
 # test_01:
-# a = new Node('a')
-# b = new Node('b')
-# c = new Node('c')
-# d = new Node('d')
-# e = new Node('e')
-# f = new Node('f')
-# g = new Node('g')
-# h = new Node('h')
-# i = new Node('i')
+# a = Node('a')
+# b = Node('b')
+# c = Node('c')
+# d = Node('d')
+# e = Node('e')
+# f = Node('f')
+# g = Node('g')
+# h = Node('h')
+# i = Node('i')
 # a.l#eft = b
 # a.right = c
 # b.left = d
@@ -2492,12 +2491,12 @@ def bottom_right_value(root):
 #   [ 'a', 'c', 'f', 'i' ] 
 # ] 
 # test_02:
-# q = new Node('q')
-# r = new Node('r')
-# s = new Node('s')
-# t = new Node('t')
-# u = new Node('u')
-# v = new Node('v')
+# q = Node('q')
+# r = Node('r')
+# s = Node('s')
+# t = Node('t')
+# u = Node('u')
+# v = Node('v')
 # q.left = r
 # q.right = s
 # r.right = t
@@ -2518,7 +2517,7 @@ def bottom_right_value(root):
 #   [ 'q', 's' ] 
 # ] 
 # test_03:
-# z = new Node('z')
+# z = Node('z')
 #      z
 # all_tree_paths(z) # -> 
 # [
@@ -2552,12 +2551,12 @@ def all_tree_paths(root):
 # level of the tree.
 #
 # test_00:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2575,15 +2574,15 @@ def all_tree_paths(root):
 #   ['d', 'e', 'f']
 # ]
 # test_01:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
-# g = new Node("g")
-# h = new Node("h")
-# i = new Node("i")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
+# g = Node("g")
+# h = Node("h")
+# i = Node("i")
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2607,12 +2606,12 @@ def all_tree_paths(root):
 #   ['g', 'h', 'i']
 # ]
 # test_02:
-# q = new Node("q")
-# r = new Node("r")
-# s = new Node("s")
-# t = new Node("t")
-# u = new Node("u")
-# v = new Node("v")
+# q = Node("q")
+# r = Node("r")
+# s = Node("s")
+# t = Node("t")
+# u = Node("u")
+# v = Node("v")
 # q.left = r
 # q.right = s
 # r.right = t
@@ -2669,12 +2668,12 @@ def tree_levels(root):
 # average value of each level.
 #
 # test_00:
-# a = new Node(3)
-# b = new Node(11)
-# c = new Node(4)
-# d = new Node(4)
-# e = new Node(-2)
-# f = new Node(1)
+# a = Node(3)
+# b = Node(11)
+# c = Node(4)
+# d = Node(4)
+# e = Node(-2)
+# f = Node(1)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2687,13 +2686,13 @@ def tree_levels(root):
 # 4   -2     1
 # level_averages(a) # -> [ 3, 7.5, 1 ] 
 # test_01:
-# a = new Node(5)
-# b = new Node(11)
-# c = new Node(54)
-# d = new Node(20)
-# e = new Node(15)
-# f = new Node(1)
-# g = new Node(3)
+# a = Node(5)
+# b = Node(11)
+# c = Node(54)
+# d = Node(20)
+# e = Node(15)
+# f = Node(1)
+# g = Node(3)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2709,14 +2708,14 @@ def tree_levels(root):
 #     1  3
 # level_averages(a) # -> [ 5, 32.5, 17.5, 2 ] 
 # test_02:
-# a = new Node(-1)
-# b = new Node(-6)
-# c = new Node(-5)
-# d = new Node(-3)
-# e = new Node(0)
-# f = new Node(45)
-# g = new Node(-1)
-# h = new Node(-2)
+# a = Node(-1)
+# b = Node(-6)
+# c = Node(-5)
+# d = Node(-3)
+# e = Node(0)
+# f = Node(45)
+# g = Node(-1)
+# h = Node(-2)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2733,12 +2732,12 @@ def tree_levels(root):
 #    -1       -2
 # level_averages(a) # -> [ -1, -5.5, 14, -1.5 ]
 # test_03:
-# q = new Node(13)
-# r = new Node(4)
-# s = new Node(2)
-# t = new Node(9)
-# u = new Node(2)
-# v = new Node(42)
+# q = Node(13)
+# r = Node(4)
+# s = Node(2)
+# t = Node(9)
+# u = Node(2)
+# v = Node(42)
 # q.left = r
 # q.right = s
 # r.right = t
@@ -2798,12 +2797,12 @@ def tree_levels(root):
 # returns an list containing the values of all leaf nodes in left-to-right order.
 #
 # test_00:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2816,14 +2815,14 @@ def tree_levels(root):
 # d   e     f
 # leaf_list(a) # -> [ 'd', 'e', 'f' ] 
 # test_01:
-# a = new Node("a")
-# b = new Node("b")
-# c = new Node("c")
-# d = new Node("d")
-# e = new Node("e")
-# f = new Node("f")
-# g = new Node("g")
-# h = new Node("h")
+# a = Node("a")
+# b = Node("b")
+# c = Node("c")
+# d = Node("d")
+# e = Node("e")
+# f = Node("f")
+# g = Node("g")
+# h = Node("h")
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2840,13 +2839,13 @@ def tree_levels(root):
 #   g         h
 # leaf_list(a) # -> [ 'd', 'g', 'h' ]
 # test_02:
-# a = new Node(5)
-# b = new Node(11)
-# c = new Node(54)
-# d = new Node(20)
-# e = new Node(15)
-# f = new Node(1)
-# g = new Node(3)
+# a = Node(5)
+# b = Node(11)
+# c = Node(54)
+# d = Node(20)
+# e = Node(15)
+# f = Node(1)
+# g = Node(3)
 # a.left = b
 # a.right = c
 # b.left = d
@@ -2862,7 +2861,7 @@ def tree_levels(root):
 #     1  3
 # leaf_list(a) # -> [ 20, 1, 3, 54 ]
 # test_03:
-# x = new Node('x')
+# x = Node('x')
 #      x
 # leaf_list(x) # -> [ 'x' ]
 # test_04:
@@ -3542,8 +3541,8 @@ def closest_carrot(grid, row, col):
       delta_y, delta_x = delta
       new_row = r + delta_y
       new_col = c + delta_x
-      valid_row = new_row >= 0 and new_row < len(grid)
-      valid_col = new_col >= 0 and new_col < len(grid[0])
+      valid_row =_row >= 0 and new_row < len(grid)
+      valid_col =_col >= 0 and new_col < len(grid[0])
       valid_pos = valid_row and valid_col
       visited_pos = (new_row, new_col) in visited
       if valid_pos and grid[new_row][new_col] != 'X' and not visited_pos:
@@ -3837,8 +3836,8 @@ def in_bounds(grid, delta, row, col):
   delta_y, delta_x = delta
   new_row = row + delta_y
   new_col = col + delta_x
-  valid_row = new_row >= 0 and new_row < len(grid)
-  valid_col = new_col >= 0 and new_col < len(grid[0])
+  valid_row =_row >= 0 and new_row < len(grid)
+  valid_col =_col >= 0 and new_col < len(grid[0])
   return [[new_row, new_col], valid_row and valid_col]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #49 has cycle ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -5336,12 +5335,12 @@ def generate(words, synonyms):
 # same both forwards and backwards.
 #
 # test_00:
-# a = new Node(3)
-# b = new Node(2)
-# c = new Node(7)
-# d = new Node(7)
-# e = new Node(2)
-# f = new Node(3)
+# a = Node(3)
+# b = Node(2)
+# c = Node(7)
+# d = Node(7)
+# e = Node(2)
+# f = Node(3)
 # a.next = b
 # b.next = c
 # c.next = d
@@ -5350,27 +5349,27 @@ def generate(words, synonyms):
 # 3 -> 2 -> 7 -> 7 -> 2 -> 3
 # linked_palindrome(a) # true
 # test_01:
-# a = new Node(3)
-# b = new Node(2)
-# c = new Node(4)
+# a = Node(3)
+# b = Node(2)
+# c = Node(4)
 # a.next = b
 # b.next = c
 # 3 -> 2 -> 4
 # linked_palindrome(a) # false
 # test_02:
-# a = new Node(3)
-# b = new Node(2)
-# c = new Node(3)
+# a = Node(3)
+# b = Node(2)
+# c = Node(3)
 # a.next = b
 # b.next = c
 # 3 -> 2 -> 3
 # linked_palindrome(a) # true
 # test_03:
-# a = new Node(0)
-# b = new Node(1)
-# c = new Node(0)
-# d = new Node(1)
-# e = new Node(0)
+# a = Node(0)
+# b = Node(1)
+# c = Node(0)
+# d = Node(1)
+# e = Node(0)
 # a.next = b
 # b.next = c
 # c.next = d
@@ -5378,11 +5377,11 @@ def generate(words, synonyms):
 # 0 -> 1 -> 0 -> 1 -> 0
 # linked_palindrome(a) # true
 # test_04:
-# a = new Node(0)
-# b = new Node(1)
-# c = new Node(0)
-# d = new Node(1)
-# e = new Node(1)
+# a = Node(0)
+# b = Node(1)
+# c = Node(0)
+# d = Node(1)
+# e = Node(1)
 # a.next = b
 # b.next = c
 # c.next = d
@@ -5390,7 +5389,7 @@ def generate(words, synonyms):
 # 0 -> 1 -> 0 -> 1 -> 1
 # linked_palindrome(a) # false
 # test_05:
-# a = new Node(5)
+# a = Node(5)
 # 5
 # linked_palindrome(a) # true
 # test_06:
@@ -5413,11 +5412,11 @@ def linked_palindrome(head):
 # You may assume that the input list is non-empty.
 #
 # test_00:
-# a = new Node('a')
-# b = new Node('b')
-# c = new Node('c')
-# d = new Node('d')
-# e = new Node('e')
+# a = Node('a')
+# b = Node('b')
+# c = Node('c')
+# d = Node('d')
+# e = Node('e')
 # a.next = b
 # b.next = c
 # c.next = d
@@ -5425,12 +5424,12 @@ def linked_palindrome(head):
 # a -> b -> c -> d -> e
 # middle_value(a) # c
 # test_01:
-# a = new Node('a')
-# b = new Node('b')
-# c = new Node('c')
-# d = new Node('d')
-# e = new Node('e')
-# f = new Node('f')
+# a = Node('a')
+# b = Node('b')
+# c = Node('c')
+# d = Node('d')
+# e = Node('e')
+# f = Node('f')
 # a.next = b
 # b.next = c
 # c.next = d
@@ -5439,21 +5438,21 @@ def linked_palindrome(head):
 # a -> b -> c -> d -> e -> f
 # middle_value(a) # d
 # test_02:
-# x = new Node('x')
-# y = new Node('y')
-# z = new Node('z')
+# x = Node('x')
+# y = Node('y')
+# z = Node('z')
 # x.next = y
 # y.next = z
 # x -> y -> z
 # middle_value(x) # y
 # test_03:
-# x = new Node('x')
-# y = new Node('y')
+# x = Node('x')
+# y = Node('y')
 # x.next = y
 # x -> y 
 # middle_value(x) # y
 # test_04:
-# q = new Node('q')
+# q = Node('q')
 # q
 # middle_value(q) # q
 
@@ -5577,14 +5576,14 @@ def linked_list_cycle(head):
 # You may assume that the tree values are unique and the tree is non-empty.
 # Note that a node may be considered an ancestor of itself.
 # Example Tree:
-# const a = new Node('a');
-# const b = new Node('b');
-# const c = new Node('c');
-# const d = new Node('d');
-# const e = new Node('e');
-# const f = new Node('f');
-# const g = new Node('g');
-# const h = new Node('h');
+# const a = Node('a');
+# const b = Node('b');
+# const c = Node('c');
+# const d = Node('d');
+# const e = Node('e');
+# const f = Node('f');
+# const g = Node('g');
+# const h = Node('h');
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -5611,15 +5610,15 @@ def linked_list_cycle(head):
 # test_04
 # lowest_common_ancestor(a, 'f', 'c'); # c
 # example tree
-# const l = new Node('l');
-# const m = new Node('m');
-# const n = new Node('n');
-# const o = new Node('o');
-# const p = new Node('p');
-# const q = new Node('q');
-# const r = new Node('r');
-# const s = new Node('s');
-# const t = new Node('t');
+# const l = Node('l');
+# const m = Node('m');
+# const n = Node('n');
+# const o = Node('o');
+# const p = Node('p');
+# const q = Node('q');
+# const r = Node('r');
+# const s = Node('s');
+# const t = Node('t');
 # l.left = m;
 # l.right = n;
 # n.left = o;
@@ -5680,14 +5679,14 @@ def build_path(root, val):
 # original tree. The function should return the root of the tree.
 #
 # test_00
-# const a = new Node("a");
-# const b = new Node("b");
-# const c = new Node("c");
-# const d = new Node("d");
-# const e = new Node("e");
-# const f = new Node("f");
-# const g = new Node("g");
-# const h = new Node("h");
+# const a = Node("a");
+# const b = Node("b");
+# const c = Node("c");
+# const d = Node("d");
+# const e = Node("e");
+# const f = Node("f");
+# const g = Node("g");
+# const h = Node("h");
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -5711,12 +5710,12 @@ def build_path(root, val):
 #     /  \
 #    h    g
 # test_01
-# const u = new Node("u");
-# const t = new Node("t");
-# const s = new Node("s");
-# const r = new Node("r");
-# const q = new Node("q");
-# const p = new Node("p");
+# const u = Node("u");
+# const t = Node("t");
+# const s = Node("s");
+# const r = Node("r");
+# const q = Node("q");
+# const p = Node("p");
 # u.left = t;
 # u.right = s;
 # s.right = r;
@@ -5738,15 +5737,15 @@ def build_path(root, val):
 #    / \
 #   p  q
 # test_02
-# const l = new Node("l");
-# const m = new Node("m");
-# const n = new Node("n");
-# const o = new Node("o");
-# const p = new Node("p");
-# const q = new Node("q");
-# const r = new Node("r");
-# const s = new Node("s");
-# const t = new Node("t");
+# const l = Node("l");
+# const m = Node("m");
+# const n = Node("n");
+# const o = Node("o");
+# const p = Node("p");
+# const q = Node("q");
+# const r = Node("r");
+# const s = Node("s");
+# const t = Node("t");
 # l.left = m;
 # l.right = n;
 # n.left = o;
@@ -5771,9 +5770,9 @@ def build_path(root, val):
 #  / \    / \
 # t   s  r   q
 # test_03
-# const n = new Node("n");
-# const y = new Node("y");
-# const c = new Node("c");
+# const n = Node("n");
+# const y = Node("y");
+# const c = Node("c");
 # n.left = y;
 # n.right = c;
 #       n
@@ -5802,14 +5801,14 @@ def flip_tree(root):
 # is the first element.
 #
 # test_00
-# const a = new Node('a');
-# const b = new Node('b');
-# const c = new Node('c');
-# const d = new Node('d');
-# const e = new Node('e');
-# const f = new Node('f');
-# const g = new Node('g');
-# const h = new Node('h');
+# const a = Node('a');
+# const b = Node('b');
+# const c = Node('c');
+# const d = Node('d');
+# const e = Node('e');
+# const f = Node('f');
+# const g = Node('g');
+# const h = Node('h');
 # a.left = b;
 # a.right = c;
 # b.left = d;
@@ -5826,12 +5825,12 @@ def flip_tree(root):
 #    g  h
 # lefty_nodes(a); # [ 'a', 'b', 'd', 'g' ]
 # test_01
-# const u = new Node('u');
-# const t = new Node('t');
-# const s = new Node('s');
-# const r = new Node('r');
-# const q = new Node('q');
-# const p = new Node('p');
+# const u = Node('u');
+# const t = Node('t');
+# const s = Node('s');
+# const r = Node('r');
+# const q = Node('q');
+# const p = Node('p');
 # u.left = t;
 # u.right = s;
 # s.right = r;
@@ -5846,15 +5845,15 @@ def flip_tree(root):
 #        q  p
 # lefty_nodes(u); # [ 'u', 't', 'r', 'q' ]
 # test_02
-# const l = new Node('l');
-# const m = new Node('m');
-# const n = new Node('n');
-# const o = new Node('o');
-# const p = new Node('p');
-# const q = new Node('q');
-# const r = new Node('r');
-# const s = new Node('s');
-# const t = new Node('t');
+# const l = Node('l');
+# const m = Node('m');
+# const n = Node('n');
+# const o = Node('o');
+# const p = Node('p');
+# const q = Node('q');
+# const r = Node('r');
+# const s = Node('s');
+# const t = Node('t');
 # l.left = m;
 # l.right = n;
 # n.left = o;
@@ -5872,9 +5871,9 @@ def flip_tree(root):
 #       q   r s   t
 # lefty_nodes(l); # [ 'l', 'm', 'o', 'q' ]
 # test_03
-# const n = new Node('n');
-# const y = new Node('y');
-# const c = new Node('c');
+# const n = Node('n');
+# const y = Node('y');
+# const c = Node('c');
 # n.left = y;
 # n.right = c;
 #       n
@@ -5882,10 +5881,10 @@ def flip_tree(root):
 #    y     c
 # lefty_nodes(n); # [ 'n', 'y' ]
 # test_04
-# const i = new Node('i');
-# const n = new Node('n');
-# const s = new Node('s');
-# const t = new Node('t');
+# const i = Node('i');
+# const n = Node('n');
+# const s = Node('s');
+# const t = Node('t');
 # i.right = n;
 # n.left = s;
 # n.right = t;
