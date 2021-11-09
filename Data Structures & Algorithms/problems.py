@@ -743,8 +743,7 @@ class ListNode:
     self.next = next 
 
 def mergeTwoLists(l1, l2):
-  head = ListNode()
-  tail = head
+  tail = dummy_head = ListNode()
   curr1 = l1
   curr2 = l2
   while curr1 is not None and curr2 is not None:
@@ -760,4 +759,20 @@ def mergeTwoLists(l1, l2):
     tail.next = curr2
   if curr2 is None:
     tail.next = curr1
-  return head.next
+  return dummy_head.next
+
+# ========================= LeetCode 94 =========================
+
+def inorderTraversal(root):
+  values = []
+  def helper(root, values):
+    if root is None:
+      return
+    
+    helper(root.left, values)
+    values.append(root.val)
+    helper(root.right, values)
+    
+    return values
+  
+  return helper(root, values)
