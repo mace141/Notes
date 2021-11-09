@@ -776,3 +776,19 @@ def inorderTraversal(root):
     return values
   
   return helper(root, values)
+
+# ========================= LeetCode 101 =========================
+
+def isSymmetric(root):
+  def helper(left, right):
+    if left is None and right is None:
+      return True
+    if left is None or right is None:
+      return False
+    
+    if left.val == right.val:
+      return helper(left.left, right.right) and helper(left.right, right.left)
+    else:
+      return False
+  
+  return helper(root.left, root.right)
