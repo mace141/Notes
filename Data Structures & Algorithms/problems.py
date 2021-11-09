@@ -712,3 +712,22 @@ def firstBadVersion(n):
     else:
       left = mid + 1
   return left
+
+# ========================= LeetCode 20 =========================
+
+def isValid(s):
+  stack = [None]
+  parens = {
+    ']': '[',
+    ')': '(',
+    '}': '{'
+  }
+  for c in s:
+    if c not in parens:
+      stack.append(c)
+    else:
+      if stack[-1] == parens[c]:
+        stack.pop()
+      else:
+        return False
+  return len(stack) == 1
