@@ -4611,7 +4611,6 @@ def _array_stepper(numbers, i, memo):
   memo[i] = False
   return False
 
-
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #61 max palin subsequence ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, max_palin_subsequence, that takes in a string as an argument.
 # The function should return the length of the longest subsequence of the string

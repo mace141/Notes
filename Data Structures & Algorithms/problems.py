@@ -684,3 +684,31 @@ def validMountainArray(arr):
   while arr[j - 1] > arr[j] and j > 1:
     j -= 1
   return i == j
+
+# ========================= LeetCode 278 =========================
+
+# recursive
+def firstBadVersion(n):
+  def helper(start, end):
+    if start == end:
+      return start
+    
+    mid = (start + end) // 2
+    if isBadVersion(mid):
+      return helper(start, mid)
+    else:
+      return helper(mid + 1, end)
+  return helper(1, n)
+
+# iterative
+def firstBadVersion(n):
+  left = 1
+  right = n
+
+  while left < right:
+    mid = (left + right) // 2
+    if isBadVersion(mid):
+      right = mid
+    else:
+      left = mid + 1
+  return left
