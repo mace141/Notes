@@ -687,6 +687,9 @@ def validMountainArray(arr):
 
 # ========================= LeetCode 278 =========================
 
+def isBadVersion(n):
+  pass
+
 # recursive
 def firstBadVersion(n):
   def helper(start, end):
@@ -731,3 +734,30 @@ def isValid(s):
       else:
         return False
   return len(stack) == 1
+
+# ========================= LeetCode 21 =========================
+
+class ListNode:
+  def __init__(self, val=0, next=None):
+    self.val = val
+    self.next = next 
+
+def mergeTwoLists(l1, l2):
+  head = ListNode()
+  tail = head
+  curr1 = l1
+  curr2 = l2
+  while curr1 is not None and curr2 is not None:
+    if curr1.val < curr2.val:
+      tail.next = curr1
+      curr1 = curr1.next
+    else:
+      tail.next = curr2
+      curr2 = curr2.next
+    tail = tail.next
+  
+  if curr1 is None:
+    tail.next = curr2
+  if curr2 is None:
+    tail.next = curr1
+  return head.next
