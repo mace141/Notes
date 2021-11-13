@@ -24,7 +24,8 @@ float()   # => 0.0
 ```
 
 #### Complex numbers
-* numbers that combine a real and an imaginary part
+
+Numbers that combine a real and an imaginary part
 
 ``` python
 7j            # => 7j
