@@ -44,6 +44,8 @@ React components can accept props (i.e properties from parent components). Props
 must not be changed by the component itself; in this sense, React components are 
 pure functions. 
 
+Components will re-render when props or state changes. 
+
 ``` javascript
 const Welcome = (props) => (
   <p>Welcome {props.name}!</p>
@@ -162,11 +164,14 @@ Click [here](https://reactjs.org/docs/events.html) for more events.
 Hooks make React simpler by removing the need to bind context to class functions
 and making state variables share the same scope as the returned React element. 
 
-** Hooks must be at the top level and cannot be nested in if statements, loops, 
-or nested functions **
+**Hooks must be at the top level and cannot be nested in if statements, loops, or nested functions**
+
+For more hooks, click [here](https://reactjs.org/docs/hooks-reference.html).
+
+### `useState()`
 
 `useState()` is a hook that sets the state to the argument and returns a state 
-variable and a function that updates the state. 
+variable and a function that updates that specific state variable. 
 
 ``` javascript
 import React, { useState } from 'react';
@@ -182,3 +187,52 @@ const Counter = (props) => {
   );
 };
 ```
+
+### `useEffect()`
+
+`useEffect()` is a hook that is used to create side effects. The side effects can 
+occur depending on certain data if the hook is passed a second argument. 
+Otherwise, `useEffect()` will be called after every render as if using 
+`componentDidMount()` and `componentDidUpdate()`.
+
+``` javascript
+import React, { useState, useEffect } from 'react';
+
+const Counter = (props) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  }, [count]);
+
+  return <button onClick={() => setCount(count + 1)}>Click</button>;
+}
+```
+
+#### Cleanup
+
+To use effects with cleanup, you return a cleanup function inside the hook. 
+
+``` javascript
+import React, { useState, useEffect } from 'react';
+
+const Clock = (props) => {
+  const [date, setDate] = useState(new Date());
+  const [timerID, setTimerID] = useState(null);
+
+  useEffect(() => {
+    setTimerID(setInterval(() => {
+      setDate(new Date());
+    }, 1000));
+
+    return function cleanup() {
+      clearInterval(timerID);
+    }
+  }, []);
+
+  return <h1>It is now {date.toLocaleTimeString()}</h1>;
+};
+```
+
+Passing an empty array as the second argument to `useEffect()` is equivalent to 
+`componentDidMount()`. 
