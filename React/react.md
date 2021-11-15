@@ -182,7 +182,7 @@ const Counter = (props) => {
   return (
     <>
       <p>This is the count: {count}</p>
-      <button onClick={() => setCount(count + 1) }>Click me!</button>
+      <button onClick={() => setCount(count + 1)}>Click me!</button>
     </>
   );
 };
@@ -236,3 +236,100 @@ const Clock = (props) => {
 
 Passing an empty array as the second argument to `useEffect()` is equivalent to 
 `componentDidMount()`. 
+
+## React Router
+
+React Router has three packages: `react-router`, `react-router-dom`, and
+`react-router-native`.
+
+`react-router-dom` has everything from `react-router` with a few more DOM APIs,
+including `<BrowserRouter>`, `<HashRouter>`, and `<Link>`. 
+
+Render `<BrowserRouter>` or `<HashRouter>` around your whole application to connect 
+it with the router API. 
+
+### `<Link>`
+
+`<Link>` renders an `<a>` tag and upon click will take the user to the URL 
+specified in the `to` property. 
+
+A `<Link to>` value that is relative to the parent which rendered the `<Link>` 
+will not begin with a `/`. You may use `..` in the URL similarly to traversing up
+a directory tree. 
+
+``` javascript
+import React from "react";
+import { Link } from "react-router-dom";
+
+function UsersIndexPage({ users }) {
+  return (
+    <div>
+      <h1>Users</h1>
+      <ul>
+        {users.map(user => (
+          <li key={user.id}>
+            <Link to={user.id}>{user.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+### `<NavLink>`
+
+`<NavLink>` behaves just like `<Link>` except it will have an `active` class added
+to the component when the URL is active. It is mainly used for styling currently 
+active links in a navigation menu. 
+
+### `<Routes>` and `<Route>`
+
+The `<Routes>` component will look through its children and render the best match.
+`<Routes>` replaces `<Switch>` in v6.  
+
+`<Route>` will render the component specified by the `element` property if the 
+`path` property matches the `location`.
+
+``` javascript
+import React from 'react';
+import { Routes, Route, useParams } from 'react-router-dom';
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/feed" element={<Feed/>}/>
+      <Route path="/users/:id" element={<Profile/>}/>
+    </Routes>
+  );
+}
+
+function Feed() {
+  return (
+    <h1>Feed</h1>
+  );
+}
+
+function Profile() {
+  const params = useParams();
+
+  return (
+    <h1>User #{params.id}</h1>
+  );
+}
+```
+
+### Hooks
+
+React Router v6 introduces several hooks which replace the need for the 
+`withRouter` higher order component. 
+
+`useParams()`
+* returns an object with key/value pairs of the current URL's parameters
+
+`useNavigate()`
+* returns a function used to navigate to a different URL
+  * you may pass in a URL similarly to `<Link to>` with an optional second 
+  argument (`{ replace, state }`)
+  * you may also pass in a number representing the place you want to go in the
+  history stack. i.e `useNavigate(-1)` will go back a page
