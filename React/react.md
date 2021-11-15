@@ -153,11 +153,19 @@ class Clock extends React.Component {
 In React, event handlers are defined on the element itself by passing in a 
 function and are named using camel case. 
 
-Click [here](https://reactjs.org/docs/events.html) for more events.
-
 ``` javascript
 <button onClick={clickedFunction}>Click me!</button>
 ```
+
+Click [here](https://reactjs.org/docs/events.html) for more events.
+
+Commonly used events: 
+* Form Events
+  * `onInput`, `onChange`, `onSubmit`
+* Keyboard Events:
+  * `onKeyDown`, `onKeyPress`, `onKeyUp`
+* Mouse Events:
+  * `onClick`, `onDrag`, `onMouseOver`
 
 ## Hooks
 
@@ -323,6 +331,8 @@ function Profile() {
 
 React Router v6 introduces several hooks which replace the need for the 
 `withRouter` higher order component. 
+
+For more hooks, click [here](https://reactrouter.com/docs/en/v6/api).
 
 `useParams()`
 * returns an object with key/value pairs of the current URL's parameters
