@@ -125,16 +125,16 @@
 // UI: User Interface
 // Responsive: a web design that adjusts to different device screen sizes
     // Breakpoint: the markers at which a change will occur to improve the UI
-           Ex: "Please add a breakpoint so the picture grid on this page has four
-                columns on wide screens and three columns on screens less than 1024px wide."
+    //             Ex: "Please add a breakpoint so the picture grid on this page has four
+    //                  columns on wide screens and three columns on screens less than 1024px wide."
     // Media queries: Used for device-specific breakpoints. The include an optional
     //                media type and expressions that limit the scope of their contained styles 
-                    Ex: smartphone, tablet, PC screens 
+    //                Ex: smartphone, tablet, PC screens 
 // Pixel Perfect: replicating a mockup perfectly
     // Flat design: minimalist UI design language characterized by simple elements, subtle typography, and flat colors 
     // Skeumorphism: a design language characterized by elements that look like their counterparts in the real world 
     // Grid system: a simple type of CSS framework that provides column systems for grid layouts, usually helpful for 
-                   responsive designs
+    //              responsive designs
 // W3C: the group responsible for HTML and CSS standards - it is the largest standards body for Internet design and best practices
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[ Selectors & Precedence ]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -216,11 +216,11 @@ ul a {
 // and it only selects the direct children of an element 
 
 ul > a {
-    text-decoration: none; /* this does not work on the ordered list on lines 183-185*/
+    text-decoration: none; /* this does not work on the ordered list a few lines above*/
 }
 
 ul > li > a {
-    text-decoration: none; /* this does work on the ordered list on lines 183-185*/
+    text-decoration: none; /* this does work on the ordered list a few lines above*/
 }
 
 // ------------------------- Class Selector -------------------------
@@ -486,7 +486,7 @@ img {
 //// float 
 // values: left, right, none, inherit
 // this property lets the element float over other objects, while remaining in place despite other
-// elements moving around. floated elements will stack next to eachother as long as they fit before 
+// elements moving around. floated elements will stack next to each other as long as they fit before 
 // moving to the next row
 
 //// clear 

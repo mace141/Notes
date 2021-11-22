@@ -68,19 +68,19 @@ declare const user: User;
 ### Types
 
 JavaScript has a small set of primitive types: 
-`boolean`
-`bigint`
-`number`
-`string`
-`null`
-`symbol`
-`undefined`
+* `boolean`
+* `bigint`
+* `number`
+* `string`
+* `null`
+* `symbol`
+* `undefined`
 
 TypeScript adds a few more types to this list:
-`any` - allow anything
-`never` - specified type is not possible
-`unknown` - ensure someone using this type declares what the type is
-`void` - a function that returns `undefined`
+* `any` - allow anything
+* `never` - specified type is not possible
+* `unknown` - ensure someone using this type declares what the type is
+* `void` - a function that returns `undefined`
 
 ## Complex Types
 
@@ -193,7 +193,9 @@ strictNullChecks - makes handling `null` and `undefined` more explicit
 ## Primitive Types
 
 `string` - string values like `"Hello, world"`
+
 `number` - numbers like `141`. There is no `int` or `float`, everything is a `number`
+
 `boolean` - for `true` and `false`
 
 ## Arrays
@@ -206,3 +208,79 @@ To specify an array like `[1, 2, 3]`, you can use the syntax `number[]` or
 TypeScript's `any` is used when you don't want a value to cause typechecking errors.
 When a value's type is `any` you can do anything JavaScript can do with it. 
 
+## Type Annotations on Variables
+
+Type annotations are always on the right of what is being typed. However, in most
+cases this isn't needed because TypeScript will infer the type based on the value.
+
+``` typescript
+let myName: string = 'Daniel';
+
+// myName is inferred as type 'string'
+let myName = 'Daniel';
+```
+
+## Functions
+
+Both the input and the output of functions can be typed. 
+
+``` typescript
+function greet(name: string): string {
+  return `Hello ${name}`;
+}
+```
+
+### Anonymous Functions
+
+TypeScript uses contextual typing to determine the type of a variable in 
+anonymous functions
+
+``` typescript
+const names = ['Daniel', 'Lily', 'ChocoPie'];
+
+// Contextual typing
+names.forEach((s) => {
+  console.log(s);
+});
+```
+
+## Object Types
+
+Object types are defined by listing the properties and their types. 
+
+``` typescript
+// Properties can be separated with either `,` or `;`
+function logCoordinates(pt: { x: number; y: number }) {
+  console.log(`X: ${pt.x}, Y: ${pt.y}`);
+}
+```
+
+### Optional Properties
+
+Some properties may be optional and can be declared as such by adding a `?` after
+the property name.
+
+``` typescript
+function logFullName(person: { first: string, middle?: string, last: string }) {
+  // ...
+}
+```
+
+Because a property may not exist on the object, you have to check for `undefined`
+before using it. 
+
+``` typescript
+let person: { first: string, middle?: string, last: string } = { first: 'Daniel', last: 'Wu' };
+
+// Okay
+if (person.middle !== undefined) {
+  console.log(person.middle.toUpperCase());
+}
+
+// Modern
+console.log(person.middle?.toUpperCase());
+```
+
+Adding a `?` to the right of a property in a method chain is called **optional 
+chaining**. It prevents runtime errors from occuring and will return `undefined` 
+if the property does not exist. 
