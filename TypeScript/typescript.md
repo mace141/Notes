@@ -334,8 +334,7 @@ Type aliases and interfaces are very similar and are often times used interchang
 but type aliases cannot be mutated. 
 
 Extending an interface
->
-``` typescript
+>``` typescript
 interface Animal {
   name: string  
 }
@@ -346,8 +345,7 @@ interface Bear extends Animal {
 ```
 
 Extending a type via intersections
->
-``` typescript
+>``` typescript
 type Animal = {
   name: string
 }
