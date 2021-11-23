@@ -284,3 +284,75 @@ console.log(person.middle?.toUpperCase());
 Adding a `?` to the right of a property in a method chain is called **optional 
 chaining**. It prevents runtime errors from occuring and will return `undefined` 
 if the property does not exist. 
+
+## Union Types
+
+Types can be combined using the `|` operator to form more complex types called a
+union. A union is formed from two or more *members* (types in the union). 
+
+Some methods are not available to every member which require us to *narrow* the 
+code. The code below is narrowed by the conditional statements. 
+
+``` typescript
+function printId(id: number | string) {
+  if (typeof id === 'number') {
+    console.log(id);
+  } else {
+    console.log(id.toUpperCase());
+  }
+}
+```
+
+## Type Aliases
+
+Type aliases are great for creating a type object that can be used multiple times.
+They can be used to define object types and union types. 
+
+``` typescript
+type Point = {
+  x: number,
+  y: number
+};
+
+type ID = number | string;
+```
+
+## Interfaces
+
+An interface declaration is another way to define an object type. 
+
+``` typescript
+interface Point {
+  x: number,
+  y: number
+}
+```
+
+### Type Aliases vs Interfaces
+
+Type aliases and interfaces are very similar and are often times used interchangeably,
+but type aliases cannot be mutated. 
+
+Extending an interface
+>
+``` typescript
+interface Animal {
+  name: string  
+}
+
+interface Bear extends Animal {
+  honey: boolean
+}
+```
+
+Extending a type via intersections
+>
+``` typescript
+type Animal = {
+  name: string
+}
+
+type Bear = Animal & {
+  honey: boolean
+}
+```
