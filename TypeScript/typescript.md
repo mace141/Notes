@@ -188,6 +188,18 @@ noImplicitAny - variables whose type is inferred as `any` will be issued an erro
 
 strictNullChecks - makes handling `null` and `undefined` more explicit
 
+### Non-null Assertion Operator (`!`)
+
+Adding a `!` after any expression will assert that the value is not `null` or
+`undefined`.
+
+``` typescript
+function runtimeRoulette(x?: number | null) {
+  // No error while compiling
+  console.log(x!.toFixed());
+}
+```
+
 # 3. [Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
 
 ## Primitive Types
@@ -334,23 +346,71 @@ Type aliases and interfaces are very similar and are often times used interchang
 but type aliases cannot be mutated. 
 
 Extending an interface
->``` typescript
->interface Animal {
->  name: string  
->}
->
->interface Bear extends Animal {
->  honey: boolean
->}
->```
+``` typescript
+interface Animal {
+  name: string  
+}
+
+interface Bear extends Animal {
+  honey: boolean
+}
+```
 
 Extending a type via intersections
->``` typescript
->type Animal = {
->  name: string
->}
->
->type Bear = Animal & {
->  honey: boolean
->}
->```
+``` typescript
+type Animal = {
+  name: string
+}
+
+type Bear = Animal & {
+  honey: boolean
+}
+```
+
+## Type Assertions
+
+When you know the type better than TypeScript, you can assert a type to specify 
+the type. 
+
+For example, when you query for an HTMLElement using `document.getElementById`
+TypeScript knows that it will return some type of  `HTMLElement` but not which one. 
+However, you can assert which type it will be which will allow you to use methods
+defined on the specified type. 
+
+``` typescript
+const myInput = document.getElementById('my-input') as HTMLInputElement;
+// No problems doing this due to the type assertion
+console.log(myInput.value);
+```
+
+>Be careful using type assertions because they are removed at compile-time which
+>means there won't be runtime checking or an exception if the assertion is wrong.
+
+Type assertions can only be made to a *more specific* or *less specific* type. 
+
+## Literal Types
+
+On top of specifying a type, TypeScript allows you to specify a literal type. 
+Literal types are not very useful by themselves, but are much more useful when
+combining literals into unions. You can also combine non-literals with literals. 
+
+``` typescript
+let greeting: 'hello' = 'hello';
+
+// This will cause an error because `greeting` has a literal type of 'hello' 
+greeting = 'hi';
+
+const greetings: string | 'hello' | 'hi' | 'how are you' = 'hello';
+```
+
+### [Literal Inference](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-inference)
+
+When you initialize a variable with an object, TypeScript will infer the types and
+assume the values may change later. If you want to assign a literal type to the 
+object, then you can use type assertion. The suffix `as const` will convert the 
+entire object to literal types. 
+
+``` typescript
+const req = { url: 'https://example/com', method: 'GET' } as const;
+handleRequest(req.url, req.method);
+```
