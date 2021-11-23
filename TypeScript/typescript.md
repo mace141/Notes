@@ -335,22 +335,22 @@ but type aliases cannot be mutated.
 
 Extending an interface
 >``` typescript
-interface Animal {
-  name: string  
-}
-
-interface Bear extends Animal {
-  honey: boolean
-}
-```
+>interface Animal {
+>  name: string  
+>}
+>
+>interface Bear extends Animal {
+>  honey: boolean
+>}
+>```
 
 Extending a type via intersections
 >``` typescript
-type Animal = {
-  name: string
-}
-
-type Bear = Animal & {
-  honey: boolean
-}
-```
+>type Animal = {
+>  name: string
+>}
+>
+>type Bear = Animal & {
+>  honey: boolean
+>}
+>```
