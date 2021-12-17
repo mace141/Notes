@@ -414,3 +414,7 @@ entire object to literal types.
 const req = { url: 'https://example/com', method: 'GET' } as const;
 handleRequest(req.url, req.method);
 ```
+
+# 4. [Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)
+
+Narrowing is the process of 

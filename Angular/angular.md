@@ -22,10 +22,13 @@ Angular is a component based frontend framework.
 
 `ngModel` binds HTML and class properties two ways so that data transfers between 
 both
-`<div>
+
+```
+<div>
   <label for="name">Hero name: </label>
   <input id="name" [(ngModel)]="hero.name" placeholder="name">
-</div>`
+</div>
+```
 
 You must opt-in to the `FormsModule` in the `@NgModule` decorator to use the 
 `ngModel` directive
@@ -75,7 +78,7 @@ This will call the component's `onSelect(hero)` function when clicked.
 
 ### Syntax
 
-`<p> [attr.attribute-you-are-targeting]="expression"></p>`
+`<p [attr.attribute-you-are-targeting]="expression"></p>`
 
 ### Class 
 
