@@ -3302,7 +3302,7 @@ def component_size(graph, node, visited):
 # ]
 # shortest_path(edges, 'm', 's') # -> 6
 
-# ========================= Depth First =========================
+# ========================= Breadth First =========================
 # Time: O(e), Space: O(e)
 from collections import deque
 
@@ -3684,11 +3684,11 @@ def traverse(graph, node):
 # Time: O(n), Space: O(n)
 def semesters_required(num_courses, prereqs):
   graph = build_graph(num_courses, prereqs)
-  semesters = 1
+  semesters = 0
   for course in graph:
     length = longest_education(graph, course)
-    semesters = length if length > semesters else semesters
-  return semesters
+    semesters = max(length, semesters)
+  print(semesters)
 
 def build_graph(num_courses, prereqs):
   graph = {}
@@ -3702,11 +3702,11 @@ def build_graph(num_courses, prereqs):
 def longest_education(graph, course):
   if not graph[course]:
     return 1
-  max = 0
+  res = 0
   for next_course in graph[course]:
-    length = longest_education(graph, next_course)
-    max = length if length > max else max
-  return max
+    length = 1 + longest_education(graph, next_course)
+    res = max(res, length)
+  return res
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #48 best bridge ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, best_bridge, that takes in a grid as an argument. The grid 

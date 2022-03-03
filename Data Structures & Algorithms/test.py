@@ -1,83 +1,77 @@
-class Node:
-  def __init__(self, val):
-    self.val = val
-    self.left = None
-    self.right = None
+def semesters_required(num_courses, prereqs):
+  graph = build_graph(num_courses, prereqs)
+  semesters = 0
+  for course in graph:
+    length = longest_education(graph, course)
+    semesters = max(length, semesters)
+  print(semesters)
 
-def max_path_sum(root):
-  if root is None:
-    return float('-inf')
-  if root.left is None and root.right is None:
-    return root.val
-  left = max_path_sum(root.left)
-  right = max_path_sum(root.right)
-  return root.val + max(left, right)
+def build_graph(num_courses, prereqs):
+  graph = {}
+  for num in range(num_courses):
+    graph[num] = []
+  for pair in prereqs:
+    prereq, course = pair
+    graph[prereq].append(course)
+  return graph
+
+def longest_education(graph, course):
+  if not graph[course]:
+    return 1
+  res = 0
+  for next_course in graph[course]:
+    length = 1 + longest_education(graph, next_course)
+    res = max(res, length)
+  return res
 
 # test_00:
-a = Node(3)
-b = Node(11)
-c = Node(4)
-d = Node(4)
-e = Node(-2)
-f = Node(1)
-a.left = b
-a.right = c
-b.left = d
-b.right = e
-c.right = f
-#      3
-#    /   \
-#   11    4
-#  / \     \
-# 4   -2    1
-print(max_path_sum(a)) # -> 18
+num_courses = 6
+prereqs = [
+  [1, 2],
+  [2, 4],
+  [3, 5],
+  [0, 5],
+]
+semesters_required(num_courses, prereqs) # -> 3
 # test_01:
-a = Node(5)
-b = Node(11)
-c = Node(54)
-d = Node(20)
-e = Node(15)
-f = Node(1)
-g = Node(3)
-a.left = b
-a.right = c
-b.left = d
-b.right = e
-e.left = f
-e.right = g
-#       5
-#     /   \
-#    11   54
-#  /   \
-# 20   15
-#      / \
-#     1  3
-print(max_path_sum(a)) # -> 59
+num_courses = 7
+prereqs = [
+  [4, 3],
+  [3, 2],
+  [2, 1],
+  [1, 0],
+  [5, 2],
+  [5, 6],
+]
+semesters_required(num_courses, prereqs) # -> 5
 # test_02:
-a = Node(-1)
-b = Node(-6)
-c = Node(-5)
-d = Node(-3)
-e = Node(0)
-f = Node(-13)
-g = Node(-1)
-h = Node(-2)
-a.left = b
-a.right = c
-b.left = d
-b.right = e
-c.right = f
-e.left = g
-f.right = h
-#        -1
-#      /   \
-#    -6    -5
-#   /  \     \
-# -3   0    -13
-#     /       \
-#    -1       -2
-print(max_path_sum(a)) # -> -8
+num_courses = 5
+prereqs = [
+  [1, 0],
+  [3, 4],
+  [1, 2],
+  [3, 2],
+]
+semesters_required(num_courses, prereqs) # -> 2
 # test_03:
-a = Node(42)
-#        42
-print(max_path_sum(a)) # -> 42
+num_courses = 12
+prereqs = []
+semesters_required(num_courses, prereqs) # -> 1
+# test_04:
+num_courses = 3
+prereqs = [
+  [0, 2],
+  [0, 1],
+  [1, 2],
+]
+semesters_required(num_courses, prereqs) # -> 3
+# test_05:
+num_courses = 6
+prereqs = [
+  [3, 4],
+  [3, 0],
+  [3, 1],
+  [3, 2],
+  [3, 5],
+]
+semesters_required(num_courses, prereqs) # -> 2
