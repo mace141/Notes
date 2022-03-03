@@ -716,27 +716,23 @@ def reverse_list(head, prev = None):
 
 # ========================= Iterative =========================
 # Time: O(min(n, m)), Space: O(1)
-def zipper_lists(head_1, head_2):
-  tail = head_1
-  current_1 = head_1.next
-  current_2 = head_2
-  count = 0
-  while current_1 is not None and current_2 is not None:
-    if count % 2 == 0:
-      tail.next = current_2
-      current_2 = current_2.next
-    else:
-      tail.next = current_1
-      current_1 = current_1.next
-    tail = tail.next
-    count += 1
-
-  if current_1 is not None:
-    tail.next = current_1
-  if current_2 is not None:
-    tail.next = current_2
-
-  return head_1
+def zipper_lists(head1, head2):
+  tail = Node(0)
+  curr1 = head1
+  curr2 = head2
+  while curr1 and curr2:
+    tail.next = curr1 
+    curr1 = curr1.next
+    tail.next.next = curr2
+    curr2 = curr2.next
+    tail = tail.next.next
+  
+  if curr1 is None:
+    tail.next = curr2
+  if curr2 is None:
+    tail.next = curr1
+  
+  return head1
 
 # ========================= Recursive =========================
 # Time: O(min(n, m)), Space: O(min(n, m))
@@ -1499,12 +1495,17 @@ def depth_first_values(root):
 # ========================= Recursive =========================
 # Time: O(n), Space: O(n)
 def depth_first_values(root):
-  if root is None:
-    return []
+  def dfs(root, values):
+    if root is None:
+      return
+
+    values.append(root.val)
+    dfs(root.left, values)
+    dfs(root.right, values)
+
+    return values
     
-  left_values = depth_first_values(root.left)
-  right_values = depth_first_values(root.right)
-  return [root.val, *left_values, *right_values]
+  return dfs(root, [])
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #25 breadth first values ]]]]]]]]]]]]]]]]]]]]]]]]] 
 # Write a function, breadth_first_values, that takes in the root of a binary tree.
@@ -3072,7 +3073,7 @@ def build_graph(edges):
     graph[dst].append(src)
   return graph
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #40 connected components count ]]]]]]]]]]]]]]]]]]]]]]]]]
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #40 connected components count ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, connected_components_count, that takes in the adjacency list 
 # of an undirected graph. The function should return the number of connected 
 # components within the graph.
@@ -3541,8 +3542,8 @@ def closest_carrot(grid, row, col):
       delta_y, delta_x = delta
       new_row = r + delta_y
       new_col = c + delta_x
-      valid_row =_row >= 0 and new_row < len(grid)
-      valid_col =_col >= 0 and new_col < len(grid[0])
+      valid_row = new_row >= 0 and new_row < len(grid)
+      valid_col = new_col >= 0 and new_col < len(grid[0])
       valid_pos = valid_row and valid_col
       visited_pos = (new_row, new_col) in visited
       if valid_pos and grid[new_row][new_col] != 'X' and not visited_pos:
@@ -3836,8 +3837,8 @@ def in_bounds(grid, delta, row, col):
   delta_y, delta_x = delta
   new_row = row + delta_y
   new_col = col + delta_x
-  valid_row =_row >= 0 and new_row < len(grid)
-  valid_col =_col >= 0 and new_col < len(grid[0])
+  valid_row = new_row >= 0 and new_row < len(grid)
+  valid_col = new_col >= 0 and new_col < len(grid[0])
   return [[new_row, new_col], valid_row and valid_col]
 
 # [[[[[[[[[[[[[[[[[[[[[[[[[ #49 has cycle ]]]]]]]]]]]]]]]]]]]]]]]]] !I
@@ -5930,7 +5931,7 @@ def traverse(root, values, level):
   traverse(root.left, values, level + 1)
   traverse(root.right, values, level + 1)
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #80 can color ]]]]]]]]]]]]]]]]]]]]]]]]] 
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #80 can color ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, can_color, that takes in a dictionary representing the 
 # adjacency list of an undirected graph. The function should return a boolean 
 # indicating whether or not it is possible to color nodes of the graph using two 
@@ -6017,7 +6018,7 @@ def colorable(graph, node, red, colors):
 
   return True
 
-# [[[[[[[[[[[[[[[[[[[[[[[[[ #81 tolerant teams ]]]]]]]]]]]]]]]]]]]]]]]]] 
+# [[[[[[[[[[[[[[[[[[[[[[[[[ #81 tolerant teams ]]]]]]]]]]]]]]]]]]]]]]]]] !I
 # Write a function, tolerant_teams, that takes in a list of rivalries as an 
 # argument. A rivalry is a pair of people who should not be placed on the same 
 # team. The function should return a boolean indicating whether or not it is 
